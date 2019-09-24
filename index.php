@@ -47,24 +47,27 @@ input[type="submit"] {
   font-family: coda_regular, arial, helvetica, sans-serif;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
-  height:30px;
+  height:42px;
  
-  margin-top: 10px;
+
 }
 
 input[type="text"] {
   background-color: rgb(11, 12, 13);
   color: #ddd;
- margin-left: 13px;
- width:256px;
- padding-left:10px;
+
+ width:300px;
+ padding-left:5px;
+
 }
 
 input[type="submit"] {
   background-color: rgb(0, 79, 74);
   color: #59fbea;
-  padding: 1px 15px;
-  height:34px;
+  padding: 5px 22px;
+
+  height:45px;
+    
 }
 
 div{margin:5px;border:0;padding:0;}
@@ -82,20 +85,20 @@ margin-top:15px;
 
 
 #tech {
-background-color: rgb(0, 79, 74);
+
   
-margin-left: 13px;
-padding-left: 3px;
-text-align: center;
+margin-left: 11px;
+padding-left: 2px;
+text-align: left;
 vertical-align:middle;
-line-height:50px;
-  border: 1px solid #59fbea;
+
+  border: 0px solid #59fbea;
   font-family: coda_regular, arial, helvetica, sans-serif;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   font-size:26px;
 
-width:340px;
+width:800px;
 
  
   
@@ -174,11 +177,11 @@ position: absolute;
 
 		<div id="door"  class="crt">
 		<form action="" method="post" >
-		<div id="tech"  class="crt"><a href="/"><b>GALAXY EXPLORER</b></a></div>
+		<div id="tech"  class="crt"><ul><li style="margin-top:20px;height:35px;border: 1px solid #59fbea;width:30px;background-color:black;"><a href="/"><b>GALAXY EXPLORER</b></a></li>
 		
-		<input type="text" name="asset" maxlength="31" value="<?php if(isset($_REQUEST["asset"])) {echo strtoupper($_REQUEST["asset"]);} ?>" >
+		<li  style="border:0px;width:100px;text-align:left;background-color:black;"><input type="text" name="asset" maxlength="31" value="<?php if(isset($_REQUEST["asset"])) {echo strtoupper($_REQUEST["asset"]);} ?>" >
 		<input type="hidden" name="one" value="rvn" />
-		<input type="submit" value="KAW">
+		<input type="submit" value="KAW"></div>
 		</form>
 		</div>
 
@@ -260,7 +263,7 @@ if(isset($turn) && isset($ux) && $turn==2 && $ux==1)
 if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_match('/[0-9]/', $asset)==false){
 
 	$asset=utf8_to_unicode($asset); 
-	$unicode="<br>&nbsp;&nbsp;<font color=green>Unicode</font> ".trim($_REQ["asset"]);
+	$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; ".trim($_REQ["asset"]);
 	$unioff=" <a href=/?asset=".$asset."&unicode=0&u=1&".$sort." >[ TURN-OFF ]</a><br>";
 	
 	$turn=1;
@@ -268,11 +271,11 @@ if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_m
 	
 	}else{
 
-		$unioff="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=?asset=".$asset."&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
+		$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=".$asset."&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
 
 		if(isset($ux) && $ux==1){
 
-			$unioff="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=/?asset=".$asset."&unicode=2&u=1&".$sort." >[ TURN-ON ]</a><br>";}
+			$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=/?asset=".$asset."&unicode=2&u=1&".$sort." >[ TURN-ON ]</a><br>";}
 
 		
 			}
@@ -285,7 +288,7 @@ if(isset($turn) && !isset($ux) && $turn==1)
 
 
 
-$unicode="<br>&nbsp;&nbsp;<font color=#28f428>Unicode</font> ".$asset;
+$unicode="&nbsp;&nbsp;<font color=#28f428>UNICODE</font>&nbsp; ".$asset;
 $unioff=" <a href=/?asset=".$asset."&unicode=0&".$sort." >[ TURN-OFF ]</a><br>";
 	
 	
@@ -322,7 +325,7 @@ if(!$address)
 	$turn=0;
 
 	
-	$unicode="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=/?asset=onervn&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
+	$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=/?asset=onervn&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
 	$unioff=" ";
 		
 
@@ -353,7 +356,7 @@ if($error != "")
 
 
 
-echo "<p>&nbsp;&nbsp;<a href=\"/?sort=1&asset=".$address."\">[ SORT ]</a> <br>&nbsp;&nbsp;".$unicode." ".$unioff."</p><div id=\"nav\"><ul>";
+echo "&nbsp;&nbsp;&nbsp;<a href=\"/?sort=1&asset=".$address."\">[ SORT ]</a>".$unicode."".$unioff." <br><div id=\"nav\"><ul>";
 
 //get search data
 
