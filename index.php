@@ -32,7 +32,7 @@ color: #28f428;
   text-decoration: none;
 }
 
-a:hover { color:grey; }
+a:hover { color:yellow; }
 
 input[type="text"],
 input[type="submit"] {
@@ -56,7 +56,8 @@ input[type="text"] {
   background-color: rgb(11, 12, 13);
   color: #ddd;
  margin-left: 13px;
- width:278px;
+ width:256px;
+ padding-left:10px;
 }
 
 input[type="submit"] {
@@ -70,8 +71,8 @@ div{margin:5px;border:0;padding:0;}
 
 #door {
 
-
-    
+margin-top:15px;
+  
   font-size: 15px;
   
 
@@ -79,18 +80,10 @@ div{margin:5px;border:0;padding:0;}
 
 
 
-#universe {
-
-line-height:20px;
-
-
-font-size: 18px;
-position: absolute;
-  
-}
 
 #tech {
 background-color: rgb(0, 79, 74);
+  
 margin-left: 13px;
 padding-left: 3px;
 text-align: center;
@@ -102,156 +95,14 @@ line-height:50px;
   -webkit-border-radius: 0;
   font-size:26px;
 
-width:275px;
+width:340px;
 
  
   
 }
 
-@keyframes flicker {
-  0% {
-    opacity: 0.27861;
-  }
-  5% {
-    opacity: 0.34769;
-  }
-  10% {
-    opacity: 0.23604;
-  }
-  15% {
-    opacity: 0.90626;
-  }
-  20% {
-    opacity: 0.18128;
-  }
-  25% {
-    opacity: 0.83891;
-  }
-  30% {
-    opacity: 0.65583;
-  }
-  35% {
-    opacity: 0.67807;
-  }
-  40% {
-    opacity: 0.26559;
-  }
-  45% {
-    opacity: 0.84693;
-  }
-  50% {
-    opacity: 0.96019;
-  }
-  55% {
-    opacity: 0.08594;
-  }
-  60% {
-    opacity: 0.20313;
-  }
-  65% {
-    opacity: 0.71988;
-  }
-  70% {
-    opacity: 0.53455;
-  }
-  75% {
-    opacity: 0.37288;
-  }
-  80% {
-    opacity: 0.71428;
-  }
-  85% {
-    opacity: 0.70419;
-  }
-  90% {
-    opacity: 0.7003;
-  }
-  95% {
-    opacity: 0.36108;
-  }
-  100% {
-    opacity: 0.24387;
-  }
-}
-@keyframes textShadow {
-  0% {
-    text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  5% {
-    text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  10% {
-    text-shadow: 0.02956275843481219px 0 1px rgba(0,30,255,0.5), -0.02956275843481219px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  15% {
-    text-shadow: 0.40218538552878136px 0 1px rgba(0,30,255,0.5), -0.40218538552878136px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  20% {
-    text-shadow: 3.4794037899852017px 0 1px rgba(0,30,255,0.5), -3.4794037899852017px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  25% {
-    text-shadow: 1.6125630401149584px 0 1px rgba(0,30,255,0.5), -1.6125630401149584px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  30% {
-    text-shadow: 0.7015590085143956px 0 1px rgba(0,30,255,0.5), -0.7015590085143956px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  35% {
-    text-shadow: 3.896914047650351px 0 1px rgba(0,30,255,0.5), -3.896914047650351px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  40% {
-    text-shadow: 3.870905614848819px 0 1px rgba(0,30,255,0.5), -3.870905614848819px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  45% {
-    text-shadow: 2.231056963361899px 0 1px rgba(0,30,255,0.5), -2.231056963361899px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  50% {
-    text-shadow: 0.08084290417898504px 0 1px rgba(0,30,255,0.5), -0.08084290417898504px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  55% {
-    text-shadow: 2.3758461067427543px 0 1px rgba(0,30,255,0.5), -2.3758461067427543px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  60% {
-    text-shadow: 2.202193051050636px 0 1px rgba(0,30,255,0.5), -2.202193051050636px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  65% {
-    text-shadow: 2.8638780614874975px 0 1px rgba(0,30,255,0.5), -2.8638780614874975px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  70% {
-    text-shadow: 0.48874025155497314px 0 1px rgba(0,30,255,0.5), -0.48874025155497314px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  75% {
-    text-shadow: 1.8948491305757957px 0 1px rgba(0,30,255,0.5), -1.8948491305757957px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  80% {
-    text-shadow: 0.0833037308038857px 0 1px rgba(0,30,255,0.5), -0.0833037308038857px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  85% {
-    text-shadow: 0.09769827255241735px 0 1px rgba(0,30,255,0.5), -0.09769827255241735px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  90% {
-    text-shadow: 3.443339761481782px 0 1px rgba(0,30,255,0.5), -3.443339761481782px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  95% {
-    text-shadow: 2.1841838852799786px 0 1px rgba(0,30,255,0.5), -2.1841838852799786px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-  100% {
-    text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-}
-.crt::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(18, 16, 16, 0.1);
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-  animation: flicker 0.00s infinite;
-}
+
+
 .crt::before {
   content: " ";
   display: block;
@@ -260,9 +111,9 @@ width:275px;
   left: 0;
   bottom: 0;
   right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background: linear-gradient(rgba(18, 16, 16, 0) 80%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   z-index: 2;
-  background-size: 100% 2px, 3px 100%;
+  background-size: 100% 2px;
   pointer-events: none;
 }
 .crt {
@@ -293,8 +144,8 @@ width:275px;
             li
             {
                 border: 1px solid #59fbea;
-                width: 260px;
-				height:50px;
+                width: 270px;
+				height:60px;
 				word-break: break-all;
 			background-color: rgb(0, 79, 74);
                 text-align: center;
@@ -307,6 +158,15 @@ width:275px;
 				padding-right:2px;
                 flex:auto;           
             }
+#universe {
+
+line-height:24px;
+ont-weight:100px;
+
+font-size: 22px;
+position: absolute;
+  
+}
 
 
 </style>
@@ -316,7 +176,7 @@ width:275px;
 		<form action="" method="post" >
 		<div id="tech"  class="crt"><a href="/"><b>GALAXY EXPLORER</b></a></div>
 		
-		<input type="text" name="asset" maxlength="31">
+		<input type="text" name="asset" maxlength="31" value="<?php if(isset($_REQUEST["asset"])) {echo strtoupper($_REQUEST["asset"]);} ?>" >
 		<input type="hidden" name="one" value="rvn" />
 		<input type="submit" value="KAW">
 		</form>
@@ -325,21 +185,6 @@ width:275px;
 <div id="universe" class="crt">
 
 <?php
-
-
-function replaceString($search,$replace,$content,$limit=1){
-    if(is_array($search)){
-        foreach ($search as $k=>$v){
-            $search[$k]='`'.preg_quote($search[$k],'`').'`';
-        }
-    }else{
-        $search='`'.preg_quote($search,'`').'`';
-    }
- 
-    $content=preg_replace("/alt=([^ >]+)/is",'',$content);
-    return preg_replace($search,$replace,$content,$limit);
-}
-
 
 
 
@@ -363,17 +208,21 @@ $asset=$_REQ["asset"];
 
 $asset=strtoupper(trim($asset));
 
+
+
 $turn=9;
 $u=9;
 
 $unicode=" ";
 $unioff=" ";
+$sort=9;
+$sortnum=9;
 
 if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
-
+if(isset($_REQ["sort"])){$sort="sort=1";$sortnum=1;}
 
 //all to unicode
 
@@ -411,19 +260,19 @@ if(isset($turn) && isset($ux) && $turn==2 && $ux==1)
 if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_match('/[0-9]/', $asset)==false){
 
 	$asset=utf8_to_unicode($asset); 
-	$unicode="<br>&nbsp;&nbsp;<font color=green>Unicode</font>: ".trim($_REQ["asset"]);
-	$unioff=" <a href=/?asset=".$asset."&unicode=0&u=1 >[ TURN-OFF ]</a><br>";
+	$unicode="<br>&nbsp;&nbsp;<font color=green>Unicode</font> ".trim($_REQ["asset"]);
+	$unioff=" <a href=/?asset=".$asset."&unicode=0&u=1&".$sort." >[ TURN-OFF ]</a><br>";
 	
 	$turn=1;
 	
 	
 	}else{
 
-		$unioff="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=?asset=".$asset."&unicode=1 >[ TURN-ON ]</a><br>";
+		$unioff="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=?asset=".$asset."&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
 
 		if(isset($ux) && $ux==1){
 
-			$unioff="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=/?asset=".$asset."&unicode=2&u=1 >[ TURN-ON ]</a><br>";}
+			$unioff="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=/?asset=".$asset."&unicode=2&u=1&".$sort." >[ TURN-ON ]</a><br>";}
 
 		
 			}
@@ -436,8 +285,8 @@ if(isset($turn) && !isset($ux) && $turn==1)
 
 
 
-$unicode="<br>&nbsp;&nbsp;<font color=#28f428>Unicode</font>: ".$asset;
-$unioff=" <a href=/?asset=".$asset."&unicode=0 >[ TURN-OFF ]</a><br>";
+$unicode="<br>&nbsp;&nbsp;<font color=#28f428>Unicode</font> ".$asset;
+$unioff=" <a href=/?asset=".$asset."&unicode=0&".$sort." >[ TURN-OFF ]</a><br>";
 	
 	
 }
@@ -473,7 +322,7 @@ if(!$address)
 	$turn=0;
 
 	
-	$unicode="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=/?asset=onervn&unicode=1 >[ TURN-ON ]</a><br>";
+	$unicode="<br>&nbsp;&nbsp;<font color=red>Unicode</font> <a href=/?asset=onervn&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
 	$unioff=" ";
 		
 
@@ -504,11 +353,15 @@ if($error != "")
 
 
 
-echo "<p>&nbsp;&nbsp;<font color=red>".$address."</font>&nbsp;<a href=/search/sort.php?asset=".$address."> [ Sort ]</a> <br>&nbsp;&nbsp;".$unicode." ".$unioff."</p><div id=\"nav\"><ul>";
+echo "<p>&nbsp;&nbsp;<a href=\"/?sort=1&asset=".$address."\">[ SORT ]</a> <br>&nbsp;&nbsp;".$unicode." ".$unioff."</p><div id=\"nav\"><ul>";
 
 //get search data
 
 $age=$rawtransaction;
+
+
+$totalass=array();
+$totalsearch=array();
 
 
 foreach($age as $x=>$x_value)
@@ -519,7 +372,47 @@ foreach($age as $x=>$x_value)
 
 			{
 
+
+
+//sort or not
+
+
+			$y_value=$x_value;
+
+if($sortnum==1)
+
+				{
+$arr=array();
+			$assetadd= $rpc->listaddressesbyasset($y_value);
+			
+			$assetnum=count($assetadd);
+			
+			
+
+			$info = $rpc->getassetdata($y_value);
+			
+			$ipfs_hash="";
+
+			extract($info);
+
+			$arr["num"]=$assetnum;
+			$arr["asset"]=$y_value;
+			$arr["ipfsx"]=$ipfs_hash;
+			$arr["amount"]=$amount;
+			$arr["units"]=$units;
+			$arr["reissuable"]=$reissuable;
+
+			array_push($totalass,$arr);
+
+				}
+	
+
+else{
+
 $info=$rpc->getassetdata($x_value);
+}
+
+
 
 
 if(isset($turn) && $turn==1){
@@ -531,167 +424,9 @@ if($unicode!="")
 {
 
 
+$x_value=uniworld($x_value,$address,$asset);
 
 
-$x_value=str_replace("U.","U+",$x_value);
-				
-				$x_value = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $x_value), ENT_NOQUOTES, 'UTF-8');
-
-				$x_value=str_replace("U+","U.",$x_value);
-				
-
-
-
-if(strlen($x_value)==strlen($address)){
-$assetsplit=str_split($asset,4);
-
-foreach($assetsplit as $assety)
-	{
-$assetx="U+".$assety."";
-$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
-
-$x_value=str_replace($assety,$utf8string,$x_value);}
-}
-else
-	{
-if(!preg_match ( '/[\Q~!@#$%^&*()+-_=.:?<>\E]/', $x_value ))
-					{
-	
-	$assetsplit=str_split($x_value,4);
-
-foreach($assetsplit as $assety)
-	
-{
-$assetx="U+".$assety."";
-$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
-
-$x_value=str_replace($assety,$utf8string,$x_value);
-	
-
-		}
-	}
-	else{
-			
-			//sub asset
-
-		if(preg_match ( "'/'", $x_value)){
-
-			list($aleft,$aright)=explode("/",$x_value);
-
-			if (!(strlen($aright) % 4) && strlen($aright)){
-
-						$assetsplit=str_split($aright,4);
-
-						foreach($assetsplit as $assety)
-	
-															{
-							$assetx="U+".$assety."";
-							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
-
-								$x_value=str_replace($assety,$utf8string,$x_value);
-
-															}	
-														}
-
-				if (!(strlen($aleft) % 4) && strlen($aleft)){
-
-						$assetsplit=str_split($aleft,4);
-
-						foreach($assetsplit as $assety)
-	
-															{
-							$assetx="U+".$assety."";
-							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
-
-								$x_value=str_replace($assety,$utf8string,$x_value);
-
-															}	
-														}
-
-
-		}
-
-		//#asset
-
-		if(preg_match ( "'#'", $x_value) ){
-
-			list($aleft,$aright)=explode("#",$x_value);
-
-			if (!(strlen($aright) % 4) && strlen($aright)){
-
-						$assetsplit=str_split($aright,4);
-
-						foreach($assetsplit as $assety)
-	
-															{
-							$assetx="U+".$assety."";
-							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
-
-								$x_value=str_replace($assety,$utf8string,$x_value);
-
-															}	
-														}
-
-				if (!(strlen($aleft) % 4) && strlen($aleft)){
-
-						$assetsplit=str_split($aleft,4);
-
-						foreach($assetsplit as $assety)
-	
-															{
-							$assetx="U+".$assety."";
-							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
-
-								$x_value=str_replace($assety,$utf8string,$x_value);
-
-															}	
-														}
-
-
-		}
-
-
-		//ID_and Lang
-
-		
-
-		if(preg_match ( "'_'", $x_value) ){
-
-			list($aleft,$aright)=explode("_",$x_value);
-
-			if (!(strlen($aright) % 4) && strlen($aright)){
-
-						$assetsplit=str_split($aright,4);
-
-						foreach($assetsplit as $assety)
-	
-															{
-							$assetx="U+".$assety."";
-							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
-
-								$x_value=str_replace($assety,$utf8string,$x_value);
-
-															}	
-														}
-
-
-
-		}
-
-
-								//else
-if (!(strlen($asset) % 4) && strlen($asset)){
-							$assetsplit=str_split($asset,4);
-
-							foreach($assetsplit as $assety)
-								{
-								$assetx="U+".$assety."";
-								$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
-
-								$x_value=str_replace($assety,$utf8string,$x_value);
-								}}
-	}
- }
 }
 
 
@@ -722,10 +457,14 @@ $x_value=replaceString("/","/<br>",$x_value);}
 
 }
 
+if($sortnum<>1)
+
+				{
+
 			if(!$ipfs_hash)
 
 				{
-	   			echo "<li>".$x_value."</li>";		
+	   			echo "<li style=\"background-color: black;\">".$x_value."</li>";		
 				}
 
 			//ipfs yes
@@ -736,8 +475,106 @@ $x_value=replaceString("/","/<br>",$x_value);}
 
 				echo "<li><a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank>".$x_value."</a></li>";		
 		}
+				}
 	}	
 }
+
+if($sortnum==1)
+
+				{
+				
+arsort($totalass);
+
+$listasset=$totalass;
+
+
+foreach ($listasset as $k=>$v) 
+			{
+			
+			
+			$x_value="";
+			$ipfs="";
+			$assetnum="";
+
+			extract($v);
+
+			$x_value=$asset;
+			$ipfs=$ipfsx;
+			$assetnum=$num;
+
+
+
+
+			$f_value=$x_value;
+			$u_value=$x_value;
+			$u_value=str_replace("/","%2F",$u_value);
+			$u_value=str_replace("#","%23",$u_value);
+$reisx="";
+if($reissuable==0){$reisx="<font color=red>NOT Reissuable</font>";}
+
+			if(strlen($x_value)>20){
+
+$count=1;
+if(preg_match ( '/[\Q~!#\E]/', $x_value)){
+	
+	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
+	$x_value=str_replace("#","#<br>",$x_value);}}else{
+$x_value=replaceString("/","/<br>",$x_value);}
+
+}
+
+
+if(isset($turn) && $turn==1){
+
+
+
+if($unicode!="")
+
+{
+
+
+$x_value=uniworld($x_value,$address,$asset);
+
+
+}
+
+
+}
+
+
+
+
+
+$x_value=str_replace("U+","",$x_value);
+
+
+			if(!$ipfs)
+
+				{
+
+
+			echo "<li style=\"background-color: black;height:180px;\"><h2><a href=/list?asset=".$u_value.">[ ".$assetnum." ] </a></h2>".$x_value."<hr>".number_format($amount,$units)." ".$reisx."  </li>";
+		
+				}
+
+			//ipfs yes
+
+			else
+
+				{
+		
+				
+			
+
+				echo "<li style=\"height:180px;\"><h2><a href=/list?asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr>".number_format($amount,$units)." ".$reisx."  </li>";
+				
+			
+				}
+
+	   
+			}
+				
+				}
 
 }
 
