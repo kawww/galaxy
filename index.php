@@ -56,7 +56,7 @@ input[type="text"] {
   background-color: rgb(11, 12, 13);
   color: #ddd;
 
- width:300px;
+ width:450px;
  padding-left:5px;
 
 }
@@ -96,7 +96,7 @@ vertical-align:middle;
   font-family: coda_regular, arial, helvetica, sans-serif;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
-  font-size:26px;
+  font-size:24px;
 
 width:800px;
 
@@ -129,7 +129,7 @@ width:800px;
                 margin: 0 auto;
 				margin-left: 13px;
 				padding-left: 3px;
-                border: 2px solid #59fbea;
+                border: 0px solid #59fbea;
             }
             ul,li 
             {
@@ -163,7 +163,7 @@ width:800px;
             }
 #universe {
 
-line-height:24px;
+line-height:26px;
 ont-weight:100px;
 
 font-size: 22px;
@@ -177,9 +177,9 @@ position: absolute;
 
 		<div id="door"  class="crt">
 		<form action="" method="post" >
-		<div id="tech"  class="crt"><ul><li style="margin-top:20px;height:35px;border: 1px solid #59fbea;width:30px;background-color:black;"><a href="/"><b>GALAXY EXPLORER</b></a></li>
+		<div id="tech"  class="crt"><ul><li style="width:1%;margin-top:20px;height:35px;border: 1px solid #59fbea;background-color:black;"><a href="/"><b>GALAXY</b></a></li>
 		
-		<li  style="border:0px;width:100px;text-align:left;background-color:black;"><input type="text" name="asset" maxlength="31" value="<?php if(isset($_REQUEST["asset"])) {echo strtoupper($_REQUEST["asset"]);} ?>" >
+		<li  style="border:0px;width:50%;text-align:left;background-color:black;"><input type="text" name="asset" maxlength="34" value="<?php if(isset($_REQUEST["asset"])) {if(strlen(trim($_REQUEST["asset"]))<>34){echo strtoupper($_REQUEST["asset"]);}else {echo $_REQUEST["asset"];}} ?>" >
 		<input type="hidden" name="one" value="rvn" />
 		<input type="submit" value="KAW"></div>
 		</form>
@@ -209,27 +209,36 @@ $_REQ = array_merge($_GET, $_POST);
 
 $asset=$_REQ["asset"];
 
-$asset=strtoupper(trim($asset));
-
-
+$asset=trim($asset);
 
 $turn=9;
-$u=9;
+$ux=9;
 
 $unicode=" ";
 $unioff=" ";
 $sort=9;
 $sortnum=9;
 
+if(strlen($asset)==34){$sortnum=3;$qr=$asset;}
+
+
+$asset=strtoupper($asset);
+
+
+
+
+
 if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
-if(isset($_REQ["sort"])){$sort="sort=1";$sortnum=1;}
+if(isset($_REQ["sort"])){if($_REQ["sort"]==1){$sort="sort=1";$sortnum=1;}if($_REQ["sort"]==2){$sort="sort=1";$sortnum=2;}}
+
+
+
+if($sortnum==9 or $sortnum==1){
 
 //all to unicode
-
-
 
 if(isset($turn) && isset($ux) && $turn==2 && $ux==1)
 	
@@ -255,8 +264,8 @@ if(isset($turn) && isset($ux) && $turn==2 && $ux==1)
 
 
 }
-//all to unicode
-
+//search to unicode
+//ux unicode click
 
 
 
@@ -271,7 +280,9 @@ if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_m
 	
 	}else{
 
-		$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=".$asset."&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
+		$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=".$asset."&unicode=1&".$sort."  >[ TURN-ON ]</a><br>";
+
+		//all to unicode
 
 		if(isset($ux) && $ux==1){
 
@@ -282,7 +293,7 @@ if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_m
 
 
 
-if(isset($turn) && !isset($ux) && $turn==1)
+if(isset($turn) && $ux==9 && $turn==1)
 	
 {
 
@@ -354,9 +365,21 @@ if($error != "")
 
 //check faucet number
 
+if($sortnum==1){
+	
+	
+	$sortword="<a href=\"/?unicode=".$turn."&asset=".$address."\">[ FAST ]</a>&nbsp;";
 
 
-echo "&nbsp;&nbsp;&nbsp;<a href=\"/?sort=1&asset=".$address."\">[ SORT ]</a>".$unicode."".$unioff." <br><div id=\"nav\"><ul>";
+}else
+	
+{
+	
+	$sortword="<a href=\"/?unicode=".$turn."&sort=1&asset=".$address."\">[ SORT ]</a>";
+
+}
+
+echo "&nbsp;&nbsp;&nbsp;".$sortword."".$unicode."".$unioff." <br><div id=\"nav\"><ul>";
 
 //get search data
 
@@ -365,6 +388,7 @@ $age=$rawtransaction;
 
 $totalass=array();
 $totalsearch=array();
+
 
 
 foreach($age as $x=>$x_value)
@@ -406,6 +430,7 @@ $arr=array();
 			$arr["reissuable"]=$reissuable;
 
 			array_push($totalass,$arr);
+		
 
 				}
 	
@@ -460,7 +485,7 @@ $x_value=replaceString("/","/<br>",$x_value);}
 
 }
 
-if($sortnum<>1)
+if($sortnum==9)
 
 				{
 
@@ -524,7 +549,7 @@ if(preg_match ( '/[\Q~!#\E]/', $x_value)){
 	$x_value=str_replace("#","#<br>",$x_value);}}else{
 $x_value=replaceString("/","/<br>",$x_value);}
 
-}
+}else{$x_value=$x_value."<br><br>";}
 
 
 if(isset($turn) && $turn==1){
@@ -556,7 +581,7 @@ $x_value=str_replace("U+","",$x_value);
 				{
 
 
-			echo "<li style=\"background-color: black;height:180px;\"><h2><a href=/list?asset=".$u_value.">[ ".$assetnum." ] </a></h2>".$x_value."<hr>".number_format($amount,$units)." ".$reisx."  </li>";
+			echo "<li style=\"background-color: black;height:200px;\"><h2><a href=/?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
 		
 				}
 
@@ -569,7 +594,7 @@ $x_value=str_replace("U+","",$x_value);
 				
 			
 
-				echo "<li style=\"height:180px;\"><h2><a href=/list?asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr>".number_format($amount,$units)." ".$reisx."  </li>";
+				echo "<li style=\"height:200px;\"><h2><a href=/?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
 				
 			
 				}
@@ -578,6 +603,114 @@ $x_value=str_replace("U+","",$x_value);
 			}
 				
 				}
+
+		}
+
+
+//list
+
+if($sortnum==2)
+
+				{
+
+echo "<div id=\"nav\"><ul>";
+$arr=array();
+$totalsearch=array();
+
+$assetadd= $rpc->listaddressesbyasset($asset);
+
+foreach($assetadd as $y=>$y_value)
+
+	{
+
+		
+
+			
+
+			$arr["num"]=$y_value;
+			$arr["add"]=$y;
+
+array_push($totalsearch,$arr);
+
+	}
+
+arsort($totalsearch);
+
+foreach ($totalsearch as $k=>$v) 
+
+						{
+
+extract($v);
+
+
+
+			echo "<li style=\"width:360px;height:150px;\"><h2>[ ".$num." ]</h2><a href=/?unicode=".$turn."&sort=3&asset=".$add.">".$add."</a></li>";
+			
+	}	
+
+
+
+	}
+
+
+	if($sortnum==3)
+
+				{
+		
+			$age = $rpc->listassetbalancesbyaddress($qr);
+			
+			$error = $rpc->error;
+
+			if($error != "") 
+		
+				{
+	
+					echo "<p>&nbsp;&nbsp;Error ADDRESS</p>";
+					exit;
+				}
+
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=/?asset=".$qr."&unicode=&sort=3 >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=/?asset=".$qr."&unicode=1&sort=3 >[ TURN-ON ]</a><br>";}
+
+echo "&nbsp;&nbsp;".$unicode."<div id=\"nav\"><ul>";
+
+
+		foreach($age as $x_value=>$x)
+
+			{
+
+$assetlink=$x_value;
+$assettwo=$x_value;
+
+
+if($turn==1)
+
+{
+$x_value=uniworld($x_value,$assetlink,$assettwo);
+}
+
+
+$x_value=str_replace("U+","",$x_value);
+
+
+
+if(strlen($x_value)>20){
+
+$count=1;
+
+if(preg_match ( '/[\Q~!#\E]/', $x_value)){
+	
+	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
+	$x_value=str_replace("#","#<br>",$x_value);}}else{
+$x_value=replaceString("/","/<br>",$x_value);}
+
+}else{$x_value=$x_value."<br><br>";}
+
+
+			echo "<li style=\"background-color: rgb(0, 79, 74);;height:110px;\"><a href=/?&unicode=".$turn."&sort=2&asset=".$assetlink.">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$x."</li>";
+
+			}
+
+	}
 
 }
 
