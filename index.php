@@ -226,7 +226,7 @@ if(isset($_REQUEST["asset"]))
 	if(strlen(trim($_REQUEST["asset"]))<>34)
 	{$ec=strtoupper($_REQUEST["asset"]);}else {$ec=$_REQUEST["asset"];} 
 
-		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=/><b>GALAXY</b></a></li>";	
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
 		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
 
@@ -257,7 +257,7 @@ if(isset($_REQUEST["asset"]))
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RASDAQ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=/?asset=><h2>[ ASSET EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=><h2>[ ASSET EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
 
 		echo "</ul></div>";
 
@@ -430,7 +430,7 @@ if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_m
 
 	$asset=utf8_to_unicode($asset); 
 	$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; ".trim($_REQ["asset"]);
-	$unioff=" <a href=/?asset=".$asset."&unicode=0&u=1&".$sort." >[ TURN-OFF ]</a><br>";
+	$unioff=" <a href=?asset=".$asset."&unicode=0&u=1&".$sort." >[ TURN-OFF ]</a><br>";
 	
 	$turn=1;
 	
@@ -443,7 +443,7 @@ if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_m
 
 		if(isset($ux) && $ux==1){
 
-			$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=/?asset=".$asset."&unicode=2&u=1&".$sort." >[ TURN-ON ]</a><br>";}
+			$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=".$asset."&unicode=2&u=1&".$sort." >[ TURN-ON ]</a><br>";}
 
 		
 			}
@@ -457,7 +457,7 @@ if(isset($turn) && $ux==9 && $turn==1)
 
 
 $unicode="&nbsp;&nbsp;<font color=#28f428>UNICODE</font>&nbsp; ".$asset;
-$unioff=" <a href=/?asset=".$asset."&unicode=0&".$sort." >[ TURN-OFF ]</a><br>";
+$unioff=" <a href=?asset=".$asset."&unicode=0&".$sort." >[ TURN-OFF ]</a><br>";
 	
 	
 }
@@ -493,7 +493,7 @@ if(!$address)
 	$turn=0;
 
 	
-	$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=/?asset=onervn&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
+	$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=onervn&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
 	$unioff=" ";
 		
 
@@ -525,18 +525,18 @@ if($error != "")
 if($sortnum==1){
 	
 	
-	$sortword="<a href=\"/?unicode=".$turn."&asset=".$address."\">[ FAST ]</a>&nbsp;";
+	$sortword="<a href=\"?unicode=".$turn."&asset=".$address."\">[ FAST ]</a>&nbsp;";
 
 
 }else
 	
 {
 	
-	$sortword="<a href=\"/?unicode=".$turn."&sort=1&asset=".$address."\">[ SORT ]</a>";
+	$sortword="<a href=\"?unicode=".$turn."&sort=1&asset=".$address."\">[ SORT ]</a>";
 
 }
 
-echo "&nbsp;&nbsp;&nbsp;".$sortword."".$unicode."".$unioff." <br><div id=\"nav\"><ul>";
+echo "&nbsp;&nbsp;&nbsp;<div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$sortword."".$unicode."".$unioff."</div> <div id=\"nav\"><ul>";
 
 //get search data
 
@@ -738,7 +738,7 @@ $x_value=str_replace("U+","",$x_value);
 				{
 
 
-			echo "<li style=\"background-color: black;height:200px;\"><h2><a href=/?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
+			echo "<li style=\"background-color: black;height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
 		
 				}
 
@@ -751,7 +751,7 @@ $x_value=str_replace("U+","",$x_value);
 				
 			
 
-				echo "<li style=\"height:200px;\"><h2><a href=/?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
+				echo "<li style=\"height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
 				
 			
 				}
@@ -801,7 +801,7 @@ extract($v);
 
 
 
-			echo "<li style=\"width:360px;height:150px;\"><h2>[ ".$num." ]</h2><a href=/?unicode=".$turn."&sort=3&asset=".$add.">".$add."</a></li>";
+			echo "<li style=\"width:360px;height:150px;\"><h2>[ ".$num." ]</h2><a href=?unicode=".$turn."&sort=3&asset=".$add.">".$add."</a></li>";
 			
 	}	
 
@@ -826,7 +826,7 @@ extract($v);
 					exit;
 				}
 
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=/?asset=".$qr."&unicode=&sort=3 >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=/?asset=".$qr."&unicode=1&sort=3 >[ TURN-ON ]</a><br>";}
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=?asset=".$qr."&unicode=&sort=3 >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=".$qr."&unicode=1&sort=3 >[ TURN-ON ]</a><br>";}
 
 echo "&nbsp;&nbsp;".$unicode."<div id=\"nav\"><ul>";
 
@@ -863,7 +863,7 @@ $x_value=replaceString("/","/<br>",$x_value);}
 }else{$x_value=$x_value."<br><br>";}
 
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);;height:110px;\"><a href=/?&unicode=".$turn."&sort=2&asset=".$assetlink.">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$x."</li>";
+			echo "<li style=\"background-color: rgb(0, 79, 74);;height:110px;\"><a href=?&unicode=".$turn."&sort=2&asset=".$assetlink.">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$x."</li>";
 
 			}
 
