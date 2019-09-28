@@ -238,23 +238,23 @@ if(isset($_REQUEST["asset"]))
 
 		echo "<div id=\"nav\"><ul>";
 		
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ CONSOLE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ WALLET ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ WALLET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ ASSET ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ Restricted ASSET ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ Restricted ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ MESSAGE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ SUBSCRIBE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ SUBSCRIBE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ IPFS ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ DIVIDED ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ DIVIDED ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RASDAQ ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RASDAQ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=/?asset=><h2>[ ASSET EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
@@ -335,11 +335,11 @@ if(isset($_REQUEST["asset"]))
 
 		echo "<div id=\"nav\"><ul>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ GALAXY OS DOWNLOAD ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ DOWNLOAD GALAXY ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ GALAXY OS CODE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://github.com/kawww/Galaxy-OS-for-Ravencoin  target=_blank><h2>[ GALAXY OS CODE ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ GALAXY OS FEEDBACK ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://github.com/kawww/Galaxy-OS-for-Ravencoin/issues target=_blank><h2>[ GALAXY OS FEEDBACK ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";	
 		
 		echo "</ul></div>";
 
