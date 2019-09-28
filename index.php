@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>RAVENCOIN ASSET SEARCH</title>
+        <title>GALAXY OS</title>
 		<style>
 
 
@@ -56,7 +56,7 @@ input[type="text"] {
   background-color: rgb(11, 12, 13);
   color: #ddd;
 
- width:450px;
+ width:500px;
  padding-left:5px;
 
 }
@@ -65,7 +65,7 @@ input[type="submit"] {
   background-color: rgb(0, 79, 74);
   color: #59fbea;
   padding: 5px 22px;
-
+margin-left:3px;
   height:45px;
     
 }
@@ -80,6 +80,16 @@ margin-top:15px;
   
 
 }
+
+#newworld{
+
+margin-top:100px;
+  
+  font-size: 15px;
+  
+
+}
+
 
 
 
@@ -98,13 +108,21 @@ vertical-align:middle;
   -webkit-border-radius: 0;
   font-size:24px;
 
-width:800px;
+width:98%;
 
  
   
 }
 
+@keyframes textShadow {
+  0% {
+    text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
 
+  100% {
+    text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+}
 
 .crt::before {
   content: " ";
@@ -144,6 +162,27 @@ width:800px;
                 flex-wrap: wrap;
 
             }
+
+			div:before {
+  content:"";
+  position:absolute;
+  top:0px;
+  bottom:0;
+  left:0;
+  right:0;
+  background:linear-gradient(to bottom,transparent,#000 0px);
+  animation:fadeIn 1s forwards
+}
+
+@keyframes fadeIn {
+  0% {
+    top:5%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
             li
             {
                 border: 1px solid #59fbea;
@@ -159,13 +198,14 @@ width:800px;
 				padding-top:10px;
 				padding-left:2px;
 				padding-right:2px;
-                flex:auto;           
+                flex:auto;  
+	
+
             }
 #universe {
 
 line-height:26px;
 ont-weight:100px;
-
 font-size: 22px;
 position: absolute;
   
@@ -175,20 +215,137 @@ position: absolute;
 </style>
 		<body>
 
-		<div id="door"  class="crt">
-		<form action="" method="post" >
-		<div id="tech"  class="crt"><ul><li style="width:1%;margin-top:20px;height:35px;border: 1px solid #59fbea;background-color:black;"><a href="/"><b>GALAXY</b></a></li>
 		
-		<li  style="border:0px;width:50%;text-align:left;background-color:black;"><input type="text" name="asset" maxlength="34" value="<?php if(isset($_REQUEST["asset"])) {if(strlen(trim($_REQUEST["asset"]))<>34){echo strtoupper($_REQUEST["asset"]);}else {echo $_REQUEST["asset"];}} ?>" >
-		<input type="hidden" name="one" value="rvn" />
-		<input type="submit" value="KAW"></div>
-		</form>
-		</div>
 
-<div id="universe" class="crt">
 
-<?php
+<?php 
 
+if(isset($_REQUEST["asset"])) 
+
+{
+	if(strlen(trim($_REQUEST["asset"]))<>34)
+	{$ec=strtoupper($_REQUEST["asset"]);}else {$ec=$_REQUEST["asset"];} 
+
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=/><b>GALAXY</b></a></li>";	
+
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
+
+		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
+		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
+		echo "<div id=\"universe\" class=\"crt\">";}
+
+		else {
+
+		echo "<div id=\"nav\"><ul>";
+		
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ CONSOLE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ WALLET ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ ASSET ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ Restricted ASSET ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ MESSAGE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ SUBSCRIBE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ IPFS ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ DIVIDED ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RASDAQ ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=/?asset=><h2>[ ASSET EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
+
+		echo "</ul></div>";
+
+		echo "<div id=\"nav\"><ul>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2><a href=https://raven.wiki target=_blank>[ WIKI ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVEN.WIKI</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2><a href=https://rvnstats.info target=_blank>[ STATISTICS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RVNSTATS.INFO</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2><a href=https://ravencoin.network target=_blank>[ BLOCK EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENCOIN.NETWORK</li>";	
+
+	
+
+			
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ravencoin.asset-explorer.net/  target=_blank><h2>[ ASSET MONITOR ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ASSET-EXPLORER.NET</li>";	
+
+		
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.assetsexplorer.com  target=_blank><h2>[ ASSET NETWORK ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ASSETEXPLORER.COM</li>";	
+
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=/http://ravenx.net  target=_blank><h2>[ ASSET EXCHANGE ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENX.NET</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://faucet.ravenland.org  target=_blank><h2>[ ASSET FAUCET ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENLAND.ORG</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.mangofarmassets.com/  target=_blank><h2>[ ASSET WALLET ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">MANGOFARMASSETS.COM</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://www.ravennodes.com  target=_blank><h2>[ NODES ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENNODES.COM</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://miningpoolstats.stream/ravencoin  target=_blank><h2>[ POOL ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">MININGPOOLSTATS.STREAM</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.ravencoinmeetup.org  target=_blank><h2>[ MEETUP ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVERNCOINMEETUP.ORG</li>";
+
+		echo "</ul></div>";
+
+		echo "<div id=\"nav\"><ul>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ravencoin.org  target=_blank><h2>[ RAVENCOIN.ORG ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.ravencoin.shop  target=_blank><h2>[ RAVENCOIN.SHOP ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
+
+		
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://onervn.com  target=_blank><h2>[ ONERVN.COM ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
+
+		
+
+		echo "</ul></div>";
+
+		echo "<div id=\"nav\"><ul>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://t.bdaily.club/  target=_blank><h2>[ IPFS URL DIRECT ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">T.BDAILY.CLUB</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://globalupload.io  target=_blank><h2>[ IPFS UPLOAD ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GLOBALUPLOAD.IO</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://pinata.cloud  target=_blank><h2>[ IPFS UPLOAD ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">PINATA.CLOUD</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://temporal.cloud  target=_blank><h2>[ IPFS UPLOAD ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">TEMPORAL.CLOUD</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://github.com/ipfs/awesome-ipfs  target=_blank><h2>[ AWESOME IPFS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GITHUB</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ipfs.io/  target=_blank><h2>[ IPFS.IO ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
+		
+		
+		echo "</ul></div>";
+
+		echo "<div id=\"nav\"><ul>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RITOCOIN ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RAPTOREUM ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ CLASSIC ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		
+		echo "</ul></div>";
+
+		echo "<div id=\"nav\"><ul>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ GALAXY OS DOWNLOAD ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ GALAXY OS CODE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ GALAXY OS FEEDBACK ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		
+		echo "</ul></div>";
+
+
+		echo "<div id=\"universe\" class=\"crt\">";
+		}
 
 
 
