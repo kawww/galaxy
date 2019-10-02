@@ -223,12 +223,16 @@ position: absolute;
 if(isset($_REQUEST["asset"])) 
 
 {
-	if(strlen(trim($_REQUEST["asset"]))<>34)
-	{$ec=strtoupper($_REQUEST["asset"]);}else {$ec=$_REQUEST["asset"];} 
+		if(strlen(trim($_REQUEST["asset"]))<>46)
+	{$ec=strtoupper($_REQUEST["asset"]);}else 
+			
+		{$ec=$_REQUEST["asset"];
+			
+			echo "<script>location.href=\"https://gotoipfs.com/#path=".$ec."\";</script>";} 
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" value=\"".$ec."\" placeholder=\"ASSET OR IPFS HASH\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
@@ -236,114 +240,44 @@ if(isset($_REQUEST["asset"]))
 
 		else {
 
-		echo "<div id=\"nav\"><ul>";
-		
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ WALLET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=asset.php><h2>[ ASSET ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ Restricted ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ MESSAGE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ SUBSCRIBE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ DIVIDED ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RASDAQ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+				if(strlen(trim($_REQUEST["asset"]))<>46)
+	{$ec=strtoupper($_REQUEST["asset"]);}else 
+					
+				{$ec=$_REQUEST["asset"];
+			
+			echo "<script>location.href=\"https://gotoipfs.com/#path=".$ec."\";</script>";} 
 
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=><h2>[ ASSET EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=explorer.php><h2>[ IPFS EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" value=\"".$ec."\" placeholder=\"ASSET OR IPFS HASH\">";
 
-		echo "</ul></div>";
-
-		echo "<div id=\"nav\"><ul>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2><a href=https://raven.wiki target=_blank>[ WIKI ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVEN.WIKI</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2><a href=https://rvnstats.info target=_blank>[ STATISTICS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RVNSTATS.INFO</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2><a href=https://ravencoin.network target=_blank>[ BLOCK EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENCOIN.NETWORK</li>";	
-
+		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
+		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
 	
 
-			
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ravencoin.asset-explorer.net/  target=_blank><h2>[ ASSET MONITOR ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ASSET-EXPLORER.NET</li>";	
-
-		
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.assetsexplorer.com  target=_blank><h2>[ ASSET NETWORK ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ASSETEXPLORER.COM</li>";	
-
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=/http://ravenx.net  target=_blank><h2>[ ASSET EXCHANGE ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENX.NET</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://faucet.ravenland.org  target=_blank><h2>[ ASSET FAUCET ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENLAND.ORG</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.mangofarmassets.com/  target=_blank><h2>[ ASSET WALLET ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">MANGOFARMASSETS.COM</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://www.ravennodes.com  target=_blank><h2>[ NODES ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENNODES.COM</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://miningpoolstats.stream/ravencoin  target=_blank><h2>[ POOL ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">MININGPOOLSTATS.STREAM</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.ravencoinmeetup.org  target=_blank><h2>[ MEETUP ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVERNCOINMEETUP.ORG</li>";
-
-		echo "</ul></div>";
-
 		echo "<div id=\"nav\"><ul>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ravencoin.org  target=_blank><h2>[ RAVENCOIN.ORG ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.ravencoin.shop  target=_blank><h2>[ RAVENCOIN.SHOP ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
-
 		
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://onervn.com  target=_blank><h2>[ ONERVN.COM ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
-
 		
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=GETTING_STARTED ><h2>[ GETTING STARTED ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GETTING_STARTED </li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=GOTO/ ><h2>[ GO TO ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GOTO </li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=T.D><h2>[ Trust Domain ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">T.D</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=onervn><h2>[ ONERVN ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ONERVN.COM</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=RVNCOIN/SONGS ><h2>[ RAVEN SONGS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RVNCOIN/SONGS</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=tarot ><h2>[ TAROT ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">TAROT</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=healer ><h2>[ HEALER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">HEALER</li>";
+
+
 
 		echo "</ul></div>";
 
-		echo "<div id=\"nav\"><ul>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://t.bdaily.club/  target=_blank><h2>[ IPFS URL DIRECT ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">T.BDAILY.CLUB</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://globalupload.io  target=_blank><h2>[ IPFS UPLOAD ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GLOBALUPLOAD.IO</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://pinata.cloud  target=_blank><h2>[ IPFS UPLOAD ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">PINATA.CLOUD</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://temporal.cloud  target=_blank><h2>[ IPFS UPLOAD ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">TEMPORAL.CLOUD</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://github.com/ipfs/awesome-ipfs  target=_blank><h2>[ AWESOME IPFS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GITHUB</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ipfs.io/  target=_blank><h2>[ IPFS.IO ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
-		
-		
-		echo "</ul></div>";
-
-		echo "<div id=\"nav\"><ul>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RITOCOIN ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RAPTOREUM ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ CLASSIC ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
-		
-		echo "</ul></div>";
-
-		echo "<div id=\"nav\"><ul>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ DOWNLOAD GALAXY ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://github.com/kawww/Galaxy-OS-for-Ravencoin  target=_blank><h2>[ GALAXY OS CODE ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://github.com/kawww/Galaxy-OS-for-Ravencoin/issues target=_blank><h2>[ GALAXY OS FEEDBACK ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";	
-		
-		echo "</ul></div>";
+	
 
 
 		echo "<div id=\"universe\" class=\"crt\">";
@@ -485,21 +419,6 @@ $address=$asset;
 
 //check address
 
-if(!$address)
-
-	{
-    
-	
-	$address="ONERVN";
-	
-	$turn=0;
-
-	
-	$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=onervn&unicode=1&".$sort." >[ TURN-ON ]</a><br>";
-	$unioff=" ";
-		
-
-	}
 
 
 
@@ -588,8 +507,11 @@ $arr=array();
 			$arr["units"]=$units;
 			$arr["reissuable"]=$reissuable;
 
+
+
 			array_push($totalass,$arr);
 		
+		if($ipfs_hash!=""){echo "<script>location.href=\"https://gotoipfs.com/#path=".$ipfs_hash."\";</script>";}
 
 				}
 	
@@ -597,6 +519,13 @@ $arr=array();
 else{
 
 $info=$rpc->getassetdata($x_value);
+
+$ipfs_hash="";
+
+			extract($info);
+
+			if($ipfs_hash!=""){echo "<script>location.href=\"https://gotoipfs.com/#path=".$ipfs_hash."\";</script>";}
+
 }
 
 
@@ -769,108 +698,7 @@ $x_value=str_replace("U+","",$x_value);
 
 //list
 
-if($sortnum==2)
 
-				{
-
-echo "<div id=\"nav\"><ul>";
-$arr=array();
-$totalsearch=array();
-
-$assetadd= $rpc->listaddressesbyasset($asset);
-
-foreach($assetadd as $y=>$y_value)
-
-	{
-
-		
-
-			
-
-			$arr["num"]=$y_value;
-			$arr["add"]=$y;
-
-array_push($totalsearch,$arr);
-
-	}
-
-arsort($totalsearch);
-
-foreach ($totalsearch as $k=>$v) 
-
-						{
-
-extract($v);
-
-
-
-			echo "<li style=\"width:360px;height:150px;\"><h2>[ ".$num." ]</h2><a href=?unicode=".$turn."&sort=3&asset=".$add.">".$add."</a></li>";
-			
-	}	
-
-
-
-	}
-
-
-	if($sortnum==3)
-
-				{
-		
-			$age = $rpc->listassetbalancesbyaddress($qr);
-			
-			$error = $rpc->error;
-
-			if($error != "") 
-		
-				{
-	
-					echo "<p>&nbsp;&nbsp;Error ADDRESS</p>";
-					exit;
-				}
-
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=?asset=".$qr."&unicode=&sort=3 >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=".$qr."&unicode=1&sort=3 >[ TURN-ON ]</a><br>";}
-
-echo "&nbsp;&nbsp;<div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
-
-
-		foreach($age as $x_value=>$x)
-
-			{
-
-$assetlink=$x_value;
-$assettwo=$x_value;
-
-
-if($turn==1)
-
-{
-$x_value=uniworld($x_value,$assetlink,$assettwo);
-}
-
-
-$x_value=str_replace("U+","",$x_value);
-
-
-
-if(strlen($x_value)>20){
-
-$count=1;
-
-if(preg_match ( '/[\Q~!#\E]/', $x_value)){
-	
-	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
-	$x_value=str_replace("#","#<br>",$x_value);}}else{
-$x_value=replaceString("/","/<br>",$x_value);}
-
-}else{$x_value=$x_value."<br><br>";}
-
-
-			echo "<li style=\"background-color: rgb(0, 79, 74);;height:110px;\"><a href=?&unicode=".$turn."&sort=2&asset=".$assetlink.">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$x."</li>";
-
-			}
-
-	}
 
 }
 
