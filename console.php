@@ -114,15 +114,7 @@ width:98%;
   
 }
 
-@keyframes textShadow {
-  0% {
-    text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
 
-  100% {
-    text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-}
 
 .crt::before {
   content: " ";
@@ -337,7 +329,7 @@ echo "</div>";
 
 
 ?>
-</ul></div>
+</div>
 </div>
 </body>
 </html>
