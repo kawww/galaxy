@@ -228,7 +228,7 @@ if(isset($_REQUEST["asset"]))
 			
 		{$ec=$_REQUEST["asset"];
 			
-			echo "<script>location.href=\"https://gotoipfs.com/#path=".$ec."\";</script>";} 
+		echo "<script>location.href=\"https://gotoipfs.com/#path=".$ec."\";</script>";} 
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
@@ -240,17 +240,12 @@ if(isset($_REQUEST["asset"]))
 
 		else {
 
-				if(strlen(trim($_REQUEST["asset"]))<>46)
-	{$ec=strtoupper($_REQUEST["asset"]);}else 
-					
-				{$ec=$_REQUEST["asset"];
 			
-			echo "<script>location.href=\"https://gotoipfs.com/#path=".$ec."\";</script>";} 
 
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" value=\"".$ec."\" placeholder=\"ASSET OR IPFS HASH\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"ASSET OR IPFS HASH\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";

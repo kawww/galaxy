@@ -220,25 +220,13 @@ position: absolute;
 
 <?php 
 
-if(isset($_REQUEST["asset"])) 
+if(!isset($_REQUEST["asset"])) 
 
-{
-	if(strlen(trim($_REQUEST["asset"]))<>34)
-	{$ec=strtoupper($_REQUEST["asset"]);}else {$ec=$_REQUEST["asset"];} 
-
-		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
-
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
-
-		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
-		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
-		echo "<div id=\"universe\" class=\"crt\">";}
-
-		else {
+ {
 
 		echo "<div id=\"nav\"><ul>";
 		
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=console.php><h2>[ CONSOLE ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ WALLET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
@@ -257,7 +245,7 @@ if(isset($_REQUEST["asset"]))
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RASDAQ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=><h2>[ ASSET EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf><h2>[ ASSET EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=explorer.php><h2>[ IPFS EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
 
@@ -352,6 +340,50 @@ if(isset($_REQUEST["asset"]))
 
 
 if(isset($_REQUEST["asset"])) {
+
+	if(strlen(trim($_REQUEST["asset"]))<>34)
+	{$ec=strtoupper($_REQUEST["asset"]);}else {$ec=$_REQUEST["asset"];} 
+
+	if($_REQUEST["asset"]=="RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf"){$ec="";}
+
+
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
+
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
+
+		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
+		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
+
+if($_REQUEST["asset"]=="RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf"){
+echo "<div id=\"nav\"><ul>";
+		
+		
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=GETTING_STARTED ><h2>[ GETTING STARTED ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GETTING_STARTED </li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=GOTO/ ><h2>[ GO TO ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GOTO </li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=T.D><h2>[ Trust Domain ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">T.D</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=onervn><h2>[ ONERVN ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ONERVN.COM</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=RVNCOIN/SONGS ><h2>[ RAVEN SONGS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RVNCOIN/SONGS</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=tarot ><h2>[ TAROT ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">TAROT</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=healer ><h2>[ HEALER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">HEALER</li>";
+
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=equa ><h2>[ EQUA start ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">EQUA</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=com ><h2>[ COM ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">.COM</li>";
+
+}
+
+		echo "</ul></div>";
+
+		if($_REQUEST["asset"]=="RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf"){exit;}
+
+		echo "<div id=\"universe\" class=\"crt\">";
 
 
 //check server
@@ -490,7 +522,7 @@ if(!$address)
 	{
     
 	
-	$address="ONERVN";
+	$address="";
 	
 	$turn=0;
 
