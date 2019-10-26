@@ -12,15 +12,18 @@ body,
   font-family: coda_regular, arial, helvetica, sans-serif;
 }
 
+
+
 html, body {
   background-color: #0b0c0d;
   color: #fff;
   font-size: 15px;
   margin: 0 auto -100px;
   padding: 0;
+
 }
 
-
+::-webkit-scrollbar { width: 0 !important }
 
 
 
@@ -192,7 +195,7 @@ width:98%;
 			background-color: rgb(0, 79, 74);
                 text-align: center;
                 margin-top: 10px;
-                margin-bottom: 10px;
+                margin-bottom: 7px;
 				margin-right: 5px;
 				margin-left: 5px;
 				padding-top:10px;
@@ -234,6 +237,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ Restricted ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
+
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ MESSAGE ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ SUBSCRIBE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
@@ -242,12 +246,15 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ DIVIDED ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RASDAQ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ RASDAQ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf><h2>[ ASSET EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=explorer.php><h2>[ IPFS EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+
 
 		echo "</ul></div>";
 
@@ -258,11 +265,10 @@ if(!isset($_REQUEST["asset"]))
 		echo"<li style=\"height:100px;color:#bbb;\"><h2><a href=https://rvnstats.info target=_blank>[ STATISTICS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RVNSTATS.INFO</li>";	
 
 		echo"<li style=\"height:100px;color:#bbb;\"><h2><a href=https://ravencoin.network target=_blank>[ BLOCK EXPLORER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENCOIN.NETWORK</li>";	
-
 	
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ravencoin.asset-explorer.net/  target=_blank><h2>[ ASSET MONITOR ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ASSET-EXPLORER.NET</li>";
+		
 
-			
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ravencoin.asset-explorer.net/  target=_blank><h2>[ ASSET MONITOR ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ASSET-EXPLORER.NET</li>";	
 
 		
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.assetsexplorer.com  target=_blank><h2>[ ASSET NETWORK ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ASSETEXPLORER.COM</li>";	
@@ -274,11 +280,16 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.mangofarmassets.com/  target=_blank><h2>[ ASSET WALLET ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">MANGOFARMASSETS.COM</li>";	
 
+
+
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://www.ravennodes.com  target=_blank><h2>[ NODES ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVENNODES.COM</li>";
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://miningpoolstats.stream/ravencoin  target=_blank><h2>[ POOL ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">MININGPOOLSTATS.STREAM</li>";
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.ravencoinmeetup.org  target=_blank><h2>[ MEETUP ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RAVERNCOINMEETUP.ORG</li>";
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+
 
 		echo "</ul></div>";
 
@@ -286,19 +297,18 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ravencoin.org  target=_blank><h2>[ RAVENCOIN.ORG ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.ravencoin.shop  target=_blank><h2>[ RAVENCOIN.SHOP ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://raven-nightly-builds.ravencoin.org  target=_blank><h2>[ Raven Nightly Builds ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
 
-		
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://www.ravencoin.shop  target=_blank><h2>[ RAVENCOIN.SHOP ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://onervn.com  target=_blank><h2>[ ONERVN.COM ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
 
-		
 
 		echo "</ul></div>";
 
 		echo "<div id=\"nav\"><ul>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://t.bdaily.club/  target=_blank><h2>[ IPFS URL DIRECT ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">T.BDAILY.CLUB</li>";
+		echo"<li style=\"height:100px;color:#bbb;\"><a href=http://linkipfs.com/  target=_blank><h2>[ IPFS URL DIRECT ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINKIPFS.COM</li>";
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://globalupload.io  target=_blank><h2>[ IPFS UPLOAD ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GLOBALUPLOAD.IO</li>";
 
@@ -306,10 +316,15 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://temporal.cloud  target=_blank><h2>[ IPFS UPLOAD ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">TEMPORAL.CLOUD</li>";
 
+
+
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://github.com/ipfs/awesome-ipfs  target=_blank><h2>[ AWESOME IPFS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GITHUB</li>";
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://ipfs.io/  target=_blank><h2>[ IPFS.IO ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";
 		
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
 		
 		echo "</ul></div>";
 
@@ -321,6 +336,8 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ CLASSIC ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LOCAL</li>";	
 		
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+
 		echo "</ul></div>";
 
 		echo "<div id=\"nav\"><ul>";
@@ -331,6 +348,8 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<li style=\"height:100px;color:#bbb;\"><a href=https://github.com/kawww/Galaxy-OS-for-Ravencoin/issues target=_blank><h2>[ GALAXY OS FEEDBACK ]</h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";	
 		
+		echo"<li style=\"height:100px;color:#bbb;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+
 		echo "</ul></div>";
 
 
