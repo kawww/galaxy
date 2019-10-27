@@ -22,7 +22,7 @@ html, body {
 
 
 
-
+::-webkit-scrollbar { width: 0 !important }
 
 a:link,
 a:visited,
@@ -186,7 +186,7 @@ width:98%;
             li
             {
                 border: 1px solid #59fbea;
-                width: 270px;
+                width: 330px;
 				height:60px;
 				word-break: break-all;
 			background-color: rgb(0, 79, 74);
@@ -211,6 +211,14 @@ position: absolute;
   
 }
 
+
+p
+{
+
+color:#ccc;
+margin-top:2px;
+
+}
 
 </style>
 		<body>
@@ -292,25 +300,10 @@ $x_value=uniworld($x_value,$assetlink,$assettwo);
 $x_value=str_replace("U+","",$x_value);
 
 
-
-if(strlen($x_value)>20){
-
-$count=1;
-
-if(preg_match ( '/[\Q~!#\E]/', $x_value)){
-	
-	list($assetl,$assetr)=explode("#",$x_value);
-	
-	if(strlen($assetr)>5){
-	$x_value=str_replace("#","#<br>",$x_value);}}else{
-
-if(strpos($x_value, "/")>15){
-$x_value=replaceString("/","/<br>",$x_value);}}
-
-}else{$x_value=$x_value."<br><br>";}
+$x_value="<h4>".$x_value."</h4>";
 
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);;height:110px;\"><a href=?&unicode=".$turn."&asset=".$assetlink.">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$x."</li>";
+			echo "<a href=?&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
 
 			}
 
@@ -631,7 +624,7 @@ if($sortnum==9)
 			if(!$ipfs_hash)
 
 				{
-	   			echo "<li style=\"background-color: black;\">".$x_value."</li>";		
+	   			echo "<li style=\"background-color:black; width: 430px;padding-top:30px;\">".$x_value."</li>";		
 				}
 
 			//ipfs yes
@@ -640,7 +633,7 @@ if($sortnum==9)
 
 				{
 
-				echo "<li><a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank>".$x_value."</a></li>";		
+				echo "<a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank><li style=\"width: 430px;padding-top:30px;\">".$x_value."</li></a>";		
 		}
 				}
 	}	
@@ -721,7 +714,7 @@ $x_value=str_replace("U+","",$x_value);
 				{
 
 
-			echo "<li style=\"background-color: black;height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
+			echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"background-color: black;height:200px;display:block;\"><h2>[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
 		
 				}
 
@@ -734,7 +727,7 @@ $x_value=str_replace("U+","",$x_value);
 				
 			
 
-				echo "<li style=\"height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
+				echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"height:200px;display:block;\"><h2>[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
 				
 			
 				}
@@ -846,7 +839,7 @@ $x_value=replaceString("/","/<br>",$x_value);}}
 
 }else{$x_value=$x_value."<br><br>";}
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);;height:110px;\"><a href=?&unicode=".$turn."&sort=2&asset=".$assetlink.">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$x."</li>";
+			echo "<a href=?&unicode=".$turn."&sort=2&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:110px;display:block;\">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
 
 			}
 

@@ -191,7 +191,7 @@ width:98%;
             {
                 border: 1px solid #59fbea;
                 width: 270px;
-				height:60px;
+				height:100px;
 				word-break: break-all;
 			background-color: rgb(0, 79, 74);
                 text-align: center;
@@ -385,24 +385,23 @@ if($_REQUEST["asset"]=="RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf"){
 echo "<div id=\"nav\"><ul>";
 		
 		
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=GETTING_STARTED ><h2>[ GETTING STARTED ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GETTING_STARTED </li>";
+		echo"<a href=index.php?asset=GETTING_STARTED ><li style=\"height:100px;color:#bbb;\"><h2>[ GETTING STARTED ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GETTING_STARTED</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=GOTO/ ><h2>[ GO TO ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GOTO </li>";
+		echo"<a href=index.php?asset=GOTO/ ><li style=\"height:100px;color:#bbb;\"><h2>[ GO TO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GOTO</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=T.D><h2>[ Trust Domain ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">T.D</li>";
+		echo"<a href=index.php?asset=T.D><li style=\"height:100px;color:#bbb;\"><h2>[ Trust Domain ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>T.D</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=onervn><h2>[ ONERVN ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ONERVN.COM</li>";
+		echo"<a href=index.php?asset=onervn><li style=\"height:100px;color:#bbb;\"><h2>[ ONERVN ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>ONERVN.COM</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=RVNCOIN/SONGS ><h2>[ RAVEN SONGS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RVNCOIN/SONGS</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=tarot ><h2>[ TAROT ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">TAROT</li>";
-
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=healer ><h2>[ HEALER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">HEALER</li>";
+		echo"<a href=index.php?asset=RVNCOIN/SONGS ><li style=\"height:100px;color:#bbb;\"><h2>[ RAVEN SONGS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVNCOIN/SONGS</p></a></li>";
 
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=equa ><h2>[ EQUA start ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">EQUA</li>";
+		echo"<a href=index.php?asset=healer ><li style=\"height:100px;color:#bbb;\"><h2>[ HEALER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>HEALER</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=com ><h2>[ COM ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">.COM</li>";
+
+		echo"<a href=index.php?asset=equa ><li style=\"height:100px;color:#bbb;\"><h2>[ EQUA start ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>EQUA</p></a></li>";
+
+		echo"<a href=index.php?asset=com ><li style=\"height:100px;color:#bbb;\"><h2>[ COM ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>.COM</p></a></li>";
 
 }
 
@@ -692,17 +691,7 @@ extract($info);
 
 
 
-if(strlen($x_value)>20){
-
-$count=1;
-if(preg_match ( '/[\Q~!#\E]/', $x_value)){
-	
-	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
-	$x_value=str_replace("#","#<br>",$x_value);}}else{
-if(strpos($x_value, "/")>15){
-$x_value=replaceString("/","/<br>",$x_value);}}
-
-}else{$x_value=$x_value."<br><br>";}
+$x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
 if($sortnum==9)
 
@@ -711,7 +700,7 @@ if($sortnum==9)
 			if(!$ipfs_hash)
 
 				{
-	   			echo "<li style=\"background-color: black;\">".$x_value."</li>";		
+	   			echo "<li style=\"background-color:black; width: 430px;\">".$x_value."</li>";		
 				}
 
 			//ipfs yes
@@ -720,7 +709,7 @@ if($sortnum==9)
 
 				{
 
-				echo "<li><a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank>".$x_value."</a></li>";		
+				echo "<a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank><li style=\"width: 430px;\">".$x_value."</li></a>";		
 		}
 				}
 	}	
@@ -759,16 +748,7 @@ foreach ($listasset as $k=>$v)
 $reisx="";
 if($reissuable==0){$reisx="<font color=red>NOT Reissuable</font>";}
 
-			if(strlen($x_value)>20){
-
-$count=1;
-if(preg_match ( '/[\Q~!#\E]/', $x_value)){
-	
-	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
-	$x_value=str_replace("#","#<br>",$x_value);}}else{
-$x_value=replaceString("/","/<br>",$x_value);}
-
-}else{$x_value=$x_value."<br><br>";}
+$x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
 
 if(isset($turn) && $turn==1){
@@ -800,7 +780,7 @@ $x_value=str_replace("U+","",$x_value);
 				{
 
 
-			echo "<li style=\"background-color: black;height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
+			echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"background-color: black;height:200px;width:430px;\"><h2>[ ".$assetnum." ] </h2><div style=\"color:#ccc;\">".$x_value."</div><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
 		
 				}
 
@@ -813,7 +793,7 @@ $x_value=str_replace("U+","",$x_value);
 				
 			
 
-				echo "<li style=\"height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
+				echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"width:430px;height:200px;\"><h2>[ ".$assetnum." ] </h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
 				
 			
 				}
@@ -863,7 +843,7 @@ extract($v);
 
 
 
-			echo "<li style=\"width:360px;height:150px;\"><h2>[ ".$num." ]</h2><a href=?unicode=".$turn."&sort=3&asset=".$add.">".$add."</a></li>";
+			echo "<a href=?unicode=".$turn."&sort=3&asset=".$add."><li style=\"width:430px;height:150px;\"><h2>[ ".$num." ]</h2><p style=\"font-size:20px;\">".$add."<br><br></p></a></li>";
 			
 	}	
 
@@ -912,20 +892,11 @@ $x_value=str_replace("U+","",$x_value);
 
 
 
-if(strlen($x_value)>20){
-
-$count=1;
-
-if(preg_match ( '/[\Q~!#\E]/', $x_value)){
-	
-	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
-	$x_value=str_replace("#","#<br>",$x_value);}}else{
-$x_value=replaceString("/","/<br>",$x_value);}
-
-}else{$x_value=$x_value."<br><br>";}
+$x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);;height:110px;\"><a href=?&unicode=".$turn."&sort=2&asset=".$assetlink.">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$x."</li>";
+			echo "<a href=?&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+
 
 			}
 

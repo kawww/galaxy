@@ -21,7 +21,7 @@ html, body {
 }
 
 
-
+::-webkit-scrollbar { width: 0 !important }
 
 
 a:link,
@@ -211,7 +211,13 @@ position: absolute;
   
 }
 
+p
+{
 
+color:#ccc;
+margin-top:2px;
+
+}
 </style>
 		<body>
 
@@ -254,19 +260,19 @@ if(isset($_REQUEST["asset"]))
 		echo "<div id=\"nav\"><ul>";
 		
 		
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=GETTING_STARTED ><h2>[ GETTING STARTED ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GETTING_STARTED </li>";
+		echo"<a href=index.php?asset=GETTING_STARTED ><li style=\"height:100px;color:#bbb;\"><h2>[ GETTING STARTED ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GETTING_STARTED</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=GOTO/ ><h2>[ GO TO ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">GOTO </li>";
+		echo"<a href=index.php?asset=GOTO/ ><li style=\"height:100px;color:#bbb;\"><h2>[ GO TO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GOTO</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=T.D><h2>[ Trust Domain ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">T.D</li>";
+		echo"<a href=index.php?asset=T.D><li style=\"height:100px;color:#bbb;\"><h2>[ Trust Domain ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>T.D</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=onervn><h2>[ ONERVN ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">ONERVN.COM</li>";
+		echo"<a href=index.php?asset=onervn><li style=\"height:100px;color:#bbb;\"><h2>[ ONERVN ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>ONERVN.COM</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=RVNCOIN/SONGS ><h2>[ RAVEN SONGS ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">RVNCOIN/SONGS</li>";
+		echo"<a href=index.php?asset=RVNCOIN/SONGS ><li style=\"height:100px;color:#bbb;\"><h2>[ RAVEN SONGS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVNCOIN/SONGS</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=tarot ><h2>[ TAROT ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">TAROT</li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=index.php?asset=healer ><h2>[ HEALER ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">HEALER</li>";
+		echo"<a href=index.php?asset=healer ><li style=\"height:100px;color:#bbb;\"><h2>[ HEALER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>HEALER</p></a></li>";
+
 
 
 

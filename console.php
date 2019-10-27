@@ -22,7 +22,7 @@ html, body {
 
 
 
-
+::-webkit-scrollbar { width: 0 !important }
 
 a:link,
 a:visited,
@@ -203,7 +203,13 @@ position: absolute;
   
 }
 
+p
+{
 
+color:#ccc;
+margin-top:2px;
+
+}
 </style>
 		<body>
 
@@ -244,13 +250,13 @@ if(isset($_REQUEST["asset"]))
 		echo "<div id=\"nav\"><ul>";
 		
 		
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=help ><h2>[ HELP ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">CONSOLE COMMAND LIST</li>";
+		echo"<a href=?asset=help ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ HELP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>CONSOLE COMMAND LIST</p></a></li>";
 		
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=getinfo ><h2>[ Get Info ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">NODE INFO</li>";
+		echo"<a href=?asset=getinfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>NODE INFO</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=getblockchaininfo ><h2>[ Get Blockchain Info ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">BLOCKCHAIN INFO</li>";
+		echo"<a href=?asset=getblockchaininfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Blockchain Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>BLOCKCHAIN INFO</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;\"><a href=?asset=getblockcount ><h2>[ Get Block Count ]</a></h2></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">BLOCK COUNT</li>";
+		echo"<a href=?asset=getblockcount ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Block Count ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>BLOCK COUNT</p></a></li>";
 
 		
 
