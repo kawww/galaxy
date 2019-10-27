@@ -748,7 +748,7 @@ foreach ($listasset as $k=>$v)
 $reisx="";
 if($reissuable==0){$reisx="<font color=red>NOT Reissuable</font>";}
 
-$x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
+
 
 
 if(isset($turn) && $turn==1){
