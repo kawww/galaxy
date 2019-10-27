@@ -187,7 +187,7 @@ width:98%;
             {
                 border: 1px solid #59fbea;
                 width: 330px;
-				height:60px;
+				height:100px;
 				word-break: break-all;
 			background-color: rgb(0, 79, 74);
                 text-align: center;
@@ -777,7 +777,7 @@ extract($v);
 
 
 
-			echo "<li style=\"width:360px;height:150px;\"><h2>[ ".$num." ]</h2><a href=?unicode=".$turn."&sort=3&asset=".$add.">".$add."</a></li>";
+			echo "<a href=?unicode=".$turn."&sort=3&asset=".$add."><li style=\"width:430px;height:150px;\"><h2 style=\"color:#ccc;\">[ ".$num." ]</h2><p style=\"font-size:20px;color:#28f428;\">".$add."</p></a></li>";
 			
 	}	
 
@@ -826,20 +826,9 @@ $x_value=str_replace("U+","",$x_value);
 
 
 
-if(strlen($x_value)>20){
+$x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
-$count=1;
-
-if(preg_match ( '/[\Q~!#\E]/', $x_value)){
-	
-	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
-	$x_value=str_replace("#","#<br>",$x_value);}}else{
-if(strpos($x_value, "/")>15){
-$x_value=replaceString("/","/<br>",$x_value);}}
-
-}else{$x_value=$x_value."<br><br>";}
-
-			echo "<a href=?&unicode=".$turn."&sort=2&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:110px;display:block;\">".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+			echo "<a href=?&unicode=".$turn."&sort=2&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
 
 			}
 
