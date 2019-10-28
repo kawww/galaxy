@@ -190,7 +190,7 @@ width:98%;
             li
             {
                 border: 1px solid #59fbea;
-                width: 270px;
+                width: 430px;
 				height:100px;
 				word-break: break-all;
 			background-color: rgb(0, 79, 74);
@@ -691,7 +691,7 @@ extract($info);
 
 
 
-$x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
+$x_value="<h4 style=\"font-size:21px;\">".$x_value."<br><br></h4>";
 
 if($sortnum==9)
 
@@ -700,7 +700,7 @@ if($sortnum==9)
 			if(!$ipfs_hash)
 
 				{
-	   			echo "<li style=\"background-color:black; width: 430px;\">".$x_value."</li>";		
+	   			echo "<li style=\"background-color:black;\">".$x_value."</li>";		
 				}
 
 			//ipfs yes
@@ -709,7 +709,7 @@ if($sortnum==9)
 
 				{
 
-				echo "<a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank><li style=\"width: 430px;\">".$x_value."</li></a>";		
+				echo "<a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank><li><p>".$x_value."</p></a></li>";		
 		}
 				}
 	}	
