@@ -223,9 +223,9 @@ if(isset($_REQUEST["asset"]))
 {
 	$ec=$_REQUEST["asset"];	
 
-		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" value=\"".$ec."\" placeholder=\"support 4 commands\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" value=\"".$ec."\" placeholder=\"support 4 commands\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
@@ -236,9 +236,9 @@ if(isset($_REQUEST["asset"]))
 			
 	
 
-		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"support 4 commands\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"support 4 commands\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";

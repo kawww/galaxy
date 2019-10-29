@@ -254,9 +254,9 @@ if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"ASSET\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"ASSET\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
@@ -325,9 +325,9 @@ if(isset($_REQUEST["asset"])) {
 	{$ec=strtoupper($_REQUEST["asset"]);}else {$ec=$_REQUEST["asset"];} 
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:black;\"><a href=index.php><b>GALAXY</b></a></li>";	
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:black;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
@@ -624,7 +624,7 @@ if($sortnum==9)
 			if(!$ipfs_hash)
 
 				{
-	   			echo "<li style=\"background-color:black; width: 430px;padding-top:30px;\">".$x_value."</li>";		
+	   			echo "<li style=\"background-color:#0b0c0d; width: 430px;padding-top:30px;\">".$x_value."</li>";		
 				}
 
 			//ipfs yes
@@ -714,7 +714,7 @@ $x_value=str_replace("U+","",$x_value);
 				{
 
 
-			echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"background-color: black;height:200px;display:block;\"><h2>[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
+			echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"background-color: #0b0c0d;height:200px;display:block;\"><h2>[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
 		
 				}
 
