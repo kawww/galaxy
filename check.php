@@ -223,6 +223,11 @@ margin-top:2px;
 
 }
 
+   .textarea-inherit {
+        width: 60%;
+        overflow: auto;
+        word-break: break-all; 
+
 </style>
 		<body>
 
@@ -257,7 +262,7 @@ if(isset($_REQUEST["asset"]))
 		
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li></ul>";	
 
-		echo "<ul><li style=\"height:670px;\"><br><textarea rows=\"30\" cols=\"190\" name=\"asset\"></textarea>";
+		echo "<ul><li style=\"height:670px;\"><br><textarea rows=\"30\" cols=\"190\" name=\"asset\" class=\"textarea-inherit\"></textarea>";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
