@@ -252,7 +252,21 @@ if(isset($_REQUEST["asset"]))
 		else {
 
 			
+		if(isset($_REQUEST["mode"])){
+		
+		
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li></ul>";	
 
+		echo "<ul><li style=\"height:670px;\"><br><textarea rows=\"30\" cols=\"190\" name=\"asset\"></textarea>";
+
+		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
+		echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
+		echo "<br><br><input type=\"checkbox\" name=\"only\" checked><label for=\"1\">Show Availiable Only</label><br><br><input type=\"submit\" value=\"KAW\"></li></ul></div></form></div>";
+		
+		
+		
+		
+		}else{
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
@@ -265,18 +279,14 @@ if(isset($_REQUEST["asset"]))
 		echo "<div id=\"nav\"><ul>";
 		
 		
-		echo"<a href=index.php?asset=GETTING_STARTED ><li style=\"height:100px;color:#bbb;\"><h2>[ GETTING STARTED ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GETTING_STARTED</p></a></li>";
-
-		echo"<a href=index.php?asset=GOTO/ ><li style=\"height:100px;color:#bbb;\"><h2>[ GO TO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GOTO</p></a></li>";
-
-		echo"<a href=index.php?asset=T.D><li style=\"height:100px;color:#bbb;\"><h2>[ Trust Domain ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>T.D</p></a></li>";
-
-		echo"<a href=index.php?asset=onervn><li style=\"height:100px;color:#bbb;\"><h2>[ ONERVN ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>ONERVN.COM</p></a></li>";
-
-		echo"<a href=index.php?asset=RVNCOIN/SONGS ><li style=\"height:100px;color:#bbb;\"><h2>[ RAVEN SONGS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVNCOIN/SONGS</p></a></li>";
+		echo"<a href=?mode=bulk ><li style=\"height:100px;color:#bbb;\"><h2>[ Bulk Assets Search ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>Good Luck!</p></a></li>";
 
 
-		echo"<a href=index.php?asset=healer ><li style=\"height:100px;color:#bbb;\"><h2>[ HEALER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>HEALER</p></a></li>";
+		echo"<a href=https://numbergenerator.org/numberlist-1-1000 target=blank><li style=\"height:100px;color:#bbb;\"><h2>[ Number Generator ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>numbergenerator.org</p></a></li>";
+
+		
+		echo"<a href=https://www.dotomator.com target=blank><li style=\"height:100px;color:#bbb;\"><h2>[ Word Generator ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>dotomator.com</p></a></li>";
+		
 
 
 
@@ -288,10 +298,13 @@ if(isset($_REQUEST["asset"]))
 
 		echo "<div id=\"universe\" class=\"crt\">";
 		}
+		}
 
 
 
 if(isset($_REQUEST["asset"])) {
+
+echo "&nbsp;&nbsp;&nbsp; <div id=\"nav\"><ul>";
 
 
 //check server
@@ -302,14 +315,42 @@ include("rpc.php");
 $rpc = new Linda();
 
 
-//rpc
+$rawtransaction = $rpc->listassets();
+
+
+//check error
+
+$error = $rpc->error;
+
+if($error != "") 
+	
+	{
+
+	echo "<p>&nbsp;&nbsp;Error,R</p>";
+	exit;
+
+	}
 
 $_REQ = array_merge($_GET, $_POST);
 
-$asset=$_REQ["asset"];
+$names = preg_split('/\r\n/',$_REQ["asset"]);
+
+if(count($names)>1000){echo "not more than 1000";exit;}
+
+foreach($names as $asset){
+
+
+//rpc
+
+$ok="";
+
 
 $asset=trim($asset);
 
+if(!$asset or strlen($asset)<3){continue;}
+
+
+$assetinput=$asset;
 $turn=9;
 $ux=9;
 
@@ -318,7 +359,7 @@ $unioff=" ";
 $sort=9;
 $sortnum=9;
 
-if(strlen($asset)==34){$sortnum=3;$qr=$asset;}
+
 
 
 $asset=strtoupper($asset);
@@ -430,22 +471,6 @@ $address=$asset;
 
 
 
-$rawtransaction = $rpc->listassets();
-
-
-//check error
-
-$error = $rpc->error;
-
-if($error != "") 
-	
-	{
-
-	echo "<p>&nbsp;&nbsp;Error,R</p>";
-	exit;
-
-	}
-
 
 //check faucet number
 
@@ -463,7 +488,7 @@ if($sortnum==1){
 
 }
 
-echo "&nbsp;&nbsp;&nbsp;<div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$sortword."".$unicode."".$unioff."</div> <div id=\"nav\"><ul>";
+
 
 //get search data
 
@@ -473,245 +498,102 @@ $age=$rawtransaction;
 $totalass=array();
 $totalsearch=array();
 
+if($turn<>1){$asset="";}
 
 
 foreach($age as $x=>$x_value)
 
 	{
 
-		if(stristr($x_value,$address) == true)
+		$available="";
+
+		if(stristr($x_value,$address)==true & strlen($x_value)==strlen($address))
 
 			{
 
 
 
-//sort or not
 
 
-			$y_value=$x_value;
+				if(isset($turn) && $turn==1){
 
-if($sortnum==1)
+
+
+							if($unicode!="")
+
+												{
+
+
+													$x_value=uniworld($x_value,$address,$asset);
+
+
+												}
+
+
+											}
+
+
+
+
+
+		$x_value=str_replace("U+","",$x_value);
+
+
+
+		$available="<font color=red>Not Available</font>";
+
+		$ok=1;
+
+		if($sortnum==9 & !$_REQ["only"])
 
 				{
-$arr=array();
-			$assetadd= $rpc->listaddressesbyasset($y_value);
-			
-			$assetnum=count($assetadd);
-			
-			
 
-			$info = $rpc->getassetdata($y_value);
-			
-			$ipfs_hash="";
-
-			extract($info);
-
-			$arr["num"]=$assetnum;
-			$arr["asset"]=$y_value;
-			$arr["ipfsx"]=$ipfs_hash;
-			$arr["amount"]=$amount;
-			$arr["units"]=$units;
-			$arr["reissuable"]=$reissuable;
-
-
-
-			array_push($totalass,$arr);
 		
-		if($ipfs_hash!=""){echo "<script>location.href=\"https://gotoipfs.com/#path=".$ipfs_hash."\";</script>";}
+
+		
+				echo "<a href=../?asset=".$assetinput."><li style=\"background-color: #0b0c0d;height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
+
 
 				}
-	
 
-else{
-
-$info=$rpc->getassetdata($x_value);
-
-$ipfs_hash="";
-
-			extract($info);
-
-			if($ipfs_hash!=""){echo "<script>location.href=\"https://gotoipfs.com/#path=".$ipfs_hash."\";</script>";}
-
-}
-
-
-
-
-if(isset($turn) && $turn==1){
-
-
-
-if($unicode!="")
-
-{
-
-
-$x_value=uniworld($x_value,$address,$asset);
-
-
-}
-
-
-}
-
-
-
-
-
-$x_value=str_replace("U+","",$x_value);
-
-
-
-$ipfs_hash="";
-
-extract($info);
-
-
-
-if(strlen($x_value)>20){
-
-$count=1;
-if(preg_match ( '/[\Q~!#\E]/', $x_value)){
-	
-	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
-	$x_value=str_replace("#","#<br>",$x_value);}}else{
-if(strpos($x_value, "/")>15){
-$x_value=replaceString("/","/<br>",$x_value);}}
-
-}else{$x_value=$x_value."<br><br>";}
-
-if($sortnum==9)
-
-				{
-
-			if(!$ipfs_hash)
-
-				{
-	   			echo "<li style=\"background-color: #0b0c0d;\">".$x_value."</li>";		
-				}
-
-			//ipfs yes
-
-			else
-
-				{
-
-				echo "<li><a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank>".$x_value."</a></li>";		
 		}
+
+
+	
+	
+	
+	
+
+
 				}
+
+				if(!$ok){
+
+$available="<font color=geeen>Available</font>";
+
+
+		if($sortnum==9)
+
+				{
+
+		
+		if(strlen($asset)>30 or strlen($assetinput)<3 or strlen($assetinput)>30){$available="<font color=red>Not Available Length</font>";}
+		
+				echo "<a href=../?asset=".$assetinput."><li style=\"background-color: #0b0c0d;height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
+
+
 	}	
-}
-
-if($sortnum==1)
-
-				{
-				
-arsort($totalass);
-
-$listasset=$totalass;
-
-
-foreach ($listasset as $k=>$v) 
-			{
-			
-			
-			$x_value="";
-			$ipfs="";
-			$assetnum="";
-
-			extract($v);
-
-			$x_value=$asset;
-			$ipfs=$ipfsx;
-			$assetnum=$num;
 
 
 
-
-			$f_value=$x_value;
-			$u_value=$x_value;
-			$u_value=str_replace("/","%2F",$u_value);
-			$u_value=str_replace("#","%23",$u_value);
-$reisx="";
-if($reissuable==0){$reisx="<font color=red>NOT Reissuable</font>";}
-
-			if(strlen($x_value)>20){
-
-$count=1;
-if(preg_match ( '/[\Q~!#\E]/', $x_value)){
-	
-	list($assetl,$assetr)=explode("#",$x_value);if(strlen($assetr)>5){
-	$x_value=str_replace("#","#<br>",$x_value);}}else{
-$x_value=replaceString("/","/<br>",$x_value);}
-
-}else{$x_value=$x_value."<br><br>";}
-
-
-if(isset($turn) && $turn==1){
+		 }
 
 
 
-if($unicode!="")
-
-{
-
-
-$x_value=uniworld($x_value,$address,$asset);
+ } }
 
 
 }
-
-
-}
-
-
-
-
-
-$x_value=str_replace("U+","",$x_value);
-
-
-			if(!$ipfs)
-
-				{
-
-
-			echo "<li style=\"background-color: #0b0c0d;height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
-		
-				}
-
-			//ipfs yes
-
-			else
-
-				{
-		
-				
-			
-
-				echo "<li style=\"height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
-				
-			
-				}
-
-	   
-			}
-				
-				}
-
-		}
-
-
-//list
-
-
-
-}
-
-//echo "<br><br>&nbsp;&nbsp;<a href=http://onervn.com/search?asset=".$address." >http://onervn.com/search?asset=".$address."</a>&nbsp;<br>";
-
-
-
 
 
 ?>

@@ -12,17 +12,20 @@ body,
   font-family: coda_regular, arial, helvetica, sans-serif;
 }
 
+
+
 html, body {
   background-color: #0b0c0d;
   color: #fff;
   font-size: 15px;
   margin: 0 auto -100px;
   padding: 0;
+
 }
 
-
-
 ::-webkit-scrollbar { width: 0 !important }
+
+
 
 a:link,
 a:visited,
@@ -161,6 +164,7 @@ width:98%;
                 flex-direction: row;
                 flex-wrap: wrap;
 
+
             }
 
 			div:before {
@@ -186,20 +190,20 @@ width:98%;
             li
             {
                 border: 1px solid #59fbea;
-                width: 330px;
+                width: 430px;
 				height:100px;
 				word-break: break-all;
 			background-color: rgb(0, 79, 74);
                 text-align: center;
                 margin-top: 10px;
-                margin-bottom: 10px;
+                margin-bottom: 7px;
 				margin-right: 5px;
 				margin-left: 5px;
 				padding-top:10px;
 				padding-left:2px;
 				padding-right:2px;
                 flex:auto;  
-	
+				
 
             }
 #universe {
@@ -210,7 +214,6 @@ font-size: 22px;
 position: absolute;
   
 }
-
 
 p
 {
@@ -624,7 +627,7 @@ if($sortnum==9)
 			if(!$ipfs_hash)
 
 				{
-	   			echo "<li style=\"background-color:#0b0c0d; width: 430px;padding-top:30px;\">".$x_value."</li>";		
+	   			echo "<li style=\"background-color:#0b0c0d;\">".$x_value."</li>";		
 				}
 
 			//ipfs yes
@@ -633,7 +636,7 @@ if($sortnum==9)
 
 				{
 
-				echo "<a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank><li style=\"width: 430px;padding-top:30px;\">".$x_value."</li></a>";		
+				echo "<a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank><li><p>".$x_value."</p></a></li>";	
 		}
 				}
 	}	
@@ -714,7 +717,7 @@ $x_value=str_replace("U+","",$x_value);
 				{
 
 
-			echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"background-color: #0b0c0d;height:200px;display:block;\"><h2>[ ".$assetnum." ] </a></h2>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
+		echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"background-color: #0b0c0d;height:200px;width:430px;\"><h2>[ ".$assetnum." ] </h2><div style=\"color:#ccc;\">".$x_value."</div><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
 		
 				}
 
@@ -727,7 +730,7 @@ $x_value=str_replace("U+","",$x_value);
 				
 			
 
-				echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"height:200px;display:block;\"><h2>[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
+				echo "<a href=?unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"width:430px;height:200px;\"><h2>[ ".$assetnum." ] </h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
 				
 			
 				}
@@ -777,7 +780,7 @@ extract($v);
 
 
 
-			echo "<a href=?unicode=".$turn."&sort=3&asset=".$add."><li style=\"width:430px;height:150px;\"><h2 style=\"color:#ccc;\">[ ".$num." ]</h2><p style=\"font-size:20px;color:#28f428;\">".$add."</p></a></li>";
+		echo "<a href=?unicode=".$turn."&sort=3&asset=".$add."><li style=\"width:430px;height:150px;\"><h2>[ ".$num." ]</h2><p style=\"font-size:20px;\">".$add."<br><br></p></a></li>";
 			
 	}	
 
@@ -828,7 +831,8 @@ $x_value=str_replace("U+","",$x_value);
 
 $x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
-			echo "<a href=?&unicode=".$turn."&sort=2&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+		
+			echo "<a href=?&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
 
 			}
 

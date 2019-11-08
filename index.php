@@ -261,7 +261,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=explorer.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS EXPLORER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+		echo"<a href=check.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CHECK ASSETS AVAILIABLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 
 		echo "</ul></div>";
