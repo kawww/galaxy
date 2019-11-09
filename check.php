@@ -275,7 +275,7 @@ if(isset($_REQUEST["asset"]))
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"ASSET OR IPFS HASH\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"ASSET\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
@@ -340,7 +340,7 @@ $_REQ = array_merge($_GET, $_POST);
 
 $names = preg_split('/\r\n/',$_REQ["asset"]);
 
-if(count($names)>1000){echo "not more than 1000";exit;}
+if(count($names)>2500){echo "not more than 2500";exit;}
 
 foreach($names as $asset){
 
@@ -584,7 +584,7 @@ $available="<font color=geeen>Available</font>";
 		
 		if(strlen($asset)>30 or strlen($assetinput)<3 or strlen($assetinput)>30){$available="<font color=red>Not Available Length</font>";}
 		
-				echo "<a href=../?asset=".$assetinput."><li style=\"background-color: #0b0c0d;height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
+				echo "<a href=../?asset=".$assetinput."><li style=\"height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
 
 
 	}	
