@@ -239,16 +239,16 @@ if(!isset($_REQUEST["asset"]))
 		
 		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WALLET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SEND ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 		echo"<a href=asset.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Restricted ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ MESSAGE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=message.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ MESSAGE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SUBSCRIBE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=channel.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CHANNEL ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
@@ -270,7 +270,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=https://raven.wiki target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WIKI ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVEN.WIKI</p></a></li>";
 
-		echo"<a href=https://rvnstats.info target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ STATISTICS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVNSTATS.INFO</p></a></li>";	
+	echo"<a href=https://rvn.cryptoscope.cc  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SOLUS EXPLORER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN.CRYPTOSCOPE.CC</p></a></li>";
 
 		echo"<a href=https://ravencoin.network target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ BLOCK EXPLORER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVENCOIN.NETWORK</p></a></li>";	
 	
@@ -296,8 +296,8 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=https://www.ravencoinmeetup.org  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ MEETUP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVERNCOINMEETUP.ORG</p></a></li>";
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
-
+	echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+		
 
 		echo "</ul></div>";
 
