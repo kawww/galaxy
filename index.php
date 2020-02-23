@@ -243,7 +243,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=asset.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Restricted ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=tag.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ TAG ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 
 		echo"<a href=message.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ MESSAGE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	

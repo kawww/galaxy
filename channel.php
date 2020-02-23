@@ -304,7 +304,7 @@ $totalassx=array();
 
 
 			$arrx["block"]=$g['Block Height'];
-			$arrx["time"]=$g['Time'];
+			$arrx["time"]=substr($g['Time'],0,16);
 			$arrx["name"]=str_replace("!","",$g['Asset Name']);
 			$arrx["ipfs"]=$g['Message'];
 			
@@ -394,7 +394,7 @@ if(isset($_REQUEST["asset"]) & $_REQUEST["asset"]==$name) {
 	if(!isset($_REQUEST["asset"])) {
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:800px;font-size:70%\"><table ><tr><td width=\"160px\">".$time."</td><td width=\"280px\" align=left><a href=/?&unicode=".$turn."&asset=".$x_value.">".$x_value."</a></td><td><a href=https://gotoipfs.com/#path=".$ipfs.">".$ipfs."</a></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:800px;font-size:70%\"><table ><tr><td width=\"140px\">".$time."</td><td width=\"280px\" align=left><a href=/?&unicode=".$turn."&asset=".$x_value.">".$x_value."</a></td><td><a href=https://gotoipfs.com/#path=".$ipfs.">".$ipfs."</a></td></tr></table></li>";
 				
 				}
 			}
