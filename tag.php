@@ -303,20 +303,11 @@ echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
-	
-
-if(!isset($_REQ["asset"]))
-	
-	{
-
-$agex= $rpc->listreceivedbyaddress(0,true);}
 
 
-else
+$agex= $rpc->viewmytaggedaddresses();
 
-{$agex= $rpc->listtagsforaddress($_REQ["asset"]);
 
-}
 		
 			
 			$error = $rpc->error;
@@ -333,8 +324,7 @@ else
 $arrx=array();
 $totalassx=array();
 
-if(!isset($_REQ["asset"]))
-{
+
 		foreach($agex as $g_value=>$g)
 
 	{
@@ -342,19 +332,29 @@ if(!isset($_REQ["asset"]))
 		extract($g);
 
 
-			$txx= $rpc->listtagsforaddress($address);
-		$arrx["tag"]=$txx;
-			$arrx["add"]=$address;
-			
+if(isset($_REQ["asset"]) & $_REQ["asset"]==$Address)
+
+			{
+
+			$arrx["time"]=substr($Assigned,0,16);
+			$arrx["tag"]=$g['Tag Name'];
+			$arrx["add"]=$Address;		
 			array_push($totalassx,$arrx);
 
-	}
+			}
 
+
+		if(!isset($_REQ["asset"]))
+
+			{
+			$arrx["time"]=substr($Assigned,0,16);
+			$arrx["tag"]=$g['Tag Name'];
+			$arrx["add"]=$Address;		
+			array_push($totalassx,$arrx);
+			}
+	}
 	asort($totalassx);
 
-}else{$arrx["add"]=$_REQ["asset"];
-			$arrx["tag"]=$agex;
-			array_push($totalassx,$arrx);}
 
 
 
@@ -367,7 +367,7 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=?asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TAG NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li>";
+echo "<a href=/tag.php><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TAG NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li>";
 
 		foreach($age as $xx_value=>$xx)
 
@@ -391,19 +391,30 @@ $x_value=uniworld($x_value,$assetlink,$assettwo);
 $x_value=str_replace("U+","",$x_value);
 
 
-if(count($tag)<>0){
+$ipfs= $rpc->getassetdata($tag);
+
+if(strlen($ipfs['ipfs'])=="46")
+
+			{
+
+				$messone=" <a href=https://gotoipfs.com/#path=".$ipfs['ipfs'].">".$tag."</a>";
+			}
+if(strlen($ipfs['txid'])=="64")
+			{
+			$messone=" <a href=/keva/?txid=".$ipfs['txid'].">".$tag."</a>";
+			}
+
+
+if(($ipfs['has_ipfs'])=="0")
+			{
+			$messone=" $tag";
+			}
+
 
 
 	
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:800px;font-size:70%\"><table ><tr><td width=\"350px\" align=left><a href=?unicode=".$turn."&asset=".$add.">".$add."</a></td><td>";
-			
-			foreach($tag as $tagtt)
-				{ echo "[ ".$tagtt." ] ";
-
-						}
-				echo "</td></tr></table></li>";
-			}
+			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:800px;font-size:70%\"><table><tr><td width=\"150px\"  align=left> ".$time."</td><td width=\"200px\" align=left>".$messone."</td><td width=\"400px\" align=left><a href=?unicode=".$turn."&asset=".$add.">".$add."</a></td></tr></table></li>";
 			
 			}
 		echo "</ul></div></div>";
