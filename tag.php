@@ -309,7 +309,7 @@ if(!isset($_REQ["asset"]))
 	
 	{
 
-$agex= $rpc->listreceivedbyaddress();}
+$agex= $rpc->listreceivedbyaddress(0,true);}
 
 
 else
@@ -361,6 +361,8 @@ if(!isset($_REQ["asset"]))
 $age=$totalassx;
 
 
+
+
 if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=? >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?unicode=1 >[ TURN-ON ]</a><br>";}
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
@@ -397,7 +399,7 @@ if(count($tag)<>0){
 			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:800px;font-size:70%\"><table ><tr><td width=\"350px\" align=left><a href=?unicode=".$turn."&asset=".$add.">".$add."</a></td><td>";
 			
 			foreach($tag as $tagtt)
-				{ echo "[".$tagtt."] ";
+				{ echo "[ ".$tagtt." ] ";
 
 						}
 				echo "</td></tr></table></li>";
