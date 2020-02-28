@@ -148,8 +148,7 @@ width:98%;
             {
                 /*width: 80%;*/
                 margin: 0 auto;
-				margin-left: 13px;
-				padding-left: 3px;
+			
                 border: 0px solid #59fbea;
             }
             ul,li 
@@ -233,7 +232,7 @@ margin-top:2px;
 
 include("rpc.php");
 
-$rpc = new Linda();
+$rpc = new Raven();
 
 $_REQ = array_merge($_GET, $_POST);
 
@@ -353,7 +352,7 @@ if(isset($_REQ["asset"]) & $_REQ["asset"]==$Address)
 			array_push($totalassx,$arrx);
 			}
 	}
-	asort($totalassx);
+	arsort($totalassx);
 
 
 
@@ -367,7 +366,7 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/tag.php><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TAG NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li>";
+echo "<a href=/tag.php><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TAG NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li></ul><div id=\"nav\"><ul>";
 
 		foreach($age as $xx_value=>$xx)
 

@@ -148,8 +148,8 @@ width:98%;
             {
                 /*width: 80%;*/
                 margin: 0 auto;
-				margin-left: 13px;
-				padding-left: 3px;
+				
+			
                 border: 0px solid #59fbea;
             }
             ul,li 
@@ -233,7 +233,7 @@ margin-top:2px;
 
 include("rpc.php");
 
-$rpc = new Linda();
+$rpc = new Raven();
 
 $_REQ = array_merge($_GET, $_POST);
 
@@ -372,16 +372,16 @@ $totalassx=array();
 
 	}
 
-asort($totalassx);
+arsort($totalassx);
 
 $age=$totalassx;
 
 
 if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=? >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?unicode=1 >[ TURN-ON ]</a><br>";}
 
-echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
+echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>MESSAGE NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li>";
+echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>MESSAGE NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li></ul><div id=\"nav\"><ul>";
 
 		foreach($age as $xx_value=>$xx)
 
@@ -391,31 +391,31 @@ echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb
 
 				$x_value=$name;
 
-$assetlink=$x_value;
-$assettwo=$x_value;
+				$assetlink=$x_value;
+				$assettwo=$x_value;
 
 
-if($turn==1)
+		if($turn==1)
 
-{
-$x_value=uniworld($x_value,$assetlink,$assettwo);
-}
-
-
-$x_value=str_replace("U+","",$x_value);
+			{
+			$x_value=uniworld($x_value,$assetlink,$assettwo);
+			}
 
 
+			$x_value=str_replace("U+","",$x_value);
 
 
-if(strlen($ipfs)=="46")
+
+
+			if(strlen($ipfs)=="46")
 
 			{
 
 				$messone="(<a href=https://gotoipfs.com/#path=".$ipfs.">IPFS</a>)";
 			}
-if(strlen($ipfs)=="64")
+			if(strlen($ipfs)=="64")
 			{
-			$messone="(<a href=/keva/?txid=".$ipfs.">TXID</a>)";
+			$messone="(<a href=/keva/?txid=".$ipfs."&sname=".$x_value.">TXID</a>)";
 			}
 
 
@@ -423,9 +423,9 @@ if(strlen($ipfs)=="64")
 
 			}
 
-		echo "</ul></div></div>";
+			echo "</ul></div></div>";
 
-	echo "<div id=\"universe\" class=\"crt\">";
+			echo "<div id=\"universe\" class=\"crt\">";
 
 	
 
@@ -434,10 +434,8 @@ if(strlen($ipfs)=="64")
 
 
 
-
-
-
 ?>
+
 </ul></div>
 </div>
 </body>

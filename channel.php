@@ -148,8 +148,7 @@ width:98%;
             {
                 /*width: 80%;*/
                 margin: 0 auto;
-				margin-left: 13px;
-				padding-left: 3px;
+			
                 border: 0px solid #59fbea;
             }
             ul,li 
@@ -233,7 +232,7 @@ margin-top:2px;
 
 include("rpc.php");
 
-$rpc = new Linda();
+$rpc = new Raven();
 
 $_REQ = array_merge($_GET, $_POST);
 
@@ -358,6 +357,8 @@ echo "<a href=/channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"back
 		$c=str_replace("!","",$c);
 echo "<a href=/channel.php?&asset=".$c."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:100px;display:block;\"><h4>".$c."</h4></a></li>";
 			}
+
+			echo "</ul><div id=\"nav\"><ul>";
 
 }
 
