@@ -381,7 +381,7 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>MESSAGE NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li></ul><div id=\"nav\"><ul>";
+echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>MESSAGE NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li>";
 
 		foreach($age as $xx_value=>$xx)
 
@@ -411,21 +411,21 @@ echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb
 
 			{
 
-				$messone="(<a href=https://gotoipfs.com/#path=".$ipfs.">IPFS</a>)";
+				$messone="<a href=https://gotoipfs.com/#path=".$ipfs.">IPFS</a>";
 			}
 			if(strlen($ipfs)=="64")
 			{
-			$messone="(<a href=/keva/?txid=".$ipfs."&sname=".$x_value.">TXID</a>)";
+			$messone="<a href=/keva/?txid=".$ipfs."&sname=".$x_value.">TXID</a>";
 			}
 
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\">".date('Y-m-d H:i', $time)."</td><td width=\"350px\" align=left><a href=/?&unicode=".$turn."&asset=".$from.">".$x_value."</a> ".$messone."</td><td><a href=/?&unicode=".$turn."&asset=".$to.">TO: ".$to."</a></td></tr></table></li>";
+			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=/?&unicode=".$turn."&asset=".$from."> <b><font size=4>".$x_value."</font></b></a>  <a href=/?&unicode=".$turn."&asset=".$to."><font size=3>[MY ADDRESS]</font></a></td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
 
 			}
 
 			echo "</ul></div></div>";
 
-			echo "<div id=\"universe\" class=\"crt\">";
+		
 
 	
 

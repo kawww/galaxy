@@ -199,7 +199,7 @@ width:98%;
 				margin-right: 5px;
 				margin-left: 5px;
 				padding-top:0px;
-				padding-left:2px;
+				padding-left:10px;
 				padding-right:2px;
                 flex:auto;  
 				
@@ -234,6 +234,8 @@ include("rpc.php");
 
 $rpc = new Raven();
 
+$kpc = new Keva();
+
 $_REQ = array_merge($_GET, $_POST);
 
 
@@ -260,13 +262,93 @@ if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
-
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"sub\" maxlength=\"30\" placeholder=\"ASSET\">";
-
-		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
-		echo "<input type=\"submit\" value=\"SUBSCRIBE\"></div></form></div>";
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li></div></form></div>";
 	
+
+
+
+if(isset($_REQ["space"]) & isset($_REQ["key"]))
+	
+	{
+
+
+		$snewkey=str_replace("_"," ",$_REQ["key"]);
+		$rname=$_REQ["name"];
+
+		$sinfo=$kpc->keva_get($_REQ["space"],$snewkey);
+		
+		$getrtx= $rpc->getassetdata($rname);
+
+			echo "<div id=\"universe\" class=\"crt\"><div id=\"nav\"><ul>";
+
+
+
+								$x_value="<h4>".$sinfo['key']."</h4>";
+
+								$value=$sinfo['value'];
+								
+								$asset=$_REQ["space"];
+								
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:900px;\"><h1>".$snewkey."</h1><br><a href=/keva/?txid=".$getrtx['txid'].">".$rname."</a></li>";
+
+									if(stristr($value,$asset) == false)
+										
+									{
+
+										$valuex=str_replace("\n","<br>",$value);
+
+	
+
+										if(strlen($value)==strlen($asset))
+							
+									{
+
+										echo "<script>window.location.href=decodeURIComponent('/keva/?asset=".$value."&showall=11')</script>";
+
+									}
+							else
+
+									{
+						
+
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;line-height:60px;font-size:48px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+									}
+
+							else
+
+									{
+
+										$arr1=explode("\n",$value);
+
+
+										foreach ($arr1 as $m=>$n) {
+
+											$n=trim(str_replace($asset,"",$n));
+
+
+											foreach ($listasset as $k=>$v) 
+
+													{
+			
+											extract($v);	
+
+		
+		
+										if($key==$n){
+
+
+										$valuex=str_replace("\n","<br>",$value);
+
+
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;line-height:50px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+					}
+
+				}
+										}}
+					echo "</ul></div></div>";	
+									exit;
+	
+	}
 
 
 $agex= $rpc->viewallmessages();
@@ -337,29 +419,13 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/channel.php><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>CHANNEL</h4></a></li>";
+echo "<a href=/subscription.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h2>SUBSCRIPTION</h2></a></li>";
 
 
 
 if(isset($_REQUEST["asset"]))
 {
 echo "<a href=/channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>".$_REQUEST["asset"]."</h4></a></li>";
-}else{
-
-
-	$agec= $rpc->viewallmessagechannels();
-
-
-		foreach($agec as $cv=>$c)
-
-			{
-
-		$c=str_replace("!","",$c);
-echo "<a href=/channel.php?&asset=".$c."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>".$c."</h4></a></li>";
-			}
-
-			
-
 }
 echo "</ul><div id=\"nav\"><ul>";
 		foreach($age as $xx_value=>$xx)
@@ -384,37 +450,45 @@ $x_value=uniworld($x_value,$assetlink,$assettwo);
 $x_value=str_replace("U+","",$x_value);
 
 
-if(strlen($ipfs)=="46")
 
-			{
-
-				$messone="<a href=https://gotoipfs.com/#path=".$ipfs.">IPFS</a>";
-			}
 if(strlen($ipfs)=="64")
+
 			{
-			$messone="<a href=/keva/?txid=".$ipfs.">TXID</a>";
-			}
 
-
-
-if(isset($_REQUEST["asset"]) & $_REQUEST["asset"]==$name) {
-
-
-	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:30px;width:800px;font-size:70%;padding-top:10px;\"><table ><tr><td width=\"160px\">".$time."</td><td>".$messone." ".$ipfs."</td></tr></table></li>";
 			
-				}
+			
+$agetx= $kpc->gettransaction($ipfs);
 
-	if(!isset($_REQUEST["asset"])) {
+$asset=$agetx['details'][0]['keva'];
+$asset=str_replace("update:","",$asset);
+$asset=str_replace("new:","",$asset);
+$asset=trim($asset);
+
+$info= $kpc->keva_filter($asset);
+
+foreach ($info as $twii) 
+	{
+		if($twii['txid']==$ipfs){ $stitle=$twii['key'];}
+	}
+
+$stitle2=str_replace(" ","_",$stitle);
+$stitle="<a href=/subscription.php?space=".$asset."&key=".$stitle2."&name=".$x_value."><font color=ffffff>".$stitle."</font></a>";
+
+
+if(strlen($asset)=="34"){
+
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table cellspacing=\"10px\"><tr><td width=\"140px\" align=right>".$time."</td><td align=left><a href=/?&unicode=".$turn."&asset=".$x_value."><b><font size=4>".$x_value."</font></b></a></td></tr><tr><td width=\"140px\"  align=right>".$messone."</td><td align=left>".$ipfs."</td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:800px;\"><table cellspacing=\"30px\" ><tr><td width=570px align=left><a href=/subscription.php?space=".$asset."&key=".$stitle2."&name=".$x_value."><b><font size=7>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=6>".$stitle."</font></td><td   align=right></td></tr></table></li>";}
+			
 				
 				}
+
 			}
 
 		echo "</ul></div></div>";
 
-	
+
 
 	
 

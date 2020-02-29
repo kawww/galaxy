@@ -239,7 +239,8 @@ if(!isset($_REQUEST["asset"]))
 		
 		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SEND ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=subscription.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SUBSCRIPTION
+ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 		echo"<a href=asset.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
