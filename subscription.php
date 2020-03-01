@@ -262,6 +262,7 @@ $txid=$_REQ["txid"];
 
 $cons=$_REQ["space"];
 $conk=$_REQ["key"];
+$cname=$_REQ["name"];
 
 if(isset($txid) & strlen($txid)=="64")
 	
@@ -301,6 +302,8 @@ if(isset($cons) & isset($conk))
 $cons=hex2bin($cons);
 $conk=hex2bin($conk);
 
+
+
 		$snewkey=$cons;
 
 		$rname=$_REQ["name"];
@@ -319,7 +322,7 @@ $conk=hex2bin($conk);
 								
 								$asset=$sinfo;
 								
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:900px;\"><h1>".$snewkey."</h1><br>".$rname."</li>";
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:900px;\"><h1>".$snewkey."</h1><br><a href=?name=".$rname.">".$rname."</a></li>";
 
 								
 
@@ -329,7 +332,7 @@ $conk=hex2bin($conk);
 
 									
 						
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;line-height:60px;font-size:48px;padding-top:30px;padding-left:20px;letter-spacing:1px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;line-height:60px;font-size:48px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 																			
 											
 
@@ -473,18 +476,30 @@ if(strlen($ipfs)=="64")
 
 
 
-$stitle2=str_replace(" ","_",$title);
+$stitle2=$title;
 $stitle="<a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><font color=ffffff>".$stitle2."</font></a>";
 
 
 
+if(isset($cname)){
 
+	if($cname==$x_value){
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:800px;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=7>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=6>".$stitle."</font></td><td   align=right></td></tr></table></li>";}
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:800px;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=7>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=6>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				}
 			
+				}
+
+				else
+					{
+
 				
-				
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:800px;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=7>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=6>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				}
+			
+
+				}
 
 			}
 
