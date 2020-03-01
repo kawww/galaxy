@@ -392,7 +392,7 @@ if(strlen($ipfs)=="46")
 			}
 if(strlen($ipfs)=="64")
 			{
-			$messone="<a href=/keva/?txid=".$ipfs.">TXID</a>";
+			$messone="<a href=/subscription.php?txid=".$ipfs.">TXID</a>";
 			}
 
 
@@ -400,7 +400,7 @@ if(strlen($ipfs)=="64")
 if(isset($_REQUEST["asset"]) & $_REQUEST["asset"]==$name) {
 
 
-	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:30px;width:800px;font-size:70%;padding-top:10px;\"><table ><tr><td width=\"160px\">".$time."</td><td>".$messone." ".$ipfs."</td></tr></table></li>";
+	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:30px;width:800px;font-size:70%;padding-top:10px;\"><table><tr><td width=\"160px\">".$time."</td><td>".$messone." ".$ipfs."</td></tr></table></li>";
 			
 				}
 
