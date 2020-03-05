@@ -217,7 +217,7 @@ margin-top:2px;
 
 
 <?php 
-error_reporting(0);
+
 if(isset($_REQUEST["asset"])) 
 
 {
@@ -250,28 +250,13 @@ if(isset($_REQUEST["asset"]))
 		echo "<div id=\"nav\"><ul>";
 		
 		
-		echo"<a href=?asset=help ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ HELP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN BLOCKCHAIN</p></a></li>";
+		echo"<a href=?asset=help ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ HELP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>CONSOLE COMMAND LIST</p></a></li>";
 		
-		echo"<a href=?asset=getinfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN NODE INFO</p></a></li>";
+		echo"<a href=?asset=getinfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>NODE INFO</p></a></li>";
 
-		echo"<a href=?asset=getblockchaininfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Blockchain Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN BLOCKCHAIN INFO</p></a></li>";
+		echo"<a href=?asset=getblockchaininfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Blockchain Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>BLOCKCHAIN INFO</p></a></li>";
 
-		echo"<a href=?asset=getblockcount ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Block Count ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN BLOCK COUNT</p></a></li>";
-
-		
-
-		echo "</ul></div>";
-
-				echo "<div id=\"nav\"><ul>";
-		
-		
-		echo"<a href=?asset=help&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ HELP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCKCHAIN</p></a></li>";
-		
-		echo"<a href=?asset=getinfo&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA NODE INFO</p></a></li>";
-
-		echo"<a href=?asset=getblockchaininfo&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Blockchain Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCKCHAIN INFO</p></a></li>";
-
-		echo"<a href=?asset=getblockcount&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Block Count ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCK COUNT</p></a></li>";
+		echo"<a href=?asset=getblockcount ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Block Count ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>BLOCK COUNT</p></a></li>";
 
 		
 
@@ -288,7 +273,6 @@ if(isset($_REQUEST["asset"])) {
 include("rpc.php");
 
 $rpc = new Raven();
-$kpc = new Keva();
 
 
 //rpc
@@ -299,8 +283,6 @@ $asset=$_REQ["asset"];
 
 
 echo "<div id=\"nav\">";
-
-if(!$_REQ["block"]){
 
 if($asset=="getinfo"){
 
@@ -341,50 +323,6 @@ echo $x.": ".$x_value."<br>";}
 }
 
 }
-
-}
-
-if($_REQ["block"]=="keva")
-
-	{if($asset=="getinfo"){
-
-$command = $kpc->get_info();}
-
-elseif($asset=="getblockchaininfo"){
-
-$command = $kpc->getblockchaininfo();}
-
-elseif($asset=="getblockcount"){
-
-$command = $kpc->getblockcount();echo "<pre>";
-print_r($command);
-echo "</pre>"; exit;}
-
-
-
-
-if($asset=="help"){
-
-$command = $kpc->help();echo "<pre>";
-print_r($command);
-echo "</pre>"; exit;}
-
-
-
-
-
-
-if(isset($command) && $command!=""){
-
-foreach($command as $x=>$x_value)
-	
-{
-
-if(!is_array($x_value)){
-echo $x.": ".$x_value."<br>";}
-}
-
-}}
 
 echo "</div>";
 

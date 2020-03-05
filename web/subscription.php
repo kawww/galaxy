@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>SUBSCRIPTION</title>
+        <title>GALAXY OS</title>
 		<style>
 
 
@@ -322,7 +322,7 @@ $conk=hex2bin($conk);
 								
 								$asset=$sinfo;
 								
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:900px;\"><h2>".$snewkey."</h2><br><a href=?name=".$rname.">".$rname."</a></li>";
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:900px;\"><h1>".$snewkey."</h1><br><a href=?name=".$rname.">".$rname."</a></li>";
 
 								
 
@@ -332,7 +332,7 @@ $conk=hex2bin($conk);
 
 									
 						
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;line-height:30px;font-size:30px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;line-height:60px;font-size:48px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 																			
 											
 

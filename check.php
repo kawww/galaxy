@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>GALAXY OS</title>
+        <title>CHECK</title>
 		<style>
 
 
@@ -235,7 +235,7 @@ margin-top:2px;
 
 
 <?php 
-
+error_reporting(0);
 if(isset($_REQUEST["asset"])) 
 
 {

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>OS</title>
+        <title>GALAXY OS</title>
 		<style>
 
 
@@ -237,11 +237,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo "<div id=\"nav\"><ul>";
 		
-		echo"<a href=http://galaxyos.io><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GALAXY ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>FINAL FRONTIER</p></a></li>";	
-
 		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
-
-		echo"<a href=keva/><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WORD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCKCHAIN</p></a></li>";	
 
 		echo"<a href=subscription.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SUBSCRIPTION
  ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
@@ -255,12 +251,12 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=channel.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CHANNEL ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ DIVIDED ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 
-	
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RASDAQ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 		echo"<a href=?asset=RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET EXPLORER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";
 
@@ -269,29 +265,6 @@ if(!isset($_REQUEST["asset"]))
 		echo"<a href=check.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CHECK ASSETS AVAILIABLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 
-		echo "</ul></div>";
-
-
-		echo "<div id=\"nav\"><ul>";
-
-		echo"<a href=http://linkipfs.com/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS URL DIRECT ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINKIPFS.COM</p></a></li>";
-
-		echo"<a href=https://globalupload.io  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GLOBALUPLOAD.IO</p></a></li>";
-
-		echo"<a href=https://pinata.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>PINATA.CLOUD</p></a></li>";
-
-		echo"<a href=https://temporal.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>TEMPORAL.CLOUD</p></a></li>";
-
-
-
-		echo"<a href=https://github.com/ipfs/awesome-ipfs  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ AWESOME IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GITHUB</p></a></li>";
-
-		echo"<a href=https://ipfs.io/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS.IO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
-		
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
-
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
-		
 		echo "</ul></div>";
 
 		echo "<div id=\"nav\"><ul>";
@@ -342,9 +315,39 @@ if(!isset($_REQUEST["asset"]))
 
 		echo "</ul></div>";
 
-		
+		echo "<div id=\"nav\"><ul>";
 
-	
+		echo"<a href=http://linkipfs.com/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS URL DIRECT ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINKIPFS.COM</p></a></li>";
+
+		echo"<a href=https://globalupload.io  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GLOBALUPLOAD.IO</p></a></li>";
+
+		echo"<a href=https://pinata.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>PINATA.CLOUD</p></a></li>";
+
+		echo"<a href=https://temporal.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>TEMPORAL.CLOUD</p></a></li>";
+
+
+
+		echo"<a href=https://github.com/ipfs/awesome-ipfs  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ AWESOME IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GITHUB</p></a></li>";
+
+		echo"<a href=https://ipfs.io/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS.IO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
+		
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+		
+		echo "</ul></div>";
+
+		echo "<div id=\"nav\"><ul>";
+
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RITOCOIN ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RAPTOREUM ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CLASSIC ]</a></h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+
+		echo "</ul></div>";
 
 		echo "<div id=\"nav\"><ul>";
 
