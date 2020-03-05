@@ -261,7 +261,7 @@ $ages= $rpc->subscribetochannel($asset);
 
 if($_REQ["mode"]=="3")
 
-{$ages= $rpc->unsubscribefromchannel($_REQ["asset"]);$url = "/channel.php"; Header("Location:$url"); }
+{$ages= $rpc->unsubscribefromchannel($_REQ["asset"]);$url = "channel.php"; Header("Location:$url"); }
 
 
 }
@@ -368,7 +368,7 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/channel.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;padding-top:0px;\"><h4>CHANNEL</h4></a></li></ul>";
+echo "<a href=channel.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;padding-top:0px;\"><h4>CHANNEL</h4></a></li></ul>";
 
 $x_value=$_REQ["asset"];
 
@@ -384,9 +384,9 @@ $x_value=$_REQ["asset"];
 		$x_value=uniworld($x_value,$assetlink,$assettwo);
 		}
 
-echo "<ul><a href=/channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>".$x_value."</h4></a></li>";
+echo "<ul><a href=channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>".$x_value."</h4></a></li>";
 
-echo "<a href=/channel.php?&asset=".$_REQ["asset"]."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>UNSUBSCRIBE</h4></a></li></ul><ul>";
+echo "<a href=channel.php?&asset=".$_REQ["asset"]."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>UNSUBSCRIBE</h4></a></li></ul><ul>";
 
 
 
@@ -396,10 +396,10 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/channel.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;padding-top:0px;\"><h4>CHANNEL</h4></a></li></ul>";
+echo "<a href=channel.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;padding-top:0px;\"><h4>CHANNEL</h4></a></li></ul>";
 
 
-echo "<ul><a href=/channel.php?mode=all><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;padding-top:0px;\"><h4>SUBSCRIBE ALL ASSETS</h4></a></li></ul><ul>";
+echo "<ul><a href=channel.php?mode=all><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;padding-top:0px;\"><h4>SUBSCRIBE ALL ASSETS</h4></a></li></ul><ul>";
 
 	$agec= $rpc->viewallmessagechannels();
 
@@ -427,7 +427,7 @@ echo "<ul><a href=/channel.php?mode=all><li style=\"background-color: rgb(0, 79,
 		$x_value=str_replace("U+","",$x_value);
 
 
-		echo "<a href=/channel.php?&asset=".$c."&mode=2&unicode=".$_REQ["unicode"]."><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>".$x_value."</h4></a></li>";
+		echo "<a href=channel.php?&asset=".$c."&mode=2&unicode=".$_REQ["unicode"]."><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>".$x_value."</h4></a></li>";
 			}
 
 
