@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>GALAXY OS</title>
+        <title>MESSAGE</title>
 		<style>
 
 
@@ -20,7 +20,7 @@ html, body {
   font-size: 15px;
   margin: 0 auto -100px;
   padding: 0;
-
+zoom:1.15;	
 }
 
 ::-webkit-scrollbar { width: 0 !important }
@@ -45,21 +45,20 @@ input[type="submit"] {
 
 
 input[type="text"],
-input[type="submit"] {
+		input[type="submit"] {
   border: 1px solid #59fbea;
   font-family: coda_regular, arial, helvetica, sans-serif;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
-  height:42px;
+  height:36px;
  
-
-}
+		}
 
 input[type="text"] {
   background-color: rgb(11, 12, 13);
   color: #ddd;
 
- width:500px;
+ width:360px;
  padding-left:5px;
 
 }
@@ -68,30 +67,31 @@ input[type="submit"] {
   background-color: rgb(0, 79, 74);
   color: #59fbea;
   padding: 5px 22px;
-margin-left:3px;
+  margin-left:3px;
   height:45px;
     
 }
 
-div{margin:5px;border:0;padding:0;}
+div{margin:0px;border:0;padding:0;}
 
-#door {
+	#door {
 
-margin-top:15px;
+	margin-top:10px;
   
-  font-size: 15px;
-  
-
-}
-
-#newworld{
-
-margin-top:100px;
-  
-  font-size: 15px;
+	font-size: 15px;
   
 
-}
+	}
+
+#newworld
+
+	{
+
+	margin-top:60px;
+  
+	font-size: 15px;
+ 
+	}
 
 
 
@@ -100,18 +100,17 @@ margin-top:100px;
 #tech {
 
   
-margin-left: 11px;
-padding-left: 2px;
-text-align: left;
-vertical-align:middle;
+	margin-left: 0px;
+	padding-left: 2px;
+	text-align: left;
+	vertical-align:middle;
+	border: 0px solid #59fbea;
+	font-family: coda_regular, arial, helvetica, sans-serif;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	font-size:24px;
 
-  border: 0px solid #59fbea;
-  font-family: coda_regular, arial, helvetica, sans-serif;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  font-size:24px;
-
-width:98%;
+	width:94%;
 
  
   
@@ -146,9 +145,8 @@ width:98%;
 
             #nav
             {
-                /*width: 80%;*/
+                
                 margin: 0 auto;
-				
 			
                 border: 0px solid #59fbea;
             }
@@ -208,11 +206,11 @@ width:98%;
             }
 #universe {
 
-line-height:26px;
-ont-weight:100px;
+line-height:20px;
+ont-weight:60px;
 font-size: 22px;
 position: absolute;
-  
+
 }
 
 p
@@ -224,13 +222,14 @@ margin-top:2px;
 }
 
 </style>
+
 		<body>
 
 		
 
 
 <?php 
-
+error_reporting(0);
 include("rpc.php");
 
 $rpc = new Raven();
@@ -308,7 +307,7 @@ echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
 	
 $blocknum=$rpc->getblockcount();
-$blocknum=$blocknum-5000;
+$blocknum=$blocknum-50000;
 $blockhash=$rpc->getblockhash($blocknum);
 
 $agex= $rpc->listsinceblock($blockhash);
@@ -372,7 +371,7 @@ $totalassx=array();
 
 	}
 
-arsort($totalassx);
+asort($totalassx);
 
 $age=$totalassx;
 
@@ -381,7 +380,7 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>MESSAGE NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li>";
+echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>MESSAGE NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li></ul><ul>";
 
 		foreach($age as $xx_value=>$xx)
 
@@ -436,7 +435,7 @@ echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb
 
 ?>
 
-</ul></div>
+
 </div>
 </body>
 </html>

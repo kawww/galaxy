@@ -1,23 +1,5 @@
 <?php
 
-function http_post_json($url, $jsonStr)
-{
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonStr);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json; charset=utf-8',
-            'Content-Length: ' . strlen($jsonStr)
-        )
-    );
-    $response = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
- 
-    return array($httpCode, $response);
-}
 
 class Keva {
     private $username;
@@ -136,50 +118,7 @@ class Keva {
 }
 
 
-function turnUrlIntoHyperlink($string){
-    //The Regular Expression filter
-    $reg_exUrl = "/(?i)\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))/";
 
-    // Check if there is a url in the text
-    if(preg_match_all($reg_exUrl, $string, $url)) {
-
-        // Loop through all matches
-        foreach($url[0] as $newLinks){
-            if(strstr( $newLinks, ":" ) === false){
-                $link = 'http://'.$newLinks;
-            }else{
-                $link = $newLinks;
-            }
-
-            // Create Search and Replace strings
-            $search  = $newLinks;
-
-			//$link=str_replace("https://","",$link);
-            $replace = '<a href="'.$link.'" target=_blank>'.$link.'</a>';
-		
-            $string = str_replace($search, $replace, $string);
-        }
-    }
-
-    //Return result
-    return $string;
-}
-
-
-function getLine($file, $line, $length = 40960){
-    $returnTxt = null; 
-    $i = 1; 
- 
-    $handle = @fopen($file, "r");
-    if ($handle) {
-        while (!feof($handle)) {
-            $buffer = fgets($handle, $length);
-            if($line == $i) $returnTxt = $buffer;
-            $i++;
-        }
-        fclose($handle);
-    }
-    return $returnTxt;}
 
 class Raven {
     private $username;
@@ -297,6 +236,70 @@ class Raven {
     }
 }
 
+function http_post_json($url, $jsonStr)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonStr);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json; charset=utf-8',
+            'Content-Length: ' . strlen($jsonStr)
+        )
+    );
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+ 
+    return array($httpCode, $response);
+}
+
+
+function turnUrlIntoHyperlink($string){
+    //The Regular Expression filter
+    $reg_exUrl = "/(?i)\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))/";
+
+    // Check if there is a url in the text
+    if(preg_match_all($reg_exUrl, $string, $url)) {
+
+        // Loop through all matches
+        foreach($url[0] as $newLinks){
+            if(strstr( $newLinks, ":" ) === false){
+                $link = 'http://'.$newLinks;
+            }else{
+                $link = $newLinks;
+            }
+
+            // Create Search and Replace strings
+            $search  = $newLinks;
+
+			//$link=str_replace("https://","",$link);
+            $replace = '<a href="'.$link.'" target=_blank>'.$link.'</a>';
+		
+            $string = str_replace($search, $replace, $string);
+        }
+    }
+
+    //Return result
+    return $string;
+}
+
+
+function getLine($file, $line, $length = 40960){
+    $returnTxt = null; 
+    $i = 1; 
+ 
+    $handle = @fopen($file, "r");
+    if ($handle) {
+        while (!feof($handle)) {
+            $buffer = fgets($handle, $length);
+            if($line == $i) $returnTxt = $buffer;
+            $i++;
+        }
+        fclose($handle);
+    }
+    return $returnTxt;}
 
 //utf
 

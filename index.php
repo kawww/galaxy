@@ -230,7 +230,7 @@ margin-top:2px;
 
 
 <?php 
-
+error_reporting(0);
 if(!isset($_REQUEST["asset"])) 
 
  {

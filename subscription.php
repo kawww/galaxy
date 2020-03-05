@@ -229,7 +229,7 @@ margin-top:2px;
 
 
 <?php 
-
+error_reporting(0);
 include("rpc.php");
 
 $rpc = new Raven();
@@ -411,7 +411,7 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:5px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/subscription.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;width:800px;\"><h2>SUBSCRIPTION</h2></a></li>";
+echo "<a href=/subscription.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;width:800px;\"><h3>SUBSCRIPTION</h3></a></li>";
 
 
 
@@ -495,7 +495,7 @@ if(isset($cname)){
 					{
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:800px;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=7>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=6>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:800px;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
 				}
 			
 
