@@ -322,7 +322,7 @@ $conk=hex2bin($conk);
 								
 								$asset=$sinfo;
 								
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:900px;\"><h2>".$snewkey."</h2><br><a href=?name=".$rname.">".$rname."</a></li>";
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:90%;\"><h2>".$snewkey."</h2><br><a href=?name=".$rname.">".$rname."</a></li></ul><ul>";
 
 								
 
@@ -332,7 +332,7 @@ $conk=hex2bin($conk);
 
 									
 						
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;line-height:30px;font-size:30px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:30px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 																			
 											
 
@@ -411,13 +411,13 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:5px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/subscription.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;width:800px;\"><h3>SUBSCRIPTION</h3></a></li>";
+echo "<a href=/subscription.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h3>SUBSCRIPTION</h3></a></li></ul><ul>";
 
 
 
 if(isset($_REQUEST["asset"]))
 {
-echo "<a href=/channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>".$_REQUEST["asset"]."</h4></a></li>";
+echo "<a href=/channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>".$_REQUEST["asset"]."</h4></a></li></ul>";
 }
 
 		foreach($age as $xx_value=>$xx)
@@ -486,7 +486,7 @@ if(isset($cname)){
 	if($cname==$x_value){
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:800px;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=7>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=6>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=5>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
 				}
 			
 				}
@@ -495,7 +495,7 @@ if(isset($cname)){
 					{
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:800px;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
 				}
 			
 
