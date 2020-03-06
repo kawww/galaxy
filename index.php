@@ -241,7 +241,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		echo"<a href=keva/><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WORD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCKCHAIN</p></a></li>";	
+		echo"<a href=keva.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WORD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCKCHAIN</p></a></li>";	
 
 		echo"<a href=subscription.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SUBSCRIPTION
  ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
