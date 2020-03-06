@@ -476,7 +476,7 @@ echo "<ul><a href=channel.php?mode=all><li style=\"background-color: rgb(0, 79, 
 			}
 		if(strlen($ipfs)=="64")
 			{
-			$messone="<a href=/subscription.php?txid=".$ipfs.">TXID</a>";
+			$messone="<a href=subscription.php?txid=".$ipfs.">TXID</a>";
 			}
 
 

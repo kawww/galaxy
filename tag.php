@@ -383,7 +383,7 @@ $add=$xx[add];
 
 				{
 
-				$messone=" <a href=/keva/?txid=".$ipfs['txid'].">".$x_value."</a>";
+				$messone=" <a href=subscription.php?txid=".$ipfs['txid'].">".$x_value."</a>";
 
 		
 				}

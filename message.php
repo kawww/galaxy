@@ -414,7 +414,7 @@ echo "<a href=/?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb
 			}
 			if(strlen($ipfs)=="64")
 			{
-			$messone="<a href=/subscription.php?txid=".$ipfs."&name=".$x_value.">TXID</a>";
+			$messone="<a href=subscription.php?txid=".$ipfs."&name=".$x_value.">TXID</a>";
 			}
 
 
