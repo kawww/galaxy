@@ -484,7 +484,7 @@ echo "<ul><a href=channel.php?mode=all><li style=\"background-color: rgb(0, 79, 
 	if(isset($_REQUEST["asset"]) & $_REQUEST["asset"]==$name) {
 
 
-		echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:80px;font-size:70%\"><table cellspacing=\"10px\"><tr><td width=\"140px\" align=right>".$time."</td><td align=left><a href=?&unicode=".$turn."&asset=".$x_value."&mode=2><b><font size=4>".$x_value."</font></b></a></td></tr><tr><td width=\"140px\"  align=right>".$messone."</td><td align=left>".$ipfs."</td></tr></table></li>";
+		echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:80px;font-size:70%\"><table cellspacing=\"10px\"><tr><td width=\"140px\" align=right>".$time."</td><td align=left><a href=?&unicode=".$turn."&asset=".$x_value."&mode=2><b><font size=4>".$x_value."</font></b></a></td></tr><tr><td width=\"140px\" align=right>".$messone."</td><td align=left><font size=2>".$ipfs."</font></td></tr></table></li>";
 			
 				}
 

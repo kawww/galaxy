@@ -264,6 +264,92 @@ $cons=$_REQ["space"];
 $conk=$_REQ["key"];
 $cname=$_REQ["name"];
 
+$block=$_REQ["block"];
+
+//block
+
+
+
+if(isset($block) & is_numeric($block)==true)
+
+	{
+
+		
+
+		$blockhash= $kpc-> getblockhash(intval($block));
+
+	
+
+		$blockdata= $kpc->getblock($blockhash);
+
+			echo "<div id=\"universe\" class=\"crt\"><div id=\"nav\"><ul>";
+
+		echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:30px;padding-bottom:0px;\"><h2>".$block."</h2></li></ul><ul>";
+		
+		
+	
+
+		foreach($blockdata['tx'] as $txa)
+		{
+			
+		$transaction= $kpc->getrawtransaction($txa,1);
+
+					foreach($transaction['vout'] as $vout)
+	   
+						  {
+
+					$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+					$arr = explode(' ', $op_return); 
+
+					if($arr[0] == 'OP_UNKNOWN') 
+								{
+		
+								 $cons=$arr[2];
+								 $conk=$arr[3];
+								 $snewkey=hex2bin($cons);
+								 $sinfo=hex2bin($conk);
+
+						
+
+								$x_value="<h4>".$snewkey."</h4>";
+
+								$value=$sinfo;
+								
+								$asset=$sinfo;
+								
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
+
+											
+										$value=str_replace("<","",$value);
+										$valuex=str_replace("\n","<br>",$value);
+			
+	
+
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+
+												echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a></p></li>";
+																			
+											
+
+							
+					
+				
+								} 
+
+						 }
+
+		}
+
+		echo "</ul></div></div>";	
+					exit;
+	}
+
+
+
+//txid
+
 if(isset($txid) & strlen($txid)=="64")
 	
 			{
@@ -312,7 +398,7 @@ $conk=hex2bin($conk);
 		
 		$getrtx= $rpc->getassetdata($rname);
 
-		echo "<div id=\"universe\" class=\"crt\"><div id=\"nav\"><ul>";
+		echo "<div id=\"nav\"><ul>";
 
 
 
@@ -322,22 +408,28 @@ $conk=hex2bin($conk);
 								
 								$asset=$sinfo;
 								
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:90%;\"><h2>".$snewkey."</h2><br><a href=?name=".$rname.">".$rname."</a></li></ul><ul>";
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:120px;width:90%;\"><h1>".$snewkey."</h1><br><a href=?name=".$rname."><font size=4><b>".$rname."</b></font></a></li></ul><ul>";
 
 								
 
 										$valuex=str_replace("\n","<br>",$value);
 
 	
-
-									
-						
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:30px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
-																			
-											
-
+										if(strlen($value)==34)
 							
-					echo "</ul></div></div>";	
+											{
+
+										echo "<script>window.location.href=decodeURIComponent('keva.php?asset=".$value."&showall=11')</script>";
+
+											}
+											else{
+
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+																			
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa."> '</a></p></li>";
+							
+							
+					echo "</ul></div>";	
 					exit;
 	
 				}

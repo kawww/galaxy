@@ -237,23 +237,27 @@ if(!isset($_REQUEST["asset"]))
 
 		echo "<div id=\"nav\"><ul>";
 		
-		echo"<a href=http://galaxyos.io><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GALAXY ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>FINAL FRONTIER</p></a></li>";	
+		echo"<a href=http://galaxyos.io><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;height:100px;border: 1px solid #59fbea;background-color:#0b0c0d;display:block;line-height:30px;\"><br><a href=http://galaxyos.io><b>GALAXY</b></a></li>";	
 
 		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		echo"<a href=keva.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WORD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCKCHAIN</p></a></li>";	
+		echo"<a href=keva.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WORD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 		echo"<a href=subscription.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SUBSCRIPTION
  ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+
+ 		echo"<a href=channel.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CHANNEL ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+
+		
+		echo"<a href=message.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ MESSAGE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+
 
 		echo"<a href=asset.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 		echo"<a href=tag.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ TAG ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
 
-		echo"<a href=message.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ MESSAGE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
-
-		echo"<a href=channel.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CHANNEL ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+	
 
 		
 

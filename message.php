@@ -280,9 +280,6 @@ $messageacc="message";
 
 
 
-if(!isset($_REQUEST["asset"])) 
-
-{
 	
 
 $turn=9;
@@ -417,8 +414,16 @@ echo "<a href=index.php?&asset=".$shopaddress."&mode=2><li style=\"background-co
 			$messone="<a href=subscription.php?txid=".$ipfs."&name=".$x_value.">TXID</a>";
 			}
 
+		if(isset($_REQ["asset"]) & trim($_REQ["asset"])==$x_value) {
+		
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=index.php?&unicode=".$turn."&asset=".$from."> <b><font size=4>".$x_value."</font></b></a>  <a href=index.php?&unicode=".$turn."&asset=".$to."><font size=3>[MY ADDRESS]</font></a></td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
+		echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?&unicode=".$turn."&asset=".$from."> <font size=3>SENDER ADDRESS</font> </a> ]  [ <a href=index.php?&unicode=".$turn."&asset=".$to."><font size=3>MY ADDRESS</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
+			
+				}
+
+		if(!isset($_REQ["asset"])) {
+					echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?&unicode=".$turn."&asset=".$from."> <font size=3>SENDER ADDRESS</font> </a> ]  [ <a href=index.php?&unicode=".$turn."&asset=".$to."><font size=3>MY ADDRESS</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
+			}
 
 			}
 
@@ -428,7 +433,7 @@ echo "<a href=index.php?&asset=".$shopaddress."&mode=2><li style=\"background-co
 
 	
 
-		}
+		
 
 
 
