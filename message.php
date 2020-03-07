@@ -304,7 +304,7 @@ echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
 	
 $blocknum=$rpc->getblockcount();
-$blocknum=$blocknum-50000;
+$blocknum=$blocknum-$message_num;
 $blockhash=$rpc->getblockhash($blocknum);
 
 $agex= $rpc->listsinceblock($blockhash);

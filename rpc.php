@@ -1,5 +1,34 @@
 <?php
 
+//on/off
+
+$webmode=0;
+
+if($webmode==1){
+
+$keva="off";
+$keva_add="off";
+$unsub="off";
+
+$message_num=5000;
+
+$tag_address="-";
+
+
+
+}
+
+if($webmode==0){
+
+$keva="on";
+$keva_add="on";
+$unsub="on";
+
+$message_num=50000;
+
+}
+
+
 
 class Keva {
     private $username;

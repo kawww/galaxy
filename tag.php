@@ -266,7 +266,15 @@ echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id
 
 			$totalassx=array();
 
-if(!isset($_REQ["asset"])){
+$tagasset=$_REQ["asset"];
+
+if($webmode==1){$tagasset="-";}
+
+
+
+if(!$tagasset){
+
+
 
 $agex= $rpc->listaddressgroupings();
 
@@ -282,7 +290,6 @@ $agex= $rpc->listaddressgroupings();
 					echo "<p>&nbsp;&nbsp;Error ADDRESS</p>";
 					exit;
 				}
-
 
 		
 
@@ -307,12 +314,12 @@ $agex= $rpc->listaddressgroupings();
 			array_push($totalassx,$arrx);}}
 
 			
-			}
+					}
 
 	
-		}else
+				}else
 
-		{
+					{
 			
 			$tagcheck= $rpc->listtagsforaddress($_REQ["asset"]);
 
@@ -336,7 +343,7 @@ $agex= $rpc->listaddressgroupings();
 if(!$agex[0][0][0]){$tagadd=$_REQ["asset"];}else{$tagadd=$agex[0][0][0];}
 
 
-
+if($webmode==1){$tagadd=$tag_address;}
 
 if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=? >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?unicode=1 >[ TURN-ON ]</a><br>";}
 

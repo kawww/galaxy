@@ -231,6 +231,17 @@ margin-top:2px;
 
 <?php 
 error_reporting(0);
+
+
+//check server
+
+
+include("rpc.php");
+
+$rpc = new Raven();
+
+
+
 if(!isset($_REQUEST["asset"])) 
 
  {
@@ -241,7 +252,9 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
 
-		echo"<a href=keva.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WORD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		if($keva=="on"){
+		echo"<a href=keva.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WORD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	}else
+			{echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	}
 
 		echo"<a href=subscription.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SUBSCRIPTION
  ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
@@ -413,13 +426,6 @@ echo "<div id=\"nav\"><ul>";
 
 		echo "<div id=\"universe\" class=\"crt\">";
 
-
-//check server
-
-
-include("rpc.php");
-
-$rpc = new Raven();
 
 
 //rpc

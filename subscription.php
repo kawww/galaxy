@@ -329,7 +329,7 @@ if(isset($block) & is_numeric($block)==true)
 
 												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
-												echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a></p></li>";
+												echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> </p></li>";
 																			
 											
 
@@ -356,6 +356,8 @@ if(isset($txid) & strlen($txid)=="64")
 
 			
 			$transaction= $kpc->getrawtransaction($txid,1);
+
+			$blockhash=$kpc->getblock($transaction["blockhash"]);
 
 			foreach($transaction['vout'] as $vout)
 	   
@@ -389,6 +391,7 @@ $cons=hex2bin($cons);
 $conk=hex2bin($conk);
 
 
+if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"];}
 
 		$snewkey=$cons;
 
@@ -426,7 +429,7 @@ $conk=hex2bin($conk);
 
 												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
 																			
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa."> '</a></p></li>";
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txid.">".$txid."</a> [ <a href=subscription.php?block=".$bnum."> ".$bnum." </a>]</p></li>";
 							
 							
 					echo "</ul></div>";	
@@ -509,7 +512,7 @@ echo "<a href=/subscription.php><li style=\"background-color: rgb(0, 79, 74);hei
 
 if(isset($_REQUEST["asset"]))
 {
-echo "<a href=/channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>".$_REQUEST["asset"]."</h4></a></li></ul>";
+echo "<a href=channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>".$_REQUEST["asset"]."</h4></a></li></ul>";
 }
 
 		foreach($age as $xx_value=>$xx)
@@ -522,6 +525,7 @@ echo "<a href=/channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"back
 
 $assetlink=$x_value;
 $assettwo=$x_value;
+
 
 
 if($turn==1)
@@ -543,6 +547,8 @@ if(strlen($ipfs)=="64")
 			
 			$transaction= $kpc->getrawtransaction($ipfs,1);
 
+			$blockhash=$kpc->getblock($transaction["blockhash"]);
+
 			foreach($transaction['vout'] as $vout)
 	   
 				  {
@@ -557,7 +563,8 @@ if(strlen($ipfs)=="64")
 
 					 $title=hex2bin($arr[2]);
 					 $asset=hex2bin($arr[3]);
-			
+					 
+
 				
 					} 
 
@@ -569,7 +576,7 @@ if(strlen($ipfs)=="64")
 
 
 $stitle2=$title;
-$stitle="<a href=/subscription.php?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><font color=ffffff>".$stitle2."</font></a>";
+$stitle="<a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."><font color=ffffff>".$stitle2."</font></a>";
 
 
 
@@ -578,7 +585,7 @@ if(isset($cname)){
 	if($cname==$x_value){
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=5>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=5>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
 				}
 			
 				}
@@ -587,14 +594,16 @@ if(isset($cname)){
 					{
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?space=".bin2hex($title)."&key=".bin2hex($asset)."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
 				}
 			
+				
+				
 
 				}
-
+				
 			}
-
+	
 		echo "</ul></div></div>";
 
 

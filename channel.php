@@ -385,8 +385,8 @@ $x_value=$_REQ["asset"];
 		}
 
 echo "<ul><a href=channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>".$x_value."</h4></a></li>";
-
-echo "<a href=channel.php?&asset=".$_REQ["asset"]."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>UNSUBSCRIBE</h4></a></li></ul><ul>";
+if($unsub=="on"){
+echo "<a href=channel.php?&asset=".$_REQ["asset"]."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>UNSUBSCRIBE</h4></a></li></ul><ul>";}
 
 
 
