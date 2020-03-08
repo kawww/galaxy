@@ -758,7 +758,7 @@ if(strlen($_REQ["showall"])<2)
 
 			if(stristr($value,"decodeURIComponent") == true){$valuex="<font size=2>".$txx." <a href=?mode=1&asset=".$asset."&title=".$key.">[edit]</a></font>";}
 
-			if(strlen($value)==34){$valuex="<font size=2>".$txx." <a href=?mode=1&asset=".$asset."&title=".$key.">[edit]</a></font>";}
+			if(strlen($value)==34){$valuex="<font size=2>".$txx." [ ".$height." ] <a href=?mode=1&asset=".$asset."&title=".$key.">[edit]</a></font>";}
 
 
 

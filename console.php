@@ -218,6 +218,9 @@ margin-top:2px;
 
 <?php 
 error_reporting(0);
+
+include("rpc.php");
+
 if(isset($_REQUEST["asset"])) 
 
 {
@@ -262,6 +265,8 @@ if(isset($_REQUEST["asset"]))
 
 		echo "</ul></div>";
 
+		if($keva=="on"){
+
 				echo "<div id=\"nav\"><ul>";
 		
 		
@@ -277,6 +282,8 @@ if(isset($_REQUEST["asset"]))
 
 		echo "</ul></div>";
 
+		}
+
 		echo "<div id=\"universe\" class=\"crt\">";
 
 if(isset($_REQUEST["asset"])) {
@@ -285,7 +292,7 @@ if(isset($_REQUEST["asset"])) {
 //check server
 
 
-include("rpc.php");
+
 
 $rpc = new Raven();
 $kpc = new Keva();
