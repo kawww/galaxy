@@ -233,7 +233,38 @@ margin-top:2px;
 }
 
 </style>
-		<body>
+
+
+<script>
+
+    var maxstrlen=2900;
+    function Q(s){return document.getElementById(s);} 
+    function checkWord(c){
+        len=maxstrlen;
+        var str = c.value;
+        myLen=getStrleng(str);
+        var wck=Q("wordCheck");
+        if(myLen>len*2){
+            c.value=str.substring(0,i+1);
+        }
+        else{
+            wck.innerHTML = Math.floor((len*2-myLen)/2);
+           }
+    }
+    function getStrleng(str){
+        myLen =0;
+        i=0;
+        for(;(i<str.length)&&(myLen<=maxstrlen*2);i++){
+        if(str.charCodeAt(i)>0&&str.charCodeAt(i)<128) 
+        myLen++;
+        else
+        myLen+=2;
+    }
+    return myLen;
+}
+</script>
+
+<body>
 
 		
 
@@ -300,7 +331,7 @@ if(isset($_REQ["mode"])){
 		
 			echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
 
-			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">1500</span><br><br><input type=\"submit\" value=\"ADD\"> </li></ul></div></form></div>";
+			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">2900</span> [ ".$_REQ['nameid']." ] <br><br><input type=\"submit\" value=\"SUBMIT\"> </li></ul></div></form></div>";
 
 			exit;
 			
@@ -657,7 +688,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 
-		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>EDIT</a> [ <a href=subscription.php?block=".$height.">".$height."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=2>".$txx."</font></li>";
+		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>EDIT</a> [ <a href=subscription.php?block=".$height.">".$height."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=2>".$txx."</font></li>";
 		
 			echo "<a href=?asset=".$asset."&key=".$fkey."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SUBSCRIBE</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$title."</font> ".$addend."</li>";
 		}
@@ -720,7 +751,7 @@ extract($vadd);
 $linkipfs = json_decode($returnContent, true);
 
 
-if($ismine=="1"  & $keva_add=="on"){echo "<a href=?asset=".$asset."&mode=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>ADD NEW</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+if($ismine=="1"  & $keva_add=="on"){echo "<a href=?asset=".$asset."&mode=1&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>ADD NEW</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
 
 echo "<a href=?asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SUBSCRIBE</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$title."</font> ".$addend."</li>";}
 
@@ -833,33 +864,6 @@ if(strlen($_REQ["showall"])<2)
 </ul></div>
 </div>
 
-<script>
-    var maxstrlen=1500;
-    function Q(s){return document.getElementById(s);} 
-    function checkWord(c){
-        len=maxstrlen;
-        var str = c.value;
-        myLen=getStrleng(str);
-        var wck=Q("wordCheck");
-        if(myLen>len*2){
-            c.value=str.substring(0,i+1);
-        }
-        else{
-            wck.innerHTML = Math.floor((len*2-myLen)/2);
-           }
-    }
-    function getStrleng(str){
-        myLen =0;
-        i=0;
-        for(;(i<str.length)&&(myLen<=maxstrlen*2);i++){
-        if(str.charCodeAt(i)>0&&str.charCodeAt(i)<128) 
-        myLen++;
-        else
-        myLen+=2;
-    }
-    return myLen;
-}
-</script>
 
 
 
