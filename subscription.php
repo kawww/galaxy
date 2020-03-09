@@ -266,6 +266,10 @@ $cname=$_REQ["name"];
 
 $block=$_REQ["block"];
 
+
+
+
+
 //block
 
 
@@ -464,6 +468,8 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 		$rname=$_REQ["name"];
 
+		$aname=$_REQ["aname"];
+
 		$sinfo=$conk;
 		
 		$getrtx= $rpc->getassetdata($rname);
@@ -478,7 +484,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 								
 								$asset=$sinfo;
 								
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:120px;width:90%;\"><h1>".$snewkey."</h1><br><a href=?name=".$rname."><font size=4><b>".$rname."</b></font></a></li></ul><ul>";
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:120px;width:90%;\"><h1>".$snewkey."</h1><br><a href=?name=".$aname."&uname=".$rname."><font size=4><b>".$rname."</b></font></a></li></ul><ul>";
 
 								
 
@@ -499,10 +505,60 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txid.">".$txid."</a> [ <a href=subscription.php?block=".$bnum."> ".$bnum." </a>]</p></li>";
 							
 							
-					echo "</ul></div>";	
+					
+
+//broadcast
+
+if(isset($_REQ["txid"]) or isset($_REQ["ipfs"]))
+	
+	{ 
+
+	if(isset($_REQ["uname"])){$uname=$_REQ["uname"];}else{$uname=$_REQ["asset"];}
+	
+	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:90px;width:90%;\"><br><a href=?asset=".$_REQ["asset"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&confirm=1><font size=4><b> CONFIRM BROADCAST [ ".$uname." ]</b></font></a>";
+
+			if(isset($_REQ["confirm"]))
+				
+			{
+			
+				if(isset($_REQ["ipfs"])){$messc=$_REQ["ipfs"];}
+
+				if(isset($_REQ["txid"])){$messc=$_REQ["txid"];}
+
+				$gogogo= $rpc->sendmessage($_REQ["asset"],$messc);
+
+			
+				$error = $rpc->error;
+
+				if($error != "") 
+		
+				{
+	
+					echo "<br><br>Error ADDRESS";
+					exit;
+				}
+
+				else
+
+				{
+					echo "<br><br>SUCCESS";
+				}
+
+				echo "</li></ul>";
+			}
+
+	}
+
+
+			echo "</ul></div>";	
+
 					exit;
 	
 				}
+
+
+
+	
 
 
 $agex= $rpc->viewallmessages();
@@ -643,7 +699,7 @@ if(strlen($ipfs)=="64")
 
 
 $stitle2=$title;
-$stitle="<a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."><font color=ffffff>".$stitle2."</font></a>";
+$stitle="<a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><font color=ffffff>".$stitle2."</font></a>";
 
 
 
@@ -651,9 +707,10 @@ if(isset($cname)){
 
 	if($cname==$x_value){
 
-				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=5>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
-				}
+				if(isset($_REQ["uname"])){$x_value=$_REQ["uname"];$stitle="<a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><font color=ffffff>".$stitle2."</font></a>";}
+
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=5>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+						}
 			
 				}
 
@@ -661,7 +718,7 @@ if(isset($cname)){
 					{
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
 				}
 			
 				

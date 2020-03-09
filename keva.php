@@ -8,6 +8,7 @@
 
 html,
 body,
+
 .site_font {
   font-family: coda_regular, arial, helvetica, sans-serif;
 }
@@ -74,7 +75,7 @@ input[type="submit"] {
   background-color: rgb(0, 79, 74);
   color: #59fbea;
   padding: 5px 22px;
-margin-left:3px;
+  margin-left:3px;
   height:45px;
     
 }
@@ -83,9 +84,9 @@ div{margin:1px;border:0;padding:0;}
 
 #door {
 
-margin-top:15px;
+margin-top:0px;
   
-  font-size: 15px;
+font-size: 15px;
   
 
 }
@@ -330,7 +331,7 @@ if(isset($_REQ["mode"])){
 				
 			echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=keva.php><b>GALAXY</b></a></li></ul>";	
 
-			echo "<ul><li style=\"height:670px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\" value=".$key."><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
+			echo "<ul><li style=\"height:670px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\"  style=\"width:90%;\" value=".$key."><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
 
 			echo "<br><textarea rows=\"1\" cols=\"150\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script></textarea>";
 		
@@ -429,7 +430,7 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"NAME ADDRESS, BLOCK NUMBER...\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
-		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
+		echo "<input type=\"submit\" value=\"KAW\"></li></ul></div></form></div>";
 	
 
 
@@ -693,20 +694,29 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 
-		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>EDIT</a> [ <a href=subscription.php?block=".$height.">".$height."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=2>".$txx."</font></li>";
+		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>EDIT</a> [ <a href=subscription.php?block=".$height.">".$height."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
 		
-			echo "<a href=?asset=".$asset."&key=".$fkey."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SUBSCRIBE</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$title."</font> ".$addend."</li>";
-		}
+			echo "<a href=?asset=".$asset."&key=".$fkey."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SUBSCRIBE</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
+			}
 			else
-			{echo "</ul><ul><p><a href=subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TXID</a> [ <a href=subscription.php?block=".$height.">".$height."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$txx."</font></li>";}
+
+			{
+				
+			echo "</ul><ul><p><a href=subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TXID</a> [ <a href=subscription.php?block=".$height.">".$height."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".$txx."</font></li>";
+			
+			}
 
 		
-	
+//linkipfs	
 
-		$linkipfs = json_decode($returnContent, true);
+			$linkipfs = json_decode($returnContent, true);
 
 
-		echo "<a href=?asset=".$asset."&key=".$fkey."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>LINK IPFS</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=3>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
+			echo "<a href=?asset=".$asset."&key=".$fkey."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>LINK IPFS</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=3>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
+
+//broadcast
+
+			echo "<a href=channel.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."&mode=4><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>BROADCAST</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
 
 
 
@@ -718,9 +728,9 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 							}
-
+//article over
 	else
-
+//menu
 							{
 
 
@@ -828,7 +838,7 @@ if(strlen($_REQ["showall"])<2)
 
 			
 
-			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><h4>".$key."</h4></li>";
+			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><a href=?asset=".$asset."&title=".$key."&key=".$key."&sname=".$_REQ["sname"]."><h4>".$key."</h4></a></li>";
 
 			$valuex=str_replace("\n","<br>",$value);
 
