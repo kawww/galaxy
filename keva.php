@@ -290,7 +290,12 @@ $forsub=$_REQ["newasset"];
 $age= $rpc->keva_put($_REQ["asset"],$_REQ["title"],$forsub);
 
 $url = "?asset=".$_REQ["asset"]; 
-Header("Location:$url"); 
+
+
+
+
+
+echo "<script>window.location.href=decodeURIComponent('keva.php".$url."')</script>";
 
 
 }
