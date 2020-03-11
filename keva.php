@@ -238,7 +238,7 @@ margin-top:2px;
 
 <script>
 
-    var maxstrlen=2900;
+    var maxstrlen=1500;
     function Q(s){return document.getElementById(s);} 
     function checkWord(c){
         len=maxstrlen;
@@ -337,7 +337,7 @@ if(isset($_REQ["mode"])){
 		
 			echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
 
-			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">2900</span> [ ".$_REQ['nameid']." ] <br><br><input type=\"submit\" value=\"SUBMIT\"> </li></ul></div></form></div>";
+			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">1500</span> [ ".$_REQ['nameid']." ] <br><br><input type=\"submit\" value=\"SUBMIT\"> </li></ul></div></form></div>";
 
 			exit;
 			
@@ -545,10 +545,12 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 		foreach($info as $x_value=>$x)
 
 			{
-
+			
 			extract($x);
 
-			$arr["height"]=$height;
+			
+
+			$arr["heightx"]=$height;
 			$arr["key"]=$key;
 			$arr["adds"]=$address;
 			$arr["value"]=$value;
@@ -597,6 +599,8 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 								$fkey=$key;
 
+								$heightm=$heightx;
+
 								$x_value="<h4>".$key."</h4>";
 
 								
@@ -622,13 +626,16 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 											{
 						
-											  if(stristr($valuex,"decodeURIComponent") == false){
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
-													else
-
-												{
+											  if(stristr($valuex,"decodeURIComponent") == true or stristr($valuex,"src") == true)
+											{
 												
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".$valuex."</p></li>";}
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".$valuex."</p></li>";}	  
+											
+
+													else
+  {
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+												
 
 
 											}
@@ -653,7 +660,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 			
 											extract($v);	
 
-		
+										
 		
 										if($key==$n){
 
@@ -694,7 +701,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 
-		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>EDIT</a> [ <a href=subscription.php?block=".$height.">".$height."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
+		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>EDIT</a> [ <a href=subscription.php?block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
 		
 			echo "<a href=?asset=".$asset."&key=".$fkey."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SUBSCRIBE</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
 			}
@@ -702,7 +709,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 			{
 				
-			echo "</ul><ul><p><a href=subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TXID</a> [ <a href=subscription.php?block=".$height.">".$height."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".$txx."</font></li>";
+			echo "</ul><ul><p><a href=subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TXID</a> [ <a href=subscription.php?block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".$txx."</font></li>";
 			
 			}
 
@@ -716,7 +723,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 //broadcast
 
-			echo "<a href=channel.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."&mode=4><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>BROADCAST</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
+			echo "<a href=channel.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>BROADCAST</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
 
 
 
@@ -804,7 +811,7 @@ if(strlen($_REQ["showall"])<2)
 
 			if(stristr($value,"decodeURIComponent") == true){$valuex="<font size=2>".$txx." <a href=?mode=1&asset=".$asset."&title=".$key.">[edit]</a></font>";}
 
-			if(strlen($value)==34){$valuex="<font size=2>".$txx." [ ".$height." ] <a href=?mode=1&asset=".$asset."&title=".$key.">[edit]</a></font>";}
+			if(strlen($value)==34){$valuex="<font size=2>".$txx." [ ".$heightm." ] <a href=?mode=1&asset=".$asset."&title=".$key.">[edit]</a></font>";}
 
 
 

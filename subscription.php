@@ -326,16 +326,21 @@ if(isset($block) & is_numeric($block)==true)
 								
 
 											
-										$value=str_replace("<","",$value);
+										$value=str_replace("<scrypt>","< scrypt >",$value);
 										$valuex=str_replace("\n","<br>",$value);
-			
+
+
+			//namespace channel
 											if(strlen($value)==34)
+
+
 							
 											{
 
 										
 										if(isset($_REQ["sub"]) & $_REQ["sub"]==$transaction['size'])
 														
+														//sub-size
 													
 													{
 
@@ -365,9 +370,29 @@ if(isset($block) & is_numeric($block)==true)
 
 
 											}
-											else{
+											
+											if(strlen($value)<>34)
+											
+											{
 
 										
+
+											$valuem=substr($value,0,34);
+
+											
+
+											$vmkpc=$kpc->keva_filter($valuem);
+
+			
+									
+
+											if(!$vmkpc) 
+		
+											   {
+	
+											
+														
+											
 
 											if(isset($_REQ["sub"]) & $_REQ["sub"]==$transaction['size'])
 														
@@ -384,17 +409,85 @@ if(isset($block) & is_numeric($block)==true)
 									
 												}
 
+												//no sub tx
+
 										if(!isset($_REQ["sub"])){
 
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
+												  if(stristr($valuex,"src") == true)
+											{
+												
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$valuex."</p></li>";}	  
+											
 
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+													else
+
+
+											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
 
 													
 											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
 
 												}
+
+											}
+
+											
+										
+
+											else
+
+											{
+
+												
+										$arr1=explode("\n",$value);
+											
+										
+									
+										foreach ($arr1 as $m=>$n) {
+
+											if(strlen($n)>34){
+
+
+											list($names,$keys)=explode(" ",$n);
+												
+												
+											$listasset= $kpc->keva_get($names,trim($keys));
+													
+											
+
+											foreach ($listasset as $v) 
+
+													{
+			
+											extract($v);	
+											
+											
+		
+											$valuex=str_replace("\n","<br>",$v);
+
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+
+
+
+											
+													}
+
+
+
+
+			
+													}
+
+
+			
+	
+														}
+
+															
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";	
+											}
 
 
 
@@ -500,22 +593,154 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 											}
 											else{
 
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+
+
+
+											if(strlen($value)<>34)
+											
+											{
+
+										
+
+											$valuem=substr($value,0,34);
+
+											
+
+											$vmkpc=$kpc->keva_filter($valuem);
+
+			
+									
+
+											if(!$vmkpc) 
+		
+											   {
+	
+											
+														
+											
+
+											if(isset($_REQ["sub"]) & $_REQ["sub"]==$transaction['size'])
+														
+													
+													{
+
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
+
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+
+													
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
+
+									
+												}
+
+												//no sub tx
+
+										if(!isset($_REQ["sub"])){
+
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
+
+												  if(stristr($valuex,"src") == true)
+											{
+												
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$valuex."</p></li>";}	  
+											
+
+													else
+
+
+											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+
+													
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
+
+												}
+
+											}
+
+											
+										
+
+											else
+
+											{
+
+												
+										$arr1=explode("\n",$value);
+											
+										
+									
+										foreach ($arr1 as $m=>$n) {
+
+											if(strlen($n)>34){
+
+
+											list($names,$keys)=explode(" ",$n);
+												
+												
+											$listasset= $kpc->keva_get($names,trim($keys));
+													
+											
+
+											foreach ($listasset as $v) 
+
+													{
+			
+											extract($v);	
+											
+											
+		
+											$valuex=str_replace("\n","<br>",$v);
+
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:30px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+
+
+
+											
+													}
+
+
+
+
+			
+													}
+
+
+			
+	
+														}
+
+															
+											
+											}
+
+
+
+											}
+												
+												
+												
+												
+												
+												
+												}
 																			
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txid.">".$txid."</a> [ <a href=subscription.php?block=".$bnum."> ".$bnum." </a>]</p></li>";
+												echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txid.">".$txid."</a> [ <a href=subscription.php?block=".$bnum."> ".$bnum." </a>]</p></li>";
+
+
 							
 							
 					
 
 //broadcast
 
-if(isset($_REQ["txid"]) or isset($_REQ["ipfs"]))
+if(isset($_REQ["asset"]))
 	
 	{ 
 
 	if(isset($_REQ["uname"])){$uname=$_REQ["uname"];}else{$uname=$_REQ["asset"];}
 	
-	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:90px;width:90%;\"><br><a href=?asset=".$_REQ["asset"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&confirm=1><font size=4><b> CONFIRM BROADCAST [ ".$uname." ]</b></font></a>";
+	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:90%;\"><br><br><a href=?asset=".$_REQ["asset"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&confirm=1><font size=5><b> CONFIRM BROADCAST [ ".$uname." ]</b></font></a>";
 
 			if(isset($_REQ["confirm"]))
 				
