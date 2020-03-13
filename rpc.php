@@ -51,7 +51,7 @@ class Keva {
         $this->username      = 'galaxy'; // RPC Username
         $this->password      = 'frontier'; // RPC Password
         $this->host          = '127.0.0.1'; // Localhost
-        $this->port          = '1024';
+        $this->port          = '9992';
         $this->url           = $url;
 
         $this->proto         = 'http';
@@ -170,7 +170,7 @@ class Raven {
         $this->username      = 'galaxy'; // RPC Username
         $this->password      = 'frontier'; // RPC Password
         $this->host          = '127.0.0.1'; // Localhost
-        $this->port          = '1025';
+        $this->port          = '9991';
         $this->url           = $url;
 
         $this->proto         = 'http';
