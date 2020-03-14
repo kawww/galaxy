@@ -4,6 +4,8 @@
 
 $lang="en";
 
+
+
 //freekeva
 
 $freekeva="http://galaxyos.io/";
@@ -594,9 +596,11 @@ if (!(strlen($asset) % 4) && strlen($asset)){
 
 //language
 
-if($lang=="en")
+if($lang=="en" or $_REQUEST["langs"]=="en")
 
 {
+
+$langs="cn";
 
 $index_local="LOCAL";
 $index_console="CONSOLE";
@@ -637,10 +641,11 @@ $keva_galaxylink="GALAXY LINK";
 
 }
 
-if($lang=="cn")
+if($lang=="cn" or $_REQUEST["lang"]=="cn")
 
 {
 
+$langs="kr";
 
 $index_local="本地";
 $index_console="控制台";
@@ -680,13 +685,92 @@ $keva_galaxylink="银河链接";
 
 }
 
-if($lang=="kr")
+if($lang=="kr" or $_REQUEST["lang"]=="kr")
 
-{}
+{
 
-if($lang=="jp")
+$langs="jp";
 
-{}
+
+$index_local="현지";
+$index_console="콘솔";
+$index_word="워드";
+$index_subscription="신청";
+$index_channel="채널";
+$index_message="메시지";
+$index_asset="유산";
+$index_tag="TAG";
+$index_assetexplorer="ASSET EXPLORER";
+$index_ipfsexplorer="IPFS EXPLORER";
+$index_checkasset="CHECK ASSETS AVAILIABLE";
+
+$index_linkipfs="IPFS URL DIRECT";
+$index_ipfsupload="IPFS UPLOAD";
+
+$keva_myaddress="KEVA ADDRESS";
+$keva_newspace="CREATE NEW SPACE";
+$keva_free="GET FREE CREDIT";
+$keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";
+
+$keva_submit="SUBMIT";
+$keva_kaw="KAW";
+
+$keva_showall="SHOW ALL CONTENTS";
+$keva_showlist="SHOW LIST";
+$keva_addnew="CREATE NEW WORD";
+$keva_addnewmemo="one small step, one giant leap";
+$keva_subscribe="SUBSCRIBE";
+$keva_subscription="SUBSCRIPTION";
+$keva_linkipfs="LINK IPFS";
+$keva_edit="EDIT";
+$keva_delete="DELETE";
+$keva_broadcast="BROADCAST";
+$keva_galaxylink="GALAXY LINK";
+
+}
+
+if($lang=="jp"  or $_REQUEST["lang"]=="jp")
+
+{
+
+$langs="en";
+
+$index_local="LOCAL";
+$index_console="コンソール";
+$index_word="WORD";
+$index_subscription="サブスクリプション";
+$index_channel="CHANNEL";
+$index_message="MESSAGE";
+$index_asset="ASSET";
+$index_tag="TAG";
+$index_assetexplorer="ASSET EXPLORER";
+$index_ipfsexplorer="IPFS EXPLORER";
+$index_checkasset="CHECK ASSETS AVAILIABLE";
+
+$index_linkipfs="IPFS URL DIRECT";
+$index_ipfsupload="IPFS UPLOAD";
+
+$keva_myaddress="KEVA ADDRESS";
+$keva_newspace="CREATE NEW SPACE";
+$keva_free="GET FREE CREDIT";
+$keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";
+
+$keva_submit="SUBMIT";
+$keva_kaw="KAW";
+
+$keva_showall="SHOW ALL CONTENTS";
+$keva_showlist="SHOW LIST";
+$keva_addnew="CREATE NEW WORD";
+$keva_addnewmemo="one small step, one giant leap";
+$keva_subscribe="SUBSCRIBE";
+$keva_subscription="SUBSCRIPTION";
+$keva_linkipfs="LINK IPFS";
+$keva_edit="EDIT";
+$keva_delete="DELETE";
+$keva_broadcast="BROADCAST";
+$keva_galaxylink="GALAXY LINK";
+
+}
 
 
 ?>

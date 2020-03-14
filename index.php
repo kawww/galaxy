@@ -248,7 +248,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo "<div id=\"nav\"><ul>";
 		
-		echo"<a href=http://galaxyos.io><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;height:100px;border: 1px solid #59fbea;background-color:#0b0c0d;display:block;line-height:30px;\"><br><a href=http://galaxyos.io><b>GALAXY</b></a></li>";	
+		echo"<a href=?lang=".$langs."><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;height:100px;border: 1px solid #59fbea;background-color:#0b0c0d;display:block;line-height:30px;\"><br><b>GALAXY</b></a></li>";	
 
 		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_console." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
@@ -397,8 +397,9 @@ if(isset($_REQUEST["asset"])) {
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
 
-if($_REQUEST["asset"]=="RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf"){
-echo "<div id=\"nav\"><ul>";
+		if($_REQUEST["asset"]=="RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf"){
+		
+		echo "<div id=\"nav\"><ul>";
 		
 		
 		echo"<a href=index.php?asset=GETTING_STARTED ><li style=\"height:100px;color:#bbb;\"><h2>[ GETTING STARTED ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GETTING_STARTED</p></a></li>";
