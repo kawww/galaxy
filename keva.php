@@ -500,7 +500,7 @@ if(isset($_REQ["mode"])){
 					foreach ($namespace as $q=>$w) {
 
 
-						if($w['displayName']=="SUBSCRIPTION")
+						if($w['displayName']==$keva_subscription)
 							
 											{
 									
@@ -889,7 +889,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 
-		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_edit."</a> [ <a href=subscription.php?block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
+		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_edit." ]</a> ".$keva_kcode." [ <a href=subscription.php?block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
 		
 			echo "<a href=?asset=".$asset."&key=".$fkey."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_subscribe."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
 
@@ -917,7 +917,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 //galaxylink
 
-			echo "<a href=subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_galaxylink."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
+			echo "<a href=http://galaxyos.io/subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_galaxylink."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/subscription.php?txid=".$txx."</font></a></li>";
 
 
 
@@ -954,7 +954,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 		echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><a href=\"https://explorer.kevacoin.org/ns/html/".$asset."\" target=_blank><h4>".$title."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$asset."</p></li>";
 
 
-		if(strlen($_REQ["showall"])>1){echo "<a href=?asset=".$asset."&showall=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_showlist."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";}else {echo "<a href=?asset=".$asset."&showall=11><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_showall."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+		if(strlen($_REQ["showall"])>1){echo "<a href=?asset=".$asset."&showall=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_showlist."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";echo "<a href=?asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_subscribe."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";}else {echo "<a href=?asset=".$asset."&showall=11><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_showall."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
 
 
 

@@ -307,11 +307,13 @@ if(isset($block) & is_numeric($block)==true)
 				
 					$arr = explode(' ', $op_return); 
 
-					if($arr[0] == 'OP_UNKNOWN') 
+					if($arr[0] == 'OP_KEVA_PUT') 
 								{
-		
+
+								 $cona=$arr[1];
 								 $cons=$arr[2];
 								 $conk=$arr[3];
+								 $sadd=hex2bin($cona);
 								 $snewkey=hex2bin($cons);
 								 $sinfo=hex2bin($conk);
 
@@ -531,7 +533,7 @@ if(isset($txid) & strlen($txid)=="64")
 				
 					$arr = explode(' ', $op_return); 
 
-					if($arr[0] == 'OP_UNKNOWN') 
+					if($arr[0] == 'OP_KEVA_PUT') 
 						{
 
 					 $cons=$arr[2];
@@ -905,7 +907,7 @@ if(strlen($ipfs)=="64")
 				
 					$arr = explode(' ', $op_return); 
 
-					if($arr[0] == 'OP_UNKNOWN') 
+					if($arr[0] == 'OP_KEVA_PUT') 
 						{
 
 					 $title=hex2bin($arr[2]);
