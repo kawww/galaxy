@@ -250,40 +250,41 @@ if(!isset($_REQUEST["asset"]))
 		
 		echo"<a href=http://galaxyos.io><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;height:100px;border: 1px solid #59fbea;background-color:#0b0c0d;display:block;line-height:30px;\"><br><a href=http://galaxyos.io><b>GALAXY</b></a></li>";	
 
-		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CONSOLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_console." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
 		if($keva=="on"){
-		echo"<a href=keva.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WORD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	}else
-			{echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	}
+		echo"<a href=keva.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_word." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	}else
+		
+		{echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	}
 
-		echo"<a href=subscription.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SUBSCRIPTION
- ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=subscription.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_subscription."
+ ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
- 		echo"<a href=channel.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CHANNEL ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+ 		echo"<a href=channel.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_channel." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
 		
-		echo"<a href=message.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ MESSAGE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=message.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_message." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
 
-		echo"<a href=asset.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=asset.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_asset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
-		echo"<a href=tag.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ TAG ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=tag.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_tag." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
 
 	
 
 		
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
 
 	
 
-		echo"<a href=?asset=RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET EXPLORER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";
+		echo"<a href=?asset=RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_assetexplorer." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
 
-		echo"<a href=explorer.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS EXPLORER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";
+		echo"<a href=explorer.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsexplorer." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
 
-		echo"<a href=check.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ CHECK ASSETS AVAILIABLE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LOCAL</p></a></li>";	
+		echo"<a href=check.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_checkasset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
 
 		echo "</ul></div>";
@@ -291,13 +292,13 @@ if(!isset($_REQUEST["asset"]))
 
 		echo "<div id=\"nav\"><ul>";
 
-		echo"<a href=http://linkipfs.com/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS URL DIRECT ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINKIPFS.COM</p></a></li>";
+		echo"<a href=http://linkipfs.com/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_linkipfs." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINKIPFS.COM</p></a></li>";
 
-		echo"<a href=https://globalupload.io  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GLOBALUPLOAD.IO</p></a></li>";
+		echo"<a href=https://globalupload.io  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsupload." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GLOBALUPLOAD.IO</p></a></li>";
 
-		echo"<a href=https://pinata.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>PINATA.CLOUD</p></a></li>";
+		echo"<a href=https://pinata.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsupload." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>PINATA.CLOUD</p></a></li>";
 
-		echo"<a href=https://temporal.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS UPLOAD ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>TEMPORAL.CLOUD</p></a></li>";
+		echo"<a href=https://temporal.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsupload." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>TEMPORAL.CLOUD</p></a></li>";
 
 
 

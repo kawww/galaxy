@@ -1,8 +1,18 @@
 <?php
 
+//language
+
+$lang="en";
+
+//freekeva
+
+$freekeva="http://galaxyos.io/";
+
 //on/off
 
 $webmode=0;
+
+
 
 if($webmode==1){
 
@@ -581,5 +591,98 @@ if (!(strlen($asset) % 4) && strlen($asset)){
  }
  return $x_value;
 }
+
+//language
+
+if($lang=="en")
+
+{
+
+$index_local="LOCAL";
+$index_console="CONSOLE";
+$index_word="WORD";
+$index_subscription="SUBSCRIPTION";
+$index_channel="CHANNEL";
+$index_message="MESSAGE";
+$index_asset="ASSET";
+$index_tag="TAG";
+$index_assetexplorer="ASSET EXPLORER";
+$index_ipfsexplorer="IPFS EXPLORER";
+$index_checkasset="CHECK ASSETS AVAILIABLE";
+
+$index_linkipfs="IPFS URL DIRECT";
+$index_ipfsupload="IPFS UPLOAD";
+
+$keva_myaddress="KEVA ADDRESS";
+$keva_newspace="CREATE NEW SPACE";
+$keva_free="GET FREE CREDIT";
+$keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";
+
+$keva_submit="SUBMIT";
+$keva_kaw="KAW";
+
+$keva_showall="SHOW ALL CONTENTS";
+$keva_showlist="SHOW LIST";
+$keva_addnew="CREATE NEW WORD";
+$keva_addnewmemo="one small step, one giant leap";
+$keva_subscribe="SUBSCRIBE";
+$keva_linkipfs="LINK IPFS";
+$keva_edit="EDIT";
+$keva_delete="DELETE";
+$keva_broadcast="BROADCAST";
+$keva_galaxylink="GALAXY LINK";
+
+
+
+}
+
+if($lang=="cn")
+
+{
+
+
+$index_local="本地";
+$index_console="控制台";
+$index_word="链文字";
+$index_subscription="订阅";
+$index_channel="频道";
+$index_message="消息";
+$index_asset="资产";
+$index_tag="标签";
+$index_assetexplorer="资产浏览器";
+$index_ipfsexplorer="IPFS浏览器";
+$index_checkasset="查询资产注册";
+
+$index_linkipfs="IPFS网址跳转";
+$index_ipfsupload="IPFS上传";
+
+
+$keva_newspace="创建新空间";
+$keva_newspacememo="通过区块链到银河每一个角落";
+$keva_submit="写入区块链";
+$keva_kaw="搜索";
+$keva_showall="显示全部内容";
+$keva_showlist="显示列表";
+$keva_addnew="新建链文档";
+$keva_addnewmemo="一小步, 亦是一大步";
+$keva_subscribe="订阅空间";
+$keva_linkipfs="生成IPFS链接";
+$keva_edit="[ 编辑 ] K码";
+$keva_delete="删除";
+$keva_broadcast="广播";
+$keva_galaxylink="银河链接";
+
+
+
+}
+
+if($lang=="kr")
+
+{}
+
+if($lang=="jp")
+
+{}
+
 
 ?>

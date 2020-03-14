@@ -292,14 +292,118 @@ $age= $rpc->keva_put($_REQ["asset"],$_REQ["title"],$forsub);
 
 $url = "?asset=".$_REQ["asset"]; 
 
-
-
-
-
 echo "<script>window.location.href=decodeURIComponent('keva.php".$url."')</script>";
 
 
 }
+
+
+//creat new namespace
+
+if(isset($_REQ["namep"])) {
+
+$forname=$_REQ["namep"];
+
+$age= $rpc->keva_namespace($forname);
+
+echo "<script>window.location.href=decodeURIComponent('keva.php')</script>";
+
+
+}
+
+//freekeva
+
+if(isset($_REQ["address"])) {
+
+$forfree=$_REQ["address"];
+
+$checkaddress= $rpc->listtransactions("credit",100);
+
+$listaccount = $rpc->listaccounts();
+
+if($listaccount['credit']<1){echo "<script>alert('NO CREDIT AVAILABLE, PLEASE WAIT NEXT TIME');history.go(-1);</script>";exit;}
+
+$ok=0;
+
+		$farr=array();
+		$ftotal=array();
+
+		foreach($checkaddress as $freetx)
+
+			{
+			
+			extract($freetx);
+
+			
+
+			$farr["fcon"]=$confirmations;
+			$farr["fadd"]=$address;
+		
+			array_push($ftotal,$farr);
+
+			}
+
+
+			asort($ftotal);
+
+		foreach($ftotal as $findadd){
+
+
+
+
+									
+						if($findadd['fadd']==$forfree)
+
+										{
+							
+										
+
+										if($findadd['fcon']>30)
+
+											{
+
+										$age= $rpc->sendfrom("credit",$forfree,"0.1");
+
+										echo "<script>alert('GET 1 CREDIT SUCCESS');history.go(-1);</script>";
+
+
+
+										exit;
+
+											}
+
+										else
+								
+											{ 
+
+										$left=30-$findadd['fcon'];
+		
+									
+										echo "<script>alert('WAIT ".$left." BLOCKS (2min/block)');history.go(-1);</script>";
+										
+										exit;
+
+											}
+
+										}
+										else
+
+
+										{
+
+											$ok=9;
+										}
+										
+									}
+										if($ok=9)
+											
+											{$age= $rpc->sendfrom("credit",$forfree,"0.1");
+											
+										echo "<script>alert('GET CREDIT SUCCESS');history.go(-1);</script>";
+											}
+
+						}
+	
 
 //block
 
@@ -331,13 +435,15 @@ if(isset($_REQ["mode"])){
 				
 			echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=keva.php><b>GALAXY</b></a></li></ul>";	
 
-			echo "<ul><li style=\"height:670px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\"  style=\"width:90%;\" value=".$key."><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
+			
+
+			echo "<ul><li style=\"height:670px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\"  style=\"width:90%;\" placeholder=\"TITLE\" value=".$key."><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
 
 			echo "<br><textarea rows=\"1\" cols=\"150\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script></textarea>";
 		
 			echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
 
-			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">1500</span> [ ".$_REQ['nameid']." ] <br><br><input type=\"submit\" value=\"SUBMIT\"> </li></ul></div></form></div>";
+			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">1500</span> [ ".$_REQ['nameid']." ] <br><br><input type=\"submit\" value=\"".$keva_submit."\"> </li></ul></div></form></div>";
 
 			exit;
 			
@@ -412,9 +518,37 @@ if(isset($_REQ["mode"])){
 		
 		}
 
+//create new space
+
+if($_REQ["mode"]==4  & $keva_add=="on"){
+		
+				
+			echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=keva.php><b>GALAXY</b></a></li></ul>";	
+
+			echo "<ul><li style=\"height:270px;\"><br><input type=\"text\" name=\"namep\" class=\"textarea-inherit\"  style=\"width:90%;\">";
+		
+			echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
+
+			echo "<br><br><br><br><input type=\"submit\" value=\"".$keva_submit."\"> </li></ul></div></form></div>";
+
+			exit;
+			
+			}
 
 
+//delete
 
+			if($_REQ["mode"]==5 & $keva_add=="on")
+
+			{
+			
+			$age= $rpc->keva_delete($_REQ["asset"],$_REQ["title"]);
+
+			$url = "?asset=".$_REQ["asset"]; 
+
+			echo "<script>window.location.href=decodeURIComponent('keva.php".$url."')</script>";
+			
+			}
 
 //list keva namespace
 
@@ -430,9 +564,9 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"NAME ADDRESS, BLOCK NUMBER...\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
-		echo "<input type=\"submit\" value=\"KAW\"></li></ul></div></form></div>";
+		echo "<input type=\"submit\" value=\"".$keva_kaw."\"></li></ul></div></form></div>";
 	
-
+//list
 
 		$age= $rpc->keva_list_namespaces();
 
@@ -448,9 +582,68 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 					exit;
 				}
 
+//credit account
+
+	$messageacc="credit";
+
+	$listaccount = $rpc->listaccounts();
+				
+				
+
+			if(isset($listaccount['credit']))
+			
+					{
+						$accaddress=$rpc->getaddressesbyaccount($messageacc);
+					
+						$shopaddress=$accaddress[0];
+						
+						$shopbalance=$rpc->getbalance($shopaddress);
+
+						$errorshop = $rpc->error;
+
+						if($errorshop != "") 
+			
+						{
+							echo "<p>&nbsp;&nbsp;error,message address</p>";
+							exit;
+						}
+					}
+			
+					else
+
+					{
+
+				
+
+					$shopaddress = $rpc->getnewaddress($messageacc);
+
+					$shopbalance=$rpc->getbalance($shopaddress);
+
+					$errorshop = $rpc->error;
+
+					if($errorshop != "") 
+		
+						{
+							echo "<p>&nbsp;&nbsp;Error,create new messages</p>";
+						exit;
+						}
+					}
+
+			$credit=intval(($listaccount['credit'])*10);
 
 
 			echo "<div id=\"universe\" class=\"crt\"><div id=\"nav\"><ul>";
+
+			echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_myaddress."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$shopaddress."</p></li>";
+
+			if($keva_add=="on"){echo "<a href=?asset=".$asset."&mode=4&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_newspace."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:14px\">".$keva_newspacememo."</p></a></li>";
+			
+			echo "<a href=".$freekeva."keva.php?address=".$shopaddress."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_free."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$credit."</p></a></li>";
+			
+			
+			}
+
+
 
 
 			foreach($age as $x_value=>$x)
@@ -502,7 +695,7 @@ if(isset($_REQ["asset"]) or isset($_REQ["txid"]))
 		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"title\" maxlength=\"34\" placeholder=\"KEY WORDS\">";
 
 		echo "<input type=\"hidden\" name=\"asset\" value=".$_REQ["asset"]." />";
-		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
+		echo "<input type=\"submit\" value=\"".$keva_kaw."\"></div></form></div>";
 	
 
 
@@ -561,12 +754,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 			If($key=="ID"){$title=$value;}
 			
 			
-		
-
-
-
-
-
+	
 			}
 
 
@@ -633,7 +821,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 											
 
 													else
-  {
+											{
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
 												
 
@@ -701,17 +889,19 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 
-		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>EDIT</a> [ <a href=subscription.php?block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
+		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><p><a href=?mode=1&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_edit."</a> [ <a href=subscription.php?block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
 		
-			echo "<a href=?asset=".$asset."&key=".$fkey."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SUBSCRIBE</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
-			}
-			else
+			echo "<a href=?asset=".$asset."&key=".$fkey."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_subscribe."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
 
-			{
+			echo "<a href=?mode=5&asset=".$asset."&title=".$fkey."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_delete."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$key."</font> ".$addend."</li>";
+										}
+										else
+
+										{
 				
 			echo "</ul><ul><p><a href=subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TXID</a> [ <a href=subscription.php?block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".$txx."</font></li>";
 			
-			}
+										}
 
 		
 //linkipfs	
@@ -719,16 +909,20 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 			$linkipfs = json_decode($returnContent, true);
 
 
-			echo "<a href=?asset=".$asset."&key=".$fkey."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>LINK IPFS</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=3>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
+			echo "<a href=?asset=".$asset."&key=".$fkey."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_linkipfs."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 
 //broadcast
 
-			echo "<a href=channel.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>BROADCAST</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
+			echo "<a href=channel.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_broadcast."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
+
+//galaxylink
+
+			echo "<a href=subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_galaxylink."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
 
 
 
-				}
-			}
+									}
+								}
 
 
 
@@ -736,19 +930,21 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 							}
 //article over
-	else
+					else
 //menu
 							{
 
 
 			//menu
+
+
 			$namespace= $rpc->keva_list_namespaces();
 
 			foreach ($namespace as $q=>$w) {
 
 		
 
-						if($w['namespaceId']==$asset){$title=$w['displayName'];}
+			if($w['namespaceId']==$asset){$title=$w['displayName'];}
 
 			}
 
@@ -758,7 +954,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 		echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><a href=\"https://explorer.kevacoin.org/ns/html/".$asset."\" target=_blank><h4>".$title."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$asset."</p></li>";
 
 
-		if(strlen($_REQ["showall"])>1){echo "<a href=?asset=".$asset."&showall=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SHOW LIST</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";}else {echo "<a href=?asset=".$asset."&showall=11><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SHOW ALL CONTENTS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+		if(strlen($_REQ["showall"])>1){echo "<a href=?asset=".$asset."&showall=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_showlist."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";}else {echo "<a href=?asset=".$asset."&showall=11><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_showall."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
 
 
 
@@ -767,29 +963,29 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 
-extract($vadd);
+		extract($vadd);
 
 
-$linkipfs = json_decode($returnContent, true);
+		$linkipfs = json_decode($returnContent, true);
 
 
-if($ismine=="1"  & $keva_add=="on"){echo "<a href=?asset=".$asset."&mode=1&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>ADD NEW</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+		if($ismine=="1"  & $keva_add=="on"){echo "<a href=?asset=".$asset."&mode=1&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_addnew."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$keva_addnewmemo."</font></a></li>";
 
-echo "<a href=?asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>SUBSCRIBE</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$title."</font> ".$addend."</li>";}
-
-
-
-
-}
-
-
-	$sname=$_REQ["sname"];
-			if(!$_REQ["sname"]){$sname=strtoupper($title);}
+		echo "<a href=?asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_subscribe."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";}
 
 
 
 
-echo "<a href=?asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>LINK IPFS</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=3>".$linkipfs['data']['hash_urls'][0]."</font></a></li></ul><div id=\"nav\"><ul>";
+			}
+
+
+				$sname=$_REQ["sname"];
+				if(!$_REQ["sname"]){$sname=strtoupper($title);}
+
+
+
+
+				echo "<a href=?asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_linkipfs."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=3>".$linkipfs['data']['hash_urls'][0]."</font></a></li></ul><div id=\"nav\"><ul>";
 
 
 
@@ -800,26 +996,36 @@ foreach ($listasset as $k=>$v)
 			extract($v);
 
 		
-		
 			$x_value="<h4>".$key."</h4>";
+			$valuex=$value;
+			$key=trim($key);
 
-$key=trim($key);
 
 if(strlen($_REQ["showall"])<2)
 	
 			{
+			
 
-			if(stristr($value,"decodeURIComponent") == true){$valuex="<font size=2>".$txx." <a href=?mode=1&asset=".$asset."&title=".$key.">[edit]</a></font>";}
+			if(stristr($value,"decodeURIComponent") == true){
+				
+				echo $dkey;
 
-			if(strlen($value)==34){$valuex="<font size=2>".$txx." [ ".$heightm." ] <a href=?mode=1&asset=".$asset."&title=".$key.">[edit]</a></font>";}
+				$valuex="<font size=2>".$txx." <a href=?mode=1&asset=".$asset."&title=".$key.">[ ".$keva_edit." ]</a> <a href=?mode=5&asset=".$asset."&title=".$key.">[ ".$keva_delete." ]</a></font>";}
+
+			if(strlen($value)==34){
+
+				$valuex="<font size=2>".$txx." [ ".$heightx." ] <a href=?mode=1&asset=".$asset."&title=".$key.">[ ".$keva_edit." ]</a> <a href=?mode=5&asset=".$asset."&title=".$key.">[ ".$keva_delete." ]</a></font>";}
 
 
 
-			if(strlen($value)>18 & stristr($value,"decodeURIComponent")== false & strlen($value)<>34){$valuex=mb_substr($value,0,18,'utf8')."....";}
+			if(strlen($value)>18 & stristr($value,"decodeURIComponent")== false & strlen($value)<>34){
+
+				$valuex=mb_substr($value,0,18,'utf8')."....";}
+
+			
+
 
 		
-													
-
 			$key=str_replace(" ","%20",$key);
 
 			
@@ -838,7 +1044,7 @@ if(strlen($_REQ["showall"])<2)
 
 			else
 
-				{
+			{
 
 			if(stristr($value,"decodeURIComponent") == true){$value=$txx;}
 
@@ -854,7 +1060,7 @@ if(strlen($_REQ["showall"])<2)
 
 				
 
-			}
+					}
 
 			}
 
