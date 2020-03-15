@@ -740,8 +740,59 @@ if(isset($_REQ["asset"]))
 	{ 
 
 	if(isset($_REQ["uname"])){$uname=$_REQ["uname"];}else{$uname=$_REQ["asset"];}
+
+	//message
+
+	if(isset($_REQ["message"])){
+
+				if(isset($_REQ["ipfs"])){$messc=$_REQ["ipfs"];}
+
+				if(isset($_REQ["txid"])){$messc=$_REQ["txid"];}
+
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><form action=\"\" method=\"post\" >";	
+
+								echo "<br><p style=\"font-size:24px\">[ <font color=white>".$uname."</font> ]  (".$_REQ["left"].")</p>";
+
+								echo "<input type=\"text\" name=\"assetadd\" class=\"textarea-inherit\"  style=\"width:90%;\" placeholder=\"to address\">";
+		
+								echo "<input type=\"hidden\" name=\"assetname\" value=\"".$_REQ["asset"]."\" />";
+								echo "<input type=\"hidden\" name=\"assetmemo\" value=\"".$messc."\" />";
+
+								echo "<br><br><br><br><input type=\"submit\" value=\"".$keva_send."\"> </form>";
+
+
+	}
+	else{
+	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:90%;\"><br><br><a href=?asset=".$_REQ["asset"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&confirm=1><font size=5><b> CONFIRM BROADCAST [ ".$uname." ]</b></font></a>";}
+
+
+	if(isset($_REQ["assetadd"]) & isset($_REQ["assetname"]) & isset($_REQ["assetmemo"]))
+
+		{
+		
+		
+
+		$gogogo= $rpc->transfer($_REQ["assetname"],1,$_REQ["assetadd"],$_REQ["assetmemo"]);
+		
+		$error = $rpc->error;
+
+				if($error != "") 
+		
+				{
 	
-	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:90%;\"><br><br><a href=?asset=".$_REQ["asset"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&confirm=1><font size=5><b> CONFIRM BROADCAST [ ".$uname." ]</b></font></a>";
+					echo "<br><br>Error ADDRESS";
+					exit;
+				}
+
+				else
+
+				{
+					echo "<br><br>SUCCESS";
+				}
+
+				echo "</li></ul>";
+		}
+
 
 			if(isset($_REQ["confirm"]))
 				

@@ -236,6 +236,86 @@ $rpc = new Raven();
 
 $_REQ = array_merge($_GET, $_POST);
 
+
+$turn=9;
+$ux=9;
+
+$unicode=" ";
+$unioff=" ";
+$sort=9;
+$sortnum=9;
+
+
+if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
+
+if(isset($_REQ["u"])){$ux=$_REQ["u"];}
+
+
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
+
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"ASSET\">";
+
+		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
+		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
+	
+
+
+//broadcast
+
+if(isset($_REQ["txid"]) or isset($_REQ["ipfs"]))
+	
+	{ 
+
+$assetlist=$rpc->listmyassets();
+
+if(isset($_REQ["ipfs"])){$messc=$_REQ["ipfs"];}
+
+if(isset($_REQ["txid"])){$messc=$_REQ["txid"];}
+
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=channel.php?txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"].">[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=channel.php?txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&unicode=1>[ TURN-ON ]</a><br>";}
+
+echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
+
+echo "<a href=channel.php><li style=\"background-color: rgb(0, 79, 74);height:120px;display:block;padding-top:0px;\"><h4>MESSAGE</h4></a></li>";
+
+
+
+
+foreach($assetlist as $asset=>$num)
+
+		{
+
+if(stristr($asset,"!")==false)
+	
+				{
+						
+						$assetx=$asset;
+
+						$x_value=$assetx;
+
+						$assetlink=$x_value;
+						$assettwo=$x_value;
+
+		if($turn==1)
+
+		{
+		$x_value=uniworld($x_value,$assetlink,$assettwo);
+		}
+	$x_value=str_replace("U+","",$x_value);
+
+echo "<a href=subscription.php?&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
+								
+
+						}
+
+		}
+
+		exit;
+	}
+
+//message account
+
+
 $messageacc="message";
 
 	$listaccount = $rpc->listaccounts();
@@ -282,27 +362,7 @@ $messageacc="message";
 
 	
 
-$turn=9;
-$ux=9;
 
-$unicode=" ";
-$unioff=" ";
-$sort=9;
-$sortnum=9;
-
-
-if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
-
-if(isset($_REQ["u"])){$ux=$_REQ["u"];}
-
-
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
-
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"ASSET\">";
-
-		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
-		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
-	
 $blocknum=$rpc->getblockcount();
 $blocknum=$blocknum-$message_num;
 $blockhash=$rpc->getblockhash($blocknum);
