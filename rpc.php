@@ -616,6 +616,9 @@ $index_checkasset="CHECK ASSETS AVAILIABLE";
 
 $index_linkipfs="IPFS URL DIRECT";
 $index_ipfsupload="IPFS UPLOAD";
+$index_magnet="MAGNET TXID";
+
+
 
 $keva_myaddress="KEVA ADDRESS";
 $keva_newspace="CREATE NEW SPACE";
@@ -636,6 +639,10 @@ $keva_edit="EDIT";
 $keva_delete="DELETE";
 $keva_broadcast="BROADCAST";
 $keva_galaxylink="GALAXY LINK";
+
+$keva_message="MESSAGE";
+$keva_send="SEND";
+
 
 
 
@@ -694,37 +701,37 @@ $langs="jp";
 
 $index_local="현지";
 $index_console="콘솔";
-$index_word="워드";
+$index_word="WORD";
 $index_subscription="신청";
 $index_channel="채널";
 $index_message="메시지";
 $index_asset="유산";
-$index_tag="TAG";
-$index_assetexplorer="ASSET EXPLORER";
-$index_ipfsexplorer="IPFS EXPLORER";
-$index_checkasset="CHECK ASSETS AVAILIABLE";
+$index_tag="꼬리표";
+$index_assetexplorer="";
+$index_ipfsexplorer="자산 탐색기";
+$index_checkasset="자산 확인";
 
-$index_linkipfs="IPFS URL DIRECT";
+$index_linkipfs="IPFS URL 직접";
 $index_ipfsupload="IPFS UPLOAD";
 
 $keva_myaddress="KEVA ADDRESS";
-$keva_newspace="CREATE NEW SPACE";
-$keva_free="GET FREE CREDIT";
+$keva_newspace="새로운 공간 만들기";
+$keva_free="무료 크레딧 받기";
 $keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";
 
 $keva_submit="SUBMIT";
 $keva_kaw="KAW";
 
-$keva_showall="SHOW ALL CONTENTS";
-$keva_showlist="SHOW LIST";
-$keva_addnew="CREATE NEW WORD";
+$keva_showall="모든 콘텐츠 표시";
+$keva_showlist="쇼리스트";
+$keva_addnew="새로운 단어 만들기";
 $keva_addnewmemo="one small step, one giant leap";
-$keva_subscribe="SUBSCRIBE";
+$keva_subscribe="구독";
 $keva_subscription="SUBSCRIPTION";
-$keva_linkipfs="LINK IPFS";
-$keva_edit="EDIT";
-$keva_delete="DELETE";
-$keva_broadcast="BROADCAST";
+$keva_linkipfs="링크 IPFS";
+$keva_edit="편집하다";
+$keva_delete="지우다";
+$keva_broadcast="방송";
 $keva_galaxylink="GALAXY LINK";
 
 }
@@ -739,35 +746,35 @@ $index_local="LOCAL";
 $index_console="コンソール";
 $index_word="WORD";
 $index_subscription="サブスクリプション";
-$index_channel="CHANNEL";
-$index_message="MESSAGE";
-$index_asset="ASSET";
-$index_tag="TAG";
-$index_assetexplorer="ASSET EXPLORER";
+$index_channel="チャネル";
+$index_message="メッセージ";
+$index_asset="資産";
+$index_tag="ラベル";
+$index_assetexplorer="アセットエクスプローラー";
 $index_ipfsexplorer="IPFS EXPLORER";
-$index_checkasset="CHECK ASSETS AVAILIABLE";
+$index_checkasset="資産の確認";
 
 $index_linkipfs="IPFS URL DIRECT";
 $index_ipfsupload="IPFS UPLOAD";
 
 $keva_myaddress="KEVA ADDRESS";
-$keva_newspace="CREATE NEW SPACE";
-$keva_free="GET FREE CREDIT";
+$keva_newspace="新しいスペースを作成";
+$keva_free="無料クレジットを取得";
 $keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";
 
 $keva_submit="SUBMIT";
 $keva_kaw="KAW";
 
-$keva_showall="SHOW ALL CONTENTS";
-$keva_showlist="SHOW LIST";
-$keva_addnew="CREATE NEW WORD";
+$keva_showall="すべてのコンテンツを表示";
+$keva_showlist="リストを表示";
+$keva_addnew="新しい単語を作成";
 $keva_addnewmemo="one small step, one giant leap";
-$keva_subscribe="SUBSCRIBE";
+$keva_subscribe="申し込む";
 $keva_subscription="SUBSCRIPTION";
 $keva_linkipfs="LINK IPFS";
-$keva_edit="EDIT";
-$keva_delete="DELETE";
-$keva_broadcast="BROADCAST";
+$keva_edit="編集";
+$keva_delete="削除";
+$keva_broadcast="放送";
 $keva_galaxylink="GALAXY LINK";
 
 }

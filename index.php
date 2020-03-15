@@ -294,6 +294,8 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=http://linkipfs.com/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_linkipfs." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINKIPFS.COM</p></a></li>";
 
+		echo"<a href=https://lab.nbits.dev/raven-magnet/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_magnet." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LAB.NBITS.DEV</p></a></li>";	
+
 		echo"<a href=https://globalupload.io  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsupload." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GLOBALUPLOAD.IO</p></a></li>";
 
 		echo"<a href=https://pinata.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsupload." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>PINATA.CLOUD</p></a></li>";
@@ -306,7 +308,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=https://ipfs.io/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS.IO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
 		
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+		
 
 		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
 		

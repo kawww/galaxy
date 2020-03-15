@@ -427,7 +427,7 @@ if(isset($_REQ["mode"])){
 
 					extract($infox);
 		
-					$key=str_replace(" ","_",$key);
+					//$key=str_replace(" ","_",$key);
 
 								}
 
@@ -437,7 +437,7 @@ if(isset($_REQ["mode"])){
 
 			
 
-			echo "<ul><li style=\"height:670px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\"  style=\"width:90%;\" placeholder=\"TITLE\" value=".$key."><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
+			echo "<ul><li style=\"height:670px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\"  style=\"width:90%;\" placeholder=\"TITLE\" value=\"".$key."\"><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
 
 			echo "<br><textarea rows=\"1\" cols=\"150\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script></textarea>";
 		
@@ -766,7 +766,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 			if(isset($_REQ["key"])) {
 
-			$kkey=$_REQ["key"];
+			$kkey=urldecode($_REQ["key"]);
 
 
 			//value
@@ -782,8 +782,13 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 							{
 							
 								extract($v);
+
+								
+
+								$key1=bin2hex(trim($key));
+								$key2=bin2hex(trim($kkey));
 		
-								if($key==$kkey){
+								if($key1==$key2){
 
 								$fkey=$key;
 
@@ -915,6 +920,10 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 			echo "<a href=channel.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_broadcast."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
 
+//message
+
+			echo "<a href=message.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_message."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
+
 //galaxylink
 
 			echo "<a href=http://galaxyos.io/subscription.php?txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$keva_galaxylink."</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/subscription.php?txid=".$txx."</font></a></li>";
@@ -999,6 +1008,7 @@ foreach ($listasset as $k=>$v)
 			$x_value="<h4>".$key."</h4>";
 			$valuex=$value;
 			$key=trim($key);
+			$keylink=urlencode($key);
 
 
 if(strlen($_REQ["showall"])<2)
@@ -1025,7 +1035,7 @@ if(strlen($_REQ["showall"])<2)
 			
 
 
-		
+			
 			$key=str_replace(" ","%20",$key);
 
 			
@@ -1037,7 +1047,7 @@ if(strlen($_REQ["showall"])<2)
 
 			if(!isset($_REQ["title"])){
 
-			echo "<a href=?asset=".$asset."&title=".$key."&key=".$key."&sname=".$_REQ["sname"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex."</p></li>";
+			echo "<a href=?asset=".$asset."&title=".$keylink."&key=".$key."&sname=".$_REQ["sname"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex."</p></li>";
 							}
 
 			}
