@@ -421,9 +421,64 @@ function replaceString($search,$replace,$content,$limit=1){
     return preg_replace($search,$replace,$content,$limit);
 }
 
-
+//unicode transform
 
 function uniworld($x_value,$address,$asset) {
+
+	
+$testvalue = $x_value;
+
+//rasset
+
+$letterr="$";
+$lettera="!";
+
+
+if($letterr==substr($x_value,0,1)){ 
+
+$x_value=str_replace("$","",$x_value);
+$address=str_replace("$","",$address);
+$asset=str_replace("$","",$asset);
+
+$lettercheck=1;
+}
+
+if($lettera==substr($x_value,-1)){ 
+	
+$x_value=str_replace("!","",$x_value);
+$address=str_replace("!","",$address);
+$asset=str_replace("!","",$asset);
+$lettercheck=2;
+}
+
+//test
+
+$search = array('g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+
+    foreach($search as $value){
+
+	if(preg_match ( "'/'", $testvalue)){
+
+			list($aleft,$aright)=explode("/",$testvalue);
+		
+		if(stristr($aleft,$value)!==false & stristr($aright,$value)!==false)
+
+				{ return $x_value;}
+	}
+
+	if(preg_match ( "'#'", $testvalue)){
+
+			list($aleft,$aright)=explode("#",$testvalue);
+		
+		if(stristr($aleft,$value)!==false & stristr($aright,$value)!==false)
+
+				{ return $x_value;}
+
+	}
+       if(preg_match ( "'#'", $testvalue)==false & preg_match ( "'/'", $testvalue)==false & stristr($testvalue,$value)!==false){
+           return $x_value;
+				}
+    }
 
 //u.
 
@@ -591,8 +646,16 @@ if (!(strlen($asset) % 4) && strlen($asset)){
 								}}
 	}
  }
+
+if($lettercheck==1){ $x_value="$".$x_value;}
+if($lettercheck==2){ $x_value=$x_value."!";}
+
  return $x_value;
 }
+
+
+
+
 
 //language
 

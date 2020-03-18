@@ -272,11 +272,11 @@ if(isset($_REQ["ipfs"])){$messc=$_REQ["ipfs"];}
 
 if(isset($_REQ["txid"])){$messc=$_REQ["txid"];}
 
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=channel.php?txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"].">[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=channel.php?txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&unicode=1>[ TURN-ON ]</a><br>";}
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=message.php?txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"].">[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=message.php?txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&unicode=1>[ TURN-ON ]</a><br>";}
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=channel.php><li style=\"background-color: rgb(0, 79, 74);height:120px;display:block;padding-top:0px;\"><h4>MESSAGE</h4></a></li>";
+echo "<a href=message.php><li style=\"background-color: rgb(0, 79, 74);height:120px;display:block;padding-top:0px;\"><h4>MESSAGE</h4></a></li>";
 
 
 
