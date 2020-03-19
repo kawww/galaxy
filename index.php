@@ -252,6 +252,8 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=console.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_console." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
+		echo"<a href=system.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_system." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
+		
 		if($keva=="on"){
 		echo"<a href=keva.php><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_word." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	}else
 		

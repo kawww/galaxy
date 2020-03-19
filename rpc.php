@@ -1,18 +1,23 @@
 <?php
 
+
+//on/off
+
+$webmode=0;
+
 //language
 
 $lang="en";
 
+//system
 
+$sysweb=10;
+$syslocal=360;
 
 //freekeva
 
 $freekeva="http://galaxyos.io/";
 
-//on/off
-
-$webmode=0;
 
 
 
@@ -470,7 +475,7 @@ $search = array('g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v',
 
 			list($aleft,$aright)=explode("#",$testvalue);
 		
-		if(stristr($aleft,$value)!==false & stristr($aright,$value)!==false)
+		if(stristr($aleft,$value)!==false & stristr($aright,$value)!==false  & preg_match( "'_'", $aright)==false)
 
 				{ return $x_value;}
 
@@ -681,6 +686,7 @@ $index_linkipfs="IPFS URL DIRECT";
 $index_ipfsupload="IPFS UPLOAD";
 $index_magnet="MAGNET TXID";
 
+$index_system="SYSTEM";
 
 
 $keva_myaddress="KEVA ADDRESS";
@@ -732,6 +738,8 @@ $index_checkasset="查询资产注册";
 $index_linkipfs="IPFS网址跳转";
 $index_ipfsupload="IPFS上传";
 
+$index_system="系统";
+
 $keva_myaddress="链文字地址";
 $keva_newspace="创建新空间";
 $keva_newspacememo="通过区块链到银河每一个角落";
@@ -777,6 +785,8 @@ $index_checkasset="자산 확인";
 $index_linkipfs="IPFS URL 직접";
 $index_ipfsupload="IPFS UPLOAD";
 
+$index_system="SYSTEM";
+
 $keva_myaddress="KEVA ADDRESS";
 $keva_newspace="새로운 공간 만들기";
 $keva_free="무료 크레딧 받기";
@@ -819,6 +829,8 @@ $index_checkasset="資産の確認";
 
 $index_linkipfs="IPFS URL DIRECT";
 $index_ipfsupload="IPFS UPLOAD";
+
+$index_system="SYSTEM";
 
 $keva_myaddress="KEVA ADDRESS";
 $keva_newspace="新しいスペースを作成";
