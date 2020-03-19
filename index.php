@@ -277,8 +277,6 @@ if(!isset($_REQUEST["asset"]))
 
 		
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
-
 
 	
 
@@ -294,29 +292,16 @@ if(!isset($_REQUEST["asset"]))
 
 		echo "<div id=\"nav\"><ul>";
 
-		echo"<a href=keva.php?asset=Nj4fh1WpzokbPn5AMqmEHpP1TQ8KF4SszF&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
+		echo"<a href=keva.php?asset=Nj4fh1WpzokbPn5AMqmEHpP1TQ8KF4SszF&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_link."</p></a></li>";
 
-		echo"<a href=keva.php?asset=NSX7KFbznVTxHyccskujeL93z4rdh5TnhL&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RAVENCOIN ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";	
-
-		
-
-
-	echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
-		
-
-		echo "</ul></div>";
+		echo"<a href=keva.php?asset=NSX7KFbznVTxHyccskujeL93z4rdh5TnhL&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RAVENCOIN ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_link."</p></a></li>";	
 
 		
 
-	
 
-		echo "<div id=\"nav\"><ul>";
+		echo"<a href=keva.php?asset=NTrywXTgJ2hu417GVjPYSHnz3LvRtjVywJ&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GALAXY ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_link."</p></a></li>";	
 
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ DOWNLOAD GALAXY ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\">LINK</li>";	
 
-		echo"<a href=https://github.com/kawww/Galaxy-OS-for-Ravencoin  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GALAXY OS CODE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";	
-
-		echo"<a href=https://github.com/kawww/Galaxy-OS-for-Ravencoin/issues target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GALAXY OS FEEDBACK ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";	
 		
 	
 
