@@ -279,6 +279,8 @@ $blockread=$blocknow-$sysweb;}else{
 $blockread=$blocknow-$syslocal;}
 
 
+$blockshow=$blocknow-1;
+
 //block
 
 $arr=array();
@@ -352,8 +354,27 @@ while($blocknow>$blockread)
 			
 }
 
-
 echo "<div id=\"universe\" class=\"crt\"><div id=\"nav\"><ul>";
+
+if(count($totalass)==0){
+	
+	
+	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>NO CONTENTS FOUND IN THESE BLOCKS [ ".$blockshow." ]  - [ ".$blockread." ]</p></li>";
+
+	
+	if($webmode==1){
+
+
+
+echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT ".$sysweb."  BLOCK</h3></a></li>";}
+
+else{
+
+echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$syslocal."   BLOCK</h3></a></li>";}
+
+exit;
+}
+
 
 foreach ($totalass as $k=>$v) 
 
@@ -362,10 +383,14 @@ foreach ($totalass as $k=>$v)
 								extract($v);
 
 
+$asset = $rpc->getassetdata($snewkey);
+
+if(isset($asset) & $asset['has_ipfs']==1){$snewkey="<a href=subscription.php?txid=".$asset['txid'].">".$snewkey."</a>";}
 
 
+$x_value=$snewkey;
 
-$x_value="<h4>".$snewkey."</h4>";
+	$sinfo=str_replace("<script>","< script >",$sinfo);
 
 								$value=$sinfo;
 								
@@ -374,7 +399,7 @@ $x_value="<h4>".$snewkey."</h4>";
 								
 
 											
-										$value=str_replace("<scrypt>","< scrypt >",$value);
+									
 										$valuex=str_replace("\n","<br>",$value);
 
 
@@ -386,23 +411,8 @@ $x_value="<h4>".$snewkey."</h4>";
 											{
 
 										
-										if(isset($_REQ["sub"]) & $_REQ["sub"]==$size)
-														
-														//sub-size
-													
-													{
-
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
-
-
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left><a href=keva.php?asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
-
-											
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> [ ".$block." ] < <a href=subscription.php?block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
-										
-														}
-
-										if(!isset($_REQ["sub"])){
+									
+											if(!isset($_REQ["sub"])){
 
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
@@ -488,6 +498,9 @@ $x_value="<h4>".$snewkey."</h4>";
 
 											{
 
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
+
+
 												
 										$arr1=explode("\n",$value);
 											
@@ -534,7 +547,7 @@ $x_value="<h4>".$snewkey."</h4>";
 														}
 
 															
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$size.">".$size."</a> > </p></li>";	
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> [ ".$block." ] < <a href=subscription.php?block=".$block."&sub=".$size.">".$size."</a> > </p></li>";	
 											}
 
 
@@ -563,11 +576,11 @@ $x_value="<h4>".$snewkey."</h4>";
 
 if($webmode==1){
 
-echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NEXT 10 BLOCK  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></a></li>";}
+echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$sysweb."  BLOCK</h3></a></li>";}
 
 else{
 
-echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NEXT 360  BLOCK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></a></li>";}
+echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$syslocal."   BLOCK</h3></a></li>";}
 
 
 

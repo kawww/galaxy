@@ -327,7 +327,7 @@ if(isset($block) & is_numeric($block)==true)
 								
 
 											
-										$value=str_replace("<scrypt>","< scrypt >",$value);
+										$value=str_replace("<script>","< script >",$value);
 										$valuex=str_replace("\n","<br>",$value);
 
 

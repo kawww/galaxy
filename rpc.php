@@ -5,6 +5,10 @@
 
 $webmode=0;
 
+//hidemenu
+
+$hidemkey=0;
+
 //language
 
 $lang="en";
@@ -12,11 +16,16 @@ $lang="en";
 //system
 
 $sysweb=10;
-$syslocal=360;
+$syslocal=30;
 
 //freekeva
 
 $freekeva="http://galaxyos.io/";
+
+
+//hide namespace
+
+$hidenkey=1;
 
 
 

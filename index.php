@@ -294,73 +294,15 @@ if(!isset($_REQUEST["asset"]))
 
 		echo "<div id=\"nav\"><ul>";
 
-		echo"<a href=http://linkipfs.com/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_linkipfs." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINKIPFS.COM</p></a></li>";
+		echo"<a href=keva.php?asset=Nj4fh1WpzokbPn5AMqmEHpP1TQ8KF4SszF&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
 
-		echo"<a href=https://lab.nbits.dev/raven-magnet/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_magnet." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LAB.NBITS.DEV</p></a></li>";	
-
-		echo"<a href=https://globalupload.io  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsupload." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GLOBALUPLOAD.IO</p></a></li>";
-
-		echo"<a href=https://pinata.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsupload." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>PINATA.CLOUD</p></a></li>";
-
-		echo"<a href=https://temporal.cloud  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsupload." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>TEMPORAL.CLOUD</p></a></li>";
-
-
-
-		echo"<a href=https://github.com/ipfs/awesome-ipfs  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ AWESOME IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>GITHUB</p></a></li>";
-
-		echo"<a href=https://ipfs.io/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS.IO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
-		
-		
-
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
-		
-		echo "</ul></div>";
-
-		echo "<div id=\"nav\"><ul>";
-
-		echo"<a href=https://raven.wiki target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ WIKI ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVEN.WIKI</p></a></li>";
-
-	echo"<a href=https://rvn.cryptoscope.cc  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SOLUS EXPLORER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN.CRYPTOSCOPE.CC</p></a></li>";
-
-		echo"<a href=https://ravencoin.network target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ BLOCK EXPLORER ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVENCOIN.NETWORK</p></a></li>";	
-	
-		echo"<a href=https://ravencoin.asset-explorer.net/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET MONITOR ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>ASSET-EXPLORER.NET</p></a></li>";
-		
-
+		echo"<a href=keva.php?asset=NSX7KFbznVTxHyccskujeL93z4rdh5TnhL&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RAVENCOIN ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";	
 
 		
-		echo"<a href=https://www.assetsexplorer.com  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET NETWORK ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>ASSETEXPLORER.COM</p></a></li>";	
 
-
-		echo"<a href=/http://ravenx.net  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET EXCHANGE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVENX.NET</p></a></li>";	
-
-		echo"<a href=https://faucet.ravenland.org  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET FAUCET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVENLAND.ORG</p></a></li>";	
-
-		echo"<a href=https://www.mangofarmassets.com/  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ASSET WALLET ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>MANGOFARMASSETS.COM</p></a></li>";	
-
-
-
-		echo"<a href=http://www.ravennodes.com  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ NODES ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVENNODES.COM</p></a></li>";
-
-		echo"<a href=https://miningpoolstats.stream/ravencoin  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ POOL ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>MININGPOOLSTATS.STREAM</p></a></li>";
-
-		echo"<a href=https://www.ravencoinmeetup.org  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ MEETUP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RAVERNCOINMEETUP.ORG</p></a></li>";
 
 	echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
 		
-
-		echo "</ul></div>";
-
-		echo "<div id=\"nav\"><ul>";
-
-		echo"<a href=https://ravencoin.org  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RAVENCOIN.ORG ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
-
-		echo"<a href=https://raven-nightly-builds.ravencoin.org  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Raven Nightly Builds ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
-
-		echo"<a href=https://www.ravencoin.shop  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RAVENCOIN.SHOP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
-
-		echo"<a href=http://onervn.com  target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ONERVN.COM ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";
-
 
 		echo "</ul></div>";
 
@@ -376,7 +318,7 @@ if(!isset($_REQUEST["asset"]))
 
 		echo"<a href=https://github.com/kawww/Galaxy-OS-for-Ravencoin/issues target=_blank><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GALAXY OS FEEDBACK ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>LINK</p></a></li>";	
 		
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";	
+	
 
 		echo "</ul></div>";
 
