@@ -238,7 +238,15 @@ error_reporting(0);
 
 include("rpc.php");
 
+$kpc = new Keva();
+
 $rpc = new Raven();
+
+$kpc->host=$localip;
+$rpc->host=$localip;
+
+//var_dump($kpc);
+//var_dump($rpc);
 
 
 
@@ -303,9 +311,62 @@ if(!isset($_REQUEST["asset"]))
 
 
 		
-	
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";
+
 
 		echo "</ul></div>";
+
+		if($indexm==1){
+		echo "<div id=\"nav\"><ul>";
+
+			$age= $kpc->keva_list_namespaces();
+
+		
+			
+			$error = $kpc->error;
+
+			if($error != "") 
+		
+				{
+	
+					echo "<p>&nbsp;&nbsp;Error ADDRESS</p>";
+					exit;
+				}
+
+			foreach($age as $x_value=>$x)
+
+			{
+
+			extract($x);
+
+
+			$hide = $kpc->keva_get($namespaceId,hide);
+
+			if(!$hide['value'] ){
+
+
+			$x_value=$displayName;
+
+
+			echo "<a href=keva.php?asset=".$namespaceId."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+
+			}
+			else
+				{
+			if($hidenkey==0){
+
+
+			$x_value=$displayName;
+
+
+			echo "<a href=keva.php?asset=".$namespaceId."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+
+			}}
+
+			}
+
+
+		echo "</ul></div>";}
 
 
 		echo "<div id=\"universe\" class=\"crt\">";

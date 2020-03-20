@@ -221,6 +221,9 @@ error_reporting(0);
 
 include("rpc.php");
 
+$kpc->host=$localip;
+$rpc->host=$localip;
+
 if(isset($_REQUEST["asset"])) 
 
 {
@@ -288,6 +291,8 @@ if(isset($_REQUEST["asset"]))
 		echo"<a href=?asset=miningk&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ STOP MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA TESTNET</p></a></li>";}
 
   */
+
+  echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ START MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA TESTNET</p></li>";
 		
 
 		echo "</ul></div>";

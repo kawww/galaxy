@@ -236,6 +236,7 @@ margin-top:2px;
 
 <?php 
 error_reporting(0);
+
 if(isset($_REQUEST["asset"])) 
 
 {
@@ -318,6 +319,9 @@ echo "&nbsp;&nbsp;&nbsp; <div id=\"nav\"><ul>";
 include("rpc.php");
 
 $rpc = new Raven();
+
+
+$rpc->host=$localip;
 
 
 $rawtransaction = $rpc->listassets();

@@ -234,6 +234,8 @@ include("rpc.php");
 
 $rpc = new Raven();
 
+$rpc->host=$localip;
+
 $_REQ = array_merge($_GET, $_POST);
 
 

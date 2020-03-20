@@ -234,8 +234,10 @@ error_reporting(0);
 include("rpc.php");
 
 $rpc = new Raven();
-
 $kpc = new Keva();
+
+$kpc->host=$localip;
+$rpc->host=$localip;
 
 $_REQ = array_merge($_GET, $_POST);
 

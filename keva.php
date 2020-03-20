@@ -275,9 +275,11 @@ error_reporting(0);
 include("rpc.php");
 
 
-$rpc = new Keva();
+$kpc = new Keva();
+$rpc = new Raven();
 
-$vpc = new Raven();
+$kpc->host=$localip;
+$rpc->host=$localip;
 
 $_REQ = array_merge($_GET, $_POST);
 
@@ -292,7 +294,7 @@ if(isset($_REQ["newasset"])) {
 
 $forsub=$_REQ["newasset"];
 
-$age= $rpc->keva_put($_REQ["asset"],$_REQ["title"],$forsub);
+$age= $kpc->keva_put($_REQ["asset"],$_REQ["title"],$forsub);
 
 $url = "?asset=".$_REQ["asset"]; 
 
@@ -308,7 +310,7 @@ if(isset($_REQ["namep"])) {
 
 $forname=$_REQ["namep"];
 
-$age= $rpc->keva_namespace($forname);
+$age= $kpc->keva_namespace($forname);
 
 echo "<script>window.location.href=decodeURIComponent('keva.php')</script>";
 
@@ -321,9 +323,9 @@ if(isset($_REQ["address"])) {
 
 $forfree=$_REQ["address"];
 
-$checkaddress= $rpc->listtransactions("credit",100);
+$checkaddress= $kpc->listtransactions("credit",100);
 
-$listaccount = $rpc->listaccounts();
+$listaccount = $kpc->listaccounts();
 
 if($listaccount['credit']<1){echo "<script>alert('NO CREDIT AVAILABLE, PLEASE WAIT NEXT TIME');history.go(-1);</script>";exit;}
 
@@ -366,7 +368,7 @@ $ok=0;
 
 											{
 
-										$age= $rpc->sendfrom("credit",$forfree,"0.1");
+										$age= $kpc->sendfrom("credit",$forfree,"0.1");
 
 										echo "<script>alert('GET 1 CREDIT SUCCESS');history.go(-1);</script>";
 
@@ -401,7 +403,7 @@ $ok=0;
 									}
 										if($ok=9)
 											
-											{$age= $rpc->sendfrom("credit",$forfree,"0.1");
+											{$age= $kpc->sendfrom("credit",$forfree,"0.1");
 											
 										echo "<script>alert('GET CREDIT SUCCESS');history.go(-1);</script>";
 											}
@@ -427,7 +429,7 @@ if(isset($_REQ["mode"])){
 		
 			if(isset($_REQ["title"])){
 		
-					$infox= $rpc->keva_get($_REQ["asset"],hex2bin($_REQ["title"]));
+					$infox= $kpc->keva_get($_REQ["asset"],hex2bin($_REQ["title"]));
 
 					extract($infox);
 		
@@ -497,9 +499,9 @@ if(isset($_REQ["mode"])){
 				
 				{
 
-					$namespace= $rpc->keva_list_namespaces();
+					$namespace= $kpc->keva_list_namespaces();
 
-					$subraven= $vpc->subscribetochannel($_REQ["sname"]);
+					$subraven= $rpc->subscribetochannel($_REQ["sname"]);
 
 					foreach ($namespace as $q=>$w) {
 
@@ -508,7 +510,7 @@ if(isset($_REQ["mode"])){
 							
 											{
 									
-						$newadd=$rpc->keva_put($w['namespaceId'],$_REQ["title"],$_REQ["asset"]);
+						$newadd=$kpc->keva_put($w['namespaceId'],$_REQ["title"],$_REQ["asset"]);
 														
 						$addend="Success";
 
@@ -546,7 +548,7 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 
 			{
 			
-			$age= $rpc->keva_delete($_REQ["asset"],hex2bin($_REQ["title"]));
+			$age= $kpc->keva_delete($_REQ["asset"],hex2bin($_REQ["title"]));
 
 			$url = "?asset=".$_REQ["asset"]; 
 
@@ -572,11 +574,11 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 	
 //list
 
-		$age= $rpc->keva_list_namespaces();
+		$age= $kpc->keva_list_namespaces();
 
 		
 			
-			$error = $rpc->error;
+			$error = $kpc->error;
 
 			if($error != "") 
 		
@@ -590,20 +592,20 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 
 	$messageacc="credit";
 
-	$listaccount = $rpc->listaccounts();
+	$listaccount = $kpc->listaccounts();
 				
 				
 
 			if(isset($listaccount['credit']))
 			
 					{
-						$accaddress=$rpc->getaddressesbyaccount($messageacc);
+						$accaddress=$kpc->getaddressesbyaccount($messageacc);
 					
 						$shopaddress=$accaddress[0];
 						
-						$shopbalance=$rpc->getbalance($shopaddress);
+						$shopbalance=$kpc->getbalance($shopaddress);
 
-						$errorshop = $rpc->error;
+						$errorshop = $kpc->error;
 
 						if($errorshop != "") 
 			
@@ -619,11 +621,11 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 
 				
 
-					$shopaddress = $rpc->getnewaddress($messageacc);
+					$shopaddress = $kpc->getnewaddress($messageacc);
 
-					$shopbalance=$rpc->getbalance($shopaddress);
+					$shopbalance=$kpc->getbalance($shopaddress);
 
-					$errorshop = $rpc->error;
+					$errorshop = $kpc->error;
 
 					if($errorshop != "") 
 		
@@ -657,7 +659,7 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 			extract($x);
 
 
-			$hide = $rpc->keva_get($namespaceId,hide);
+			$hide = $kpc->keva_get($namespaceId,hide);
 
 			if(!$hide['value'] ){
 
@@ -695,7 +697,7 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 
 if(isset($_REQ["txid"])) {
 
-		$agetx= $rpc->gettransaction($_REQ["txid"]);
+		$agetx= $kpc->gettransaction($_REQ["txid"]);
 
 }
 
@@ -727,15 +729,15 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 		$asset=trim($asset);
 
 
-	 if(!$_REQ["skey"]){$info= $rpc->keva_filter($asset,"",360000);}
+	 if(!$_REQ["skey"]){$info= $kpc->keva_filter($asset,"",360000);}
 	 
-	 else {$info= $rpc->keva_filter($asset,$_REQ["skey"],360000);}
+	 else {$info= $kpc->keva_filter($asset,$_REQ["skey"],360000);}
 		
 
 		
 			
 		
-		$error = $rpc->error;
+		$error = $kpc->error;
 
 			if($error != "") 
 		
@@ -890,12 +892,12 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 			}
 
 
-		$vadd= $rpc->validateaddress($adds);
+		$vadd= $kpc->validateaddress($adds);
 		$fkey=str_replace(" ","%20",$fkey);
 
 		extract($vadd);
 
-		$tadd=$rpc->keva_list_namespaces();
+		$tadd=$kpc->keva_list_namespaces();
 
 		foreach ($tadd as $t)
 
@@ -965,7 +967,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 			//menu
 
 
-			$namespace= $rpc->keva_list_namespaces();
+			$namespace= $kpc->keva_list_namespaces();
 
 			foreach ($namespace as $q=>$w) {
 
@@ -994,7 +996,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 
-		$vadd= $rpc->validateaddress($address);
+		$vadd= $kpc->validateaddress($address);
 
 
 
