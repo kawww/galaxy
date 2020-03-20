@@ -1,5 +1,8 @@
 <?php
 
+//wallet or node ip
+
+$localip="127.0.0.1";
 
 //on/off
 
@@ -80,7 +83,7 @@ class Keva {
 		
         $this->username      = 'galaxy'; // RPC Username
         $this->password      = 'frontier'; // RPC Password
-        $this->host          = '127.0.0.1'; // Localhost
+        $this->host          = $localip; // Localhost
         $this->port          = '9992';
         $this->url           = $url;
 
@@ -199,7 +202,7 @@ class Raven {
 		
         $this->username      = 'galaxy'; // RPC Username
         $this->password      = 'frontier'; // RPC Password
-        $this->host          = '127.0.0.1'; // Localhost
+        $this->host          = $localip; // Localhost
         $this->port          = '9991';
         $this->url           = $url;
 
