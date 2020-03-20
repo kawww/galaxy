@@ -221,8 +221,7 @@ error_reporting(0);
 
 include("rpc.php");
 
-$kpc->host=$localip;
-$rpc->host=$localip;
+
 
 if(isset($_REQUEST["asset"])) 
 
@@ -311,6 +310,9 @@ if(isset($_REQUEST["asset"])) {
 
 $rpc = new Raven();
 $kpc = new Keva();
+
+$kpc->host=$localip;
+$rpc->host=$localip;
 
 
 //rpc
