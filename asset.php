@@ -230,6 +230,7 @@ margin-top:2px;
 
 
 <?php 
+error_reporting(0);
 
 include("rpc.php");
 

@@ -9,6 +9,10 @@ $webmode=0;
 
 $hidemkey=0;
 
+//index word
+
+$indexm=1;
+
 //language
 
 $lang="en";
@@ -691,7 +695,7 @@ $index_assetexplorer="ASSET EXPLORER";
 $index_ipfsexplorer="IPFS EXPLORER";
 $index_checkasset="CHECK ASSETS AVAILIABLE";
 
-$index_linkipfs="IPFS URL DIRECT";
+$index_link="LINK";
 $index_ipfsupload="IPFS UPLOAD";
 $index_magnet="MAGNET TXID";
 
@@ -744,8 +748,7 @@ $index_assetexplorer="资产浏览器";
 $index_ipfsexplorer="IPFS浏览器";
 $index_checkasset="查询资产注册";
 
-$index_linkipfs="IPFS网址跳转";
-$index_ipfsupload="IPFS上传";
+$index_link="网址";
 
 $index_system="系统";
 
@@ -779,7 +782,7 @@ if($lang=="kr" or $_REQUEST["lang"]=="kr")
 $langs="jp";
 
 
-$index_local="현지";
+$index_local="LOCAL";
 $index_console="콘솔";
 $index_word="WORD";
 $index_subscription="신청";
@@ -793,6 +796,7 @@ $index_checkasset="자산 확인";
 
 $index_linkipfs="IPFS URL 직접";
 $index_ipfsupload="IPFS UPLOAD";
+$index_link="LINK";
 
 $index_system="SYSTEM";
 
@@ -838,6 +842,7 @@ $index_checkasset="資産の確認";
 
 $index_linkipfs="IPFS URL DIRECT";
 $index_ipfsupload="IPFS UPLOAD";
+$index_link="LINK";
 
 $index_system="SYSTEM";
 
