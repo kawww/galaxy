@@ -566,6 +566,8 @@ $cons=hex2bin($cons);
 $conk=hex2bin($conk);
 
 
+
+
 if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"];}
 
 		$snewkey=$cons;
@@ -602,35 +604,26 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 										echo "<script>window.location.href=decodeURIComponent('keva.php?asset=".$value."&showall=11')</script>";
 
 											}
-											else{
-
-
-
-
-											if(strlen($value)<>34)
-											
+								else
+						
 											{
+	
 
-										
 
 											$valuem=substr($value,0,34);
 
-											
-
 											$vmkpc=$kpc->keva_filter($valuem);
 
-			
-									
 
-											if(!$vmkpc) 
-		
-											   {
+											if(!$vmkpc[0]['key']) 
+									
+									   {
 	
 											
 														
 											
 
-											if(isset($_REQ["sub"]) & $_REQ["sub"]==$transaction['size'])
+									if(isset($_REQ["sub"]) & $_REQ["sub"]==$transaction['size'])
 														
 													
 													{
@@ -639,49 +632,49 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
-													
-												
-
-									
-												}
+											
+													}
 
 												//no sub tx
 
-										if(!isset($_REQ["sub"])){
+						if(!isset($_REQ["sub"])){
 
 											//echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
-												  if(stristr($valuex,"src") == true)
-											{
+											if(stristr($valuex,"src") == true)
+													{
 												
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$valuex."</p></li>";}	  
-											
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$valuex."</p></li>";
+													}	
 
 													else
 
-
-											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
-
+												{
+												
 													
-											
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
 												}
 
-											}
+
+											   }
+
+												}
 
 											
 										
 
 											else
-
-											{
+	
+												{
 
 												
 										$arr1=explode("\n",$value);
 											
 										
 									
-										foreach ($arr1 as $m=>$n) {
+										foreach ($arr1 as $m=>$n)
+														{
 
 											if(strlen($n)>34){
 
@@ -695,7 +688,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 											foreach ($listasset as $v) 
 
-													{
+																{
 			
 											extract($v);	
 											
@@ -708,26 +701,25 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 
 											
-													}
+																	}
 
 
 
 
 			
-													}
+																}
 
 
 			
 	
-														}
+															}
 
 															
 											
-											}
 
 
 
-											}
+													}
 												
 												
 												

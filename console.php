@@ -262,12 +262,14 @@ if(isset($_REQUEST["asset"]))
 		echo"<a href=?asset=getblockchaininfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Blockchain Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN BLOCKCHAIN INFO</p></a></li>";
 
 		echo"<a href=?asset=getblockcount ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Block Count ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN BLOCK COUNT</p></a></li>";
+
+		if($webmode==0){
 		if(!$_REQUEST["miningr"]){
 		echo"<a href=?asset=miningr&miningr=on ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ START MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN TESTNET</p></a></li>";}else
 		{
 		echo"<a href=?asset=miningr ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ STOP MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN TESTNET</p></a></li>";}
 
-		
+		}
 
 		echo "</ul></div>";
 
@@ -359,7 +361,7 @@ echo "</pre>"; exit;}
 
 
 
-if($asset=="miningr" & isset($_REQUEST["miningr"]) &$webmode==0){
+if($asset=="miningr" & isset($_REQUEST["miningr"]) & $webmode==0){
 
 echo "MINING RVN START";
 
@@ -371,7 +373,7 @@ echo "<pre>";
 print_r($command);
 echo "</pre>"; exit;}
 
-if($asset=="miningr" & !$_REQUEST["miningr"]){
+if($asset=="miningr" & !$_REQUEST["miningr"] & $webmode==0){
 
 echo "MINING RVN STOP";
 
