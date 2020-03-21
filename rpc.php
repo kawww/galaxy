@@ -61,14 +61,36 @@ $message_num=50000;
 
 }
 
+//galaxy rpc setting
+
+$grpcuser='galaxy';
+$grpcpass='frontier';
+$grpcportk='9992';
+$grpcportr='9991';
+
+//ravencoin rpc setting
+
+$rrpcuser=$grpcuser;
+$rrpcpass=$grpcpass;
+$rrpchost=$localip;
+$rrpcport=$grpcportr;
+
+//kevacoin rpc setting
+
+$krpcuser=$grpcuser;
+$krpcpass=$grpcpass;
+$krpchost=$localip;
+$krpcport=$grpcportk;
+
+
 
 
 class Keva {
-    private $username;
-    private $password;
+    var $username;
+    var $password;
     private $proto;
     var $host;
-    private $port;
+    var $port;
     private $url;
     private $CACertificate;
 
@@ -81,10 +103,10 @@ class Keva {
 
     public function __construct($url = null) {
 		
-        $this->username      = 'galaxy'; // RPC Username
-        $this->password      = 'frontier'; // RPC Password
+        $this->username      = $username; // RPC Username
+        $this->password      = $password; // RPC Password
         $this->host          = $host; // Localhost
-        $this->port          = '9992';
+        $this->port          = $port;
         $this->url           = $url;
 
         $this->proto         = 'http';
@@ -183,11 +205,11 @@ class Keva {
 
 
 class Raven {
-    private $username;
-    private $password;
+    var $username;
+    var $password;
     private $proto;
     var $host;
-    private $port;
+    var $port;
     private $url;
     private $CACertificate;
 
@@ -200,10 +222,10 @@ class Raven {
 
     public function __construct($url = null) {
 		
-        $this->username      = 'galaxy'; // RPC Username
-        $this->password      = 'frontier'; // RPC Password
+        $this->username      = $username; // RPC Username
+        $this->password      = $password; // RPC Password
         $this->host          = $host; // Localhost
-        $this->port          = '9991';
+        $this->port          = $port;
         $this->url           = $url;
 
         $this->proto         = 'http';

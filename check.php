@@ -316,12 +316,19 @@ echo "&nbsp;&nbsp;&nbsp; <div id=\"nav\"><ul>";
 //check server
 
 
-include("rpc.php");
+$kpc = new Keva();
+
+$kpc->username=$krpcuser;
+$kpc->password=$krpcpass;
+$kpc->host=$krpchost;
+$kpc->port=$krpcport;
 
 $rpc = new Raven();
 
-
-$rpc->host=$localip;
+$rpc->username=$rrpcuser;
+$rpc->password=$rrpcpass;
+$rpc->host=$rrpchost;
+$rpc->port=$rrpcport;
 
 
 $rawtransaction = $rpc->listassets();

@@ -232,9 +232,19 @@ margin-top:2px;
 error_reporting(0);
 include("rpc.php");
 
+$kpc = new Keva();
+
+$kpc->username=$krpcuser;
+$kpc->password=$krpcpass;
+$kpc->host=$krpchost;
+$kpc->port=$krpcport;
+
 $rpc = new Raven();
 
-$rpc->host=$localip;
+$rpc->username=$rrpcuser;
+$rpc->password=$rrpcpass;
+$rpc->host=$rrpchost;
+$rpc->port=$rrpcport;
 
 $_REQ = array_merge($_GET, $_POST);
 

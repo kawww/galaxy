@@ -240,10 +240,17 @@ include("rpc.php");
 
 $kpc = new Keva();
 
+$kpc->username=$krpcuser;
+$kpc->password=$krpcpass;
+$kpc->host=$krpchost;
+$kpc->port=$krpcport;
+
 $rpc = new Raven();
 
-$kpc->host=$localip;
-$rpc->host=$localip;
+$rpc->username=$rrpcuser;
+$rpc->password=$rrpcpass;
+$rpc->host=$rrpchost;
+$rpc->port=$rrpcport;
 
 //var_dump($kpc);
 //var_dump($rpc);
