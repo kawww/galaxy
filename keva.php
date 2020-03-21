@@ -900,7 +900,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 		$vadd= $kpc->validateaddress($adds);
-		$fkey=str_replace(" ","%20",$fkey);
+		$fkey=str_replace("%20"," ",$fkey);
 
 		extract($vadd);
 
