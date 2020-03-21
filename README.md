@@ -24,7 +24,7 @@ Run Start_Ravenbat and Start_Keva.bat. Then start galaxy.exe when two wallets ar
 
 (b) LINUX: run wallet and Galaxy directly.
 
-(c) IOS: You can use "working copy" to get Galaxy code, use draftcode to run Galaxy.
+(c) IOS: You can use "working copy" to get Galaxy code, use draftcode to run Galaxy. (http://galaxyos.io/subscription.php?block=42282)
 
 (d) ANDROID:You can use ksweb to run Galaxy, or use termux to run raven,keva and galaxy.
 
