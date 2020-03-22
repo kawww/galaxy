@@ -926,7 +926,11 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 			echo "<a href=?asset=".$asset."&key=".$fkey."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
 
 			echo "<a href=?mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$key."</font> ".$addend."</li>";
+
+
 										}
+
+
 										else
 
 										{
@@ -943,13 +947,14 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 			echo "<a href=?asset=".$asset."&key=".$fkey."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 
-//broadcast
+//broadcast 
+if($webmode==0){
 
 			echo "<a href=channel.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_broadcast." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
 
 //message
 
-			echo "<a href=message.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_message." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
+			echo "<a href=message.php?txid=".$txx."&ipfs=".$linkipfs['data']['hash_urls'][0]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_message." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";}
 
 //galaxylink
 
