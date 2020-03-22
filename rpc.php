@@ -16,7 +16,9 @@ $hidemkey=0;
 
 $indexm=1;
 
-//language
+//language, google translate.If you want to fix translation, you can edit this file below or online //https://github.com/kawww/Galaxy/blob/master/rpc.php
+
+//Now support en cn kr jp bs bg nl tl fr de id it po pt ro ru es th tr af
 
 $lang="en";
 
@@ -679,7 +681,6 @@ if($lettercheck==2){ $x_value=$x_value."!";}
 
 
 
-
 //language
 
 $index_local="LOCAL";
@@ -699,7 +700,7 @@ $index_magnet="MAGNET TXID";
 $index_system="SYSTEM";
 
 
-$keva_myaddress="KEVA ADDRESS";
+$keva_myaddress="keva ADDRESS";
 $keva_newspace="CREATE NEW SPACE";
 $keva_free="GET FREE CREDIT";
 $keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";
@@ -724,10 +725,10 @@ $console_rvn_node="RVN NODE INFO";
 $console_rvn_blockchain="RVN BLOCKCHAIN INFO";
 $console_rvn_count="RVN BLOCK COUNT";
 $console_rvn_mining="RVN TESTNET";
-$console_keva_help="KEVACOIN";
-$console_keva_node="KEVA NODE INFO";
-$console_keva_blockchain="KEVA BLOCKCHAIN INFO";
-$console_keva_count="KEVA BLOCK COUNT";
+$console_keva_help="kevaCOIN";
+$console_keva_node="keva NODE INFO";
+$console_keva_blockchain="keva BLOCKCHAIN INFO";
+$console_keva_count="keva BLOCK COUNT";
 $console_keva_mining="TESTNET MINING";
 
 $system_noblock="NO CONTENTS FOUND IN THESE BLOCKS, LET'S GO NEXT BLOCK";
@@ -758,11 +759,8 @@ if($lang=="en" or $_REQUEST["langs"]=="en" or $lang=="")
 
 $langs="cn";
 
-
-
-
-
 }
+
 
 if($lang=="cn" or $_REQUEST["lang"]=="cn")
 
@@ -811,7 +809,7 @@ $console_rvn_node="鸟链节点信息";
 $console_rvn_blockchain="鸟链区块信息";
 $console_rvn_count="鸟链区块数";
 $console_rvn_mining="鸟链测试网";
-$console_keva_help="KEVACOIN币";
+$console_keva_help="kevaCOIN币";
 $console_keva_node="K链节点信息";
 $console_keva_blockchain="K链区块信息";
 $console_keva_count="K链区块数";
@@ -841,6 +839,8 @@ $check_not="不可注册";
 
 }
 
+//korean
+
 if($lang=="kr" or $_REQUEST["lang"]=="kr")
 
 {
@@ -852,22 +852,20 @@ $turn=1;
 $index_local="LOCAL";
 $index_console="콘솔";
 $index_word="WORD";
-$index_subscription="신청";
+$index_subscription="구독";
 $index_channel="채널";
 $index_message="메시지";
-$index_asset="유산";
-$index_tag="꼬리표";
-$index_assetexplorer="";
-$index_ipfsexplorer="자산 탐색기";
-$index_checkasset="자산 확인";
-$index_linkipfs="IPFS URL 직접";
-$index_ipfsupload="IPFS UPLOAD";
+$index_asset="자산";
+$index_tag="태그";
+$index_assetexplorer="자산 탐험가";
+$index_ipfsexplorer="IPFS EXPLORER";
+$index_checkasset="자산 확인 가능";
 $index_link="LINK";
-$index_system="SYSTEM";
-$index_assetexplorer="ASSET EXPLORER";
+$index_system="시스템";
 
-$keva_myaddress="KEVA ADDRESS";
-$keva_newspace="새로운 공간 만들기";
+
+$keva_myaddress="keva ADDRESS";
+$keva_newspace="새 공간 만들기";
 $keva_free="무료 크레딧 받기";
 $keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";
 $keva_submit="SUBMIT";
@@ -879,52 +877,56 @@ $keva_addnewmemo="one small step, one giant leap";
 $keva_subscribe="구독";
 $keva_subscription="SUBSCRIPTION";
 $keva_linkipfs="링크 IPFS";
-$keva_edit="편집하다";
-$keva_delete="지우다";
+$keva_edit="편집";
+$keva_delete="삭제";
 $keva_broadcast="방송";
 $keva_galaxylink="GALAXY LINK";
-$keva_message="MESSAGE";
+$keva_message="메시지";
 $keva_send="SEND";
 
 $console_rvn_help="RAVENCOIN";
-$console_rvn_node="RVN NODE INFO";
-$console_rvn_blockchain="RVN BLOCKCHAIN INFO";
-$console_rvn_count="RVN BLOCK COUNT";
-$console_rvn_mining="RVN TESTNET";
-$console_keva_help="KEVACOIN";
-$console_keva_node="KEVA NODE INFO";
-$console_keva_blockchain="KEVA BLOCKCHAIN INFO";
-$console_keva_count="KEVA BLOCK COUNT";
-$console_keva_mining="TESTNET MINING";
+$console_rvn_node="RVN 노드 정보";
+$console_rvn_blockchain="RVN 블록 체인 정보";
+$console_rvn_count="RVN 블록 수";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="keva 노드 정보";
+$console_keva_blockchain="keva 블록 체인 정보";
+$console_keva_count="keva 블록 수";
+$console_keva_mining="테스트 넷 마이닝";
 
-$system_noblock="NO CONTENTS FOUND IN THESE BLOCKS, LET'S GO NEXT BLOCK";
+$system_noblock="이 블록에 내용이 없습니다";
 
-$subscribe_broadcast="CONFIRM BROADCAST";
-$subscribe_sub="SUBSCRIPTION";
+$subscribe_broadcast="방송 확인";
+$subscribe_sub="신청";
 
-$channel_title="CHANNEL";
-$channel_unsub="UNSUBSCRIBE";
-$channel_suball="SUBSCRIBE ALL ASSETS";
+$channel_title="채널";
+$channel_unsub="구독 취소";
+$channel_suball="모든 자산을 구독하십시오";
 
 $message_title="MESSAGE";
-$message_address="MESSAGE NODE ADDRESS";
-$message_send="SENDER ADDRESS";
-$message_my="MY ADDRESS";
+$message_address="메시지 노드 주소";
+$message_send="발신자 주소";
+$message_my="내 주소";
 
-$tag_address="TAG NODE ADDRESS";
+$tag_address="태그 노드 주소";
 
-$check_asset="Bulk Assets Search";
-$check_only="Show Availiable Only";
-$check_ok="Available";
-$check_not="Not Available";
+$check_asset="대량 자산 검색";
+$check_only="사용 가능한만 표시";
+$check_ok="유효한";
+$check_not="사용할 수 없습니다";
 
 }
+
+//japansese
+
+
 
 if($lang=="jp"  or $_REQUEST["lang"]=="jp")
 
 {
 
-$langs="en";
+$langs="bs";
 $turn=1;
 
 $index_local="LOCAL";
@@ -937,13 +939,13 @@ $index_asset="資産";
 $index_tag="ラベル";
 $index_assetexplorer="アセットエクスプローラー";
 $index_ipfsexplorer="IPFS EXPLORER";
-$index_checkasset="資産の確認";
+$index_checkasset="利用可能な資産を確認";
 $index_linkipfs="IPFS URL DIRECT";
 $index_ipfsupload="IPFS UPLOAD";
 $index_link="LINK";
-$index_system="SYSTEM";
+$index_system="システム";
 
-$keva_myaddress="KEVA ADDRESS";
+$keva_myaddress="keva ADDRESS";
 $keva_newspace="新しいスペースを作成";
 $keva_free="無料クレジットを取得";
 $keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";
@@ -960,42 +962,1319 @@ $keva_edit="編集";
 $keva_delete="削除";
 $keva_broadcast="放送";
 $keva_galaxylink="GALAXY LINK";
-$keva_message="MESSAGE";
-$keva_send="SEND";
+$keva_message="メッセージ";
+$keva_send="送信";
 
 $console_rvn_help="RAVENCOIN";
-$console_rvn_node="RVN NODE INFO";
-$console_rvn_blockchain="RVN BLOCKCHAIN INFO";
-$console_rvn_count="RVN BLOCK COUNT";
-$console_rvn_mining="RVN TESTNET";
-$console_keva_help="KEVACOIN";
-$console_keva_node="KEVA NODE INFO";
-$console_keva_blockchain="KEVA BLOCKCHAIN INFO";
-$console_keva_count="KEVA BLOCK COUNT";
-$console_keva_mining="TESTNET MINING";
+$console_rvn_node="RVNノード情報";
+$console_rvn_blockchain="RVNブロックチェーン情報";
+$console_rvn_count="RVNブロック数";
+$console_rvn_mining="RVNTestnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="kevaノード情報";
+$console_keva_blockchain="kevaブロックチェーン情報";
+$console_keva_count="kevaブロック数";
+$console_keva_mining="Testnetマイニング";
 
-$system_noblock="NO CONTENTS FOUND IN THESE BLOCKS, LET'S GO NEXT BLOCK";
+$system_noblock="これらのブロックにコンテンツが見つかりません";
 
-$subscribe_broadcast="CONFIRM BROADCAST";
-$subscribe_sub="SUBSCRIPTION";
+$subscribe_broadcast="ブロードキャストの確認";
+$subscribe_sub="サブスクリプション";
 
-$channel_title="CHANNEL";
-$channel_unsub="UNSUBSCRIBE";
-$channel_suball="SUBSCRIBE ALL ASSETS";
+$channel_title="チャンネル";
+$channel_unsub="unsubcribe";
+$channel_suball="すべてのアセットを購読する";
 
-$message_title="MESSAGE";
-$message_address="MESSAGE NODE ADDRESS";
-$message_send="SENDER ADDRESS";
-$message_my="MY ADDRESS";
+$message_title="メッセージ";
+$message_address="メッセージノードアドレス";
+$message_send="送信者アドレス";
+$message_my="私の住所";
 
-$tag_address="TAG NODE ADDRESS";
+$tag_address="タグノードアドレス";
 
-$check_asset="Bulk Assets Search";
-$check_only="Show Availiable Only";
-$check_ok="Available";
-$check_not="Not Available";
+$check_asset="一括アセット検索";
+$check_only="利用可能なもののみ表示";
+$check_ok="利用可能";
+$check_not="利用不可";
 
 }
+
+
+
+//bosnian
+
+if($lang=="bs" or $_REQUEST["lang"]=="bs")
+
+{
+
+$langs="bg";
+$turn=1;
+
+$index_local="Lokalno";
+$index_console="Konzola";
+$index_word="WORD";
+$index_subscription="Pretplata";
+$index_channel="Kanal";
+$index_message="Poruka";
+$index_asset="Imovina";
+$index_tag="Oznaka";
+$index_assetexplorer="Istraživač imovine";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Provjeri imovinu";
+$index_link="Veza";
+$index_system="Sistem";
+
+
+$keva_myaddress="keva ADRESA";
+$keva_newspace="Stvori novi prostor";
+$keva_free="Uzmite besplatni kredit";
+
+$keva_submit="Pošaljite";
+$keva_kaw​​="KAW";
+$keva_showall="Prikaži sve sadržaje";
+$keva_showlist="Prikaži listu";
+$keva_addnew="Stvori novu reč";
+$keva_subscribe="Pretplati se";
+$keva_subscription="Pretplata";
+$keva_linkipfs="Veza IPFS";
+$keva_edit="Uređivanje";
+$keva_delete="Izbriši";
+$keva_broadcast="Prenos";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Poruka";
+$keva_send="Pošalji";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="RVN informacije o čvoru";
+$console_rvn_blockchain="RVN informacije o blockchainu";
+$console_rvn_count="Broj RVN blokova";
+$console_rvn_mining="RVN testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Podaci o čvoru keva";
+$console_keva_blockchain="Podaci o blokadi keva";
+$console_keva_count="Broj keva blokova";
+$console_keva_mining="Ispitaj neto iskopavanje";
+
+$system_noblock="U ovim blokovima nije pronađen sadržaj";
+
+$subscribe_broadcast="Potvrdi emitiranje";
+$subscribe_sub="Pretplata";
+
+$channel_title="Kanal";
+$channel_unsub="Odjavi se";
+$channel_suball="Pretplatite se na sva sredstva";
+
+$message_title="Poruka";
+$message_address="Adresa čvora poruke";
+$message_send="Adresa pošiljatelja";
+$message_my="Moja adresa";
+
+$tag_address="Adresa čvora oznake";
+
+$check_asset="Skupna pretraga imovine";
+$check_only="Prikaži samo dostupno";
+$check_ok="Dostupno";
+$check_not="Nije dostupno";
+
+}
+
+//bulgarian
+
+
+
+if($lang=="bg" or $_REQUEST["lang"]=="bg")
+
+{
+
+$langs="nl";
+$turn=1;
+
+
+$index_local="Местни";
+$index_console="конзолата";
+$index_word="WORD";
+$index_subscription="абонамент";
+$index_channel="Channel";
+$index_message="Съобщение";
+$index_asset="активи";
+$index_tag="Маркер";
+$index_assetexplorer="Изследовател на активи";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Проверка на актива";
+$index_link="Връзка";
+$index_system="система";
+
+
+$keva_myaddress="КЕВА АДРЕС";
+$keva_newspace="Създаване на ново пространство";
+$keva_free="Вземете безплатен кредит";
+$keva_submit="Изпращане";
+$keva_kaw​​="Kaw";
+$keva_showall="Покажи всички съдържания";
+$keva_showlist="Покажи списък";
+$keva_addnew="Създаване на нова дума";
+$keva_subscribe="Абониране";
+$keva_subscription="абонамент";
+$keva_linkipfs="Връзка IPFS";
+$keva_edit="Edit";
+$keva_delete="Delete";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="ГАЛАКСИЙНА ВРЪЗКА";
+$keva_message="Съобщение";
+$keva_send="Изпращане";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="RVN информация за възел";
+$console_rvn_blockchain="RVN информация за блокчейна";
+$console_rvn_count="Брой RVN блокове";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Информация за keva възел";
+$console_keva_blockchain="Информация за блокчейн keva";
+$console_keva_count="Брой keva блокове";
+$console_keva_mining="Тестване на нетно извличане";
+
+$system_noblock="Няма намерено съдържание в тези блокове";
+
+$subscribe_broadcast="Потвърждаване на излъчването";
+$Subscribe_sub="абонамент";
+
+$channel_title="Channel";
+$channel_unsub="Unsubcribe";
+$channel_suball="Абонирайте всички активи";
+
+$message_title="Съобщение";
+$message_address="Адрес на възел на съобщение";
+$message_send="Адрес на подателя";
+$message_my="Моят адрес";
+
+$tag_address="Адрес на възел на етикет";
+
+$check_asset="Търсене за групови активи";
+$check_only="Показване само на разположение";
+$check_ok="На разположение";
+$check_not="Не е налично";
+
+}
+
+//dutch
+
+if($lang=="nl" or $_REQUEST["lang"]=="nl")
+
+{
+
+$langs="tl";
+$turn=1;
+
+$index_local="Local";
+$index_console="Console";
+$index_word="WORD";
+$index_subscription="Abonnement";
+$index_channel="Channel";
+$index_message="Bericht";
+$index_asset="Asset";
+$index_tag="Tag";
+$index_assetexplorer="Asset Explorer";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Activa controleren";
+$index_link="Link";
+$index_system="Systeem";
+
+
+$keva_myaddress="keva-ADRES";
+$keva_newspace="Maak nieuwe ruimte";
+$keva_free="Ontvang gratis tegoed";
+
+$keva_submit="Verzenden";
+$keva_kaw="KAW";
+$keva_showall="Toon alle inhoud";
+$keva_showlist="Show List";
+$keva_addnew="Maak nieuw woord";
+$keva_subscribe="Abonneren";
+$keva_subscription="Abonnement";
+$keva_linkipfs="IPFS koppelen";
+$keva_edit="Bewerken";
+$keva_delete="Verwijderen";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Message";
+$keva_send="Verzenden";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="RVN Node-info";
+$console_rvn_blockchain="RVN blockchain-info";
+$console_rvn_count="RVN aantal blokken";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="keva-knooppuntinfo";
+$console_keva_blockchain="keva blockchain-info";
+$console_keva_count="keva aantal blokken";
+$console_keva_mining="Test net mining";
+
+$system_noblock="Geen inhoud gevonden in deze blokken";
+
+$subscribe_broadcast="Bevestig uitzending";
+$subscribe_sub="Abonnement";
+
+$channel_title="Channel";
+$channel_unsub="Afmelden";
+$channel_suball="Abonneer u op alle items";
+
+$message_title="Bericht";
+$message_address="Adres van berichtknooppunt";
+$message_send="Adres van afzender";
+$message_my="Mijn adres";
+
+$tag_address="Adres van knooppunt taggen";
+
+$check_asset="Bulkgoederen zoeken";
+$check_only="Toon alleen beschikbaar";
+$check_ok="Beschikbaar";
+$check_not="Niet beschikbaar";
+
+}
+
+//filipino
+
+if($lang=="tl" or $_REQUEST["lang"]=="tl")
+
+{
+
+
+$index_local="Lokal";
+$index_console="Console";
+$index_word="WORD";
+$index_subscription="Suskrisyon";
+$index_channel="Channel";
+$index_message="Mensahe";
+$index_asset="Asset";
+$index_tag="Tag";
+$index_assetexplorer="Asset Explorer";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Suriin ang Asset";
+$index_link="Link";
+$index_system="System";
+
+
+$keva_myaddress="ALAMAT sa keva";
+$keva_newspace="Lumikha ng Bagong Space";
+$keva_free="Kumuha ng libreng kredito";
+
+$keva_submit="Isumite";
+$keva_kaw="KAW";
+$keva_showall="Ipakita ang Lahat ng Nilalaman";
+$keva_showlist="Listahan ng Ipakita";
+$keva_addnew="Lumikha ng Bagong Salita";
+$keva_subscribe="Mag-subscribe";
+$keva_subscription="Suskrisyon";
+$keva_linkipfs="I-link ang IPFS";
+$keva_edit="I-edit";
+$keva_delete="Tanggalin";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Mensahe";
+$keva_send="Ipadala";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Impormasyon sa NV RVN";
+$console_rvn_blockchain="Impormasyon sa blockchain RVN";
+$console_rvn_count="Bilang ng RVN block";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Impormasyon sa Node keva";
+$console_keva_blockchain="keva blockchain info";
+$console_keva_count="count ng block ng keva";
+$console_keva_mining="Pagsubok sa pagmimina net";
+
+$system_noblock="Walang mga nilalaman na natagpuan sa mga bloke na ito";
+
+$subscribe_broadcast="Kumpirma ang Broadcast";
+$subscribe_sub="Subskripsyon";
+
+$channel_title="Channel";
+$channel_unsub="Hindi isulat";
+$channel_suball="Mag-subscribe sa lahat ng mga assets";
+
+$message_title="Mensahe";
+$message_address="Alamat ng node ng mensahe";
+$message_send="Alamat ng nagpadala";
+$message_my="Ang aking address";
+
+$tag_address="address ng Tag Node";
+
+$check_asset="Mga Bulk Asset Search";
+$check_only="Ipakita lamang ang Magagamit";
+$check_ok="Magagamit na";
+$check_not="Hindi Magagamit";
+
+$langs="fr";
+$turn=1;
+
+
+}
+
+
+
+
+
+//french
+
+if($lang=="fr" or $_REQUEST["lang"]=="fr")
+
+{
+
+$index_local="Local";
+$index_console="Console";
+$index_word="WORD";
+$index_subscription="Abonnement";
+$index_channel="Channel";
+$index_message="Message";
+$index_asset="Asset";
+$index_tag="Tag";
+$index_assetexplorer="Asset Explorer";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Vérifier l'actif";
+$index_link="Link";
+$index_system="System";
+
+
+$keva_myaddress="ADRESSE keva";
+$keva_newspace="Créer un nouvel espace";
+$keva_free="Obtenez un crédit gratuit";
+
+$keva_submit="Soumettre";
+$keva_kaw="KAW";
+$keva_showall="Afficher tout le contenu";
+$keva_showlist="Afficher la liste";
+$keva_addnew="Créer un nouveau mot";
+$keva_subscribe="S'abonner";
+$keva_subscription="Abonnement";
+$keva_linkipfs="Link IPFS";
+$keva_edit="Modifier";
+$keva_delete="Supprimer";
+$keva_broadcast="Diffusion";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Message";
+$keva_send="Envoyer";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Info RVN Node";
+$console_rvn_blockchain="Infos sur la blockchain RVN";
+$console_rvn_count="Nombre de blocs RVN";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Informations sur le nœud keva";
+$console_keva_blockchain="Infos sur la blockchain keva";
+$console_keva_count="Nombre de blocs keva";
+$console_keva_mining="Tester le net mining";
+
+$system_noblock="Aucun contenu trouvé dans ces blocs";
+
+$subscribe_broadcast="Confirmer la diffusion";
+$subscribe_sub="Abonnement";
+
+$channel_title="Channel";
+$channel_unsub="Se désinscrire";
+$channel_suball="Abonnez tous les actifs";
+
+$message_title="Message";
+$message_address="Adresse du nœud de message";
+$message_send="Adresse de l'expéditeur";
+$message_my="Mon adresse";
+
+$tag_address="Adresse du noeud de tag";
+
+$check_asset="Recherche d'actifs en masse";
+$check_only="Afficher uniquement disponible";
+$check_ok="Disponible";
+$check_not="Non disponible";
+
+$langs="de";
+$turn=1;
+
+
+}
+
+//german
+
+if($lang=="de" or $_REQUEST["lang"]=="de")
+
+{
+
+$index_local="Local";
+$index_console="Konsole";
+$index_word="WORD";
+$index_subscription="Abonnement";
+$index_channel="Channel";
+$index_message="Nachricht";
+$index_asset="Asset";
+$index_tag="Tag";
+$index_assetexplorer="Asset Explorer";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Asset prüfen";
+$index_link="Link";
+$index_system="System";
+
+
+$keva_myaddress="keva-ADRESSE";
+$keva_newspace="Neuen Raum erstellen";
+$keva_free="Kostenloses Guthaben erhalten";
+
+$keva_submit="Submit";
+$keva_kaw="KAW";
+$keva_showall="Alle Inhalte anzeigen";
+$keva_showlist="Liste anzeigen";
+$keva_addnew="Neues Wort erstellen";
+$keva_subscribe="Abonnieren";
+$keva_subscription="Abonnement";
+$keva_linkipfs="IPFS verknüpfen";
+$keva_edit="Bearbeiten";
+$keva_delete="Löschen";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Nachricht";
+$keva_send="Senden";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="RVN-Knoteninfo";
+$console_rvn_blockchain="RVN-Blockchain-Informationen";
+$console_rvn_count="RVN-Blockanzahl";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="keva-Knoteninfo";
+$console_keva_blockchain="keva-Blockchain-Informationen";
+$console_keva_count="keva-Blockanzahl";
+$console_keva_mining="Net Mining testen";
+
+$system_noblock="In diesen Blöcken wurden keine Inhalte gefunden";
+
+$subscribe_broadcast="Broadcast bestätigen";
+$subscribe_sub="Abonnement";
+
+$channel_title="Channel";
+$channel_unsub="Abbestellen";
+$channel_suball="Alle Assets abonnieren";
+
+$message_title="Nachricht";
+$message_address="Nachrichtenknotenadresse";
+$message_send="Absenderadresse";
+$message_my="Meine Adresse";
+
+$tag_address="Tag-Knoten-Adresse";
+
+$check_asset="Suche nach Massengütern";
+$check_only="Nur verfügbar anzeigen";
+$check_ok="Verfügbar";
+$check_not="Nicht verfügbar";
+
+$langs="id";
+$turn=1;
+
+
+}
+
+
+
+//indonesian
+
+if($lang=="id" or $_REQUEST["lang"]=="id")
+
+{
+
+$index_local="Local";
+$index_console="Console";
+$index_word="WORD";
+$index_subscription="Berlangganan";
+$index_channel="Channel";
+$index_message="Pesan";
+$index_asset="Aset";
+$index_tag="Tag";
+$index_assetexplorer="Penjelajah Aset";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Periksa Aset";
+$index_link="Tautan";
+$index_system="System";
+
+
+$keva_myaddress="keva ADDRESS";
+$keva_newspace="Buat Spasi Baru";
+$keva_free="Dapatkan kredit gratis";
+
+$keva_submit="Kirim";
+$keva_kaw="KAW";
+$keva_showall="Tampilkan Semua Konten";
+$keva_showlist="Tampilkan Daftar";
+$keva_addnew="Buat Kata Baru";
+$keva_subscribe="Berlangganan";
+$keva_subscription="Berlangganan";
+$keva_linkipfs="Tautkan IPFS";
+$keva_edit="Edit";
+$keva_delete="Hapus";
+$keva_broadcast="Siaran";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Pesan";
+$keva_send="Kirim";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Info simpul RVN";
+$console_rvn_blockchain="Info blockchain RVN";
+$console_rvn_count="Jumlah blok RVN";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="keva Node info";
+$console_keva_blockchain="Info blockchain keva";
+$console_keva_count="jumlah blok keva";
+$console_keva_mining="Uji penambangan bersih";
+
+$system_noblock="Tidak ada konten yang ditemukan di blok ini";
+
+$subscribe_broadcast="Konfirmasi Siaran";
+$subscribe_sub="Berlangganan";
+
+$channel_title="Channel";
+$channel_unsub="Berhenti berlangganan";
+$channel_suball="Berlangganan semua aset";
+
+$message_title="Pesan";
+$message_address="Alamat simpul pesan";
+$message_send="Alamat pengirim";
+$message_my="Alamat saya";
+
+$tag_address="Tag Node address";
+
+$check_asset="Pencarian Aset Massal";
+$check_only="Hanya Tampilkan Yang Tersedia";
+$check_ok="Tersedia";
+$check_not="Tidak Tersedia";
+
+$langs="it";
+$turn=1;
+
+
+}
+
+if($lang=="it" or $_REQUEST["lang"]=="it")
+
+{
+
+$index_local="locali";
+$index_console="Console";
+$index_word="WORD";
+$index_subscription="Abbonamento";
+$index_channel="Canale";
+$index_message="messaggio";
+$index_asset="Asset";
+$index_tag="tag";
+$index_assetexplorer="Esplora risorse";
+$index_ipfsexplorer="Explorer IPFS";
+$index_checkasset="Controlla risorsa";
+$index_link="Link";
+$index_system="Sistema";
+
+
+$keva_myaddress="INDIRIZZO keva";
+$keva_newspace="Crea nuovo spazio";
+$keva_free="Ottieni credito gratuito";
+
+$keva_submit="Invia";
+$keva_kaw="KAW";
+$keva_showall="Mostra tutti i contenuti";
+$keva_showlist="Mostra elenco";
+$keva_addnew="Crea nuova parola";
+$keva_subscribe="Iscriviti";
+$keva_subscription="Abbonamento";
+$keva_linkipfs="Collega IPFS";
+$keva_edit="Modifica";
+$keva_delete="Elimina";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="messaggio";
+$keva_send="Send";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Informazioni sul nodo RVN";
+$console_rvn_blockchain="Informazioni blockchain RVN";
+$console_rvn_count="Conteggio blocchi RVN";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Informazioni sul nodo keva";
+$console_keva_blockchain="Informazioni blockchain keva";
+$console_keva_count="Conteggio blocchi keva";
+$console_keva_mining="Prova il mining netto";
+
+$system_noblock="Nessun contenuto trovato in questi blocchi";
+
+$subscribe_broadcast="Conferma trasmissione";
+$subscribe_sub="Abbonamento";
+
+$channel_title= "Canale";
+$channel_unsub="cancellare la suttoscrizione";
+$channel_suball="Sottoscrivi tutti gli asset";
+
+$MESSAGE_TITLE="messaggio";
+$message_address="Indirizzo nodo messaggio";
+$message_send="Indirizzo mittente";
+$message_my="Il mio indirizzo";
+
+$tag_address="Indirizzo nodo tag";
+
+$check_asset="Ricerca in blocco delle risorse";
+$check_only="Mostra solo disponibile";
+$Check_ok="Disponibile";
+$check_not="Non disponibile";
+
+$langs="po";
+$turn=1;
+
+
+}
+
+
+//polish
+
+if($lang=="po" or $_REQUEST["lang"]=="po")
+
+{
+
+$index_local="Lokalny";
+$index_console="Konsola";
+$index_word="WORD";
+$index_subscription="Subskrypcja";
+$index_channel="Channel";
+$index_message="Wiadomość";
+$index_asset="Zasób";
+$index_tag="Tag";
+$index_assetexplorer="Eksplorator zasobów";
+$index_ipfsexplorer="Eksplorator IPFS";
+$index_checkasset="Sprawdź zasób";
+$index_link="Link";
+$index_system="System";
+
+
+$keva_myaddress="ADRES keva";
+$keva_newspace="Utwórz nową przestrzeń";
+$keva_free="Uzyskaj bezpłatny kredyt";
+
+$keva_submit="Prześlij";
+$keva_kaw="KAW";
+$keva_showall="Pokaż całą zawartość";
+$keva_showlist="Pokaż listę";
+$keva_addnew="Utwórz nowe słowo";
+$keva_subscribe="Subskrybuj";
+$keva_subscription="Subskrypcja";
+$keva_linkipfs="Link IPFS";
+$keva_edit="Edytuj";
+$keva_delete="Usuń";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Wiadomość";
+$keva_send="Wyślij";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Informacje o węźle RVN";
+$console_rvn_blockchain="Informacje o łańcuchu bloków RVN";
+$console_rvn_count="Liczba bloków RVN";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Informacje o węźle keva";
+$console_keva_blockchain="Informacje o łańcuchu bloków keva";
+$console_keva_count="Liczba bloków keva";
+$console_keva_mining="Testuj wydobycie netto";
+
+$system_noblock="Nie znaleziono treści w tych blokach";
+
+$subscribe_broadcast="Potwierdź transmisję";
+$subscribe_sub="Subskrypcja";
+
+$channel_title="Channel";
+$channel_unsub="Anuluj subskrypcję";
+$channel_suball="Subskrybuj wszystkie zasoby";
+
+$message_title="Wiadomość";
+$message_address="Adres węzła wiadomości";
+$message_send="Adres nadawcy";
+$message_my="Mój adres";
+
+$tag_address="Tag Node address";
+
+$check_asset="Wyszukiwanie zbiorcze zasobów";
+$check_only="Pokaż tylko dostępne";
+$check_ok="Dostępne";
+$check_not="Niedostępne";
+
+$langs="pt";
+$turn=1;
+
+
+}
+
+
+
+//portyguese
+
+if($lang=="pt" or $_REQUEST["lang"]=="pt")
+
+{
+
+$index_local="Local";
+$index_console="Console";
+$index_word="WORD";
+$index_subscription="Assinatura";
+$index_channel="Canal";
+$index_message="Mensagem";
+$index_asset="Ativo";
+$index_tag="Tag";
+$index_assetexplorer="Explorador de ativos";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Verificar ativo";
+$index_link="Link";
+$index_system="Sistema";
+
+
+$keva_myaddress="ENDEREÇO ​​keva";
+$keva_newspace="Criar novo espaço";
+$keva_free="Obtenha crédito grátis";
+
+$keva_submit="Enviar";
+$keva_kaw="KAW";
+$keva_showall="Mostrar todo o conteúdo";
+$keva_showlist="Mostrar lista";
+$keva_addnew="Criar nova palavra";
+$keva_subscribe="Inscrever-se";
+$keva_subscription="Assinatura";
+$keva_linkipfs="Link IPFS";
+$keva_edit="Editar";
+$keva_delete="Excluir";
+$keva_broadcast="Transmissão";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Mensagem";
+$keva_send="Enviar";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Informações do nó RVN";
+$console_rvn_blockchain="Informações sobre blockchain RVN";
+$console_rvn_count="Contagem de blocos RVN";
+$console_rvn_mining="Rede de teste RVN";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Informações do nó keva";
+$console_keva_blockchain="Informações sobre blockchain keva";
+$console_keva_count="Contagem de blocos keva";
+$console_keva_mining="Testar mineração líquida";
+
+$system_noblock="Nenhum conteúdo encontrado nesses blocos";
+
+$subscribe_broadcast="Confirmar transmissão";
+$subscribe_sub="Assinatura";
+
+$channel_title="Canal";
+$channel_unsub="Cancelar inscrição";
+$channel_suball="Inscrever todos os ativos";
+
+$message_title="Mensagem";
+$message_address="Endereço do nó da mensagem";
+$message_send="Endereço do remetente";
+$message_my="Meu endereço";
+
+$tag_address="Endereço do nó da tag";
+
+$check_asset="Pesquisa de ativos em massa";
+$check_only="Mostrar apenas disponíveis";
+$check_ok="Disponível";
+$check_not="Não disponível";
+
+$langs="ro";
+$turn=1;
+
+
+}
+
+
+
+//romanian
+
+if($lang=="ro" or $_REQUEST["lang"]=="ro")
+
+{
+
+$index_local="local";
+$index_console="Console";
+$index_word="WORD";
+$index_subscription="Abonament";
+$index_channel="Channel";
+$index_message="Mesaj";
+$index_asset="Activ";
+$index_tag="Tag";
+$index_assetexplorer="Explorator de active";
+$index_ipfsexplorer="Explorer IPFS";
+$index_checkasset="Verificați activul";
+$index_link="Link";
+$index_system="sistem";
+
+
+$keva_myaddress="ADRESA keva";
+$keva_newspace="Creare spațiu nou";
+$keva_free="Obțineți credit gratuit";
+
+$keva_submit="Submit";
+$keva_kaw="KAW";
+$keva_showall="Arată tot conținutul";
+$keva_showlist="Afișare listă";
+$keva_addnew="Creează cuvânt nou";
+$keva_subscribe="Abonați-vă";
+$keva_subscription="Abonament";
+$keva_linkipfs="Link IPFS";
+$keva_edit="Edit";
+$keva_delete="delete";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="LINK GALAXY";
+$keva_message="Mesaj";
+$keva_send="Send";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Informații despre nodul RVN";
+$console_rvn_blockchain="Informații despre blockchain RVN";
+$console_rvn_count="Număr bloc RVN";
+$console_rvn_mining="Testnet RVN";
+$Console_keva_help="kevaCOIN";
+$console_keva_node="Informații despre nodul keva";
+$console_keva_blockchain="Informații despre blockchain keva";
+$console_keva_count="Numărul de blocuri keva";
+$console_keva_mining="Testare miniere net";
+
+$system_noblock="Nu s-a găsit conținut în aceste blocuri";
+
+$subscribe_broadcast="Confirmă transmisia";
+$subscribe_sub="Abonament";
+
+$CHANNEL_TITLE="Channel";
+$channel_unsub="dezabona";
+$channel_suball="Abonează-te la toate activele";
+
+$MESSAGE_TITLE="Mesaj";
+$message_address="Adresa nodului mesajului";
+$message_send="Adresa expeditorului";
+$message_my="Adresa mea";
+
+$tag_address="Adresa nodului etichetă";
+
+$check_asset="Căutare de active în vrac";
+$check_only="Afișați numai disponibil";
+$check_ok="Disponibil";
+$check_not="Nu este disponibil";
+
+$langs="ru";
+$turn=1;
+
+
+}
+
+
+//russian
+
+if($lang=="ru" or $_REQUEST["lang"]=="ru")
+
+{
+
+$index_local="Местные";
+$index_console="Консоль";
+$index_word="WORD";
+$index_subscription="Подписка";
+$index_channel="Канал";
+$index_message="Сообщение";
+$index_asset="активы";
+$index_tag="Tag";
+$index_assetexplorer="Обозреватель активов";
+$index_ipfsexplorer="Проводник IPFS";
+$index_checkasset="Проверить актив";
+$index_link="Link";
+$index_system="Система";
+
+
+$keva_myaddress="keva ADDRESS";
+$keva_newspace="Создать новое пространство";
+$keva_free="Получить бесплатный кредит";
+
+$keva_submit="Отправить";
+$keva_kaw="KAW";
+$keva_showall="Показать все содержимое";
+$keva_showlist="Показать список";
+$keva_addnew="Создать новое слово";
+$keva_subscribe="Подписаться";
+$keva_subscription="Подписка";
+$keva_linkipfs="Ссылка IPFS";
+$keva_edit="Редактировать";
+$keva_delete="Удалить";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Сообщение";
+$keva_send="Отправить";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Информация об узле RVN";
+$console_rvn_blockchain="Информация о блокчейне RVN";
+$console_rvn_count="Количество блоков RVN";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Информация узла keva";
+$console_keva_blockchain="Информация о блокчейне keva";
+$console_keva_count="Количество блоков keva";
+$console_keva_mining="Тестирование сетевого майнинга";
+
+$system_noblock="В этих блоках не найдено содержимого";
+
+$subscribe_broadcast="Подтвердить трансляцию";
+$Subscribe_sub="Подписка";
+
+$CHANNEL_TITLE="Канал";
+$channel_unsub="отписка";
+$channel_suball="Подписаться на все активы";
+
+$MESSAGE_TITLE="Сообщение";
+$message_address="Адрес узла сообщения";
+$message_send="Адрес отправителя";
+$message_my="Мой адрес";
+
+$tag_address="Адрес узла тега";
+
+$check_asset="Массовый поиск активов";
+$check_only="Показать только доступные";
+$Check_ok="Доступный";
+$check_not="Недоступно";
+
+$langs="es";
+$turn=1;
+
+
+}
+
+
+//spanish
+
+if($lang=="es" or $_REQUEST["lang"]=="es")
+
+{
+
+$index_local="Local";
+$index_console="Consola";
+$index_word="WORD";
+$index_subscription="Suscripción";
+$index_channel="Canal";
+$index_message="Mensaje";
+$index_asset="Activo";
+$index_tag="Etiqueta";
+$index_assetexplorer="Explorador de activos";
+$index_ipfsexplorer="Explorador de IPFS";
+$index_checkasset="Verificar activo";
+$index_link="Enlace";
+$index_system="Sistema";
+
+
+$keva_myaddress="DIRECCIÓN keva";
+$keva_newspace="Crear nuevo espacio";
+$keva_free="Obtenga crédito gratis";
+
+$keva_submit="Enviar";
+$keva_kaw="KAW";
+$keva_showall="Mostrar todo el contenido";
+$keva_showlist="Mostrar lista";
+$keva_addnew="Crear nueva palabra";
+$keva_subscribe="Suscribirse";
+$keva_subscription="Suscripción";
+$keva_linkipfs="Enlace IPFS";
+$keva_edit="Editar";
+$keva_delete="Eliminar";
+$keva_broadcast="Difusión";
+$keva_galaxylink="ENLACE GALAXY";
+$keva_message="Mensaje";
+$keva_send="Enviar";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="Información del nodo RVN";
+$console_rvn_blockchain="Información de la cadena de bloques RVN";
+$console_rvn_count="Recuento de bloque RVN";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="Información del nodo keva";
+$console_keva_blockchain="Información de la cadena de bloques keva";
+$console_keva_count="Recuento de bloque keva";
+$console_keva_mining="Prueba de minería neta";
+
+$system_noblock="No se encontraron contenidos en estos bloques";
+
+$subscribe_broadcast="Confirmar transmisión";
+$subscribe_sub="Suscripción";
+
+$channel_title="Canal";
+$channel_unsub="Cancelar suscripción";
+$channel_suball="Suscribir todos los activos";
+
+$message_title="Mensaje";
+$message_address="Dirección del nodo del mensaje";
+$message_send="Dirección del remitente";
+$message_my="Mi dirección";
+
+$tag_address="Dirección del nodo de etiqueta";
+
+$check_asset="Búsqueda de activos masivos";
+$check_only="Mostrar solo disponible";
+$check_ok="Disponible";
+$check_not="No disponible";
+
+$langs="th";
+$turn=1;
+
+
+}
+
+//thai
+
+if($lang=="th" or $_REQUEST["lang"]=="th")
+
+{
+
+$index_local="ท้องถิ่น";
+$index_console="คอนโซล";
+$index_word="WORD";
+$index_subscription="การสมัครสมาชิก";
+$index_channel="ช่อง";
+$index_message="ข้อความ";
+$index_asset="สินทรัพย์";
+$index_tag="แท็ก";
+$index_assetexplorer="ตัวสำรวจสินทรัพย์";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="ตรวจสอบสินทรัพย์";
+$index_link="เชื่อมโยง";
+$index_system="ระบบ";
+
+
+$keva_myaddress="keva ADDRESS";
+$keva_newspace="สร้างช่องว่างใหม่";
+$keva_free="รับเครดิตฟรี";
+
+$keva_submit="ส่ง";
+$keva_kaw="KAW";
+$keva_showall="แสดงเนื้อหาทั้งหมด";
+$keva_showlist="แสดงรายการ";
+$keva_addnew="สร้างคำใหม่";
+$keva_subscribe="สมัครสมาชิก";
+$keva_subscription="การสมัครสมาชิก";
+$keva_linkipfs="เชื่อมโยง IPFS";
+$keva_edit="แก้ไข";
+$keva_delete="ลบ";
+$keva_broadcast="ออกอากาศ";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="ข้อความ";
+$keva_send="ส่ง";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="ข้อมูลโหนด RVN";
+$console_rvn_blockchain="RVN blockchain info";
+$console_rvn_count="นับจำนวนบล็อก RVN";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="kevaCOIN";
+$console_keva_node="keva ข้อมูลโหนด";
+$console_keva_blockchain="keva blockchain info";
+$console_keva_count="keva จำนวนบล็อก";
+$console_keva_mining="ทดสอบการทำเหมืองเน็ต";
+
+$system_noblock="ไม่พบเนื้อหาในบล็อคเหล่านี้";
+
+$Subscribe_broadcast="ยืนยันการออกอากาศ";
+$subscribe_sub="การสมัครสมาชิก";
+
+$CHANNEL_TITLE="ช่อง";
+$channel_unsub="Unsubcribe";
+$channel_suball="สมัครสมาชิกเนื้อหาทั้งหมด";
+
+$message_title="ข้อความ";
+$message_address="ที่อยู่โหนดข้อความ";
+$message_send="ที่อยู่ผู้ส่ง";
+$message_my="ที่อยู่ของฉัน";
+
+$tag_address="ที่อยู่ของโหนดโหนด";
+
+$check_asset="ค้นหาทรัพย์สินจำนวนมาก";
+$check_only="แสดงรายการที่ให้บริการเท่านั้น";
+$check_ok="ที่มีอยู่";
+$check_not="ไม่พร้อมใช้งาน";
+
+$langs="tr";
+$turn=1;
+
+
+}
+
+
+
+//turkish
+
+if($lang=="tr" or $_REQUEST["lang"]=="tr")
+
+{
+
+$index_local="Yerel";
+$index_console="Konsol";
+$index_word="WORD";
+$index_subscription="Abonelik";
+$index_channel="Kanal";
+$index_message="Mesaj";
+$index_asset="Varlık";
+$index_tag="Etiket";
+$index_assetexplorer="Varlık Gezgini";
+$index_ipfsexplorer="IPFS Gezgini";
+$index_checkasset="Varlığı Kontrol Et";
+$index_link="Bağlantı";
+$index_system="Sistem";
+
+
+$keva_myaddress="keva ADRESİ";
+$keva_newspace="Yeni Alan Yarat";
+$keva_free="Ücretsiz kredi alın";
+
+$keva_submit="Gönder";
+$keva_kaw="KAW";
+$keva_showall="Tüm İçeriği Göster";
+$keva_showlist="Listeyi Göster";
+$keva_addnew="Yeni Kelime Oluştur";
+$keva_subscribe="Abone Ol";
+$keva_subscription="Abonelik";
+$keva_linkipfs="IPFS'yi Bağla";
+$keva_edit="Düzen";
+$keva_delete="Sil";
+$keva_broadcast="Yayın";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Mesaj";
+$keva_send="Gönder";
+
+$console_rvn_help="RAVENCOIN";
+$console_rvn_node="RVN Düğümü bilgisi";
+$console_rvn_blockchain="RVN blok zinciri bilgisi";
+$console_rvn_count="RVN blok sayısı";
+$console_rvn_mining="RVN Testnet";
+$Console_keva_help="kevaCOIN";
+$console_keva_node="keva Düğüm bilgisi";
+$console_keva_blockchain="keva blockchain bilgisi";
+$console_keva_count="keva blok sayısı";
+$console_keva_mining="Net madenciliği test et";
+
+$system_noblock="Bu bloklarda içerik bulunamadı";
+
+$subscribe_broadcast="Yayını Onayla";
+$subscribe_sub="Abonelik";
+
+$CHANNEL_TITLE="Kanal";
+$channel_unsub="Unsubcribe";
+$channel_suball="Tüm öğelere abone ol";
+
+$MESSAGE_TITLE="Mesaj";
+$message_address="Mesaj düğümü adresi";
+$message_send="Gönderen adresi";
+$message_my="Adresim";
+
+$tag_address="Etiket Düğümü adresi";
+
+$check_asset="Toplu Varlık Arama";
+$check_only="Yalnızca Mevcut Olduğunu Göster";
+$check_ok= "Kullanılabilir";
+$check_not="Mevcut Değil";
+
+$langs="af";
+$turn=1;
+
+
+}
+
+/*
+
+if($lang=="bs" or $_REQUEST["lang"]=="bs")
+
+{
+
+$langs="en";
+$turn=1;
+
+
+}
+
+*/
+
+//afrikaans
+
+if($lang=="af" or $_REQUEST["lang"]=="af")
+
+{
+
+$langs="en";
+$turn=1;
+
+$index_local="Plaaslike";
+$index_console="Console";
+$index_word="WORD";
+$index_subscription="Inskrywing";
+$index_channel="Channel";
+$index_message="Boodskap";
+$index_asset="Bate";
+$index_tag="Tag";
+$index_assetexplorer="Asset Explorer";
+$index_ipfsexplorer="IPFS Explorer";
+$index_checkasset="Check Asset";
+$index_link="Link";
+$index_system="Stelsel";
+
+
+$keva_myaddress="keva ADDRESS";
+$keva_newspace="Nuwe ruimte skep";
+$keva_free="Kry gratis krediet";
+
+$keva_submit="Stuur";
+$keva_kaw="KAW";
+$keva_showall="Toon alle inhoud";
+$keva_showlist="Toon lys";
+$keva_addnew="Skep nuwe woord";
+$keva_subscribe="Betaal";
+$keva_subscription="Inskrywing";
+$keva_linkipfs="Koppel IPFS";
+$keva_edit="Redigeer";
+$keva_delete="Delete";
+$keva_broadcast="Broadcast";
+$keva_galaxylink="GALAXY LINK";
+$keva_message="Boodskap";
+$keva_send="Stuur";
+
+$Console_rvn_help="RAVENCOIN";
+$console_rvn_node="RVN Node-inligting";
+$console_rvn_blockchain="RVN blockchain-inligting";
+$console_rvn_count="RVN-bloktelling";
+$console_rvn_mining="RVN Testnet";
+$console_keva_help="KEVACOIN";
+$console_keva_node="keva knooppuntinligting";
+$console_keva_blockchain="keva blockchain-inligting";
+$console_keva_count="keva-bloktelling";
+$console_keva_mining="Testnet-ontginning";
+
+$system_noblock="Geen inhoud word in hierdie blokke gevind nie";
+
+$subscribe_broadcast="Bevestig uitsending";
+$subscribe_sub="Inskrywing";
+
+$CHANNEL_TITLE="Channel";
+$Channel_unsub="Unsubcribe";
+$channel_suball="Teken alle bates in";
+
+$message_title="Boodskap";
+$message_address="Boodskapnodeadres";
+$message_send="Afzenderadres";
+$message_my="My adres";
+
+$tag_address="Merk node-adres";
+
+$check_asset="Grootmaat bates soek";
+$check_only="Wys slegs beskikbaar";
+$Check_ok="Beskikbaar";
+$check_not="Nie beskikbaar nie";
+
+}
+
 
 
 ?>
