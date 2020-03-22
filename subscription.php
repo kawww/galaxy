@@ -230,6 +230,9 @@ margin-top:2px;
 
 <?php 
 error_reporting(0);
+
+$turn=9;
+
 include("rpc.php");
 
 $kpc = new Keva();
@@ -251,7 +254,7 @@ $_REQ = array_merge($_GET, $_POST);
 
 
 
-$turn=9;
+
 $ux=9;
 
 $unicode=" ";
@@ -265,7 +268,7 @@ if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li></div></form></div>";
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></div></form></div>";
 	
 
 $txid=$_REQ["txid"];
@@ -358,10 +361,10 @@ if(isset($block) & is_numeric($block)==true)
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
 
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left><a href=keva.php?asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
 
 											
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
 										
 														}
 
@@ -370,10 +373,10 @@ if(isset($block) & is_numeric($block)==true)
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left><a href=keva.php?asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
 
 												
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
 											
 										
 													}
@@ -412,10 +415,10 @@ if(isset($block) & is_numeric($block)==true)
 
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
 													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
 
 									
 												}
@@ -429,16 +432,16 @@ if(isset($block) & is_numeric($block)==true)
 												  if(stristr($valuex,"src") == true)
 											{
 												
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$valuex."</p></li>";}	  
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".$valuex."</p></li>";}	  
 											
 
 													else
 
 
-											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
 
 													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
 
 												}
 
@@ -478,7 +481,7 @@ if(isset($block) & is_numeric($block)==true)
 		
 											$valuex=str_replace("\n","<br>",$v);
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
 
 
@@ -497,7 +500,7 @@ if(isset($block) & is_numeric($block)==true)
 														}
 
 															
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> < <a href=subscription.php?block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";	
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";	
 											}
 
 
@@ -590,7 +593,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 								
 								$asset=$sinfo;
 								
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:120px;width:90%;\"><h1>".$snewkey."</h1><br><a href=?name=".$aname."&uname=".$rname."><font size=4><b>".$rname."</b></font></a></li></ul><ul>";
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:120px;width:90%;\"><h1>".$snewkey."</h1><br><a href=?lang=".$_REQUEST["lang"]."&name=".$aname."&uname=".$rname."><font size=4><b>".$rname."</b></font></a></li></ul><ul>";
 
 								
 
@@ -601,7 +604,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 							
 											{
 
-										echo "<script>window.location.href=decodeURIComponent('keva.php?asset=".$value."&showall=11')</script>";
+										echo "<script>window.location.href=decodeURIComponent('keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11')</script>";
 
 											}
 								else
@@ -630,7 +633,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
 											
 													}
@@ -644,7 +647,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 											if(stristr($valuex,"src") == true)
 													{
 												
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$valuex."</p></li>";
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".$valuex."</p></li>";
 													}	
 
 													else
@@ -652,7 +655,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 												{
 												
 													
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
 												}
 
@@ -696,7 +699,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 		
 											$valuex=str_replace("\n","<br>",$v);
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
 
 
@@ -728,7 +731,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 												
 												}
 																			
-												echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txid.">".$txid."</a> [ <a href=subscription.php?block=".$bnum."> ".$bnum." </a>]</p></li>";
+												echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txid.">".$txid."</a> [ <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$bnum."> ".$bnum." </a>]</p></li>";
 
 
 							
@@ -765,7 +768,7 @@ if(isset($_REQ["asset"]))
 
 	}
 	else{
-	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:90%;\"><br><br><a href=?asset=".$_REQ["asset"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&confirm=1><font size=5><b> CONFIRM BROADCAST [ ".$uname." ]</b></font></a>";}
+	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:100px;width:90%;\"><br><br><a href=?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&confirm=1><font size=5><b> ".$subscribe_broadcast." [ ".$uname." ]</b></font></a>";}
 
 
 	if(isset($_REQ["assetadd"]) & isset($_REQ["assetname"]) & isset($_REQ["assetmemo"]))
@@ -903,18 +906,18 @@ arsort($totalassx);
 
 $age=$totalassx;
 
-
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=? >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?unicode=1 >[ TURN-ON ]</a><br>";}
+if($_REQUEST["lang"]=="en" or !$_REQUEST["lang"]){
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."& >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."&unicode=1 >[ TURN-ON ]</a><br>";}}
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:5px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/subscription.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h3>SUBSCRIPTION</h3></a></li></ul><ul>";
+echo "<a href=/subscription.php><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h3>".$subscribe_sub."</h3></a></li></ul><ul>";
 
 
 
 if(isset($_REQUEST["asset"]))
 {
-echo "<a href=channel.php?&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>".$_REQUEST["asset"]."</h4></a></li></ul>";
+echo "<a href=channel.php?lang=".$_REQUEST["lang"]."&&asset=".$_REQUEST["asset"]."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:60px;display:block;\"><h4>".$_REQUEST["asset"]."</h4></a></li></ul>";
 }
 
 		foreach($age as $xx_value=>$xx)
@@ -978,7 +981,7 @@ if(strlen($ipfs)=="64")
 
 
 $stitle2=$title;
-$stitle="<a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><font color=ffffff>".$stitle2."</font></a>";
+$stitle="<a href=?lang=".$_REQUEST["lang"]."&blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><font color=ffffff>".$stitle2."</font></a>";
 
 
 
@@ -986,9 +989,9 @@ if(isset($cname)){
 
 	if($cname==$x_value){
 
-				if(isset($_REQ["uname"])){$x_value=$_REQ["uname"];$stitle="<a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><font color=ffffff>".$stitle2."</font></a>";}
+				if(isset($_REQ["uname"])){$x_value=$_REQ["uname"];$stitle="<a href=?lang=".$_REQUEST["lang"]."&blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><font color=ffffff>".$stitle2."</font></a>";}
 
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=5>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?lang=".$_REQUEST["lang"]."&blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=5>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
 						}
 			
 				}
@@ -997,7 +1000,7 @@ if(isset($cname)){
 					{
 
 				
-				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
+				echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><table cellspacing=\"30px\" ><tr><td width=550px align=left><a href=?lang=".$_REQUEST["lang"]."&blocknum=".$blockhash["height"]."&txid=".$ipfs."&name=".$x_value."&aname=".$name."><b><font size=6>".$x_value."</font></b></a></td><td  align=right><font size=6>".$time."</font></td></tr><tr><td align=left><font size=5>".$stitle."</font></td><td   align=right></td></tr></table></li>";
 				}
 			
 				

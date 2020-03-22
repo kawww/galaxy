@@ -236,6 +236,8 @@ margin-top:2px;
 
 <?php 
 error_reporting(0);
+include("rpc.php");
+
 
 if(isset($_REQUEST["asset"])) 
 
@@ -267,14 +269,14 @@ if(isset($_REQUEST["asset"]))
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
-		echo "<br><br><input type=\"checkbox\" name=\"only\" checked><label for=\"1\">Show Availiable Only</label><br><br><input type=\"submit\" value=\"KAW\"></li></ul></div></form></div>";
+		echo "<br><br><input type=\"checkbox\" name=\"only\" checked><label for=\"1\">".$check_only."</label><br><br><input type=\"submit\" value=\"KAW\"></li></ul></div></form></div>";
 		
 		
 		
 		
 		}else{
 
-		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
 
 		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"ASSET\">";
 
@@ -285,7 +287,7 @@ if(isset($_REQUEST["asset"]))
 		echo "<div id=\"nav\"><ul>";
 		
 		
-		echo"<a href=?mode=bulk ><li style=\"height:100px;color:#bbb;\"><h2>[ Bulk Assets Search ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>Good Luck!</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&mode=bulk ><li style=\"height:100px;color:#bbb;\"><h2>[ ".$check_asset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>Good Luck!</p></a></li>";
 
 
 		echo"<a href=https://numbergenerator.org/numberlist-1-1000 target=blank><li style=\"height:100px;color:#bbb;\"><h2>[ Number Generator ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>numbergenerator.org</p></a></li>";
@@ -429,20 +431,20 @@ if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_m
 
 	$asset=utf8_to_unicode($asset); 
 	$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; ".trim($_REQ["asset"]);
-	$unioff=" <a href=?asset=".$asset."&unicode=0&u=1&".$sort." >[ TURN-OFF ]</a><br>";
+	$unioff=" <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&unicode=0&u=1&".$sort." >[ TURN-OFF ]</a><br>";
 	
 	$turn=1;
 	
 	
 	}else{
 
-		$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=".$asset."&unicode=1&".$sort."  >[ TURN-ON ]</a><br>";
+		$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&unicode=1&".$sort."  >[ TURN-ON ]</a><br>";
 
 		//all to unicode
 
 		if(isset($ux) && $ux==1){
 
-			$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?asset=".$asset."&unicode=2&u=1&".$sort." >[ TURN-ON ]</a><br>";}
+			$unioff="&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&unicode=2&u=1&".$sort." >[ TURN-ON ]</a><br>";}
 
 		
 			}
@@ -456,7 +458,7 @@ if(isset($turn) && $ux==9 && $turn==1)
 
 
 $unicode="&nbsp;&nbsp;<font color=#28f428>UNICODE</font>&nbsp; ".$asset;
-$unioff=" <a href=?asset=".$asset."&unicode=0&".$sort." >[ TURN-OFF ]</a><br>";
+$unioff=" <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&unicode=0&".$sort." >[ TURN-OFF ]</a><br>";
 	
 	
 }
@@ -493,14 +495,14 @@ $address=$asset;
 if($sortnum==1){
 	
 	
-	$sortword="<a href=\"?unicode=".$turn."&asset=".$address."\">[ FAST ]</a>&nbsp;";
+	$sortword="<a href=\"?lang=".$_REQUEST["lang"]."&unicode=".$turn."&asset=".$address."\">[ FAST ]</a>&nbsp;";
 
 
 }else
 	
 {
 	
-	$sortword="<a href=\"?unicode=".$turn."&sort=1&asset=".$address."\">[ SORT ]</a>";
+	$sortword="<a href=\"?lang=".$_REQUEST["lang"]."&unicode=".$turn."&sort=1&asset=".$address."\">[ SORT ]</a>";
 
 }
 
@@ -556,7 +558,7 @@ foreach($age as $x=>$x_value)
 
 
 
-		$available="<font color=red>Not Available</font>";
+		$available="<font color=red>".$check_not."</font>";
 
 		$ok=1;
 
@@ -567,7 +569,7 @@ foreach($age as $x=>$x_value)
 		
 
 		
-				echo "<a href=../?asset=".$assetinput."><li style=\"background-color: #0b0c0d;height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
+				echo "<a href=../?lang=".$_REQUEST["lang"]."&asset=".$assetinput."><li style=\"background-color: #0b0c0d;height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
 
 
 				}
@@ -585,7 +587,7 @@ foreach($age as $x=>$x_value)
 
 				if(!$ok){
 
-$available="<font color=geeen>Available</font>";
+$available="<font color=geeen>".$check_ok."</font>";
 
 
 		if($sortnum==9)
@@ -595,7 +597,7 @@ $available="<font color=geeen>Available</font>";
 		
 		if(strlen($asset)>30 or strlen($assetinput)<3 or strlen($assetinput)>30){$available="<font color=red>Not Available Length</font>";}
 		
-				echo "<a href=../?asset=".$assetinput."><li style=\"height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
+				echo "<a href=../?lang=".$_REQUEST["lang"]."&asset=".$assetinput."><li style=\"height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
 
 
 	}	

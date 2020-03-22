@@ -241,7 +241,7 @@ if(isset($_REQUEST["asset"]))
 			
 	
 
-		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
+		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
 
 		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"support 4 commands\">";
 
@@ -255,19 +255,19 @@ if(isset($_REQUEST["asset"]))
 		echo "<div id=\"nav\"><ul>";
 		
 		
-		echo"<a href=?asset=help ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ HELP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN BLOCKCHAIN</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=help ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ HELP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_rvn_help."</p></a></li>";
 		
-		echo"<a href=?asset=getinfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN NODE INFO</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=getinfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GET INFO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_rvn_node."</p></a></li>";
 
-		echo"<a href=?asset=getblockchaininfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Blockchain Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN BLOCKCHAIN INFO</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=getblockchaininfo ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GET BLOCKINFO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_rvn_blockchain."</p></a></li>";
 
-		echo"<a href=?asset=getblockcount ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Block Count ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN BLOCK COUNT</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=getblockcount ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GET BLOCKCOUNT ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_rvn_count."</p></a></li>";
 
 		if($webmode==0){
 		if(!$_REQUEST["miningr"]){
-		echo"<a href=?asset=miningr&miningr=on ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ START MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN TESTNET</p></a></li>";}else
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=miningr&miningr=on ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ START MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_rvn_mining." </p></a></li>";}else
 		{
-		echo"<a href=?asset=miningr ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ STOP MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>RVN TESTNET</p></a></li>";}
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=miningr ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ STOP MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_rvn_minging."</p></a></li>";}
 
 		}
 
@@ -278,18 +278,18 @@ if(isset($_REQUEST["asset"]))
 				echo "<div id=\"nav\"><ul>";
 		
 		
-		echo"<a href=?asset=help&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ HELP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCKCHAIN</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=help&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ HELP ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_keva_help."</p></a></li>";
 		
-		echo"<a href=?asset=getinfo&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA NODE INFO</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=getinfo&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GET INFO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_keva_node."</p></a></li>";
 
-		echo"<a href=?asset=getblockchaininfo&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Blockchain Info ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCKCHAIN INFO</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=getblockchaininfo&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GET BLOCKINFO ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_keva_blockchain."</p></a></li>";
 
-		echo"<a href=?asset=getblockcount&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ Get Block Count ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA BLOCK COUNT</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=getblockcount&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GET BLOCKCOUNT ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$console_keva_count."</p></a></li>";
 
 	/* if(!$_REQUEST["miningk"]){
-		echo"<a href=?asset=miningk&miningk=on&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ START MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA TESTNET</p></a></li>";}else
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=miningk&miningk=on&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ START MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA TESTNET</p></a></li>";}else
 		{
-		echo"<a href=?asset=miningk&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ STOP MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA TESTNET</p></a></li>";}
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=miningk&block=keva ><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ STOP MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA TESTNET</p></a></li>";}
 
   */
 
@@ -464,7 +464,7 @@ echo "</div>";
 
 }
 
-//echo "<br><br>&nbsp;&nbsp;<a href=http://onervn.com/search?asset=".$address." >http://onervn.com/search?asset=".$address."</a>&nbsp;<br>";
+
 
 
 

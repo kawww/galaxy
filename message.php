@@ -230,6 +230,9 @@ margin-top:2px;
 
 <?php 
 error_reporting(0);
+
+$turn=9;
+
 include("rpc.php");
 
 $kpc = new Keva();
@@ -249,7 +252,7 @@ $rpc->port=$rrpcport;
 $_REQ = array_merge($_GET, $_POST);
 
 
-$turn=9;
+
 $ux=9;
 
 $unicode=" ";
@@ -263,7 +266,7 @@ if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
 
 		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"ASSET\">";
 
@@ -284,11 +287,12 @@ if(isset($_REQ["ipfs"])){$messc=$_REQ["ipfs"];}
 
 if(isset($_REQ["txid"])){$messc=$_REQ["txid"];}
 
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=message.php?txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"].">[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=message.php?txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&unicode=1>[ TURN-ON ]</a><br>";}
+if($_REQUEST["lang"]=="en" or !$_REQUEST["lang"]){
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"].">[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&unicode=1>[ TURN-ON ]</a><br>";}}
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=message.php><li style=\"background-color: rgb(0, 79, 74);height:120px;display:block;padding-top:0px;\"><h4>MESSAGE</h4></a></li>";
+echo "<a href=message.php><li style=\"background-color: rgb(0, 79, 74);height:120px;display:block;padding-top:0px;\"><h4>".$message_title."</h4></a></li>";
 
 
 
@@ -315,7 +319,7 @@ if(stristr($asset,"!")==false)
 		}
 	$x_value=str_replace("U+","",$x_value);
 
-echo "<a href=subscription.php?&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
+echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
 								
 
 						}
@@ -444,12 +448,12 @@ asort($totalassx);
 
 $age=$totalassx;
 
-
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=? >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?unicode=1 >[ TURN-ON ]</a><br>";}
+if($_REQUEST["lang"]=="en" or !$_REQUEST["lang"]){
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."& >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."&unicode=1 >[ TURN-ON ]</a><br>";}}
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=index.php?&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>MESSAGE NODE ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li></ul><ul>";
+echo "<a href=index.php?lang=".$_REQUEST["lang"]."&&asset=".$shopaddress."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$message_address."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$shopaddress."</font></a></li></ul><ul>";
 
 		foreach($age as $xx_value=>$xx)
 
@@ -483,18 +487,18 @@ echo "<a href=index.php?&asset=".$shopaddress."&mode=2><li style=\"background-co
 			}
 			if(strlen($ipfs)=="64")
 			{
-			$messone="<a href=subscription.php?txid=".$ipfs."&name=".$x_value.">TXID</a>";
+			$messone="<a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$ipfs."&name=".$x_value.">TXID</a>";
 			}
 
 		if(isset($_REQ["asset"]) & trim($_REQ["asset"])==$x_value) {
 		
 
-		echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?&unicode=".$turn."&asset=".$from."> <font size=3>SENDER ADDRESS</font> </a> ]  [ <a href=index.php?&unicode=".$turn."&asset=".$to."><font size=3>MY ADDRESS</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
+		echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$from."> <font size=3>".$message_send."</font> </a> ]  [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$to."><font size=3>".$message_my."</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
 			
 				}
 
 		if(!isset($_REQ["asset"])) {
-					echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?&unicode=".$turn."&asset=".$from."> <font size=3>SENDER ADDRESS</font> </a> ]  [ <a href=index.php?&unicode=".$turn."&asset=".$to."><font size=3>MY ADDRESS</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
+					echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$from."> <font size=3>".$message_send."</font> </a> ]  [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$to."><font size=3>".$message_my."</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
 			}
 
 			}

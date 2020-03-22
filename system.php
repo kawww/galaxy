@@ -266,7 +266,7 @@ if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li></div></form></div>";
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></div></form></div>";
 	
 
 $txid=$_REQ["txid"];
@@ -369,18 +369,18 @@ echo "<div id=\"universe\" class=\"crt\"><div id=\"nav\"><ul>";
 if(count($totalass)==0){
 	
 	
-	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>NO CONTENTS FOUND IN THESE BLOCKS [ ".$blockshow." ]  - [ ".$blockread." ]</p></li>";
+	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$system_noblock." [ ".$blockshow." ]  - [ ".$blockread." ]</p></li>";
 
 	
 	if($webmode==1){
 
 
 
-echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT ".$sysweb."  BLOCK</h3></a></li>";}
+echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT ".$sysweb."  BLOCK</h3></a></li>";}
 
 else{
 
-echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$syslocal."   BLOCK</h3></a></li>";}
+echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$syslocal."   BLOCK</h3></a></li>";}
 
 exit;
 }
@@ -395,7 +395,7 @@ foreach ($totalass as $k=>$v)
 
 $asset = $rpc->getassetdata($snewkey);
 
-if(isset($asset) & $asset['has_ipfs']==1){$snewkey="<a href=subscription.php?txid=".$asset['txid'].">".$snewkey."</a>";}
+if(isset($asset) & $asset['has_ipfs']==1){$snewkey="<a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$asset['txid'].">".$snewkey."</a>";}
 
 
 $x_value=$snewkey;
@@ -427,10 +427,10 @@ $x_value=$snewkey;
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left><a href=keva.php?asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
 
 												
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a>  [ ".$block." ]  < <a href=subscription.php?block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ]  < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
 											
 										
 													}
@@ -472,7 +472,7 @@ $x_value=$snewkey;
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
 													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
 
 									
 												}
@@ -495,7 +495,7 @@ $x_value=$snewkey;
 											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
 
 													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
 
 												}
 
@@ -557,7 +557,7 @@ $x_value=$snewkey;
 														}
 
 															
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?txid=".$txa.">".$txa."</a> [ ".$block." ] < <a href=subscription.php?block=".$block."&sub=".$size.">".$size."</a> > </p></li>";	
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";	
 											}
 
 
@@ -586,11 +586,11 @@ $x_value=$snewkey;
 
 if($webmode==1){
 
-echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$sysweb."  BLOCK</h3></a></li>";}
+echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$sysweb."  BLOCK</h3></a></li>";}
 
 else{
 
-echo "<a href=?blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$syslocal."   BLOCK</h3></a></li>";}
+echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$syslocal."   BLOCK</h3></a></li>";}
 
 
 

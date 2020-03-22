@@ -267,7 +267,7 @@ if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-left:0px;padding-left:0px;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;width:0px;\"><a href=index.php><b>GALAXY</b></a></li>";	
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-left:0px;padding-left:0px;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;width:0px;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
 
 		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"ASSET\">";
 
@@ -357,11 +357,14 @@ if(!$agex[0][0][0]){$tagadd=$_REQ["asset"];}else{$tagadd=$agex[0][0][0];}
 
 if($webmode==1){$tagadd=$tag_address;}
 
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=? >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?unicode=1 >[ TURN-ON ]</a><br>";}
+if($_REQUEST["lang"]=="en" or !$_REQUEST["lang"]){
+
+
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."& >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."&unicode=1 >[ TURN-ON ]</a><br>";}}
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/tag.php><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;width:730px;\"><h4>TAG ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$tagadd."</font></a></li></ul><ul>";
+echo "<a href=/tag.php><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;width:730px;\"><h4>".$tag_address."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$tagadd."</font></a></li></ul><ul>";
 
 		foreach($age as $xx)
 
@@ -402,7 +405,7 @@ $add=$xx[add];
 
 				{
 
-				$messone=" <a href=subscription.php?txid=".$ipfs['txid'].">".$x_value."</a>";
+				$messone=" <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$ipfs['txid'].">".$x_value."</a>";
 
 		
 				}
@@ -417,7 +420,7 @@ $add=$xx[add];
 
 
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:600px;font-size:70%\"><table><tr><td width=\"200px\" align=left>".$messone."</td><td width=\"400px\" align=left><a href=?unicode=".$turn."&asset=".$add.">".$add."</a></td></tr></table></li>";
+			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:600px;font-size:70%\"><table><tr><td width=\"200px\" align=left>".$messone."</td><td width=\"400px\" align=left><a href=?lang=".$_REQUEST["lang"]."&unicode=".$turn."&asset=".$add.">".$add."</a></td></tr></table></li>";
 			
 			}
 			
