@@ -45,6 +45,6 @@ You can get free credit to test Galaxy:
 
 4.If the tx is comfirmed, you can edit, click block number to check your word, create ipfs link, broadcast to your raven asset, send message with raven asset.
 
-5.You can click [ SYSTEM ] to see all word on the kevacoin blockchain.
+5.You can click [ SYSTEM ] to see all word on the kevacoin blockchain.（http://galaxyos.io/subscription.php?txid=0393195b795330a76f40a4e7487dd969b81583aca2e8deee169a6bead5b9a894）
 
 
