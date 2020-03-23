@@ -710,7 +710,7 @@ if(isset($consolespace))
 	   $langcheck=$kpc->keva_get($consolespace,"LANGUAGE");
 
 
-	   if(strlen($langcheck['value'])==2){echo 111;$lang=$langcheck['value'];}
+	   if(strlen($langcheck['value'])==2){$lang=$langcheck['value'];}
 
 	   //system
 
