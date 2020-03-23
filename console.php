@@ -294,7 +294,32 @@ if(isset($_REQUEST["asset"]))
   */
 
   echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ START MINING ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>KEVA TESTNET</p></li>";
-		
+
+
+echo "</ul></div>";
+
+echo "<div id=\"nav\"><ul>";
+
+
+  //console
+
+if(isset($consolespace))
+	
+		{
+
+		//lang
+
+	   $check=$kpc->keva_filter($consolespace);
+
+
+	   foreach($check as $concc){
+
+		if(stristr($concc['key'],"_")==false){
+
+		echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$consolespace."&key=".$concc['key']."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$concc['key']." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$concc['value']."</p></a></li>";
+		}
+		}
+		}
 
 		echo "</ul></div>";
 

@@ -22,6 +22,8 @@ $indexm=1;
 
 $lang="en";
 
+
+
 //system
 
 $sysweb=10;
@@ -677,6 +679,76 @@ if($lettercheck==2){ $x_value=$x_value."!";}
 
  return $x_value;
 }
+
+
+//console
+
+//language
+
+$kpc = new Keva();
+
+$kpc->username=$krpcuser;
+$kpc->password=$krpcpass;
+$kpc->host=$krpchost;
+$kpc->port=$krpcport;
+
+$consolecheck= $kpc->keva_list_namespaces();
+
+foreach($consolecheck as $conc){
+
+if($conc['displayName']=="CONSOLE"){$consolespace=$conc['namespaceId'];}
+
+		}
+
+
+if(isset($consolespace))
+	
+		{
+
+		//lang
+
+	   $langcheck=$kpc->keva_get($consolespace,"LANGUAGE");
+
+
+	   if(isset($langcheck['value'])){$lang=$langcheck['value'];}
+
+	   //system
+
+	   $systemcheck=$kpc->keva_get($consolespace,"SYSTEM");
+
+
+	   if(isset($systemcheck['value'])){$syslocal=$systemcheck['value'];}
+
+
+	   //message
+
+	   $messagecheck=$kpc->keva_get($consolespace,"MESSAGE");
+
+
+	   if(isset($messagecheck['value'])){$message_num=$messagecheck['value'];}
+
+	   //list
+
+		$listcheck=$kpc->keva_get($consolespace,"LIST");
+
+
+	   if($listcheck['value']=="on"){$indexm=1;}
+	   if($listcheck['value']=="off"){$indexm=0;}
+
+	    //hide 
+
+		$hidecheck=$kpc->keva_get($consolespace,"HIDE");
+
+
+	   if($hidecheck['value']=="on"){$hidenkey=1;}
+	   if($hidecheck['value']=="off"){$hidenkey=0;}
+
+
+
+
+		}
+
+
 
 
 
