@@ -710,7 +710,7 @@ if(isset($consolespace))
 	   $langcheck=$kpc->keva_get($consolespace,"LANGUAGE");
 
 
-	   if(isset($langcheck['value'])){$lang=$langcheck['value'];}
+	   if(strlen($langcheck['value'])==2){echo 111;$lang=$langcheck['value'];}
 
 	   //system
 
@@ -742,6 +742,14 @@ if(isset($consolespace))
 
 	   if($hidecheck['value']=="on"){$hidenkey=1;}
 	   if($hidecheck['value']=="off"){$hidenkey=0;}
+
+	   	//word
+
+		$wordcheck=$kpc->keva_get($consolespace,"WORD");
+
+
+		if(isset($wordcheck['value'])){$word_num=$wordcheck['value'];}
+
 
 
 
@@ -825,7 +833,7 @@ $check_ok="Available";
 $check_not="Not Available";
 
 
-if($lang=="en" or $_REQUEST["langs"]=="en" or $lang=="")
+if($lang=="en" or $_REQUEST["lang"]=="en" or $_REQUEST["lang"]=="")
 
 {
 
@@ -994,7 +1002,7 @@ $check_not="사용할 수 없습니다";
 
 
 
-if($lang=="jp"  or $_REQUEST["lang"]=="jp")
+if($lang=="jp" or $_REQUEST["lang"]=="jp")
 
 {
 

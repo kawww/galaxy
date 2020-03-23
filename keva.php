@@ -235,10 +235,17 @@ margin-top:2px;
 
 </style>
 
+<?php 
+
+error_reporting(0);
+include("rpc.php");
+
+?>
+
 
 <script>
 
-    var maxstrlen=1500;
+    var maxstrlen=<?php echo $word_num; ?>;
     function Q(s){return document.getElementById(s);} 
     function checkWord(c){
         len=maxstrlen;
@@ -270,9 +277,8 @@ margin-top:2px;
 		
 
 
-<?php 
-error_reporting(0);
-include("rpc.php");
+
+<?php
 
 $kpc = new Keva();
 
@@ -456,7 +462,7 @@ if(isset($_REQ["mode"])){
 		
 			echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
 
-			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">1500</span> [ ".hex2bin($_REQ['nameid'])." ] <br><br><input type=\"submit\" value=\"".$keva_submit."\"> </li></ul></div></form></div>";
+			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">".$word_num."</span> [ ".hex2bin($_REQ['nameid'])." ] <br><br><input type=\"submit\" value=\"".$keva_submit."\"> </li></ul></div></form></div>";
 
 			exit;
 			
@@ -556,6 +562,25 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 			{
 			
 			$age= $kpc->keva_delete($_REQ["asset"],hex2bin($_REQ["title"]));
+
+			$url = "?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]; 
+
+			echo "<script>window.location.href=decodeURIComponent('keva.php".$url."')</script>";
+			
+			}
+
+//console
+
+			if($_REQ["mode"]==6 & $keva_add=="on")
+
+			{
+
+			$auto= $kpc->keva_put($_REQ["asset"],"LANGUAGE","en");
+			$auto= $kpc->keva_put($_REQ["asset"],"WORD","1500");
+			$auto= $kpc->keva_put($_REQ["asset"],"HIDE","on");
+			$auto= $kpc->keva_put($_REQ["asset"],"LIST","on");
+			$auto= $kpc->keva_put($_REQ["asset"],"MESSAGE","50000");
+			$auto= $kpc->keva_put($_REQ["asset"],"SYSTEM","on");
 
 			$url = "?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]; 
 
@@ -1021,7 +1046,15 @@ if($webmode==0){
 
 		if($ismine=="1"  & $keva_add=="on"){echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=1&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_addnew." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$keva_addnewmemo."</font></a></li>";
 
-		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";}
+		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";
+		
+		if($title=="CONSOLE"){
+		
+		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$title."&sname=".$sname."&mode=6><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ONE-KEY SETUP ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">AUTOMATIC CREATE CONSOLE</p></li>";}
+		}
+
+		
+
 
 
 		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=3>".$linkipfs['data']['hash_urls'][0]."</font></a></li></ul><div id=\"nav\"><ul>";
