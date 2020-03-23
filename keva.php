@@ -580,7 +580,7 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 			$auto= $kpc->keva_put($_REQ["asset"],"HIDE","on");
 			$auto= $kpc->keva_put($_REQ["asset"],"LIST","on");
 			$auto= $kpc->keva_put($_REQ["asset"],"MESSAGE","50000");
-			$auto= $kpc->keva_put($_REQ["asset"],"SYSTEM","on");
+			$auto= $kpc->keva_put($_REQ["asset"],"SYSTEM","30");
 
 			$url = "?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]; 
 
