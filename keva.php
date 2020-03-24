@@ -381,7 +381,7 @@ $ok=0;
 
 											{
 
-										$age= $kpc->sendfrom("credit",$forfree,"0.1");
+										$age= $kpc->sendfrom("credit",$forfree,$credit);
 
 										echo "<script>alert('GET 1 CREDIT SUCCESS');history.go(-1);</script>";
 
@@ -456,9 +456,9 @@ if(isset($_REQ["mode"])){
 
 			
 
-			echo "<ul><li style=\"height:670px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\"  style=\"width:90%;\" placeholder=\"TITLE\" value=\"".$key."\"><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
+			echo "<ul><li style=\"height:700px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\"  style=\"width:90%;\" placeholder=\"TITLE\" value=\"".$key."\"><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
 
-			echo "<br><textarea rows=\"1\" cols=\"150\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script></textarea>";
+			echo "<br><textarea rows=\"2\" cols=\"150\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script> \r\nMy  SPACE CODE <a href=/keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQUEST["asset"].">".$_REQUEST["asset"]."</a></textarea>";
 		
 			echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
 
@@ -481,7 +481,8 @@ if(isset($_REQ["mode"])){
 					{
 	
 
-					$keylink="http://galaxyos.io/keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]."&key=".$_REQ["key"];			
+					$keylink="http://galaxyos.io/keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]."&key=".$_REQ["key"];
+					
 					$keylink=str_replace(" ","%20",$keylink);
 
 					$keylink = str_replace("&","%26",$keylink);
@@ -494,8 +495,14 @@ if(isset($_REQ["mode"])){
 				else
 				
 					{
+				
+				$keylink="http://galaxyos.io/keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"];
+				
+				$keylink=str_replace(" ","%20",$keylink);
 
-				$jsonStr = '{"url": "http://galaxyos.io/keva.php?lang=".$_REQUEST["lang"]."&asset='.$_REQ["asset"].'"}';
+				$keylink = str_replace("&","%26",$keylink);
+
+				$jsonStr = '{"url": "'.$keylink.'"}';
 			
 					}
 
@@ -581,6 +588,9 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 			$auto= $kpc->keva_put($_REQ["asset"],"LIST","on");
 			$auto= $kpc->keva_put($_REQ["asset"],"MESSAGE","50000");
 			$auto= $kpc->keva_put($_REQ["asset"],"SYSTEM","30");
+			$auto= $kpc->keva_put($_REQ["asset"],"FREE","http://galaxyos.io/");
+			$auto= $kpc->keva_put($_REQ["asset"],"CREDIT","0.1");
+			$auto= $kpc->keva_put($_REQ["asset"],"IPFS","https://gotoipfs.com/#path=");
 
 			$url = "?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]; 
 
@@ -969,8 +979,10 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 			$linkipfs = json_decode($returnContent, true);
 
+			
+			$ipfscon=str_replace("https://gotoipfs.com/#path=",$ipfscon,$linkipfs['data']['hash_urls'][1]);
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".$fkey."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".$fkey."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 
 //broadcast 
 if($webmode==0){
@@ -1057,7 +1069,9 @@ if($webmode==0){
 
 
 
-		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$linkipfs['data']['hash_urls'][1]." target=_blank><font size=3>".$linkipfs['data']['hash_urls'][0]."</font></a></li></ul><div id=\"nav\"><ul>";
+			$ipfscon=str_replace("https://gotoipfs.com/#path=",$ipfscon,$linkipfs['data']['hash_urls'][1]);
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li></ul><ul>";
 		
 
 			}

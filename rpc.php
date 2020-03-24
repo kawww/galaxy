@@ -33,6 +33,7 @@ $syslocal=30;
 
 $freekeva="http://galaxyos.io/";
 
+$credit=0.1;
 
 //hide namespace
 
@@ -750,7 +751,23 @@ if(isset($consolespace))
 
 		if(isset($wordcheck['value'])){$word_num=$wordcheck['value'];}
 
+		//freekeva
 
+		$freecheck=$kpc->keva_get($consolespace,"FREE");
+
+		if(isset($freecheck['value'])){$freekeva=$freecheck['value'];}	
+
+		//ipfs
+
+		$ipfscheck=$kpc->keva_get($consolespace,"IPFS");
+
+		if(isset($ipfscheck['value'])){$ipfscon=$ipfscheck['value'];}	
+
+		//credit
+
+		$creditcheck=$kpc->keva_get($consolespace,"CREDIT");
+
+		if(isset($creditcheck['value'])){$credit=$creditcheck['value'];}	
 
 
 
