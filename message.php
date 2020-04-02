@@ -288,6 +288,7 @@ if(isset($_REQ["ipfs"])){$messc=$_REQ["ipfs"];}
 if(isset($_REQ["txid"])){$messc=$_REQ["txid"];}
 
 if($_REQUEST["lang"]=="en" or !$_REQUEST["lang"]){
+
 if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"].">[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&unicode=1>[ TURN-ON ]</a><br>";}}
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
@@ -319,7 +320,7 @@ if(stristr($asset,"!")==false)
 		}
 	$x_value=str_replace("U+","",$x_value);
 
-echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
+echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
 								
 
 						}
@@ -386,9 +387,6 @@ $blockhash=$rpc->getblockhash($blocknum);
 $agex= $rpc->listsinceblock($blockhash);
 
 
-
-		
-			
 			$error = $rpc->error;
 
 			if($error != "") 
@@ -483,7 +481,7 @@ echo "<a href=index.php?lang=".$_REQUEST["lang"]."&&asset=".$shopaddress."&mode=
 
 			{
 
-				$messone="<a href=https://gotoipfs.com/#path=".$ipfs.">IPFS</a>";
+				$messone="<a href=\"".$ipfscon."".$ipfs."\">IPFS</a>";
 			}
 			if(strlen($ipfs)=="64")
 			{

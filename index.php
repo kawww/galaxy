@@ -718,7 +718,7 @@ if($sortnum==9)
 
 				{
 
-				echo "<a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank><li><p>".$x_value."</p></a></li>";		
+				echo "<a href=\"".$ipfscon."".$ipfs_hash."\" target=_blank><li><p>".$x_value."</p></a></li>";		
 		}
 				}
 	}	
@@ -802,7 +802,7 @@ $x_value=str_replace("U+","",$x_value);
 				
 			
 
-				echo "<a href=?lang=".$_REQUEST["lang"]."&unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"width:430px;height:200px;\"><h2>[ ".$assetnum." ] </h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
+				echo "<a href=?lang=".$_REQUEST["lang"]."&unicode=".$turn."&sort=2&asset=".$u_value."><li style=\"width:430px;height:200px;\"><h2>[ ".$assetnum." ] </h2><a href=\"".$ipfscon."".$ipfs."\" target=_blank>".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".number_format($amount,$units)." ".$reisx."</p></a></li>";
 				
 			
 				}

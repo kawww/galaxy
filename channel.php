@@ -325,7 +325,7 @@ if(stristr($asset,"!"))
 		}
 	$x_value=str_replace("U+","",$x_value);
 
-echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>".$x_value."</h4></a></li>";
+echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&spti=".$_REQUEST["spti"]."&spid=".$_REQUEST["spid"]."><li style=\"background-color: rgb(0, 79, 74);height:80px;display:block;\"><h4>".$x_value."</h4></a></li>";
 								
 
 						}
@@ -551,7 +551,7 @@ echo "<ul><a href=channel.php?lang=".$_REQUEST["lang"]."&mode=all><li style=\"ba
 
 			{
 
-			$messone="<a href=https://gotoipfs.com/#path=".$ipfs.">IPFS</a>";
+			$messone="<a href=\"".$ipfscon."".$ipfs."\">IPFS</a>";
 			}
 		if(strlen($ipfs)=="64")
 			{

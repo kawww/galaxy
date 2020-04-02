@@ -239,7 +239,7 @@ if(isset($_REQUEST["asset"]))
 			
 		{$ec=$_REQUEST["asset"];
 			
-		echo "<script>location.href=\"https://gotoipfs.com/#path=".$ec."\";</script>";} 
+		echo "<script>location.href=\"".$ipfscon."".$ec."\";</script>";} 
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
@@ -529,7 +529,7 @@ $arr=array();
 
 			array_push($totalass,$arr);
 		
-		if($ipfs_hash!=""){echo "<script>location.href=\"https://gotoipfs.com/#path=".$ipfs_hash."\";</script>";}
+		if($ipfs_hash!=""){echo "<script>location.href=\"".$ipfscon."".$ipfs_hash."\";</script>";}
 
 				}
 	
@@ -542,7 +542,7 @@ $ipfs_hash="";
 
 			extract($info);
 
-			if($ipfs_hash!=""){echo "<script>location.href=\"https://gotoipfs.com/#path=".$ipfs_hash."\";</script>";}
+			if($ipfs_hash!=""){echo "<script>location.href=\"".$ipfscon."".$ipfs_hash."\";</script>";}
 
 }
 
@@ -608,7 +608,7 @@ if($sortnum==9)
 
 				{
 
-				echo "<li><a href=\"https://gotoipfs.com/#path=".$ipfs_hash."\" target=_blank>".$x_value."</a></li>";		
+				echo "<li><a href=\"".$ipfscon."".$ipfs_hash."\" target=_blank>".$x_value."</a></li>";		
 		}
 				}
 	}	
@@ -701,7 +701,7 @@ $x_value=str_replace("U+","",$x_value);
 				
 			
 
-				echo "<li style=\"height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"https://gotoipfs.com/#path=".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
+				echo "<li style=\"height:200px;\"><h2><a href=?unicode=".$turn."&sort=2&asset=".$u_value.">[ ".$assetnum." ] </a></h2><a href=\"".$ipfscon."".$ipfs."\" target=_blank>".$x_value."</a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".number_format($amount,$units)." ".$reisx."  </li>";
 				
 			
 				}
