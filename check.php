@@ -269,7 +269,12 @@ if(isset($_REQUEST["asset"]))
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
-		echo "<br><br><input type=\"checkbox\" name=\"only\" checked><label for=\"1\">".$check_only."</label><br><br><input type=\"submit\" value=\"KAW\"></li></ul></div></form></div>";
+
+if($_REQUEST["mode"]=="bulk"){
+
+		echo "<br><br><input type=\"checkbox\" name=\"only\" checked><label for=\"1\">".$check_only."</label>";}
+			
+		echo "<br><br><input type=\"submit\" value=\"KAW\"></li></ul></div></form></div>";
 		
 		
 		
@@ -289,6 +294,7 @@ if(isset($_REQUEST["asset"]))
 		
 		echo"<a href=?lang=".$_REQUEST["lang"]."&mode=bulk ><li style=\"height:100px;color:#bbb;\"><h2>[ ".$check_asset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>Good Luck!</p></a></li>";
 
+		//echo"<a href=?lang=".$_REQUEST["lang"]."&mode=unicode ><li style=\"height:100px;color:#bbb;\"><h2>[ ".$check_unicode." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p></p></a></li>";
 
 		echo"<a href=https://numbergenerator.org/numberlist-1-1000 target=blank><li style=\"height:100px;color:#bbb;\"><h2>[ Number Generator ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>numbergenerator.org</p></a></li>";
 
@@ -562,14 +568,28 @@ foreach($age as $x=>$x_value)
 
 		$ok=1;
 
+		
+				$gift_value=strtoupper($assetinput);
+
+				$assetlink=$gift_value;
+
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
 		if($sortnum==9 & !$_REQ["only"])
 
 				{
 
 		
-
+				
 		
-				echo "<a href=../?lang=".$_REQUEST["lang"]."&asset=".$assetinput."><li style=\"background-color: #0b0c0d;height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
+				echo "<a href=../?lang=".$_REQUEST["lang"]."&asset=".$assetinput."><li style=\"background-color: #0b0c0d;height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."<br>UNICODE [ ".$gift_value." ]</p></a></li>";
 
 
 				}
@@ -587,7 +607,20 @@ foreach($age as $x=>$x_value)
 
 				if(!$ok){
 
-$available="<font color=geeen>".$check_ok."</font>";
+							$gift_value=strtoupper($assetinput);
+
+				$assetlink=$gift_value;
+
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+$available="<font color=geeen>".$check_ok."<br>UNICODE [ ".$gift_value." ]</font>";
 
 
 		if($sortnum==9)

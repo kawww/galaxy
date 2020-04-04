@@ -39,7 +39,9 @@ $credit=0.1;
 
 $hidenkey=1;
 
+//ipfs
 
+$ipfscon="https://gotoipfs.com/#path=";
 
 
 if($webmode==1){
@@ -848,6 +850,7 @@ $check_asset="Bulk Assets Search";
 $check_only="Show Availiable Only";
 $check_ok="Available";
 $check_not="Not Available";
+$check_unicode="CHECK UNICODE";
 
 
 if($lang=="en" or $_REQUEST["lang"]=="en" or $_REQUEST["lang"]=="")

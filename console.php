@@ -273,7 +273,7 @@ if(isset($_REQUEST["asset"]))
 
 		echo "</ul></div>";
 
-		if($keva=="on"){
+		
 
 				echo "<div id=\"nav\"><ul>";
 		
@@ -298,6 +298,8 @@ if(isset($_REQUEST["asset"]))
 
 echo "</ul></div>";
 
+if($keva=="on"){
+
 echo "<div id=\"nav\"><ul>";
 
 
@@ -316,7 +318,7 @@ if(isset($consolespace))
 
 		if(stristr($concc['key'],"_")==false){
 
-		echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$consolespace."&key=".$concc['key']."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$concc['key']." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$concc['value']."</p></a></li>";
+		echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$consolespace."&key=".bin2hex($concc['key'])."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$concc['key']." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$concc['value']."</p></a></li>";
 		}
 		}
 		}
