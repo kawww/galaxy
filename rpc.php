@@ -827,6 +827,15 @@ $keva_galaxylink="GALAXY LINK";
 $keva_message="MESSAGE";
 $keva_send="SEND";
 
+$keva_comment="COMMENT";
+$keva_create_comment="CREATE COMMENT SPACE";
+$keva_sign="SIGN";
+$keva_signtalk="MANAGE SIGNATURE TAG NAME";
+$keva_tips="TIPS & GIFTS";
+
+
+
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVN NODE INFO";
 $console_rvn_blockchain="RVN BLOCKCHAIN INFO";
@@ -912,6 +921,13 @@ $keva_galaxylink="银河链接";
 $keva_message="消息";
 $keva_send="发送";
 
+$keva_comment="评论";
+$keva_create_comment="创建评论空间";
+$keva_sign="签名";
+$keva_signtalk="管理签名";
+$keva_tips="打赏/送礼物";
+
+
 $console_rvn_help="RAVENCOIN鸟币";
 $console_rvn_node="鸟链节点信息";
 $console_rvn_blockchain="鸟链区块信息";
@@ -991,6 +1007,13 @@ $keva_broadcast="방송";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="메시지";
 $keva_send="SEND";
+
+$keva_comment="논평";
+$keva_create_comment="크리 멘트 주석 공간";
+$keva_sign="서명";
+$keva_signtalk="서명 관리";
+$keva_tips="보상 / 선물";
+
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVN 노드 정보";
@@ -1073,6 +1096,12 @@ $keva_galaxylink="GALAXY LINK";
 $keva_message="メッセージ";
 $keva_send="送信";
 
+$keva_comment="コメント";
+$keva_create_comment="コメントスペースを作成";
+$keva_sign="署名";
+$keva_signtalk="署名の管理";
+$keva_tips="報酬/ギフト";
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVNノード情報";
 $console_rvn_blockchain="RVNブロックチェーン情報";
@@ -1151,6 +1180,12 @@ $keva_broadcast="Prenos";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="Poruka";
 $keva_send="Pošalji";
+
+$keva_comment="KOMENTAR";
+$keva_create_comment="USPOREDI PROSTOR KOMENTARA";
+$keva_sign="POTPIS";
+$keva_signtalk="UPRAVLJAČKA POTPISA";
+$keva_tips="Nagrada / POKLONI";
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVN informacije o čvoru";
@@ -1231,6 +1266,13 @@ $keva_galaxylink="ГАЛАКСИЙНА ВРЪЗКА";
 $keva_message="Съобщение";
 $keva_send="Изпращане";
 
+
+$keva_comment="Коментар";
+$keva_create_comment="СЪЗДАВАНЕ НА КОМЕНТАРНО ПРОСТРАНСТВО";
+$keva_sign="ПОДПИС";
+$keva_signtalk="УПРАВЛЕНИЕ НА ПОДПИСКА";
+$keva_tips="Награда / ПОДАРЪЦИ";
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVN информация за възел";
 $console_rvn_blockchain="RVN информация за блокчейна";
@@ -1308,6 +1350,14 @@ $keva_galaxylink="GALAXY LINK";
 $keva_message="Message";
 $keva_send="Verzenden";
 
+
+$keva_comment="COMMENTAAR";
+$keva_create_comment="MAAK COMMENT RUIMTE";
+$keva_sign="HANDTEKENING";
+$keva_signtalk="HANDTEKENING BEHEREN";
+$keva_tips="Beloning / GESCHENKEN";
+
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVN Node-info";
 $console_rvn_blockchain="RVN blockchain-info";
@@ -1318,6 +1368,8 @@ $console_keva_node="keva-knooppuntinfo";
 $console_keva_blockchain="keva blockchain-info";
 $console_keva_count="keva aantal blokken";
 $console_keva_mining="Test net mining";
+
+
 
 $system_noblock="Geen inhoud gevonden in deze blokken";
 
@@ -1382,6 +1434,12 @@ $keva_broadcast="Broadcast";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="Mensahe";
 $keva_send="Ipadala";
+
+$keva_comment="KOMENTO";
+$keva_create_comment="CREATE COMMENT SPACE";
+$keva_sign="SIGNATURA";
+$keva_signtalk="MANAGE SIGNATURE";
+$keva_tips="Gantimpala / GIFT";
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Impormasyon sa NV RVN";
@@ -1465,6 +1523,13 @@ $keva_galaxylink="GALAXY LINK";
 $keva_message="Message";
 $keva_send="Envoyer";
 
+$keva_comment="COMMENTAIRE";
+$keva_create_comment="CRÉER UN ESPACE COMMENTAIRE";
+$keva_sign="SIGNATURE";
+$keva_signtalk="GÉRER LA SIGNATURE";
+$keva_tips="Récompense / CADEAUX";
+
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Info RVN Node";
 $console_rvn_blockchain="Infos sur la blockchain RVN";
@@ -1542,6 +1607,12 @@ $keva_broadcast="Broadcast";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="Nachricht";
 $keva_send="Senden";
+
+$keva_comment="KOMMENTAR";
+$keva_create_comment="KOMMENTARRAUM ERSTELLEN";
+$keva_sign="UNTERSCHRIFT";
+$keva_signtalk="SIGNATUR VERWALTEN";
+$keva_tips="Belohnung / GESCHENKE";
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVN-Knoteninfo";
@@ -1623,6 +1694,12 @@ $keva_galaxylink="GALAXY LINK";
 $keva_message="Pesan";
 $keva_send="Kirim";
 
+$keva_comment="KOMENTAR";
+$keva_create_comment="BUAT RUANG KOMENTAR";
+$keva_sign="TANDA TANGAN";
+$keva_signtalk="ATUR TANDA TANGAN";
+$keva_tips="Hadiah / HADIAH";
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Info simpul RVN";
 $console_rvn_blockchain="Info blockchain RVN";
@@ -1661,6 +1738,8 @@ $turn=1;
 
 }
 
+//italian
+
 if($lang=="it" or $_REQUEST["lang"]=="it")
 
 {
@@ -1698,6 +1777,12 @@ $keva_broadcast="Broadcast";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="messaggio";
 $keva_send="Send";
+
+$keva_comment="COMMENTO";
+$keva_create_comment="CREA LO SPAZIO COMMENTO";
+$keva_sign="FIRMA";
+$keva_signtalk="GESTIONE DELLA FIRMA";
+$keva_tips="Ricompensa / REGALI";
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Informazioni sul nodo RVN";
@@ -1778,6 +1863,12 @@ $keva_galaxylink="GALAXY LINK";
 $keva_message="Wiadomość";
 $keva_send="Wyślij";
 
+$keva_comment="KOMENTARZ";
+$keva_create_comment="UTWÓRZ PRZESTRZEŃ KOMENTARZA";
+$keva_sign="PODPIS";
+$keva_signtalk="ZARZĄDZAJ PODPISEM";
+$keva_tips="Nagroda / PREZENTY";
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Informacje o węźle RVN";
 $console_rvn_blockchain="Informacje o łańcuchu bloków RVN";
@@ -1818,7 +1909,7 @@ $turn=1;
 
 
 
-//portyguese
+//portuguese
 
 if($lang=="pt" or $_REQUEST["lang"]=="pt")
 
@@ -1857,6 +1948,12 @@ $keva_broadcast="Transmissão";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="Mensagem";
 $keva_send="Enviar";
+
+$keva_comment="COMENTE";
+$keva_create_comment="CRIAR ESPAÇO DE COMENTÁRIO";
+$keva_sign="ASSINATURA";
+$keva_signtalk="GERENCIAR ASSINATURA";
+$keva_tips="Recompensa / PRESENTES";
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Informações do nó RVN";
@@ -1938,6 +2035,12 @@ $keva_galaxylink="LINK GALAXY";
 $keva_message="Mesaj";
 $keva_send="Send";
 
+$keva_comment="COMETARIU";
+$keva_create_comment="CREAȚI SPATE DE COMENTARE";
+$keva_sign="SEMNĂTURĂ";
+$keva_signtalk="GESTIONEAZĂ SEMNATURA";
+$keva_tips="Recompensă / Cadouri";
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Informații despre nodul RVN";
 $console_rvn_blockchain="Informații despre blockchain RVN";
@@ -2016,6 +2119,12 @@ $keva_broadcast="Broadcast";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="Сообщение";
 $keva_send="Отправить";
+
+$keva_comment="КОММЕНТАРИЙ";
+$keva_create_comment="СОЗДАТЬ КОММЕНТАРИЙ ПРОСТРАНСТВО";
+$keva_sign="ПОДПИСЬ";
+$keva_signtalk="УПРАВЛЕНИЕ ПОДПИСЬЮ";
+$keva_tips="Награда / ПОДАРКИ";
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Информация об узле RVN";
@@ -2096,6 +2205,12 @@ $keva_galaxylink="ENLACE GALAXY";
 $keva_message="Mensaje";
 $keva_send="Enviar";
 
+$keva_comment="COMENTARIO";
+$keva_create_comment="CREAR ESPACIO DE COMENTARIOS";
+$keva_sign="FIRMA";
+$keva_signtalk="FIRMA";
+$keva_tips="Recompensa / REGALOS";
+
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="Información del nodo RVN";
 $console_rvn_blockchain="Información de la cadena de bloques RVN";
@@ -2173,6 +2288,12 @@ $keva_broadcast="ออกอากาศ";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="ข้อความ";
 $keva_send="ส่ง";
+
+$keva_comment="ความคิดเห็น";
+$keva_create_comment="สร้างพื้นที่แสดงความคิดเห็น";
+$keva_sign="SIGNATURE";
+$keva_signtalk="จัดการลายเซ็น";
+$keva_tips="รางวัล / ของขวัญ";
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="ข้อมูลโหนด RVN";
@@ -2253,6 +2374,12 @@ $keva_broadcast="Yayın";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="Mesaj";
 $keva_send="Gönder";
+
+$keva_comment="YORUM YAP";
+$keva_create_comment="YORUM YERİ OLUŞTUR";
+$keva_sign="İMZA";
+$keva_signtalk="İMZA YÖNETİN";
+$keva_tips="Ödül / HEDİYELER";
 
 $console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVN Düğümü bilgisi";
@@ -2348,6 +2475,12 @@ $keva_broadcast="Broadcast";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="Boodskap";
 $keva_send="Stuur";
+
+$keva_comment="Kommentaar";
+$keva_create_comment="SKEP KOMMENTAARruimte";
+$keva_sign="HANDTEKENING";
+$keva_signtalk="HANDTEKENING HANTERING";
+$keva_tips="Beloning / GESKENKE";
 
 $Console_rvn_help="RAVENCOIN";
 $console_rvn_node="RVN Node-inligting";
