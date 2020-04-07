@@ -630,7 +630,7 @@ $available="<font color=geeen>".$check_ok."<br>UNICODE [ ".$gift_value." ]</font
 		
 		if(strlen($asset)>30 or strlen($assetinput)<3 or strlen($assetinput)>30){$available="<font color=red>Not Available Length</font>";}
 		
-				echo "<a href=../?lang=".$_REQUEST["lang"]."&asset=".$assetinput."><li style=\"height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></a></li>";
+				echo "<li style=\"height:300px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."</p></li>";
 
 
 	}	

@@ -434,16 +434,18 @@ echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
 	
+	
+$age= $rpc->listmyassets();
 
-if(isset($wid) & strlen($wid)>10){
+
+
+if(isset($wid) & strlen($wid)>10 & isset($_REQUEST["address"])){
 
 	$age = $rpc->listassetbalancesbyaddress($shopaddress);}
 
-	else
+	
 
-	{$age= $rpc->listmyassets();}
-
-		
+	
 			
 			$error = $rpc->error;
 

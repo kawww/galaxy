@@ -330,6 +330,8 @@ if(isset($block) & is_numeric($block)==true)
 								 $snewkey=hex2bin($cons);
 								 $sinfo=hex2bin($conk);
 
+								  $kadd=$vout["scriptPubKey"]["addresses"][0];
+
 						
 								$x_value="<h4>".$snewkey."</h4>";
 
@@ -543,10 +545,129 @@ if(isset($block) & is_numeric($block)==true)
 											
 											}
 
-											//comment
+//comment
 
 		if(isset($commentadd)){
 		
+
+
+//button
+
+			$age= $kpc->keva_list_namespaces();
+
+			$error = $kpc->error;
+			if($error != "") 	
+				{
+					echo "<p>&nbsp;&nbsp;Error ADDRESS</p>";
+					exit;
+				}
+
+//tag
+
+			echo "<li style=\"background-color: rgb(0, 0, 0);display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listtagsforaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+				
+				$gift=str_replace("#","",$giftn);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				$giftn=$gift_value;
+
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#888;color:#eee;height:30px\">&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "</p></li>";
+
+
+
+			
+
+			foreach($age as $nspace)
+
+			{
+			
+			if($nspace['displayName']=="COMMENT"){$cspace=$nspace['namespaceId'];}
+			}
+
+
+			
+if(!$cspace){echo "</ul><ul><a href=keva.php?lang=&asset=&mode=4&nameid=&createname=COMMENT><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;font-size:24px;\"><h4>[ ".$keva_create_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3></font></li>";}
+
+			else
+			{
+			echo "</ul><ul><a href=keva.php?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($block)."&nameid=".bin2hex($snewkey)."&cadd=".$commentadd."&oldtxid=".$txa."><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$commentadd."</font></li>";}
+
+			echo "<a href=\"message.php?lang=".$_REQUEST["lang"]."&txid=".$txa."&cadd=".$commentadd."&oldtxid=".$txa."&sign=1\"><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_sign." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$keva_signtalk."</font></li>";
+
+
+			echo "<a href=\"message.php?lang=".$_REQUEST["lang"]."&txid=b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d&cadd=".$commentadd."&oldtxid=".$txa."\"><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_tips." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=1&oldtxid=".$txa."\">&nbsp;0.1&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=10&oldtxid=".$txa."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=100&oldtxid=".$txa."\">&nbsp;10&nbsp;</a> ] <a href=https://ravencoin.network/address/".$commentadd." target=_blank>RVN</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=1&oldtxid=".$txa."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=10&oldtxid=".$txa."\">&nbsp;10&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=100&oldtxid=".$txa."\">&nbsp;100&nbsp;</a> ] <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>CREDITS</a></font></li></ul><ul>";
+
+			echo "<li style=\"background-color: rgb(0, 0, 0);display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listassetbalancesbyaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+				$assetinfo = $rpc->getassetdata($gift);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#888;color:#eee;\">&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "<a href=\"https://ravenx.net\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;RAVENX.NET&nbsp;&nbsp;</a>&nbsp;&nbsp;</p></li></ul><ul>";
+		
+		
+
 		
 				$blocknum=$rpc->getblockcount();
 				$blocknum=$blocknum-10000;
@@ -584,9 +705,9 @@ if(isset($block) & is_numeric($block)==true)
 			$raw= $rpc->decoderawtransaction($txx2);
 
 			if($destination==$commentadd){
-
+$arrx["time"]=$time;
 			$arrx["block"]=$confirmations;
-			$arrx["time"]=$time;
+			
 			$arrx["name"]=$asset_name;
 			$arrx["ipfs"]=$message;
 			$arrx["to"]=$destination;
@@ -610,7 +731,10 @@ if(isset($block) & is_numeric($block)==true)
 
 				}
 
-		asort($totalassx);
+		arsort($totalassx);
+
+
+
 
 		foreach($totalassx as $commone){
 		
@@ -643,13 +767,14 @@ if(isset($block) & is_numeric($block)==true)
 
 
 
-						if($turn==1)
-
-						{
+					
 						$x_value=uniworld($x_value,$assetlink,$assettwo);
-						}
+						
 
-						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>[ ".$x_value." ]<br><br>".turnUrlIntoHyperlink($conk)."</p></li>";
+						$clink="[ Tx:".$x_value." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$commone['ipfs'].">[ TxID ] </a> [ ".date('Y-m-d H:i', $commone['time'])." ] ";
+if($commone['ipfs']<>"b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d"){
+
+						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p  align=left>".turnUrlIntoHyperlink($conk)."<br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";}
 				
 						} 
 
@@ -943,6 +1068,52 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 					exit;
 				}
 
+
+//tag
+
+			echo "<li style=\"background-color: rgb(0, 0, 0);display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listtagsforaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+			
+				$gift=str_replace("#","",$giftn);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				$giftn=$gift_value;
+
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#888;color:#eee;height:30px\">&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "</p></li>";
+
+
+
 			foreach($age as $nspace)
 
 			{
@@ -951,14 +1122,16 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 			}
 
 
-			if(!$cspace){echo "</ul><ul><a href=keva.php?lang=&asset=&mode=4&nameid=&createname=COMMENT><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;font-size:24px;\"><h4>[ CREATE COMMENT SPACE]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3></font></li>";}
+			if(!$cspace){echo "</ul><ul><a href=keva.php?lang=&asset=&mode=4&nameid=&createname=COMMENT><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;font-size:24px;\"><h4>[ ".$keva_create_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3></font></li>";}
 
 			else
 			{
-			echo "</ul><ul><a href=keva.php?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($bnum)."&nameid=".bin2hex($snewkey)."&cadd=".$commentadd."&oldtxid=".$_REQUEST["txid"]."><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ COMMENT ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$commentadd."</font></li>";}
+			echo "</ul><ul><a href=keva.php?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($bnum)."&nameid=".bin2hex($snewkey)."&cadd=".$commentadd."&oldtxid=".$_REQUEST["txid"]."><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:140px;display:block;\"><h4>[ ".$keva_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$commentadd."</font></li>";}
+
+			echo "<a href=\"message.php?lang=".$_REQUEST["lang"]."&txid=".$txid."&cadd=".$commentadd."&oldtxid=".$_REQUEST["txid"]."&sign=1\"><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:140px;display:block;\"><h4>[ ".$keva_sign." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$keva_signtalk."</font></li>";
 
 		
-			echo "<a href=\"message.php?lang=".$_REQUEST["lang"]."&txid=b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d&cadd=".$commentadd."&oldtxid=".$_REQUEST["txid"]."\"><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ TIPS ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=1&oldtxid=".$_REQUEST["txid"]."\">&nbsp;0.1&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=10&oldtxid=".$_REQUEST["txid"]."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=100&oldtxid=".$_REQUEST["txid"]."\">&nbsp;10&nbsp;</a> ] <a href=https://ravencoin.network/address/".$commentadd." target=_blank>RVN</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=1&oldtxid=".$_REQUEST["txid"]."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=10&oldtxid=".$_REQUEST["txid"]."\">&nbsp;10&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=100&oldtxid=".$_REQUEST["txid"]."\">&nbsp;100&nbsp;</a> ] <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>CREDITS</a></font></li></ul><ul>";
+			echo "<a href=\"message.php?lang=".$_REQUEST["lang"]."&txid=b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d&cadd=".$commentadd."&oldtxid=".$_REQUEST["txid"]."\"><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:140px;display:block;\"><h4>[ ".$keva_tips." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=1&oldtxid=".$_REQUEST["txid"]."\">&nbsp;0.1&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=10&oldtxid=".$_REQUEST["txid"]."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=100&oldtxid=".$_REQUEST["txid"]."\">&nbsp;10&nbsp;</a> ] <a href=https://ravencoin.network/address/".$commentadd." target=_blank>RVN</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=1&oldtxid=".$_REQUEST["txid"]."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=10&oldtxid=".$_REQUEST["txid"]."\">&nbsp;10&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=100&oldtxid=".$_REQUEST["txid"]."\">&nbsp;100&nbsp;</a> ] <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>CREDITS</a></font></li></ul><ul>";
 		
 		
 						echo "<li style=\"background-color: rgb(0, 0, 0);display:block;height:auto;width:900px;font-size:18px;padding-top:20px;line-height:40px;\"><p align=left>";
@@ -1034,9 +1207,10 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 			$raw= $rpc->decoderawtransaction($txx2);
 
 			if($destination==$commentadd){
-
-			$arrx["block"]=$confirmations;
+			
 			$arrx["time"]=$time;
+			$arrx["block"]=$confirmations;
+			
 			$arrx["name"]=$asset_name;
 			$arrx["ipfs"]=$message;
 			$arrx["to"]=$destination;
@@ -1060,7 +1234,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 				}
 
-		asort($totalassx);
+		arsort($totalassx);
 
 		foreach($totalassx as $commone){
 		
@@ -1095,9 +1269,11 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 						$x_value=uniworld($x_value,$assetlink,$assettwo);
 						
-						$clink="[ ".$x_value." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$commone['ipfs'].">[ TXID ] </a>";
+					
+						$clink="[ Tx:".$x_value." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$commone['ipfs'].">[ TxID ] </a> [ ".date('Y-m-d H:i', $commone['time'])." ] ";
 
-						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;margin-top:15px;font-size:22px;\"><p  align=left><br>".turnUrlIntoHyperlink($conk)."<br><br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";
+if($commone['ipfs']<>"b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d"){
+						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p  align=left>".turnUrlIntoHyperlink($conk)."<br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";}
 
 				
 						} 
@@ -1186,7 +1362,7 @@ if(isset($_REQ["asset"]))
 
 					
 						
-					{$url = "keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQ["spid"]."&key=".bin2hex($_REQ["spti"]); 
+					{$url = "keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQ["spid"]."&key=".$_REQ["spti"]; 
 					
 					echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
 					exit;
@@ -1240,7 +1416,7 @@ if(isset($_REQ["asset"]))
 
 					
 						
-					{$url = "keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQ["spid"]."&key=".hex2bin($_REQ["spti"]); 
+					{$url = "keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQ["spid"]."&key=".$_REQ["spti"]; 
 					
 					echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
 					exit;
