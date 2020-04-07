@@ -589,7 +589,7 @@ foreach($age as $x=>$x_value)
 		
 				
 		
-				echo "<a href=../?lang=".$_REQUEST["lang"]."&asset=".$assetinput."><li style=\"background-color: #0b0c0d;height:250px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."<br>UNICODE [ ".$gift_value." ]</p></a></li>";
+				echo "<li style=\"background-color: #0b0c0d;height:300px;width:430px;line-height:50px;\"><h2>".strtoupper($assetinput)."</h2>".$asset."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$available." ".$reisx."<br>UNICODE [ ".$gift_value." ]</p></li>";
 
 
 				}

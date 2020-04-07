@@ -616,7 +616,9 @@ if(isset($block) & is_numeric($block)==true)
 			if($nspace['displayName']=="COMMENT"){$cspace=$nspace['namespaceId'];}
 			}
 
-
+if($webmode==0)
+			
+			{
 			
 if(!$cspace){echo "</ul><ul><a href=keva.php?lang=&asset=&mode=4&nameid=&createname=COMMENT><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;font-size:24px;\"><h4>[ ".$keva_create_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3></font></li>";}
 
@@ -628,6 +630,20 @@ if(!$cspace){echo "</ul><ul><a href=keva.php?lang=&asset=&mode=4&nameid=&createn
 
 
 			echo "<a href=\"message.php?lang=".$_REQUEST["lang"]."&txid=b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d&cadd=".$commentadd."&oldtxid=".$txa."\"><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_tips." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=1&oldtxid=".$txa."\">&nbsp;0.1&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=10&oldtxid=".$txa."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=100&oldtxid=".$txa."\">&nbsp;10&nbsp;</a> ] <a href=https://ravencoin.network/address/".$commentadd." target=_blank>RVN</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=1&oldtxid=".$txa."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=10&oldtxid=".$txa."\">&nbsp;10&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=100&oldtxid=".$txa."\">&nbsp;100&nbsp;</a> ] <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>CREDITS</a></font></li></ul><ul>";
+
+			}
+			else{
+			
+			
+			echo "</ul><ul><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_comment." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$commentadd."</font></li>";
+
+
+
+
+			
+			echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_tips." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3><a href=https://ravencoin.network/address/".$commentadd." target=_blank>RVN</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=https://explorer.kevacoin.org/address/".$adds." target=_blank>CREDITS</a></font></li></ul><ul>";
+			
+			}
 
 			echo "<li style=\"background-color: rgb(0, 0, 0);display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
 			
@@ -1121,6 +1137,9 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 			if($nspace['displayName']=="COMMENT"){$cspace=$nspace['namespaceId'];}
 			}
 
+			if($webmode==0)
+			
+			{
 
 			if(!$cspace){echo "</ul><ul><a href=keva.php?lang=&asset=&mode=4&nameid=&createname=COMMENT><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;font-size:24px;\"><h4>[ ".$keva_create_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3></font></li>";}
 
@@ -1133,7 +1152,20 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 		
 			echo "<a href=\"message.php?lang=".$_REQUEST["lang"]."&txid=b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d&cadd=".$commentadd."&oldtxid=".$_REQUEST["txid"]."\"><li style=\"font-size:24px;background-color: rgb(0, 79, 74);height:140px;display:block;\"><h4>[ ".$keva_tips." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=1&oldtxid=".$_REQUEST["txid"]."\">&nbsp;0.1&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=10&oldtxid=".$_REQUEST["txid"]."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$commentadd."&mode=8&tips=100&oldtxid=".$_REQUEST["txid"]."\">&nbsp;10&nbsp;</a> ] <a href=https://ravencoin.network/address/".$commentadd." target=_blank>RVN</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=1&oldtxid=".$_REQUEST["txid"]."\">&nbsp;&nbsp;1&nbsp;&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=10&oldtxid=".$_REQUEST["txid"]."\">&nbsp;10&nbsp;</a> ] [ <a href=\"keva.php?lang=".$_REQUEST["lang"]."&asset=".$cspace."&title=".$keylink."&key=".bin2hex($snewkey)."&sname=".$_REQ["sname"]."&adds=".$kadd."&mode=7&tips=100&oldtxid=".$_REQUEST["txid"]."\">&nbsp;100&nbsp;</a> ] <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>CREDITS</a></font></li></ul><ul>";
 		
-		
+			}else
+
+			{
+			
+			
+			echo "</ul><ul><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_comment." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$commentadd."</font></li>";
+
+
+
+
+			
+			echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_tips." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3><a href=https://ravencoin.network/address/".$commentadd." target=_blank>RVN</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=https://explorer.kevacoin.org/address/".$adds." target=_blank>CREDITS</a></font></li></ul><ul>";
+			
+			}
 						echo "<li style=\"background-color: rgb(0, 0, 0);display:block;height:auto;width:900px;font-size:18px;padding-top:20px;line-height:40px;\"><p align=left>";
 			
 			$giftasset=$rpc->listassetbalancesbyaddress($commentadd);
@@ -1335,7 +1367,7 @@ if(isset($_REQ["asset"]))
 
 
 
-	if(isset($_REQ["assetadd"]) & isset($_REQ["assetname"]) & isset($_REQ["assetmemo"]))
+	if(isset($_REQ["assetadd"]) & isset($_REQ["assetname"]) & isset($_REQ["assetmemo"]) & $$webmode=0)
 
 		{
 		
@@ -1384,7 +1416,7 @@ if(isset($_REQ["asset"]))
 		}
 
 
-			if(isset($_REQ["confirm"]))
+			if(isset($_REQ["confirm"]) & $webmode=0)
 				
 			{
 			
