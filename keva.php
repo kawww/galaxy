@@ -915,7 +915,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 			if(isset($_REQ["key"])) {
 
-			$kkey=hex2bin($_REQ["key"]);
+			$kkey=trim($_REQ["key"]);
 
 
 			//value
@@ -928,9 +928,12 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 								extract($v);
 
 								
-
+								$key=str_replace("%20"," ",$key);
+								
 								$key1=bin2hex(trim($key));
-								$key2=bin2hex(trim($kkey));
+								$key2=$kkey;
+								
+
 		
 								if($key1==$key2){
 
@@ -1494,7 +1497,7 @@ if(strlen($_REQ["showall"])<2)
 
 
 			
-			$key=str_replace(" ","%20",$key);
+			//$key=str_replace(" ","%20",$key);
 
 			
 			if(stristr($value,$_REQ["title"])==true or stristr(key,$_REQ["title"])==true){
