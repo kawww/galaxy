@@ -35,6 +35,14 @@ $freekeva="http://galaxyos.io/";
 
 $credit=0.1;
 
+//freeasset
+
+
+$freeasset="http://galaxyos.io/";
+
+$wid="NZw8rWKkVxEXpXdtxkvfAP75vYXMFjfdhA";
+
+
 //hide namespace
 
 $hidenkey=1;
@@ -799,7 +807,7 @@ $index_magnet="MAGNET TXID";
 $index_system="SYSTEM";
 
 
-$keva_myaddress="keva ADDRESS";
+$keva_myaddress="KEVA ADDRESS";
 $keva_newspace="CREATE NEW SPACE";
 $keva_free="GET FREE CREDIT";
 $keva_newspacememo="Across the blockchain we can reach every corner in the galaxy";

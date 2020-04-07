@@ -251,6 +251,163 @@ $rpc->port=$rrpcport;
 
 $_REQ = array_merge($_GET, $_POST);
 
+//asset account
+
+	$messageacc="asset";
+
+	$listaccount = $rpc->listaccounts();
+				
+				
+
+			if(isset($listaccount['asset']))
+			
+					{
+						$accaddress=$rpc->getaddressesbyaccount($messageacc);
+					
+						$shopaddress=$accaddress[0];
+						
+						
+						$errorshop = $rpc->error;
+
+						if($errorshop != "") 
+			
+						{
+							echo "<p>&nbsp;&nbsp;error,message address</p>";
+							exit;
+						}
+					}
+			
+					else
+
+					{
+
+				
+
+					$shopaddress = $rpc->getnewaddress($messageacc);
+
+		
+
+					$errorshop = $rpc->error;
+
+					if($errorshop != "") 
+		
+						{
+							echo "<p>&nbsp;&nbsp;Error</p>";
+						exit;
+						}
+					}
+
+//free asset
+
+if(isset($_REQ["add"])) {
+
+$forfree=trim($_REQ["add"]);
+
+$freeasset=trim($_REQ["asset"]);
+
+$checkaddress= $rpc->listtransactions("asset",10);
+
+$listaccount = $rpc->listassetbalancesbyaddress($shopaddress);
+
+$listbalance = $rpc->getbalance("asset");
+
+
+
+if(array_key_exists($freeasset,$listaccount)==false or $listbalance<1){
+	echo "<script>alert('NO ASSET AVAILABLE, PLEASE WAIT NEXT TIME');history.go(-1);</script>";
+	
+	exit;}
+
+$ok=0;
+
+		$farr=array();
+		$ftotal=array();
+
+		foreach($checkaddress as $freetx)
+
+			{
+			
+			extract($freetx);
+
+			
+
+			$farr["fcon"]=$confirmations;
+			$farr["fadd"]=$address;
+		
+			array_push($ftotal,$farr);
+
+			}
+
+
+			asort($ftotal);
+
+		foreach($ftotal as $findadd){
+
+
+
+
+									
+						if($findadd['fadd']==$forfree)
+
+										{
+							
+										
+
+										if($findadd['fcon']>10)
+
+											{
+
+										$age1= $rpc->transferfromaddress($freeasset,$shopaddress,1,$forfree,"","","",$shopaddress);
+										$credit=$credit/10;
+
+										$age2= $rpc->sendfrom("asset",$forfree,$credit);
+
+
+										echo "<script>alert('GET 1 ASSET SUCCESS');history.go(-1);</script>";
+
+
+
+										exit;
+
+											}
+
+										else
+								
+											{ 
+
+										$left=10-$findadd['fcon'];
+		
+									
+										echo "<script>alert('WAIT ".$left." BLOCKS (1min/block)');history.go(-1);</script>";
+										
+										exit;
+
+											}
+
+										}
+										else
+
+
+										{
+
+											$ok=9;
+										}
+										
+									}
+										if($ok=9)
+											
+											{$age= $rpc->transferfromaddress($freeasset,$shopaddress,1,$forfree,"","","",$shopaddress);
+
+											$credit=$credit/10;
+										$age2= $rpc->sendfrom("asset",$forfree,$credit);
+
+											
+										echo "<script>alert('GET ASSET SUCCESS');history.go(-1);</script>";
+											}
+
+						}
+	
+
 
 if(!isset($_REQUEST["asset"])) 
 
@@ -278,8 +435,13 @@ echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
 	
 
+if(isset($wid) & strlen($wid)>10){
 
-$age= $rpc->listmyassets();
+	$age = $rpc->listassetbalancesbyaddress($shopaddress);}
+
+	else
+
+	{$age= $rpc->listmyassets();}
 
 		
 			
@@ -298,8 +460,34 @@ if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a hre
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
+//if console
 
-		foreach($age as $x_value=>$x)
+if(isset($wid) & strlen($wid)>10)
+					
+				{
+				
+				 $check=$kpc->keva_get($wid,"ASSET");
+
+				 $wasset=explode("\n", $check["value"]);
+
+				
+				}
+
+
+
+if($webmode==1){
+
+	echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ RAVEN ADDRESS ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$shopaddress."</p></li>";
+
+				}else
+	{
+
+echo "<a href=".$freeasset."asset.php?lang=".$_REQUEST["lang"]."&address=".$shopaddress."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ GET FREE ASSET ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$shopaddress."</p></a></li>";}
+
+
+
+
+foreach($age as $x_value=>$x)
 
 			{
 
@@ -319,8 +507,53 @@ $x_value=str_replace("U+","",$x_value);
 
 $x_value="<h4>".$x_value."</h4>";
 
+		if(isset($_REQUEST["address"]))
+			
+		{
+
+			if(isset($wid) & strlen($wid)>10)
+					
+				{
+				
+				
+
+
+				 foreach($wasset as $wone)
+					 
+				 {
+
+				
+
+				 
+				 if(trim($wone)==$assetlink){
+				 
+				 echo "<a href=?lang=".$_REQUEST["lang"]."&unicode=".$turn."&asset=".$assetlink."&add=".$_REQUEST["address"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+				 
+										 }
+
+								 }
+				
+				}
+
+				else
+
+			{
+		
+			echo "<a href=?lang=".$_REQUEST["lang"]."&unicode=".$turn."&asset=".$assetlink."&add=".$_REQUEST["address"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+			}
+		
+		}
+
+		else
+
+				{
 
 			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+
+				}
+
+
+
 
 			}
 

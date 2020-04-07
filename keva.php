@@ -321,6 +321,25 @@ $forsub=$_REQ["newasset"]."\r\n\r\n".$comment;
 
 $age= $kpc->keva_put($_REQ["asset"],$_REQ["title"],$forsub);
 
+$error = $kpc->error;
+
+if($error != "") 
+	
+	{
+
+	  echo"<script>alert('Too many words');history.go(-1);</script>";  
+
+	}
+
+	else
+	
+{
+
+$url = "keva.php?asset=".$_REQ["asset"]; 
+
+
+}
+
 
 
 if(strlen($_REQ["cadd"])==34)
@@ -331,14 +350,7 @@ $url="message.php?lang=".$_REQUEST["lang"]."&txid=".$age['txid']."&block=".$_REQ
 
 }
 
-else
-	
-{
 
-$url = "keva.php?asset=".$_REQ["asset"]; 
-
-
-}
 
 echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
 
@@ -463,6 +475,15 @@ if(isset($_REQ["asset"]) & is_numeric($_REQ["asset"])==true)
 
 			}
 
+if(isset($_REQ["asset"]) & strlen($_REQ["asset"])==64) 
+		
+		{
+			
+			echo "<script>window.location.href=decodeURIComponent('subscription.php?txid=".$_REQ["asset"]."')</script>";
+
+			}
+
+
 //add new text
 
 if(isset($_REQ["mode"])){
@@ -479,8 +500,8 @@ if(isset($_REQ["mode"])){
 
 								}
 
+				//if(isset($_REQ["newerr"])){$value=hex2bin($_REQ["newerr"]);}
 
-				
 			echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=keva.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></ul>";	
 
 			
@@ -675,7 +696,7 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"NAME ADDRESS, BLOCK NUMBER...\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"64\" placeholder=\"NAME ADDRESS, BLOCK NUMBER, TXID...\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"".$keva_kaw."\"></li></ul></div></form></div>";
@@ -1214,7 +1235,7 @@ if(strcmp($destination,$commentadd)==0)
 						
 						$x_value=uniworld($x_value,$assetlink,$assettwo);
 						
-						$clink="[ ".$x_value." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$commone['ipfs'].">[ TXID ] </a>";
+						$clink="[ TxAsset:".$x_value." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$commone['ipfs'].">[ TxID ] </a> [ ".date('Y-m-d H:i', $commone['time'])." ] ";
 
 						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;margin-top:15px;\"><p  align=left><br>".turnUrlIntoHyperlink($conk)."<br><br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";
 
