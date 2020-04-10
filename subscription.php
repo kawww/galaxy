@@ -589,6 +589,7 @@ if(isset($block) & is_numeric($block)==true)
 
 				$giftn=$gift_value;
 
+$giftn=str_replace("_"," ",$giftn);
 
 				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
 				
@@ -666,6 +667,8 @@ if(!$cspace){echo "</ul><ul><a href=keva.php?lang=&asset=&mode=4&nameid=&createn
 			
 
 				$gift_value=str_replace("U+","",$gift_value);
+
+					$gift_value=str_replace("_"," ",$gift_value);
 
 				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
 				
@@ -785,7 +788,8 @@ $arrx["time"]=$time;
 
 					
 						$x_value=uniworld($x_value,$assetlink,$assettwo);
-						
+
+						$x_value=str_replace("_"," ",$x_value);
 
 						$clink="[ Tx:".$x_value." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$commone['ipfs'].">[ TxID ] </a> [ ".date('Y-m-d H:i', $commone['time'])." ] ";
 if($commone['ipfs']<>"b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d"){
@@ -1112,6 +1116,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 				$giftn=$gift_value;
 
+$giftn=str_replace("_"," ",$giftn);
 
 				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
 				
@@ -1187,6 +1192,8 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 			
 
 				$gift_value=str_replace("U+","",$gift_value);
+
+					$gift_value=str_replace("_"," ",$gift_value);
 
 				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
 				
@@ -1301,7 +1308,8 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 						$x_value=uniworld($x_value,$assetlink,$assettwo);
 						
-					
+					$x_value=str_replace("_"," ",$x_value);
+
 						$clink="[ Tx:".$x_value." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$commone['ipfs'].">[ TxID ] </a> [ ".date('Y-m-d H:i', $commone['time'])." ] ";
 
 if($commone['ipfs']<>"b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d"){
@@ -1345,11 +1353,19 @@ if(isset($_REQ["asset"]))
 				if(isset($_REQ["txid"])){$messc=$_REQ["txid"];}
 
 				if(isset($_REQ["ipfs"]) & strlen($_REQ["ipfs"])==46){$messc=$_REQ["ipfs"];}
+				
+
+				$s_value=$uname;
+				$assetlink=$s_value;
+				$assettwo=$s_value;
+
+
+				$s_value=uniworld($s_value,$assetlink,$assettwo);
 
 				
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:150px;width:90%;\"><form action=\"\" method=\"post\" >";	
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:180px;width:90%;\"><form action=\"\" method=\"post\" >";	
 
-								echo "<br><p style=\"font-size:24px\">[ <font color=white>".$uname."</font> ]  (".$_REQ["left"].")</p>";
+								echo "<br><p style=\"font-size:24px\">[ <font color=white>".$uname."</font> ]  (".$_REQ["left"].")<br><br><font size=3 color=grey>".$s_value."</font></p>";
 
 								echo "<input type=\"text\" name=\"assetadd\" class=\"textarea-inherit\"  style=\"width:90%;\" value=
 								\"".$_REQ["cadd"]."\" placeholder=\"to address\">";
@@ -1367,7 +1383,7 @@ if(isset($_REQ["asset"]))
 
 
 
-	if(isset($_REQ["assetadd"]) & isset($_REQ["assetname"]) & isset($_REQ["assetmemo"]) & $$webmode=0)
+	if(isset($_REQ["assetadd"]) & isset($_REQ["assetname"]) & isset($_REQ["assetmemo"]) & $webmode==0)
 
 		{
 		

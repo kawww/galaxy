@@ -329,7 +329,7 @@ if(isset($_REQ["txid"])){$messc=$_REQ["txid"];}
 
 if($_REQUEST["lang"]=="en" or !$_REQUEST["lang"]){
 
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["txid"]."&txid=".$_REQ["txid"]."&cadd=".$_REQ["cadd"]."&spid=".$_REQ["spid"]."&spti=".$_REQ["spti"]."&sign=".$_REQ["sign"]."&ipfs=".$_REQ["ipfs"].">[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["txid"]."&cadd=".$_REQ["cadd"]."&spid=".$_REQ["spid"]."&spti=".$_REQ["spti"]."&sign=".$_REQ["sign"]."&ipfs=".$_REQ["ipfs"]."&unicode=1>[ TURN-ON ]</a><br>";}}
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["txid"]."&cadd=".$_REQ["cadd"]."&spid=".$_REQ["spid"]."&spti=".$_REQ["spti"]."&sign=".$_REQ["sign"]."&ipfs=".$_REQ["ipfs"].">[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["txid"]."&cadd=".$_REQ["cadd"]."&spid=".$_REQ["spid"]."&spti=".$_REQ["spti"]."&sign=".$_REQ["sign"]."&ipfs=".$_REQ["ipfs"]."&unicode=1>[ TURN-ON ]</a><br>";}}
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
@@ -358,13 +358,16 @@ if(stristr($asset,"!")==false)
 		{
 		$x_value=uniworld($x_value,$assetlink,$assettwo);
 		}
+	$s_value=uniworld($x_value,$assetlink,$assettwo);
+	$s_value=str_replace("U+","",$s_value);
+	
 	$x_value=str_replace("U+","",$x_value);
 
 	if($_REQ["sign"]==1){
 
 		if(stristr(substr($asset,0,3),"#")==true){
 		
-		echo "<a href=message.php?lang=".$_REQUEST["lang"]."&signok=1&asset=".bin2hex($assetx)."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
+		echo "<a href=message.php?lang=".$_REQUEST["lang"]."&signok=1&asset=".bin2hex($assetx)."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><br><font size=2 color=grey>".$s_value."</font><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
 		
 				}
 	
@@ -376,7 +379,9 @@ if(stristr($asset,"!")==false)
 
 					{
 
-echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
+						if(stristr(substr($asset,0,3),"#")==false){
+
+echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."><li style=\"height:120px;color:#bbb;display:block;line-height:6px;\"><h5>".$x_value."</h5><br><font size=2 color=grey>".$s_value."</font><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";}
 					}
 								
 
