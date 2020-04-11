@@ -599,6 +599,8 @@ $giftn=str_replace("_"," ",$giftn);
 				
 				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
 
+					$giftlink="asset.php?lang=&unicode=0&sort=1&asset=".$gift_value;
+
 				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#888;color:#eee;height:30px\">&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
 
 				
@@ -1125,6 +1127,8 @@ $giftn=str_replace("_"," ",$giftn);
 				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
 				
 				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+					$giftlink="asset.php?lang=&unicode=0&sort=1&asset=".$gift_value;
 
 				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#888;color:#eee;height:30px\">&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
 
