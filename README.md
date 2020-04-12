@@ -80,6 +80,7 @@ Wait tx comfirmed (2-5 mins), click your name space and create new word.
 
 You can edit, click block number to check your words, create ipfs link, broadcast to your raven asset, send message with raven asset.
 
+You can add COMMENT if you create a COMMENT namespace in WORD. You need to select comment when you post your word.
 
 SUBSCRIPTION & CHANNEL
 ----------------
@@ -87,13 +88,20 @@ SUBSCRIPTION & CHANNEL
 You can check what's new in SUBSCRIPTION. All broadcast keva contents with rvn channel will be here. IPFS contents will be in CHANNEL.
 
 
-MESSAGE
+MESSAGE & TAG & ASSET
 ----------------
 
-You can check rvn messages.
+You can check rvn Messages/Tags/Asset in your wallet.
 
-
-How to use Galaxy
+ASSET & IPFS EXPLORER
 ----------------
 
+You can check rvn asset on the blockchain.
+
+You can check rvn Messages/Tags/asset.
+
+CHECK ASSET AVAILIABLE
+----------------
+
+You can check rvn asset name if availiable on the blockchain.
 
