@@ -286,13 +286,12 @@ if($webmode==1){$tagasset="-";}
 
 if(!$tagasset){
 
-
+/*
 
 $agex= $rpc->listaddressgroupings();
 
 
-		
-			
+	
 			$error = $rpc->error;
 
 			if($error != "") 
@@ -303,12 +302,10 @@ $agex= $rpc->listaddressgroupings();
 					exit;
 				}
 
-		
-
 
 			foreach($agex as $g)
 
-			{
+				{
 			
 			
 
@@ -317,18 +314,38 @@ $agex= $rpc->listaddressgroupings();
 			
 			if(empty($tagcheck)==false){
 
-			foreach($tagcheck as $m){
+					foreach($tagcheck as $m){
 
-			$arrx["tag"]=$m;
+								$arrx["tag"]=$m;
 
-			$arrx["add"]=$g[0][0];
+									$arrx["add"]=$g[0][0];
 			
-			array_push($totalassx,$arrx);}}
+			array_push($totalassx,$arrx);}
+			
+									}
 
 			
-					}
+				}
 
-	
+
+*/
+
+$agex= $rpc->viewmytaggedaddresses();
+
+foreach($agex as $g)
+
+				{
+			
+
+								$arrx["time"]=$g['Assigned'];
+								$arrx["tag"]=$g['Tag Name'];
+								$arrx["add"]=$g['Address'];
+
+									array_push($totalassx,$arrx);
+				}
+
+
+
 				}else
 
 					{
@@ -350,7 +367,11 @@ $agex= $rpc->listaddressgroupings();
 
 			}	
 
+			arsort($totalassx);
+
 	$age=$totalassx;
+
+	
 
 if(!$agex[0][0][0]){$tagadd=$_REQ["asset"];}else{$tagadd=$agex[0][0][0];}
 
@@ -378,7 +399,7 @@ $add=$xx[add];
 		
 				$x_value=$tag;
 
-		
+				
 
 				if($turn==1)
 
@@ -417,10 +438,15 @@ $add=$xx[add];
 				}
 
 
+$s_value=str_replace("#","",$x_value);
+$assetlinks=$s_value;
+						$assettwos=$s_value;
+$s_value=uniworld($x_value,$assetlinks,$assettwos);
+	$s_value=str_replace("U+","",$s_value);
 
 
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:40px;width:600px;font-size:70%\"><table><tr><td width=\"200px\" align=left>".$messone."</td><td width=\"400px\" align=left><a href=?lang=".$_REQUEST["lang"]."&unicode=".$turn."&asset=".$add.">".$add."</a></td></tr></table></li>";
+			echo "<li style=\"height:120px;color:#bbb;display:block;line-height:6px;\"><h5>".$messone."</h5><br><font size=2 color=grey>".$s_value."</font><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p><a href=asset.php?lang=".$_REQUEST["lang"]."&asset=".$add."><font size=2>".$add."</font></p></a></li>";
 			
 			}
 			

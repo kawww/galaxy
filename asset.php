@@ -1043,6 +1043,7 @@ extract($v);
 				{
 		
 			$age = $rpc->listassetbalancesbyaddress($qr);
+			$agetag = $rpc->listtagsforaddress($qr);
 			
 			$error = $rpc->error;
 
@@ -1073,6 +1074,8 @@ if($turn==1)
 $x_value=uniworld($x_value,$assetlink,$assettwo);
 }
 
+$s_value=uniworld($x_value,$assetlink,$assettwo);
+$s_value=str_replace("U+","",$s_value);
 
 $x_value=str_replace("U+","",$x_value);
 
@@ -1081,7 +1084,39 @@ $x_value=str_replace("U+","",$x_value);
 $x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
 		
-			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;line-height:10px;\">".$x_value."<br><font size=2 color=grey>".$s_value."</font><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+
+			}
+
+			//tag
+
+			foreach($agetag as $x=>$x_value)
+
+			{
+
+$assetlink=$x_value;
+$assettwo=$x_value;
+
+
+if($turn==1)
+
+{
+$x_value=uniworld($x_value,$assetlink,$assettwo);
+}
+
+
+$x_value=str_replace("U+","",$x_value);
+
+
+$s_value=uniworld($x_value,$assetlink,$assettwo);
+$s_value=str_replace("U+","",$s_value);
+
+
+$x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
+
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;line-height:10px;\">".$x_value."<br><font size=2 color=grey>".$s_value."</font><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
+
 
 			}
 

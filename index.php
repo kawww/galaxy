@@ -265,6 +265,8 @@ if(!isset($_REQUEST["asset"]))
 		
 		echo"<a href=?lang=".$langs."><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;height:100px;border: 1px solid #59fbea;background-color:#0b0c0d;display:block;line-height:30px;\"><br><b>GALAXY</b></a></li>";	
 
+		echo"<li style=\"height:75px;background-color:#0b0c0d;color:#bbb;display:block;padding-top:35px;\"><form action=\"keva.php\" method=\"post\" ><input type=\"text\" name=\"asset\" maxlength=\"64\" placeholder=\"KEVA BLOCK NUMBER\" style=\"width:200px;\"> <input type=\"submit\" value=\"".$keva_kaw."\"></form></li>";	
+
 		echo"<a href=console.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_console." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
 		echo"<a href=system.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_system." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
@@ -282,8 +284,9 @@ if(!isset($_REQUEST["asset"]))
 		
 		echo"<a href=message.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_message." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
+if($webmode==0){
 
-		echo"<a href=asset.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_asset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		echo"<a href=asset.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_asset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	}
 
 		echo"<a href=tag.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_tag." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
@@ -866,6 +869,8 @@ extract($v);
 				{
 		
 			$age = $rpc->listassetbalancesbyaddress($qr);
+
+			$agetag = $rpc->listtagsforaddress($qr);
 			
 			$error = $rpc->error;
 
@@ -905,6 +910,36 @@ $x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
 
 			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+
+
+			}
+
+
+			//tag
+
+			foreach($agetag as $x=>$x_value)
+
+			{
+
+$assetlink=$x_value;
+$assettwo=$x_value;
+
+
+if($turn==1)
+
+{
+$x_value=uniworld($x_value,$assetlink,$assettwo);
+}
+
+
+$x_value=str_replace("U+","",$x_value);
+
+
+
+$x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
+
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
 
 
 			}
