@@ -44,13 +44,13 @@ You can input a keva block number to get the block contents. (for example, 29314
 CONSOLE
 ----------------
 
-You can get rvn and keva blockchain info here. You can also setup galaxy command if you create "CONSOLE" in the WORD. You can input NZw8rWKkVxEXpXdtxkvfAP75vYXMFjfdhA in galaxy to see how to add.
+You can get rvn and keva blockchain info here. You can also setup galaxy command if you create "CONSOLE" in the WORD. You can click http://galaxyos.io/keva.php?asset=NZw8rWKkVxEXpXdtxkvfAP75vYXMFjfdhA in galaxy to see how to add.
 
 [LANGUAGE,en] You can change languages. Now support en cn kr jp bs bg nl tl fr de id it po pt ro ru es th tr af
 
 [WORD,3000] You can limit words.
 
-[HIDE,on] You can hide namespace if you add a hide key in the namespace which you want to hide.  You can input NMs96eoWWiP3ZJzdCiE96ggKTU18daWRhg in galaxy to see how to add.
+[HIDE,on] You can hide namespace if you add a hide key in the namespace which you want to hide.  You can click http://galaxyos.io/keva.php?asset=NMs96eoWWiP3ZJzdCiE96ggKTU18daWRhg in galaxy to see how to add.
 
 [LIST,on] You can list your namespace in the first page without click word.
 
