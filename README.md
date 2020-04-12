@@ -98,10 +98,7 @@ ASSET & IPFS EXPLORER
 
 You can check rvn asset on the blockchain.
 
-You can check rvn Messages/Tags/asset.
-
 CHECK ASSET AVAILIABLE
 ----------------
 
 You can check rvn asset name if availiable on the blockchain.
-
