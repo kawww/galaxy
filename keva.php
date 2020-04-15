@@ -346,7 +346,7 @@ if(strlen($_REQ["cadd"])==34)
 	
 {
 
-$url="message.php?lang=".$_REQUEST["lang"]."&txid=".$age['txid']."&block=".$_REQ["title"]."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQUEST["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]; 
+$url="message.php?lang=".$_REQUEST["lang"]."&txid=".$age['txid']."&block=".$_REQ["title"]."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQUEST["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."&name=".$_REQUEST["name"]; 
 
 }
 
@@ -1495,7 +1495,7 @@ if(strlen($_REQ["showall"])<2)
 
 				
 
-				$valuex="<font size=1>".$txx." <a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_edit." ]</a> <a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_delete." ]</a> <a href=channel.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_broadcast." ]</a> <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_message." ]</a></font>";
+				$valuex="<font size=1>".$txx." <a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_edit." ]</a> <a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_delete." ]</a> <a href=channel.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_broadcast." ]</a> <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_message." ]</a> <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightx.">[ ".$heightx." ]</a></font>";
 				
 				
 				}

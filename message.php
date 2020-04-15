@@ -282,7 +282,7 @@ $signasset=$rpc->addtagtoaddress($signa,$signd,"",$_REQ["txid"]);}
 if(isset($_REQ["oldtxid"]) & strlen($_REQ["oldtxid"])>10){
 
 			
-		$url = "subscription.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["oldtxid"]; 
+		$url = "subscription.php?lang=".$_REQUEST["lang"]."&txid=".$_REQ["oldtxid"]."&name=".$_REQUEST["name"]; 
 
 
 		}
@@ -367,7 +367,7 @@ if(stristr($asset,"!")==false)
 
 		if(stristr(substr($asset,0,3),"#")==true){
 		
-		echo "<a href=message.php?lang=".$_REQUEST["lang"]."&signok=1&asset=".bin2hex($assetx)."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><br><font size=2 color=grey>".$s_value."</font><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";
+		echo "<a href=message.php?lang=".$_REQUEST["lang"]."&signok=1&asset=".bin2hex($assetx)."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."&name=".$_REQUEST["name"]."><li style=\"height:120px;color:#bbb;display:block;\"><h5>".$x_value."</h5><br><font size=2 color=grey>".$s_value."</font></a></li>";
 		
 				}
 	
@@ -381,7 +381,7 @@ if(stristr($asset,"!")==false)
 
 						if(stristr(substr($asset,0,3),"#")==false){
 
-echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."><li style=\"height:120px;color:#bbb;display:block;line-height:6px;\"><h5>".$x_value."</h5><br><font size=2 color=grey>".$s_value."</font><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";}
+echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&asset=".$assetx."&uname=".$x_value."&txid=".$_REQ["txid"]."&ipfs=".$_REQ["ipfs"]."&message=1&left=".$num."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQ["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."&name=".$_REQUEST["name"]."><li style=\"height:120px;color:#bbb;display:block;line-height:6px;\"><h5>".$x_value."</h5><br><font size=2 color=grey>".$s_value."</font><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$num."</p></a></li>";}
 					}
 								
 

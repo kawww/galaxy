@@ -555,7 +555,7 @@ echo "<ul><a href=channel.php?lang=".$_REQUEST["lang"]."&mode=all><li style=\"ba
 			}
 		if(strlen($ipfs)=="64")
 			{
-			$messone="<a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$ipfs.">TXID</a>";
+			$messone="<a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$ipfs."&name=".$x_value.">TXID</a>";
 			}
 
 
