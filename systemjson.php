@@ -82,7 +82,7 @@ while($blockread>$blockleft){
 			
 		$transaction= $kpc->getrawtransaction($txa,1);
 
-	
+
 
 					foreach($transaction['vout'] as $vout)
 	   
@@ -108,13 +108,14 @@ while($blockread>$blockleft){
 								$arrx["size"]=$transaction['size'];
 
 								array_push($totalass,$arrx);
-			
-
+								
 								}
 
 								else
 
 							  {
+
+								 
 							    
 							
 								$arrx["block"]=$block;
@@ -128,7 +129,7 @@ while($blockread>$blockleft){
 
 								array_push($totalass,$arrx);
 
-								break;
+							
 							  
 							  }
 						  }
