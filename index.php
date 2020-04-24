@@ -261,11 +261,43 @@ if(!isset($_REQUEST["asset"]))
 
  {
 
+	 //credit account
+
+	$messageacc="credit";
+
+	$listaccount = $kpc->listaccounts();
+				
+				
+
+			if(isset($listaccount['credit']))
+			
+					{
+						$accaddress=$kpc->getaddressesbyaccount($messageacc);
+					
+						$shopaddress=$accaddress[0];
+						
+						$shopbalance=$kpc->getbalance($shopaddress);
+
+					
+					}
+			
+					else
+
+					{
+
+				
+
+					$shopaddress = $kpc->getnewaddress($messageacc);
+
+
+				
+					}
+
 		echo "<div id=\"nav\"><ul>";
 		
 		echo"<a href=?lang=".$langs."><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;height:100px;border: 1px solid #59fbea;background-color:#0b0c0d;display:block;line-height:30px;\"><br><b>GALAXY</b></a></li>";	
 
-		echo"<li style=\"height:75px;background-color:#0b0c0d;color:#bbb;display:block;padding-top:35px;\"><form action=\"keva.php\" method=\"post\" ><input type=\"text\" name=\"asset\" maxlength=\"64\" placeholder=\"KEVA BLOCK NUMBER\" style=\"width:200px;\"> <input type=\"submit\" value=\"".$keva_kaw."\"></form></li>";	
+		echo"<li style=\"height:75px;background-color:#0b0c0d;color:#bbb;display:block;padding-top:35px;\"><form action=\"keva.php\" method=\"post\" ><input type=\"text\" name=\"asset\" maxlength=\"64\" placeholder=\"KEVA BLOCK NUMBER\" style=\"width:200px;\"><input type=\"hidden\" name=\"fromasset\" value=\"".$shopaddress."\"> <input type=\"submit\" value=\"".$keva_kaw."\"></form></li>";	
 
 		echo"<a href=console.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_console." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 

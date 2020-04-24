@@ -93,14 +93,18 @@ while($blockread>$blockleft){
 				
 					$arr = explode(' ', $op_return); 
 
+					
+
 					if($arr[0] == 'OP_KEVA_PUT') 
 								{
 								 $cona=$arr[1];
 								 $cons=$arr[2];
 								 $conk=$arr[3];
 
+								 $kadd=$vout["scriptPubKey"]["addresses"][0];
+
 								$arrx["block"]=$block;
-								$arrx["sadd"]=hex2bin($cona);
+								$arrx["sadd"]=$kadd;
 								$arrx["snewkey"]=hex2bin($cons);
 								$arrx["sinfo"]=hex2bin($conk);
 								$arrx["txa"]=$txa;
@@ -199,7 +203,8 @@ $x_value=$snewkey;
 															'title'=>$sstitle,
 															'content'=>$sscontent,
 															'block'=>$block,
-															'tx'=>$sstx
+															'tx'=>$sstx,
+															'add'=>$sadd,
 											);
 					
 									

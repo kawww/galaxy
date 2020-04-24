@@ -373,9 +373,25 @@ echo "<script>window.location.href=decodeURIComponent('keva.php')</script>";
 
 //freekeva
 
-if(isset($_REQ["address"])) {
+//index
 
-$forfree=$_REQ["address"];
+$assetget=$_REQ["asset"];
+
+if(strlen($assetget)==34 & substr($assetget,0,1)=="V"){
+
+	$url=$freekeva."keva.php?lang=".$_REQUEST["lang"]."&address=".$assetget;
+
+	echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
+
+	}
+
+//word
+
+$freeadd=$_REQ["address"];
+
+if(strlen($freeadd)==34) {
+
+$forfree=$freeadd;
 
 $checkaddress= $kpc->listtransactions("credit",100);
 
@@ -470,6 +486,90 @@ $ok=0;
 if(isset($_REQ["asset"]) & is_numeric($_REQ["asset"])==true) 
 		
 		{
+
+
+	
+
+			$block=$_REQ["asset"];
+			
+			$blockhash= $kpc-> getblockhash(intval($block));
+
+			$blockdata= $kpc->getblock($blockhash);
+
+			foreach($blockdata['tx'] as $txa)
+
+			{
+			
+				$transaction= $kpc->getrawtransaction($txa,1);
+
+				$rand=rand(1,99);
+
+					foreach($transaction['vout'] as $vout)
+	   
+						  {
+
+					$op_return = $vout["scriptPubKey"]["asm"]; 
+
+					$arr = explode(' ', $op_return); 
+
+
+
+					if($arr[0] == 'OP_KEVA_PUT') 
+						
+								{
+
+								  $kadd=$vout["scriptPubKey"]["addresses"][0];
+								 $conk=$arr[3];
+								 $sinfo=hex2bin($conk);
+
+								 $value=$sinfo;
+										
+										//comment
+	
+								 if(stristr($value,"::") == true)
+
+									{
+									
+										$commtool=explode('::', $value);
+
+										$value=$commtool[0];
+
+									    foreach ($commtool as $tool) 
+
+											{
+
+											 if(stristr($tool,"RAVENCOIN_COMMENT_ADDRESS") == true)
+												 {
+											          $commentadd=trim(str_replace("RAVENCOIN_COMMENT_ADDRESS:","",$tool));
+													}
+											
+											
+											}
+
+										}
+
+
+
+
+								  if($rand<>0 & $rand<$rewardk){
+								  
+								  $agek= $kpc->sendfrom("credit",$kadd,$credit/10);
+								 }
+
+								  
+								  if($rand<>0 & $rand<$rewardr){
+								  
+								  
+								  $ager= $rpc->sendtoaddress($commentadd,$credit/10);}
+								  
+								  
+
+								  }
+
+								}
+						  }
+
+
 			
 			echo "<script>window.location.href=decodeURIComponent('subscription.php?block=".$_REQ["asset"]."')</script>";
 

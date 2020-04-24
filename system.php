@@ -302,13 +302,13 @@ $(function(){
 
 					  if(datalist[i].tx==1){
 						  
-						  str += '<ul><li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:7px;padding-right:7px;letter-spacing:1px;word-break: normal;\"><p align=left>' + datalist[i].block + '</p></li></ul>';
+						  str += '<ul><li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:10%;line-height:40px;font-size:24px;padding-top:30px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\"><p align=left>' + datalist[i].block + '</p></li></ul>';
 
                        }else{
 						   
-						   str += '<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>' + datalist[i].content + '</p></li>';
+						   str += '<ul><li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>' + datalist[i].content + '</p></li>';
 						   
-						   str += '<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=<?php echo $_REQUEST["lang"]; ?>&txid=' + datalist[i].tx + '>' + datalist[i].tx + '</a>  [ ' + datalist[i].block + ' ]</p></li>';
+						   str += '<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=<?php echo $_REQUEST["lang"]; ?>&txid=' + datalist[i].tx + '>' + datalist[i].tx + '</a> [ <a href=https://explorer.kevacoin.org/address/' + datalist[i].add + ' target=_blank>address</a> ]  [ ' + datalist[i].block + ' ]</p></li></ul>';
 						   
 						   }
                  }
@@ -335,7 +335,7 @@ $(function(){
 
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></div></form></div>";
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;width:99%;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></div></form></div>";
 	
 
 
@@ -389,8 +389,10 @@ while($blocknow>$blockread)
 								 $cons=$arr[2];
 								 $conk=$arr[3];
 
+								  $kadd=$vout["scriptPubKey"]["addresses"][0];
+
 								$arrx["block"]=$block;
-								$arrx["sadd"]=hex2bin($cona);
+								$arrx["sadd"]=$kadd;
 								$arrx["snewkey"]=hex2bin($cons);
 								$arrx["sinfo"]=hex2bin($conk);
 								$arrx["txa"]=$txa;
@@ -427,7 +429,7 @@ if(count($totalass)==0){
 
 if($webmode==1){$nextblocks=$sysweb;}else{$nextblocks=$syslocal;}
 
-echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$nextblocks."  BLOCK</h3></a></li>";
+echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:99%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$nextblocks."  BLOCK</h3></a></li></ul></div></div>";
 exit;
 
 }
@@ -477,7 +479,7 @@ $x_value=$snewkey;
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
 
 												
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ]  < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
 											
 										
 													}
@@ -633,7 +635,7 @@ $x_value=$snewkey;
 
 if($webmode==1){$nextblocks=$sysweb;}else{$nextblocks=$syslocal;}
 
-echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$nextblocks."  BLOCK</h3></a></li>";
+echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:99%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$nextblocks."  BLOCK</h3></a></li>";
 
 
 

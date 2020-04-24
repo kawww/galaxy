@@ -7,6 +7,8 @@ $localip='127.0.0.1';
 //on/off
 
 $webmode=0;
+$rewardk=0;
+$rewardr=0;
 
 //hidemenu
 
@@ -35,6 +37,8 @@ $freekeva="http://galaxyos.io/";
 
 $credit=0.1;
 
+
+
 //freeasset
 
 
@@ -60,7 +64,7 @@ $unsub="off";
 
 $message_num=5000;
 
-$tag_address="-";
+$tag_addresss="-";
 
 
 
@@ -821,7 +825,7 @@ $keva_subscribe="SUBSCRIBE";
 $keva_subscription="SUBSCRIPTION";
 $keva_linkipfs="LINK IPFS";
 $keva_edit="EDIT";
-$keva_delete="DELETE";
+$keva_delete="DEL";
 $keva_broadcast="BROADCAST";
 $keva_galaxylink="GALAXY LINK";
 $keva_message="MESSAGE";
@@ -847,7 +851,7 @@ $console_keva_blockchain="keva BLOCKCHAIN INFO";
 $console_keva_count="keva BLOCK COUNT";
 $console_keva_mining="TESTNET MINING";
 
-$system_noblock="NO CONTENTS FOUND IN THESE BLOCKS, LET'S GO NEXT BLOCK";
+$system_noblock="NO CONTENTS FOUND IN THESE BLOCKS ";
 
 $subscribe_broadcast="CONFIRM BROADCAST";
 $subscribe_sub="SUBSCRIPTION";
