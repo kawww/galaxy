@@ -431,7 +431,11 @@ if($_REQ["block"]=="keva")
 
 	{if($asset=="getinfo"){
 
-$command = $kpc->get_info();}
+$balance = $kpc->getbalance();
+$command = $kpc->get_info();
+
+array_push($command,$balance);
+}
 
 elseif($asset=="getblockchaininfo"){
 
