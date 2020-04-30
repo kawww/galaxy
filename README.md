@@ -18,7 +18,8 @@ You need to get raven-qt.exe from ravencoin (https://github.com/RavenProject/Rav
 
 If you download Galaxy php code (https://github.com/kawww/galaxy/archive/master.zip) 
 
-(a) PC or MAC: You can run a php server on your pc/mac (there are many localhost servers https://www.slant.co/topics/9081/~php-localhost-servers)
+(a) PC or MAC: You can run a php server on your pc/mac (there are many localhost servers https://www.slant.co/topics/9081/~php-localhost-servers)  or download https://www.php.net/downloads and https://github.com/kawww/galaxy/tree/master/galaxy/php run php.bat to get ip and start the php server with galaxy. 
+
 
 (b) LINUX: run wallet and Galaxy directly.
 
