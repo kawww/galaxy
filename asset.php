@@ -550,7 +550,9 @@ $x_value="<h4>".$x_value."</h4>";
 
 				{
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+					if(strpos($assetlink,"#") !== false){$assetlink=bin2hex($assetlink)."&hex=1";}
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
 
 				}
 
@@ -568,6 +570,19 @@ $x_value="<h4>".$x_value."</h4>";
 
 
 if(isset($_REQUEST["asset"])) {
+
+//add tag
+
+if(isset($_REQUEST["hex"])){
+
+$asset=hex2bin($_REQ["asset"]);}
+
+echo $asset;
+
+if(strpos($asset,"#") !== false){
+
+echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ADD TAG TO ADDRESS ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$shopaddress."</p></li>";}
+
 
 
 //check server
@@ -621,11 +636,13 @@ if(isset($_REQ["sort"])){if($_REQ["sort"]==1){$sort="sort=1";$sortnum=1;}if($_RE
 
 if($sortnum==9 or $sortnum==1){
 
+
 //all to unicode
 
 if(isset($turn) && isset($ux) && $turn==2 && $ux==1)
 	
 {
+
 
 
 
@@ -676,6 +693,7 @@ if(check_utf8($asset)==true && preg_match('/[A-Za-z]/', $asset)==false && preg_m
 
 
 
+
 if(isset($turn) && $ux==9 && $turn==1)
 	
 {
@@ -705,6 +723,7 @@ $unioff=" <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&unicode=0&".$sort
 $asset=strtoupper($asset);}
 
 $address=$asset;
+
 
 
 //check address
@@ -763,6 +782,10 @@ if($sortnum==1){
 }
 
 echo "&nbsp;&nbsp;&nbsp;<div style=\"text-align:left;margin-top:0px;padding-left:15px;height:40px;\">".$sortword."".$unicode."".$unioff."</div> <div id=\"nav\"><ul>";
+
+
+
+
 
 //get search data
 

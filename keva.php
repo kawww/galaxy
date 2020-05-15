@@ -397,7 +397,7 @@ $checkaddress= $kpc->listtransactions("credit",100);
 
 $listaccount = $kpc->listaccounts();
 
-if($listaccount['credit']<1){echo "<script>alert('NO CREDIT AVAILABLE, PLEASE WAIT NEXT TIME');history.go(-1);</script>";exit;}
+if($listaccount['credit']<1){echo "<script>alert('NO CREDIT AVAILABLE, PLEASE WAIT NEXT TIME (".$listaccount['credit'].")');history.go(-1);</script>";exit;}
 
 $ok=0;
 
@@ -1070,7 +1070,81 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 								//begin
 
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><h4>".$key."</h4></li>";
+								if(strlen($key)==64){
+
+
+									$txcount=1;
+									$txloop=$key;
+									$totalassx=array();
+									$arrx=array();
+
+									while($txcount<=3) {
+									
+									$txcount++;
+
+									
+
+									$transaction= $kpc->getrawtransaction($txloop,1);
+
+									foreach($transaction['vout'] as $vout)
+	   
+									  {
+
+										$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+										$arr = explode(' ', $op_return); 
+
+										if($arr[0] == 'OP_KEVA_PUT') 
+										{
+											 $cona=$arr[1];
+											 $cons=$arr[2];
+											 $conk=$arr[3];
+
+											$kadd=$vout["scriptPubKey"]["addresses"][0];
+
+											$arrx["block"]=$txcount;
+											$arrx["sadd"]=$kadd;
+											$arrx["snewkey"]=hex2bin($cons);
+											$arrx["sinfo"]=str_replace("\n","<br>",hex2bin($conk));
+											$arrx["txa"]=$txloop;
+
+											$arrx["size"]=$transaction['size'];
+
+											$txloop=$arrx["snewkey"];
+						
+											array_push($totalassx,$arrx);
+
+											if(strlen($txloop)<>64){break;}
+													
+								
+													}
+												
+												}
+											}
+
+											arsort($totalassx);
+
+										foreach ($totalassx as $txk=>$txv) 
+
+												{
+							
+											extract($txv);
+											if(strlen($snewkey)<>64){
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><h4>".$snewkey."</h4></li>";}
+
+
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($sinfo)."</p></li>";
+
+												if(strlen($snewkey)<>64 or $block==$txcount){
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($snewkey).">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ]</p></li>";}	}	
+											
+
+												}
+									
+								else{
+
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><h4>".$key."</h4></li>";}
 
 									if(stristr($value,$asset) == false)
 										
@@ -1172,7 +1246,6 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 		//comment
 
-		if(isset($commentadd)){
 
 			//button
 
@@ -1181,10 +1254,35 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 			$error = $kpc->error;
 			if($error != "") 	
 				{
-					echo "<p>&nbsp;&nbsp;Error ADDRESS</p>";
+					echo "<p>&nbsp;&nbsp;Error</p>";
 					exit;
 				}
 
+			foreach($age as $nspace)
+
+				{
+			
+			if($nspace['displayName']=="COMMENT"){$cspace=$nspace['namespaceId'];}
+				}
+
+				if($ismine=="1"){$cspace=$asset;}
+
+			if($webmode==0)
+			
+			{
+
+			if(!$cspace){echo "</ul><ul><a href=?lang=&asset=&mode=4&nameid=&createname=COMMENT><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_create_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3></font></li>";}
+
+			else
+			{
+			echo "</ul><ul><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($txx)."&nameid=".bin2hex($key)."&cadd=".$commentadd."&spid=".$asset."\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$commentadd."</font></li>";}}
+
+		//tips
+
+
+
+
+			if(isset($commentadd)){
 //tag
 
 			echo "<li style=\"background-color: rgb(0, 0, 0);display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
@@ -1240,23 +1338,11 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 			
 
-			foreach($age as $nspace)
 
-			{
-			
-			if($nspace['displayName']=="COMMENT"){$cspace=$nspace['namespaceId'];}
-			}
-
-			
 			if($webmode==0)
 			
 			{
-
-			if(!$cspace){echo "</ul><ul><a href=?lang=&asset=&mode=4&nameid=&createname=COMMENT><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_create_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3></font></li>";}
-
-			else
-			{
-			echo "</ul><ul><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($heightm)."&nameid=".bin2hex($key)."&cadd=".$commentadd."&spid=".$asset."\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$commentadd."</font></li>";}
+			
 
 
 
@@ -1445,7 +1531,7 @@ if(strcmp($destination,$commentadd)==0)
 		
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$key."</font> ".$addend."</li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".$key."</font> ".$addend."</li>";
 
 
 										}

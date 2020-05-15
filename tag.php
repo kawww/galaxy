@@ -267,12 +267,7 @@ if(isset($_REQ["unicode"])){ $turn=$_REQ["unicode"];}
 if(isset($_REQ["u"])){$ux=$_REQ["u"];}
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-left:0px;padding-left:0px;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;width:0px;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"ASSET\">";
-
-		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
-		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
 
 	$arrx=array();
 
@@ -286,9 +281,11 @@ if($webmode==1){$tagasset="-";}
 
 if(!$tagasset){
 
+
+$agex2= $rpc->listaddressgroupings();
+
 /*
 
-$agex= $rpc->listaddressgroupings();
 
 
 	
@@ -367,25 +364,93 @@ foreach($agex as $g)
 
 			}	
 
-			arsort($totalassx);
+//main
+
+
+
+
+
+	arsort($totalassx);
 
 	$age=$totalassx;
 
+
 	
 
-if(!$agex[0][0][0]){$tagadd=$_REQ["asset"];}else{$tagadd=$agex[0][0][0];}
+if(!$agex2[0][0][0]){$tagadd=$_REQ["asset"];}else{$tagadd=$agex2[0][0][0];}
 
 
-if($webmode==1){$tagadd=$tag_address;}
+if($_REQ["iot"]=="1"){
+
+foreach($age as $xx)
+
+			{
+
+		
+$tag=$xx[tag];
+$add=$xx[add];
+			
+
+		
+				$x_value=$tag;
+
+				
+
+				if($turn==1)
+
+					{
+						$x_value=str_replace("#","",$x_value);
+						$assetlink=$x_value;
+						$assettwo=$x_value;
+						$x_value=uniworld($x_value,$assetlink,$assettwo);
+						$x_value="#".$x_value;
+					}
+
+				$x_value=str_replace("U+","",$x_value);
+
+			
+
+				
+
+
+$s_value=str_replace("#","",$x_value);
+$assetlinks=$s_value;
+						$assettwos=$s_value;
+//$s_value=uniworld($x_value,$assetlinks,$assettwos);
+	$s_value=str_replace("U+","",$s_value);
+
+
+
+			echo $s_value."<br>";
+			
+			}
+
+exit;
+
+}
+
+
+
+echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-left:0px;padding-left:0px;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;width:0px;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
+
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" placeholder=\"ASSET\">";
+
+		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
+		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
+
+
+if($webmode==1){$tagadd=$tag_addresss;}
 
 if($_REQUEST["lang"]=="en" or !$_REQUEST["lang"]){
 
 
-if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."& >[ TURN-OFF ]</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."&unicode=1 >[ TURN-ON ]</a><br>";}}
+if($turn==1){$unicode="&nbsp;&nbsp;<font color=green>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."& >[ TURN-OFF ]</a> <a href=?iot=1&asset=".$_REQUEST["asset"].">IOT MODE</a><br>";}else{$unicode="&nbsp;&nbsp;<font color=red>UNICODE</font>&nbsp; <a href=?lang=".$_REQUEST["lang"]."&unicode=1 >[ TURN-ON ]</a> <a href=?iot=1&asset=".$_REQUEST["asset"].">IOT MODE</a><br>";}}
+
+
 
 echo "<div id=\"universe\" class=\"crt\"><div style=\"text-align:left;margin-top:0px;height:40px;\">".$unicode."</div><div id=\"nav\"><ul>";
 
-echo "<a href=/tag.php><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;width:730px;\"><h4>".$tag_address."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$tagadd."</font></a></li></ul><ul>";
+echo "<a href=/tag.php><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;width:730px;\"><h4>IOT/".$tag_address."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=?lang=".$_REQUEST["lang"]."&asset=".$tagadd."><font size=3>".$tagadd."</font></a></li></ul><ul>";
 
 		foreach($age as $xx)
 
