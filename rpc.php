@@ -30,6 +30,7 @@ $lang="en";
 
 $sysweb=10;
 $syslocal=30;
+$kevaadd=30;
 
 //freekeva
 
@@ -734,7 +735,7 @@ if(isset($consolespace))
 	   $systemcheck=$kpc->keva_get($consolespace,"SYSTEM");
 
 
-	   if(isset($systemcheck['value'])){$syslocal=$systemcheck['value'];}
+	   if($systemcheck['value']<>""){$syslocal=$systemcheck['value'];}
 
 
 	   //message
@@ -742,7 +743,7 @@ if(isset($consolespace))
 	   $messagecheck=$kpc->keva_get($consolespace,"MESSAGE");
 
 
-	   if(isset($messagecheck['value'])){$message_num=$messagecheck['value'];}
+	   if($messagecheck['value']<>""){$message_num=$messagecheck['value'];}
 
 	   //list
 
@@ -765,25 +766,25 @@ if(isset($consolespace))
 		$wordcheck=$kpc->keva_get($consolespace,"WORD");
 
 
-		if(isset($wordcheck['value'])){$word_num=$wordcheck['value'];}
+		if($wordcheck['value']<>""){$word_num=$wordcheck['value'];}
 
 		//freekeva
 
 		$freecheck=$kpc->keva_get($consolespace,"FREE");
 
-		if(isset($freecheck['value']) & $freecheck['value']<>""){$freekeva=$freecheck['value'];}
+		if($freecheck['value']<>""){$freekeva=$freecheck['value'];}
 
 		//ipfs
 
 		$ipfscheck=$kpc->keva_get($consolespace,"IPFS");
 
-		if(isset($ipfscheck['value'])){$ipfscon=$ipfscheck['value'];}	
+		if($ipfscheck['value']<>""){$ipfscon=$ipfscheck['value'];}	
 
 		//credit
 
 		$creditcheck=$kpc->keva_get($consolespace,"CREDIT");
 
-		if(isset($creditcheck['value'])){$credit=$creditcheck['value'];}	
+		if($creditcheck['value']<>""){$credit=$creditcheck['value'];}	
 
 
 

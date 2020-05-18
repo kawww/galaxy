@@ -602,6 +602,8 @@ if(isset($_REQ["mode"])){
 
 				//if(isset($_REQ["newerr"])){$value=hex2bin($_REQ["newerr"]);}
 
+				if(isset($_REQ["combine"])){$value=hex2bin($_REQ["combine"]);}
+
 			echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=keva.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></ul>";	
 
 			
@@ -982,6 +984,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 		$arr=array();
 		$totalass=array();
+			$combine="";
 
 		foreach($info as $x_value=>$x)
 
@@ -1070,6 +1073,10 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 								//begin
 
+							
+
+	
+
 								if(strlen($key)==64){
 
 
@@ -1078,13 +1085,15 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 									$totalassx=array();
 									$arrx=array();
 
-									while($txcount<=3) {
+									while($txcount<=$kevaadd) {
 									
 									$txcount++;
 
 									
 
 									$transaction= $kpc->getrawtransaction($txloop,1);
+
+									
 
 									foreach($transaction['vout'] as $vout)
 	   
@@ -1109,11 +1118,15 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 											$arrx["sinfo"]=str_replace("\n","<br>",hex2bin($conk));
 											$arrx["txa"]=$txloop;
 
+											
+
 											$arrx["size"]=$transaction['size'];
 
 											$txloop=$arrx["snewkey"];
 						
 											array_push($totalassx,$arrx);
+
+											
 
 											if(strlen($txloop)<>64){break;}
 													
@@ -1125,11 +1138,20 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 											arsort($totalassx);
 
+											
+
 										foreach ($totalassx as $txk=>$txv) 
 
 												{
 							
 											extract($txv);
+											
+											
+
+											$combine=$combine.$asset." ".$snewkey."\r\n";
+											
+											//$combine=$combine.$asset." ".$txa."\r\n";
+
 											if(strlen($snewkey)<>64){
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><h4>".$snewkey."</h4></li>";}
 
@@ -1137,12 +1159,17 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($sinfo)."</p></li>";
 
 												if(strlen($snewkey)<>64 or $block==$txcount){
+
+													
+
 											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($snewkey).">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ]</p></li>";}	}	
 											
 
 												}
 									
 								else{
+
+								
 
 								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><h4>".$key."</h4></li>";}
 
@@ -1241,7 +1268,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 
 	
-
+$combine=$combine.$asset." ".$txa."\r\n";
 
 
 		//comment
@@ -1275,7 +1302,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 			else
 			{
-			echo "</ul><ul><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($txx)."&nameid=".bin2hex($key)."&cadd=".$commentadd."&spid=".$asset."\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_comment." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$commentadd."</font></li>";}}
+			echo "</ul><ul><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($txx)."&nameid=".bin2hex($key)."&cadd=".$commentadd."&spid=".$asset."\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ + ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>ADD NEW</font></li><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=&nameid=".bin2hex($key)."&cadd=".$commentadd."&combine=".bin2hex($combine)."\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ COMBINE ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>ALL THE WORDS</font></li>";}}
 
 		//tips
 
@@ -1531,7 +1558,7 @@ if(strcmp($destination,$commentadd)==0)
 		
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".$key."</font> ".$addend."</li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1></font> ".$addend."</li>";
 
 
 										}
