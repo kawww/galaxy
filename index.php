@@ -337,6 +337,7 @@ if($webmode==0){
 		echo"<a href=check.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_checkasset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 
 
+
 		echo "</ul></div>";
 
 
@@ -381,27 +382,39 @@ if($webmode==0){
 
 			extract($x);
 
+		
+
 
 			$hide = $kpc->keva_get($namespaceId,hide);
+
 
 			if(!$hide['value'] ){
 
 
+				
+
 			$x_value=$displayName;
 
+		
 
-			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+
+			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&type=".$x_value."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			
+			
+
+
 
 			}
 			else
 				{
+
 			if($hidenkey==0){
 
 
 			$x_value=$displayName;
 
 
-			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&type=".$x_value."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
 
 			}}
 

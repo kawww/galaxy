@@ -222,6 +222,16 @@ margin-top:2px;
 
 }
 
+table {
+color:#999;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #999;
+}
+tr td{color:#999;border: 1px solid #ccc;}
+
+
 </style>
 		<body>
 
@@ -397,7 +407,7 @@ if(isset($block) & is_numeric($block)==true)
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
 
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\"><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></li>";
 
 											
 											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
@@ -409,7 +419,7 @@ if(isset($block) & is_numeric($block)==true)
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></li>";
 
 												
 											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
@@ -451,7 +461,7 @@ if(isset($block) & is_numeric($block)==true)
 
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";
 
 													
 											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
@@ -468,13 +478,13 @@ if(isset($block) & is_numeric($block)==true)
 												  if(stristr($valuex,"src") == true)
 											{
 												
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".$valuex."</p></li>";}	  
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".$valuex."</li>";}	  
 											
 
 													else
 
 
-											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";}
 
 													
 											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
@@ -510,6 +520,8 @@ if(isset($block) & is_numeric($block)==true)
 											foreach ($listasset as $v) 
 
 													{
+
+											
 			
 											extract($v);	
 											
@@ -517,7 +529,9 @@ if(isset($block) & is_numeric($block)==true)
 		
 											$valuex=str_replace("\n","<br>",$v);
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+											if(strlen($v)<>64){
+
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";}
 
 
 
@@ -994,7 +1008,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
 
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";
 
 											
 													}
@@ -1008,7 +1022,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 											if(stristr($valuex,"decodeURIComponent") == true)
 													{
 												
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".$valuex."</p></li>";
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".$valuex."</li>";
 													}	
 
 													else
@@ -1016,7 +1030,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 												{
 												
 													
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";
 
 												}
 
@@ -1060,7 +1074,7 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 		
 											$valuex=str_replace("\n","<br>",$v);
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";
 
 
 

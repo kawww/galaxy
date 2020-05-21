@@ -1,3 +1,201 @@
+<?php
+
+
+
+error_reporting(0);
+include("rpc.php");
+
+$kpc = new Keva();
+
+$kpc->username=$krpcuser;
+$kpc->password=$krpcpass;
+$kpc->host=$krpchost;
+$kpc->port=$krpcport;
+
+$rpc = new Raven();
+
+$rpc->username=$rrpcuser;
+$rpc->password=$rrpcpass;
+$rpc->host=$rrpchost;
+$rpc->port=$rrpcport;
+
+$_REQ = array_merge($_GET, $_POST);
+
+
+//iotstat
+
+		if($_REQ["mode"]==10)
+
+			{
+
+			$iotdv=hex2bin($_REQ["title"]);
+
+			$iotst=$kpc->keva_get($_REQ["asset"],$iotdv);
+
+			
+
+			echo trim($iotst['value']);
+
+			exit;
+		
+			}
+
+
+//hidemkey
+
+if($_REQ["hidemkey"]==1){$hidemkey=1;}
+
+
+//comment
+
+if(isset($_REQ["comment"])) {
+
+
+$newaddress= $rpc->getnewaddress("comment");
+
+$comment ="::RAVENCOIN_COMMENT_ADDRESS:".$newaddress; 
+
+}
+
+
+//creat new to blockchain
+
+if(isset($_REQ["newasset"])) {
+
+$forsub=$_REQ["newasset"]."\r\n\r\n".$comment;
+
+$fortit=str_replace("<p>","",$_REQ["title"]);
+$fortit=str_replace("</p>","",$fortit);
+
+$age= $kpc->keva_put($_REQ["asset"],$fortit,$forsub);
+
+$error = $kpc->error;
+
+if($error != "") 
+	
+	{
+
+	  echo"<script>alert('Too many words');history.go(-1);</script>";  
+
+	}
+
+	else
+	
+{
+
+$url = "keva.php?asset=".$_REQ["asset"]; 
+
+
+}
+
+
+
+if(strlen($_REQ["cadd"])==34)
+	
+{
+
+$url="message.php?lang=".$_REQUEST["lang"]."&txid=".$age['txid']."&block=".$_REQ["title"]."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQUEST["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."&name=".$_REQUEST["name"]; 
+
+}
+
+
+
+echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
+
+}
+
+
+
+//addnew
+
+
+
+if($_REQ["mode"]==1  & $keva_add=="on"){
+		
+			if(isset($_REQ["title"])){
+		
+					$infox= $kpc->keva_get($_REQ["asset"],hex2bin($_REQ["title"]));
+
+					extract($infox);
+		
+					//$key=str_replace(" ","_",$key);
+
+								}
+
+				//if(isset($_REQ["newerr"])){$value=hex2bin($_REQ["newerr"]);}
+
+				if(isset($_REQ["combine"])){$value=hex2bin($_REQ["combine"]);}
+
+
+echo "<html lang=\"en\" dir=\"ltr\"></html><head><title>GALAXY</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
+
+echo "<style>.ck-content {min-height: 60px;font-size:20px;}</style>";
+
+echo "</head>";
+
+echo "<body style=\"background-color: #0b0c0d;\">";
+
+echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, helvetica, sans-serif;\"><ul style=\"border: 1px solid #59fbea;\"><li style=\"text-align:center;list-style:none;color: #28f428;font-size: 30px;letter-spacing:4px;margin-top:5px;padding-top:5px;padding-right:25px;height:45px;background-color:#0b0c0d;\">GALAXY</li></ul></div>";
+
+		
+
+			echo "<form action=\"\" method=\"post\" >";	
+
+			
+
+			echo "<textarea name=\"title\" id=\"edit\" placeholder=\"TITLE\">".hex2bin($_REQUEST["title"])."</textarea><br>";
+			
+			echo "<textarea name=\"newasset\"  id=\"editor\" placeholder=\"\">".$value."</textarea>";
+
+			echo "<div id=\"word-count\" style=\"padding: 10px 20px;margin-bottom: 15px;box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);background: var(--ck-color-toolbar-background);\"><font size=4>[ ".hex2bin($_REQ['nameid'])." ] <input name=\"comment\" type=\"checkbox\" value=\"on\"/>COMMENT & TIPS</font></div>";
+
+			//echo "<br><textarea rows=\"2\" cols=\"50\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script> \r\nMy  SPACE CODE <a href=/keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQUEST["asset"].">".$_REQUEST["asset"]."</a></textarea>";
+
+
+			echo "<input type=\"hidden\" name=\"cadd\" value=\"".$_REQUEST["cadd"]."\">";
+			echo "<input type=\"hidden\" name=\"oldtxid\" value=\"".$_REQUEST["oldtxid"]."\">";
+			echo "<input type=\"hidden\" name=\"spid\" value=\"".$_REQUEST["spid"]."\">";
+			echo "<input type=\"hidden\" name=\"spti\" value=\"".$_REQUEST["nameid"]."\">";
+
+			echo "<br><center><input type=\"submit\" value=\"".$keva_submit."\" style=\"border: 1px solid #59fbea;webkit-appearance: none;-webkit-border-radius: 0;height:42px;background-color: rgb(0, 79, 74);color: #59fbea;padding: 5px 22px;margin-left:3px;height:45px;width:200px;font-size: 20px;\"></center></form>";
+			
+			print <<<EOT
+				<script type="text/javascript" src="ckeditor.js"></script>
+				<script>
+						ClassicEditor
+						.create( document.querySelector( '#editor' ), {
+						    toolbar:['heading','|','fontFamily','fontSize','fontColor','fontBackgroundColor','highlight','|','bold','italic','underline','specialCharacters','removeFormat','|','link','|','horizontalLine','|','alignment','blockQuote','code','insertTable','mediaEmbed','undo','redo'],
+							title: {placeholder: 'My customplaceholder for the title'},placeholder: 'Input words here...'
+								})
+						.then( editor => {
+						window.editor = editor;
+						const wordCountPlugin = editor.plugins.get( 'WordCount' );
+						const wordCountWrapper = document.getElementById( 'word-count' );
+						wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );
+						} )
+						.catch( err => {
+						console.error( err.stack );
+						} );
+					</script>
+						<script>
+						ClassicEditor
+						.create( document.querySelector( '#edit' ), {})
+						.then( editor => {
+						window.editor = editor;
+						} )
+						.catch( err => {
+						console.error( err.stack );
+						} );
+					</script>
+
+				EOT;
+
+			exit;
+			
+			}
+
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -124,29 +322,9 @@ width:98%;
   
 }
 
-@keyframes textShadow {
-  0% {
-    text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
 
-  100% {
-    text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-  }
-}
 
-.crt::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 80%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 2;
-  background-size: 100% 2px;
-  pointer-events: none;
-}
+
 .crt {
   animation: textShadow 0.00s infinite;
 }
@@ -173,16 +351,7 @@ width:98%;
 
             }
 
-			div:before {
-  content:"";
-  position:absolute;
-  top:0px;
-  bottom:0;
-  left:0;
-  right:0;
-  background:linear-gradient(to bottom,transparent,#000 0px);
-  animation:fadeIn 1s forwards
-}
+
 
 @keyframes fadeIn {
   0% {
@@ -233,44 +402,20 @@ margin-top:2px;
 
 }
 
+table {
+color:#999;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #999;
+}
+tr td{color:#999;border: 1px solid #ccc;}
+
 </style>
 
-<?php 
-
-error_reporting(0);
-include("rpc.php");
-
-?>
 
 
-<script>
 
-    var maxstrlen=<?php echo $word_num; ?>;
-    function Q(s){return document.getElementById(s);} 
-    function checkWord(c){
-        len=maxstrlen;
-        var str = c.value;
-        myLen=getStrleng(str);
-        var wck=Q("wordCheck");
-        if(myLen>len*2){
-            c.value=str.substring(0,i+1);
-        }
-        else{
-            wck.innerHTML = Math.floor((len*2-myLen)/2);
-           }
-    }
-    function getStrleng(str){
-        myLen =0;
-        i=0;
-        for(;(i<str.length)&&(myLen<=maxstrlen*2);i++){
-        if(str.charCodeAt(i)>0&&str.charCodeAt(i)<128) 
-        myLen++;
-        else
-        myLen+=2;
-    }
-    return myLen;
-}
-</script>
 
 <body>
 
@@ -280,81 +425,8 @@ include("rpc.php");
 
 <?php
 
-$kpc = new Keva();
-
-$kpc->username=$krpcuser;
-$kpc->password=$krpcpass;
-$kpc->host=$krpchost;
-$kpc->port=$krpcport;
-
-$rpc = new Raven();
-
-$rpc->username=$rrpcuser;
-$rpc->password=$rrpcpass;
-$rpc->host=$rrpchost;
-$rpc->port=$rrpcport;
-
-$_REQ = array_merge($_GET, $_POST);
-
-//hidemkey
-
-if($_REQ["hidemkey"]==1){$hidemkey=1;}
 
 
-//comment
-
-if(isset($_REQ["comment"])) {
-
-
-$newaddress= $rpc->getnewaddress("comment");
-
-$comment ="::RAVENCOIN_COMMENT_ADDRESS:".$newaddress; 
-
-}
-
-
-//creat new to blockchain
-
-if(isset($_REQ["newasset"])) {
-
-$forsub=$_REQ["newasset"]."\r\n\r\n".$comment;
-
-$age= $kpc->keva_put($_REQ["asset"],$_REQ["title"],$forsub);
-
-$error = $kpc->error;
-
-if($error != "") 
-	
-	{
-
-	  echo"<script>alert('Too many words');history.go(-1);</script>";  
-
-	}
-
-	else
-	
-{
-
-$url = "keva.php?asset=".$_REQ["asset"]; 
-
-
-}
-
-
-
-if(strlen($_REQ["cadd"])==34)
-	
-{
-
-$url="message.php?lang=".$_REQUEST["lang"]."&txid=".$age['txid']."&block=".$_REQ["title"]."&cadd=".$_REQ["cadd"]."&oldtxid=".$_REQUEST["oldtxid"]."&spid=".$_REQUEST["spid"]."&spti=".$_REQUEST["spti"]."&name=".$_REQUEST["name"]; 
-
-}
-
-
-
-echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
-
-}
 
 
 
@@ -588,41 +660,7 @@ if(isset($_REQ["asset"]) & strlen($_REQ["asset"])==64)
 
 if(isset($_REQ["mode"])){
 
-		if($_REQ["mode"]==1  & $keva_add=="on"){
 		
-			if(isset($_REQ["title"])){
-		
-					$infox= $kpc->keva_get($_REQ["asset"],hex2bin($_REQ["title"]));
-
-					extract($infox);
-		
-					//$key=str_replace(" ","_",$key);
-
-								}
-
-				//if(isset($_REQ["newerr"])){$value=hex2bin($_REQ["newerr"]);}
-
-				if(isset($_REQ["combine"])){$value=hex2bin($_REQ["combine"]);}
-
-			echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=keva.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></ul>";	
-
-			
-
-			echo "<ul><li style=\"height:700px;\"><br><input type=\"text\" name=\"title\" class=\"textarea-inherit\"  style=\"width:90%;\" placeholder=\"TITLE\" value=\"".hex2bin($_REQUEST["title"])."\"><br><br><textarea onKeyUp=\"javascript:checkWord(this);\" onMouseDown=\"javascript:checkWord(this);\" rows=\"25\" cols=\"150\" name=\"newasset\" class=\"textarea-inherit\" id=\"pasteArea\" placeholder=\"\">".$value."</textarea>";
-
-			echo "<br><textarea rows=\"2\" cols=\"150\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script> \r\nMy  SPACE CODE <a href=/keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQUEST["asset"].">".$_REQUEST["asset"]."</a></textarea>";
-		
-			
-			echo "<input type=\"hidden\" name=\"cadd\" value=\"".$_REQUEST["cadd"]."\">";
-			echo "<input type=\"hidden\" name=\"oldtxid\" value=\"".$_REQUEST["oldtxid"]."\">";
-			echo "<input type=\"hidden\" name=\"spid\" value=\"".$_REQUEST["spid"]."\">";
-			echo "<input type=\"hidden\" name=\"spti\" value=\"".$_REQUEST["nameid"]."\">";
-
-			echo "<br><br><span style=\"font-family: Georgia; font-size: 22px;\" id=\"wordCheck\">".$word_num."</span> [ ".hex2bin($_REQ['nameid'])." ] <input name=\"comment\" type=\"checkbox\" value=\"on\"/><font size=4>COMMENT & TIPS</font><br><br><input type=\"submit\" value=\"".$keva_submit."\"> </li></ul></div></form></div>";
-
-			exit;
-			
-			}
 
 //ipfs
 
@@ -732,6 +770,8 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 			
 			}
 
+
+
 //console
 
 			if($_REQ["mode"]==6 & $keva_add=="on")
@@ -785,6 +825,33 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 
 		
 			}
+
+
+//iot
+
+			if($_REQ["mode"]==9 & $keva_add=="on")
+
+			{
+
+			$iotdv=hex2bin($_REQ["title"]);
+
+			$iotst=$kpc->keva_get($_REQ["asset"],$iotdv);
+
+			
+
+			if(trim($iotst['value'])=="on"){$iotsw=$kpc->keva_put($_REQ["asset"],$iotdv,"off"); $stat="(pending turn off)"; $st=0;}
+
+			if(trim($iotst['value'])=="off"){$iotsw=$kpc->keva_put($_REQ["asset"],$iotdv,"on");$stat="(pending turn on)"; $st=1;}
+
+			
+			$url = "keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]."&type=".$_REQ["type"]."&stat=".$stat."&st=".$st; 
+
+		   echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
+
+
+		
+			}
+
 
 
 //list keva namespace
@@ -978,7 +1045,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 					exit;
 				}
 
-
+		
 
 		echo "<div id=\"universe\" class=\"crt\"><div id=\"nav\"><ul>";
 
@@ -1200,7 +1267,7 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 													else
 											{
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";}
 												
 
 
@@ -1551,6 +1618,7 @@ if(strcmp($destination,$commentadd)==0)
 		
 		}
         
+	
 
 		//workarea
 
@@ -1558,7 +1626,7 @@ if(strcmp($destination,$commentadd)==0)
 		
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1></font> ".$addend."</li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1></font>".hex2bin($_REQ["key"])."  ".$addend."</li>";
 
 
 										}
@@ -1607,6 +1675,9 @@ if($webmode==0){
 							}
 //article over
 					else
+
+
+
 //menu
 							{
 
@@ -1614,18 +1685,19 @@ if($webmode==0){
 			//menu
 
 
-			$namespace= $kpc->keva_list_namespaces();
-
-			foreach ($namespace as $q=>$w) {
+			$namespace= $kpc->keva_get($asset,"_KEVA_NS_");
 
 		
+		
 
-			if($w['namespaceId']==$asset){$title=$w['displayName'];}
+			$title=$namespace['value'];
 
-			}
+			
 
 
+//iot
 
+if($title=="IOT"){$hidemkey=1;$switch=9;}
 
 		
 
@@ -1726,12 +1798,21 @@ if(strlen($_REQ["showall"])<2)
 			if(strlen($value)==34){
 
 				$valuex="<font size=1>".$txx." [ ".$heightx." ] <a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_edit." ]</a> <a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_delete." ]</a> <a href=channel.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_broadcast." ]</a> <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_message." ]</a></font>";}
-
+				
+				$value=str_replace("<p>","",$value);
+$value=str_replace("</p>","",$value);
 
 
 			if(strlen($value)>18 & stristr($value,"decodeURIComponent")== false & strlen($value)<>34){
 
-				$valuex=mb_substr($value,0,18,'utf8')."....";}
+				$valuex=mb_substr($value,0,18,'utf8')."...";}
+
+
+
+			if(strlen($x_value)>60){
+
+				$x_value="<p><font size=2>".$x_value."</font></p>";}
+
 
 			
 
@@ -1748,7 +1829,13 @@ if(strlen($_REQ["showall"])<2)
 
 			if(!isset($_REQ["title"])){
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex."</p></li>";
+			$stati=$_REQUEST["stat"];
+
+			if($_REQUEST["st"]=="0" & trim($valuex)=="off"){$stati="";}
+
+			if($_REQUEST["st"]=="1" & trim($valuex)=="on"){$stati="";}
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati."</p></li>";
 							}
 
 			}
