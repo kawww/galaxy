@@ -63,7 +63,7 @@ $comment ="::RAVENCOIN_COMMENT_ADDRESS:".$newaddress;
 if(isset($_REQ["newasset"])) {
 
 $forsub=$_REQ["newasset"]."\r\n\r\n".$comment;
-
+$nameid=$_REQ["spti"];
 $fortit=str_replace("<p>","",$_REQ["title"]);
 $fortit=str_replace("</p>","",$fortit);
 
@@ -75,7 +75,10 @@ if($error != "")
 	
 	{
 
-	  echo"<script>alert('Too many words');history.go(-1);</script>";  
+echo"<script>alert('Too many words');</script>";
+
+$url ="keva.php?lang=&mode=1&asset=".$_REQ["asset"]."&nameid=".$nameid."&title=".bin2hex($fortit)."&hvalue=".bin2hex($_REQ["newasset"]);
+	  
 
 	}
 
@@ -129,25 +132,29 @@ if($_REQ["mode"]==1  & $keva_add=="on"){
 
 echo "<html lang=\"en\" dir=\"ltr\"></html><head><title>GALAXY</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 
-echo "<style>.ck-content {min-height: 60px;font-size:20px;}</style>";
+echo "<style>.ck-content {min-height: 50px;font-size:20px;}</style>";
 
 echo "</head>";
 
 echo "<body style=\"background-color: #0b0c0d;\">";
 
-echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, helvetica, sans-serif;\"><ul style=\"border: 1px solid #59fbea;\"><li style=\"text-align:center;list-style:none;color: #28f428;font-size: 30px;letter-spacing:4px;margin-top:5px;padding-top:5px;padding-right:25px;height:45px;background-color:#0b0c0d;\">GALAXY</li></ul></div>";
+echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, helvetica, sans-serif;\"><ul style=\"border: 1px solid #59fbea;\"><li style=\"text-align:center;list-style:none;color: #28f428;font-size: 30px;letter-spacing:4px;margin-top:5px;padding-top:5px;padding-right:25px;height:45px;background-color:#0b0c0d;}\"><a href=/keva.php style=\"color: #28f428;text-decoration: none;\">GALAXY</a></li></ul></div>";
 
 		
 
 			echo "<form action=\"\" method=\"post\" >";	
 
-			
+			if(!$value){$value=hex2bin($_REQUEST["hvalue"]);}
 
-			echo "<textarea name=\"title\" id=\"edit\" placeholder=\"TITLE\">".hex2bin($_REQUEST["title"])."</textarea><br>";
-			
-			echo "<textarea name=\"newasset\"  id=\"editor\" placeholder=\"\">".$value."</textarea>";
+			$titvalue=hex2bin($_REQUEST["title"]);
+			$nameid=hex2bin($_REQ['nameid']);
+		
 
-			echo "<div id=\"word-count\" style=\"padding: 10px 20px;margin-bottom: 15px;box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);background: var(--ck-color-toolbar-background);\"><font size=4>[ ".hex2bin($_REQ['nameid'])." ] <input name=\"comment\" type=\"checkbox\" value=\"on\"/>COMMENT & TIPS</font></div>";
+			echo "<textarea name=\"title\" id=\"edit\" placeholder=\"TITLE\" rows=\"1\" cols=\"150\">".$titvalue."</textarea><br>";
+			
+			echo "<textarea name=\"newasset\" id=\"editor\" rows=\"25\" cols=\"150\">".$value."</textarea>";
+
+			echo "<div id=\"word-count\" style=\"padding: 10px 20px;margin-bottom: 15px;box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);background: var(--ck-color-toolbar-background);\"><font size=4>[ ".$nameid." ] <input name=\"comment\" type=\"checkbox\" value=\"on\"/>COMMENT & TIPS</font></div>";
 
 			//echo "<br><textarea rows=\"2\" cols=\"50\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script> \r\nMy  SPACE CODE <a href=/keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQUEST["asset"].">".$_REQUEST["asset"]."</a></textarea>";
 
@@ -160,14 +167,22 @@ echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, he
 			echo "<br><center><input type=\"submit\" value=\"".$keva_submit."\" style=\"border: 1px solid #59fbea;webkit-appearance: none;-webkit-border-radius: 0;height:42px;background-color: rgb(0, 79, 74);color: #59fbea;padding: 5px 22px;margin-left:3px;height:45px;width:200px;font-size: 20px;\"></center></form>";
 			
 			print <<<EOT
-				<script type="text/javascript" src="ckeditor.js"></script>
-				<script>
+				<script src="ckeditor.js"></script><script>
 						ClassicEditor
+						.create( document.querySelector( '#edit' ), {})
+						.then( editor => {
+						window.editor = editor;
+						} )
+						.catch( err => {
+						console.error( err.stack );
+						} );document.querySelector('#submit').addEventListener('click', () => {const editorData = editor.getData();} );</script>
+				<script>function MinHeightPlugin(editor) {this.editor = editor;}MinHeightPlugin.prototype.init = function() {this.editor.ui.view.editable.extendTemplate({attributes: {style: {minHeight: '300px'}}});};ClassicEditor.builtinPlugins.push(MinHeightPlugin);ClassicEditor
 						.create( document.querySelector( '#editor' ), {
 						    toolbar:['heading','|','fontFamily','fontSize','fontColor','fontBackgroundColor','highlight','|','bold','italic','underline','specialCharacters','removeFormat','|','link','|','horizontalLine','|','alignment','blockQuote','code','insertTable','mediaEmbed','undo','redo'],
-							title: {placeholder: 'My customplaceholder for the title'},placeholder: 'Input words here...'
+							
+							
 								})
-						.then( editor => {
+									.then( editor => {
 						window.editor = editor;
 						const wordCountPlugin = editor.plugins.get( 'WordCount' );
 						const wordCountWrapper = document.getElementById( 'word-count' );
@@ -177,16 +192,7 @@ echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, he
 						console.error( err.stack );
 						} );
 					</script>
-						<script>
-						ClassicEditor
-						.create( document.querySelector( '#edit' ), {})
-						.then( editor => {
-						window.editor = editor;
-						} )
-						.catch( err => {
-						console.error( err.stack );
-						} );
-					</script>
+						
 
 				EOT;
 
