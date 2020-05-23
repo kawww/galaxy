@@ -1768,8 +1768,9 @@ foreach ($listasset as $k=>$v)
 			
 			extract($v);
 
-		
-			$x_value="<h4>[ ".$key." ]</h4>";
+		$key2=strip_tags($key,"");
+
+			$x_value="<h4>[ ".$key2." ]</h4>";
 			$valuex=$value;
 			$key=trim($key);
 			$keylink=bin2hex($key);
@@ -1807,6 +1808,10 @@ if(strlen($_REQ["showall"])<2)
 				
 				$value=str_replace("<p>","",$value);
 $value=str_replace("</p>","",$value);
+$value=strip_tags($value,"");
+
+
+
 
 
 			if(strlen($value)>18 & stristr($value,"decodeURIComponent")== false & strlen($value)<>34){

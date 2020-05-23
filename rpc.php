@@ -360,16 +360,22 @@ function http_post_json($url, $jsonStr)
 }
 
 
+
 function turnUrlIntoHyperlink($text){
+
+	/*
 
 $url_pattern = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';   
 
 if(strpos($text,"<img")==false){
 
 $text= preg_replace($url_pattern, '<a href="$0">$0</a>', $text);}
+
+*/
           
 return $text;
 }
+
 
 
 function getLine($file, $line, $length = 40960){
