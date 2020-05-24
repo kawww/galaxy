@@ -1781,7 +1781,8 @@ foreach ($listasset as $k=>$v)
 		$key2=strip_tags($key,"");
 
 			$x_value="<h4>[ ".$key2." ]</h4>";
-			$valuex=$value;
+
+		
 			$key=trim($key);
 			$keylink=bin2hex($key);
 
@@ -1789,6 +1790,11 @@ foreach ($listasset as $k=>$v)
 if(strlen($_REQ["showall"])<2)
 	
 			{
+
+$value=strip_tags($value,"");
+
+	$valuex=$value;
+
 			
 
 			if(stristr($value,"decodeURIComponent") == true){
@@ -1816,9 +1822,7 @@ if(strlen($_REQ["showall"])<2)
 
 				$valuex="<font size=1>".$txx." [ ".$heightx." ] <a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_edit." ]</a> <a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_delete." ]</a> <a href=channel.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_broadcast." ]</a> <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_message." ]</a></font>";}
 				
-				$value=str_replace("<p>","",$value);
-$value=str_replace("</p>","",$value);
-$value=strip_tags($value,"");
+
 
 
 

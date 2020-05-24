@@ -1,3 +1,141 @@
+<?php
+
+error_reporting(0);
+
+$turn=9;
+
+include("rpc.php");
+
+$kpc = new Keva();
+
+$kpc->username=$krpcuser;
+$kpc->password=$krpcpass;
+$kpc->host=$krpchost;
+$kpc->port=$krpcport;
+
+$rpc = new Raven();
+
+$rpc->username=$rrpcuser;
+$rpc->password=$rrpcpass;
+$rpc->host=$rrpchost;
+$rpc->port=$rrpcport;
+
+$_REQ = array_merge($_GET, $_POST);
+
+if($_REQ["mode"]==1){
+
+
+
+$iotasset=strtoupper(trim($_REQ["asset"]));
+
+
+$blocknum=$rpc->getblockcount();
+$blocknum=$blocknum-200;
+$blockhash=$rpc->getblockhash($blocknum);
+
+$agex= $rpc->listsinceblock($blockhash);
+
+
+$arrx=array();
+$totalassx=array();
+
+
+
+
+		foreach($agex['asset_transactions'] as $g_value=>$g)
+
+	{
+
+		extract($g);
+
+	
+
+		if($category=="receive" & $message<>""){
+
+			$txx= $rpc->getrawtransaction($txid);
+			$raw= $rpc->decoderawtransaction($txx);
+
+
+			$arrx["block"]=$confirmations;
+			$arrx["time"]=$time;
+			$arrx["name"]=$asset_name;
+			$arrx["ipfs"]=$message;
+			$arrx["to"]=$destination;
+
+			if(($raw['vout'][2]['scriptPubKey']['type'])=="transfer_asset")
+				{
+					$arrx["from"]=$raw['vout'][2]['scriptPubKey']['addresses'][0];
+				}
+
+			
+			
+			
+			array_push($totalassx,$arrx);
+
+
+		}
+
+
+	}
+
+asort($totalassx);
+
+foreach($totalassx as $xx_value=>$xx)
+
+			{
+
+				extract($xx);
+
+				$x_value=$name;
+
+
+				if($iotasset==$x_value) {
+		
+
+				$transaction= $kpc->getrawtransaction($ipfs,1);
+
+			$blockhash=$kpc->getblock($transaction["blockhash"]);
+
+			foreach($transaction['vout'] as $vout)
+	   
+				  {
+
+					$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+					$arr = explode(' ', $op_return); 
+
+					if($arr[0] == 'OP_KEVA_PUT') 
+						{
+
+					 $cons=$arr[2];
+					 $conk=$arr[3];
+					
+					$iotst=strip_tags(hex2bin($conk));
+					if(trim($iotst)=="on"){echo "on";}
+	
+					else
+				{header("HTTP/1.0 900 off");echo $iotst;}
+					
+				
+						} 
+
+				 }
+
+
+
+				
+				exit;
+			
+							}
+
+			
+			}				exit;
+
+}
+
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -229,27 +367,7 @@ margin-top:2px;
 
 
 <?php 
-error_reporting(0);
 
-$turn=9;
-
-include("rpc.php");
-
-$kpc = new Keva();
-
-$kpc->username=$krpcuser;
-$kpc->password=$krpcpass;
-$kpc->host=$krpchost;
-$kpc->port=$krpcport;
-
-$rpc = new Raven();
-
-$rpc->username=$rrpcuser;
-$rpc->password=$rrpcpass;
-$rpc->host=$rrpchost;
-$rpc->port=$rrpcport;
-
-$_REQ = array_merge($_GET, $_POST);
 
 
 
@@ -392,6 +510,8 @@ echo "<a href=subscription.php?lang=".$_REQUEST["lang"]."&asset=".$assetx."&unam
 		exit;
 	}
 
+
+
 //message account
 
 
@@ -439,7 +559,7 @@ $messageacc="message";
 
 
 
-	
+//begin check block	
 
 
 $blocknum=$rpc->getblockcount();
@@ -553,12 +673,12 @@ echo "<a href=index.php?lang=".$_REQUEST["lang"]."&&asset=".$shopaddress."&mode=
 		if(isset($_REQ["asset"]) & trim($_REQ["asset"])==$x_value) {
 		
 
-		echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$from."> <font size=3>".$message_send."</font> </a> ]  [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$to."><font size=3>".$message_my."</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
+		echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$from."> <font size=3>".$message_send."</font> </a> ]  [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$to."><font size=3>".$message_my."</font></a> ]  [ <a href=message.php?lang=".$_REQUEST["lang"]."&mode=1&unicode=".$turn."&asset=".$name." target=_blank><font size=3>IOT</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
 			
 				}
 
 		if(!isset($_REQ["asset"])) {
-					echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$from."> <font size=3>".$message_send."</font> </a> ]  [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$to."><font size=3>".$message_my."</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
+					echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:800px;font-size:70%\"><table ><tr><td width=\"150px\"  align=right>".date('Y-m-d H:i', $time)." </td><td align=left><a href=message.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$name."> <b><font size=4>".$x_value."</font><b> </a> [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$from."> <font size=3>".$message_send."</font> </a> ]  [ <a href=index.php?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$to."><font size=3>".$message_my."</font></a> ]   [ <a href=message.php?lang=".$_REQUEST["lang"]."&mode=1&unicode=".$turn."&asset=".$name." target=_blank><font size=3>IOT</font></a> ]</td></tr><tr><td width=\"150px\" align=right>".$messone."</td><td  align=left>".$ipfs."</td></tr></table></li>";
 			}
 
 			}
