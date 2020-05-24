@@ -107,7 +107,7 @@ You can check rvn asset name if availiable on the blockchain.
 IOT
 ----------------
 You can create IOT in WORD, and copy the link to domoticz to control on/off.
-You can also create on/off tx in keva, send rvn asset with tx, then copy the IOT link in message to domoticz.
+You can also create on/off tx in keva, send rvn asset with tx, then copy the [IOT] link in message to domoticz.
 
 domoticz ->setup->settings->other->event-system on
 domoticz ->more options->events-> + -> dzVents -> copy http://galaxyos.io/subscription.php?lang=&block=85309 ->change kurl
