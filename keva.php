@@ -1,7 +1,5 @@
 <?php
 
-
-
 error_reporting(0);
 include("rpc.php");
 
@@ -24,7 +22,7 @@ $_REQ = array_merge($_GET, $_POST);
 
 //iotstat
 
-		if($_REQ["mode"]==10)
+	if($_REQ["mode"]==10)
 
 			{
 
@@ -32,9 +30,15 @@ $_REQ = array_merge($_GET, $_POST);
 
 			$iotst=$kpc->keva_get($_REQ["asset"],$iotdv);
 
+	if(trim($iotst['value'])=="on"){echo "on";}
+	
+else
+				{header("HTTP/1.0 900 off");echo $iotst['value'];}
+
+
 			
 
-			echo trim($iotst['value']);
+			
 
 			exit;
 		
@@ -1699,11 +1703,11 @@ if($webmode==0){
 			$title=$namespace['value'];
 
 			
-
-
 //iot
 
 if($title=="IOT"){$hidemkey=1;$switch=9;}
+
+
 
 		
 
@@ -1712,7 +1716,13 @@ if($title=="IOT"){$hidemkey=1;$switch=9;}
 		echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$title." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$asset."</p></li>";
 
 
-		if(strlen($_REQ["showall"])>1){echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_showlist." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";}
+		if(strlen($_REQ["showall"])>1){
+			
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_showlist." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+		
+		//echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";
+		
+		}
 		else 
 			
 		{echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=11><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_showall." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
@@ -1837,6 +1847,9 @@ $value=strip_tags($value,"");
 			
 			}
 
+//iot
+
+if($title=="IOT"){$iotcopy="<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$keylink."&key=".bin2hex($key)."&mode=10 target=_blank><font size=3>( LINK )</font></a>";}
 
 			if(!isset($_REQ["title"])){
 
@@ -1846,7 +1859,7 @@ $value=strip_tags($value,"");
 
 			if($_REQUEST["st"]=="1" & trim($valuex)=="on"){$stati="";}
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati."</p></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";
 							}
 
 			}
@@ -1860,7 +1873,7 @@ $value=strip_tags($value,"");
 
 			
 
-			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".bin2hex($key)."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."><h4>[ ".$key." ]</h4></a></li>";
+			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".bin2hex($key)."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."><h4>".$key."</h4></a></li>";
 
 			$valuex=str_replace("\n","<br>",$value);
 
