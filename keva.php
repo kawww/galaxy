@@ -68,8 +68,8 @@ if(isset($_REQ["newasset"])) {
 
 $forsub=$_REQ["newasset"]."\r\n\r\n".$comment;
 $nameid=$_REQ["spti"];
-$fortit=str_replace("<p>","",$_REQ["title"]);
-$fortit=str_replace("</p>","",$fortit);
+$fortit=strip_tags($_REQ["title"]);
+
 
 $age= $kpc->keva_put($_REQ["asset"],$fortit,$forsub);
 
@@ -90,7 +90,7 @@ $url ="keva.php?lang=&mode=1&asset=".$_REQ["asset"]."&nameid=".$nameid."&title="
 	
 {
 
-$url = "keva.php?asset=".$_REQ["asset"]; 
+$url ="keva.php?lang=&txid=".$age['txid']."&title=".bin2hex($fortit)."&key=".bin2hex($fortit)."&pending=1";
 
 
 }
@@ -211,6 +211,7 @@ echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, he
     <head>
         <meta charset="utf-8">
         <title>WORD</title>
+
 		<style>
 
 
@@ -1037,9 +1038,23 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 		$asset=trim($asset);
 
 
-	 if(!$_REQ["skey"]){$info= $kpc->keva_filter($asset,"",360000);}
+	 if(!$_REQ["skey"]){
+		 
+		 $info= $kpc->keva_filter($asset,"",360000);
+		 
+		 //pending
+
+		 if($_REQ["pending"]==1){$info= $kpc->keva_pending($asset);}
+		 
+		 }
 	 
-	 else {$info= $kpc->keva_filter($asset,$_REQ["skey"],360000);}
+	 else {
+		 
+	 
+
+		 $info= $kpc->keva_filter($asset,$_REQ["skey"],360000);
+		 
+		 }
 		
 
 		
@@ -1672,6 +1687,10 @@ if($webmode==0){
 //galaxylink
 
 			echo "<a href=http://galaxyos.io/subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."</font></a></li>";
+
+			//galaxylink
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ BACK TO SPACE ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
 
 
 
