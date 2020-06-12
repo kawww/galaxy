@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>OS</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<style>
 
 
@@ -304,9 +305,10 @@ if(!isset($_REQUEST["asset"]))
 		echo"<a href=system.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_system." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
 		
 
-		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_word." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_word." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
 		
-	
+		echo"<a href=force.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ FORCE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		
 
 		echo"<a href=subscription.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_subscription."
  ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	

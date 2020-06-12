@@ -158,7 +158,7 @@ echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, he
 			
 			echo "<textarea name=\"newasset\" id=\"editor\" rows=\"25\" cols=\"150\">".$value."</textarea>";
 
-			echo "<div id=\"word-count\" style=\"padding: 10px 20px;margin-bottom: 15px;box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);background: var(--ck-color-toolbar-background);\"><font size=4>[ ".$nameid." ] <input name=\"comment\" type=\"checkbox\" value=\"on\"/>COMMENT & TIPS</font></div>";
+			echo "<div id=\"word-count\" style=\"position:absolute;padding: 10px 20px;margin-bottom: 15px;box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);background: var(--ck-color-toolbar-background);\"></div><div style=\"padding: 10px 20px;margin-bottom: 15px;box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);background: var(--ck-color-toolbar-background);text-align:right;font-size:10px;\"><font size=4>[ ".$nameid." ] <input name=\"comment\" type=\"checkbox\" value=\"on\"/>COMMENT & TIPS</font></div>";
 
 			//echo "<br><textarea rows=\"2\" cols=\"50\" class=\"textarea-inherit\">LINK TXID CODE <script>window.location.href=decodeURIComponent(\"http://\")</script> \r\nMy  SPACE CODE <a href=/keva.php?lang=".$_REQUEST["lang"]."&asset=".$_REQUEST["asset"].">".$_REQUEST["asset"]."</a></textarea>";
 
@@ -1016,15 +1016,10 @@ if(isset($_REQ["asset"]) or isset($_REQ["txid"]))
 	
 	{
 
+echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, helvetica, sans-serif;\"><ul style=\"\"><li style=\"text-align:center;list-style:none;color: #28f428;font-size: 30px;letter-spacing:4px;margin-top:5px;padding-top:5px;padding-right:25px;height:45px;background-color:#0b0c0d;}\"><a href=keva.php style=\"color: #28f428;text-decoration: none;\">GALAXY</a></li></ul></div>";
 
 
-		echo "<div id=\"door\"  class=\"crt\"><form action=\"keva.php\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=keva.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
-
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"title\" maxlength=\"34\" placeholder=\"KEY WORDS\">";
-
-		echo "<input type=\"hidden\" name=\"asset\" value=".$_REQ["asset"]." />";
-		echo "<input type=\"submit\" value=\"".$keva_kaw."\"></div></form></div>";
-	
+		
 
 
 		//rpc
@@ -1708,6 +1703,8 @@ if($webmode==0){
 
 
 //menu
+
+
 							{
 
 
@@ -1734,6 +1731,7 @@ if($title=="IOT"){$hidemkey=1;$switch=9;}
 
 		echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$title." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$asset."</p></li>";
 
+		echo"<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;color:#bbb;display:block;\"><form action=\"keva.php\" method=\"post\" ><h4><input type=\"text\" name=\"title\" maxlength=\"64\" placeholder=\"TITLE\" style=\"width:200px;\"><input type=\"hidden\" name=\"fromasset\" value=\"".$shopaddress."\"> <input type=\"submit\" value=\"".$keva_kaw."\"></h4><input type=\"hidden\" name=\"asset\" value=".$_REQ["asset"]." /></form></li>";	
 
 		if(strlen($_REQ["showall"])>1){
 			
