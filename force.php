@@ -1,8 +1,7 @@
 <?php
-
 error_reporting(0);
 
-$force_namespace="NcahQENqgKGDdwHsmKsie24FkYMkuapvMR";
+$force_namespace="NcJQx6fdz3pFHG9gAevctUs13vu9cecLwS";
 
 $localip='127.0.0.1';
 
@@ -294,7 +293,7 @@ function http_post_json($url, $jsonStr)
 
 function turnUrlIntoHyperlink($text){
 
-	/*
+/*
 
 $url_pattern = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';   
 
@@ -530,28 +529,10 @@ echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, he
 			echo "</form>";
 
 
-			
-			print <<<EOT
-				<script src="ckeditor.js"></script>
-				<script>function MinHeightPlugin(editor) {this.editor = editor;}MinHeightPlugin.prototype.init = function() {this.editor.ui.view.editable.extendTemplate({attributes: {style: {minHeight: '270px'}}});};ClassicEditor.builtinPlugins.push(MinHeightPlugin);ClassicEditor
-						.create( document.querySelector( '#editor' ), {
-						    toolbar:['heading','|','fontFamily','fontSize','fontColor','fontBackgroundColor','highlight','|','bold','italic','underline','specialCharacters','removeFormat','|','link','|','horizontalLine','|','alignment','blockQuote','code','insertTable','mediaEmbed','undo','redo'],
-							
-							
-								})
-									.then( editor => {
-						window.editor = editor;
-						const wordCountPlugin = editor.plugins.get( 'WordCount' );
-						const wordCountWrapper = document.getElementById( 'word-count' );
-						wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );
-						} )
-						.catch( err => {
-						console.error( err.stack );
-						} );
-					</script>
-						
 
-				EOT;
+			echo "<script src='ckeditor.js'></script>";
+
+			echo "<script>function MinHeightPlugin(editor) {this.editor=editor;}MinHeightPlugin.prototype.init = function() {this.editor.ui.view.editable.extendTemplate({attributes: {style: {minHeight:'270px'}}});};ClassicEditor.builtinPlugins.push(MinHeightPlugin);ClassicEditor .create( document.querySelector( '#editor' ), { toolbar:['heading','|','fontFamily','fontSize','fontColor','fontBackgroundColor','highlight','|','bold','italic','underline','specialCharacters','removeFormat','|','link','|','horizontalLine','|','alignment','blockQuote','code','insertTable','mediaEmbed','undo','redo'],}).then( editor => {window.editor = editor;const wordCountPlugin = editor.plugins.get( 'WordCount' );const wordCountWrapper = document.getElementById( 'word-count' );wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );} ).catch( err => {console.error( err.stack );} );</script>";
 
 		exit;
 }
@@ -783,19 +764,10 @@ tr td{color:#999;border: 1px solid #ccc;}
 <body>
 
 		
-
-
-
 <?php
-
-
-//list namespace address
-
 if(isset($_REQ["txid"])) 
 	
 	{
-
-//ipfs
 
 			if($_REQ["mode"]==2)
 				
@@ -1388,23 +1360,10 @@ if(strcmp($destination,$commentadd)==0)
 
 //article over
 
-			
-
-	
-
 
 
 }	
 	
-
-
-
-
-
-
-
-
-
 
 
 ?>

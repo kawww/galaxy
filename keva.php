@@ -170,35 +170,11 @@ echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, he
 
 			echo "<br><center><input type=\"submit\" value=\"".$keva_submit."\" style=\"border: 1px solid #59fbea;webkit-appearance: none;-webkit-border-radius: 0;height:42px;background-color: rgb(0, 79, 74);color: #59fbea;padding: 5px 22px;margin-left:3px;height:45px;width:200px;font-size: 20px;\"></center></form>";
 			
-			print <<<EOT
-				<script src="ckeditor.js"></script><script>
-						ClassicEditor
-						.create( document.querySelector( '#edit' ), {})
-						.then( editor => {
-						window.editor = editor;
-						} )
-						.catch( err => {
-						console.error( err.stack );
-						} );document.querySelector('#submit').addEventListener('click', () => {const editorData = editor.getData();} );</script>
-				<script>function MinHeightPlugin(editor) {this.editor = editor;}MinHeightPlugin.prototype.init = function() {this.editor.ui.view.editable.extendTemplate({attributes: {style: {minHeight: '300px'}}});};ClassicEditor.builtinPlugins.push(MinHeightPlugin);ClassicEditor
-						.create( document.querySelector( '#editor' ), {
-						    toolbar:['heading','|','fontFamily','fontSize','fontColor','fontBackgroundColor','highlight','|','bold','italic','underline','specialCharacters','removeFormat','|','link','|','horizontalLine','|','alignment','blockQuote','code','insertTable','mediaEmbed','undo','redo'],
-							
-							
-								})
-									.then( editor => {
-						window.editor = editor;
-						const wordCountPlugin = editor.plugins.get( 'WordCount' );
-						const wordCountWrapper = document.getElementById( 'word-count' );
-						wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );
-						} )
-						.catch( err => {
-						console.error( err.stack );
-						} );
-					</script>
-						
+			echo "<script src='ckeditor.js'></script>";
 
-				EOT;
+			echo "ClassicEditor.create( document.querySelector( '#edit' ), {}).then( editor => {window.editor = editor;} ).catch( err => {console.error( err.stack );});document.querySelector('#submit').addEventListener('click', () => {const editorData =editor.getData();} );</script>";
+
+				echo "<script>function MinHeightPlugin(editor) {this.editor=editor;}MinHeightPlugin.prototype.init = function() {this.editor.ui.view.editable.extendTemplate({attributes: {style: {minHeight:'270px'}}});};ClassicEditor.builtinPlugins.push(MinHeightPlugin);ClassicEditor .create( document.querySelector( '#editor' ), { toolbar:['heading','|','fontFamily','fontSize','fontColor','fontBackgroundColor','highlight','|','bold','italic','underline','specialCharacters','removeFormat','|','link','|','horizontalLine','|','alignment','blockQuote','code','insertTable','mediaEmbed','undo','redo'],}).then( editor => {window.editor = editor;const wordCountPlugin = editor.plugins.get( 'WordCount' );const wordCountWrapper = document.getElementById( 'word-count' );wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );} ).catch( err => {console.error( err.stack );} );</script>";
 
 			exit;
 			
@@ -435,9 +411,6 @@ tr td{color:#999;border: 1px solid #ccc;}
 
 
 <?php
-
-
-
 
 
 
