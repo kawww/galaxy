@@ -1,7 +1,8 @@
 <?php
 error_reporting(0);
 
-$force_namespace="NcJQx6fdz3pFHG9gAevctUs13vu9cecLwS";
+
+
 
 $localip='127.0.0.1';
 
@@ -353,6 +354,26 @@ $rpc->host=$rrpchost;
 $rpc->port=$rrpcport;
 
 $_REQ = array_merge($_GET, $_POST);
+
+
+
+//you need create namespace force
+
+$ageu= $kpc->keva_list_namespaces();
+
+			$error = $kpc->error;
+			if($error != "") 	
+				{
+					echo "<p>&nbsp;&nbsp;Error</p>";
+					exit;
+				}
+
+			foreach($ageu as $nspace)
+
+				{
+			
+			if($nspace['displayName']=="FORCE"){$force_namespace=trim($nspace['namespaceId']);}
+				}
 
 
 
@@ -1350,7 +1371,7 @@ if(strcmp($destination,$commentadd)==0)
 
 //galaxylink
 
-			echo "<a href=http://galaxyos.io/force.php?lang=".$_REQUEST["lang"]."&txid=".$txidget."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/force.php?lang=".$_REQUEST["lang"]."&txid=".$txidget."</font></a></li>";
+			echo "<a href=http://galaxyos.io/force.php?lang=".$_REQUEST["lang"]."&txid=".$txidget."&pending=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/force.php?lang=".$_REQUEST["lang"]."&txid=".$txidget."&pending=2</font></a></li>";
 
 			//galaxylink
 
