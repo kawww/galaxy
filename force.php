@@ -269,6 +269,239 @@ class Raven {
     }
 }
 
+//unicode transform
+
+function uniworld($x_value,$address,$asset) {
+
+	
+$testvalue = $x_value;
+
+//rasset
+
+$letterr="$";
+$lettera="!";
+
+
+if($letterr==substr($x_value,0,1)){ 
+
+$x_value=str_replace("$","",$x_value);
+$address=str_replace("$","",$address);
+$asset=str_replace("$","",$asset);
+
+$lettercheck=1;
+}
+
+if($lettera==substr($x_value,-1)){ 
+	
+$x_value=str_replace("!","",$x_value);
+$address=str_replace("!","",$address);
+$asset=str_replace("!","",$asset);
+$lettercheck=2;
+}
+
+//test
+
+$search = array('g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+
+    foreach($search as $value){
+
+	if(preg_match ( "'/'", $testvalue)){
+
+			list($aleft,$aright)=explode("/",$testvalue);
+		
+		if(stristr($aleft,$value)!==false & stristr($aright,$value)!==false)
+
+				{ return $x_value;}
+	}
+
+	if(preg_match ( "'#'", $testvalue)){
+
+			list($aleft,$aright)=explode("#",$testvalue);
+		
+		if(stristr($aleft,$value)!==false & stristr($aright,$value)!==false  & preg_match( "'_'", $aright)==false)
+
+				{ return $x_value;}
+
+	}
+       if(preg_match ( "'#'", $testvalue)==false & preg_match ( "'/'", $testvalue)==false & stristr($testvalue,$value)!==false){
+           return $x_value;
+				}
+    }
+
+//u.
+
+$x_value=str_replace("U.","U+",$x_value);
+				
+				$x_value = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $x_value), ENT_NOQUOTES, 'UTF-8');
+
+				$x_value=str_replace("U+","U.",$x_value);
+				
+//no special
+
+
+if(strlen($x_value)==strlen($address) && preg_match ('/^[-a-zA-Z0-9 .]+$/', $x_value )){
+
+
+$assetsplit=str_split($asset,4);
+
+foreach($assetsplit as $assety)
+
+	{
+
+$assetx="U+".$assety."";
+$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
+
+$x_value=str_replace($assety,$utf8string,$x_value);}
+
+}
+else
+	{
+if(preg_match ('/^[-a-zA-Z0-9 .]+$/', $x_value ) && (strlen($x_value) % 4) && strlen($x_value))
+					{
+	
+	$assetsplit=str_split($x_value,4);
+
+foreach($assetsplit as $assety)
+	
+{
+$assetx="U+".$assety."";
+$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
+
+$x_value=str_replace($assety,$utf8string,$x_value);
+	
+
+		}
+	}
+	else{
+			
+			//sub asset
+
+		if(preg_match ( "'/'", $x_value)){
+
+			list($aleft,$aright)=explode("/",$x_value);
+
+			if (!(strlen($aright) % 4) && strlen($aright)){
+
+						$assetsplit=str_split($aright,4);
+
+						foreach($assetsplit as $assety)
+	
+															{
+							$assetx="U+".$assety."";
+							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
+
+								$x_value=str_replace($assety,$utf8string,$x_value);
+
+															}	
+														}
+
+				if (!(strlen($aleft) % 4) && strlen($aleft)){
+
+						$assetsplit=str_split($aleft,4);
+
+						foreach($assetsplit as $assety)
+	
+															{
+							$assetx="U+".$assety."";
+							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
+
+								$x_value=str_replace($assety,$utf8string,$x_value);
+
+															}	
+														}
+
+
+		}
+
+		//#asset
+
+		if(preg_match ( "'#'", $x_value) ){
+
+			list($aleft,$aright)=explode("#",$x_value);
+
+			if (!(strlen($aright) % 4) && strlen($aright)){
+
+						$assetsplit=str_split($aright,4);
+
+						foreach($assetsplit as $assety)
+	
+															{
+							$assetx="U+".$assety."";
+							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
+
+								$x_value=str_replace($assety,$utf8string,$x_value);
+
+															}	
+														}
+
+				if (!(strlen($aleft) % 4) && strlen($aleft)){
+
+						$assetsplit=str_split($aleft,4);
+
+						foreach($assetsplit as $assety)
+	
+															{
+							$assetx="U+".$assety."";
+							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
+
+								$x_value=str_replace($assety,$utf8string,$x_value);
+
+															}	
+														}
+
+
+		}
+
+
+		//ID_and Lang
+
+		
+
+		if(preg_match ( "'_'", $x_value) ){
+
+			list($aleft,$aright)=explode("_",$x_value);
+
+			if (!(strlen($aright) % 4) && strlen($aright)){
+
+						$assetsplit=str_split($aright,4);
+
+						foreach($assetsplit as $assety)
+	
+															{
+							$assetx="U+".$assety."";
+							$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
+
+								$x_value=str_replace($assety,$utf8string,$x_value);
+
+															}	
+														}
+
+
+
+		}
+
+
+								//else
+if (!(strlen($asset) % 4) && strlen($asset)){
+							$assetsplit=str_split($asset,4);
+
+							foreach($assetsplit as $assety)
+								{
+								$assetx="U+".$assety."";
+								$utf8string = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $assetx), ENT_NOQUOTES, 'UTF-8');
+
+								$x_value=str_replace($assety,$utf8string,$x_value);
+								}}
+	}
+ }
+
+if($lettercheck==1){ $x_value="$".$x_value;}
+if($lettercheck==2){ $x_value=$x_value."!";}
+
+ return $x_value;
+}
+
+
 function http_post_json($url, $jsonStr)
 {
     $ch = curl_init();
@@ -384,14 +617,80 @@ if($_REQ["newasset"]<>"") {
 
 //txid
 
-$gettxid=strlen(trim(strip_tags($_REQ["newasset"])));
+$gettxid=trim(strip_tags($_REQ["newasset"]));
 
-if($gettxid=="64"){$url ="force.php?lang=&txid=".trim(strip_tags($_REQ["newasset"]))."&pending=2";
+$gettxidn=strlen($gettxid);
+
+$pass=0;
+
+
+if($gettxidn=="64"){
+	
+	
+	$url ="force.php?lang=&txid=".$gettxid."&pending=2";
+
 
 echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
 
+$pass=1;
+
 }
 
+
+//if keva
+
+	$kevakey=explode(" ",strip_tags($gettxid));
+
+							
+				$kevakeytest=$kpc->keva_filter($kevakey[0],$kevakey[1]);
+
+				
+
+				$kevaerr = $kpc->error;
+
+	if(!$kevaerr) {
+	
+	
+		
+	$url ="force.php?lang=&txid=".$kevakeytest[0]["txid"]."&pending=2";
+
+
+echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
+
+$pass=1;
+	
+	}
+
+//if keva namespace
+
+	$kevakey2=strip_tags($gettxid);
+
+							
+	$kevakeytest2=$kpc->keva_filter($kevakey2);
+
+				
+
+				$kevaerr2 = $kpc->error;
+
+	if(!$kevaerr2) {
+	
+	
+		
+	$url ="keva.php?asset=".$kevakey2."&showall=11";
+
+
+echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
+
+$pass=1;
+	
+	}
+
+
+//add neww
+
+if($pass==0)
+	
+{
 
 if(!$_REQ["title"]){
 
@@ -408,9 +707,7 @@ $nameid=$_REQ["spti"];
 $fortit=$newaddress;
 
 
-if($gettxid<>"64"){
-
-$age= $kpc->keva_put($force_namespace,$fortit,$forsub);}
+$age= $kpc->keva_put($force_namespace,$fortit,$forsub);
 
 $error = $kpc->error;
 
@@ -440,7 +737,7 @@ echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
 
 }
 
-
+}
 
 //addnew
 
@@ -880,6 +1177,12 @@ $txidget=$_REQ["txid"];
 									
 										$commentadd=$key;
 
+										$newrvncheck=trim(strip_tags($value));
+
+											if(strlen($newrvncheck)=="34"){$commentadd=$newrvncheck;}
+
+
+
 									}
 
 								//begin
@@ -975,8 +1278,12 @@ $txidget=$_REQ["txid"];
 
 											if(strlen($snewkey)<>64){
 
+											$newrvncheck=trim(strip_tags($sinfo));
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>RAVENCOIN ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3><a href=https://ravencoin.network/address/".$snewkey." target=_blank>".$snewkey."</a></font></li>";
+											if(strlen($newrvncheck)=="34"){$commentadd=$newrvncheck;}
+
+
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>RAVENCOIN ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3><a href=https://ravencoin.network/address/".$commentadd." target=_blank>".$commentadd."</a></font></li>";
 
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>KEVACOIN TXID</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$txidget."</font></li>";
 											
@@ -994,18 +1301,20 @@ $txidget=$_REQ["txid"];
 
 												}
 									
-					else{
-echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>RAVENCOIN ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3><a href=https://ravencoin.network/address/".$snewkey." target=_blank>".$key."</a></font></li>";
+					
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>KEVACOIN TXID</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$txidget."</font></li>";}
 
 							
-								//value
+								else
 
-
-						if(stristr($value,$asset) == false)
+						
 										
 													{
+
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>RAVENCOIN ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3><a href=https://ravencoin.network/address/".$commentadd." target=_blank>".$commentadd."</a></font></li>";
+
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>KEVACOIN TXID</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$txidget."</font></li>";
+
 
 										
 
@@ -1022,43 +1331,7 @@ echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\">
 											
 											}
 
-								else
-
-									{
-
-										$arr1=explode("\n",$value);
-
-
-										foreach ($arr1 as $m=>$n) 
-											
-										{
-
-											$n=trim(str_replace($asset,"",$n));
-
-
-											foreach ($listasset as $k=>$v) 
-
-												{
-			
-											extract($v);	
-
-										
-		
-										if($key==$n){
-
-
-										$valuex=str_replace("\n","<br>",$value);
-
-
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".$valuex."</p></li>";
-													}
-
-												}
-			
-	
-											}
-
-										}
+						
 
 
 
