@@ -1,9 +1,6 @@
 <?php
 error_reporting(0);
 
-
-
-
 $localip='127.0.0.1';
 
 $ipfscon="https://gotoipfs.com/#path=";
@@ -372,7 +369,8 @@ $ageu= $kpc->keva_list_namespaces();
 
 				{
 			
-			if($nspace['displayName']=="FORCE"){$force_namespace=trim($nspace['namespaceId']);}
+			if($nspace['displayName']=="FORCE"){$force_namespace=$nspace['namespaceId'];}
+				
 				}
 
 
@@ -553,19 +551,18 @@ echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, he
 
 			echo "<script src='ckeditor.js'></script>";
 
-			echo "<script>function MinHeightPlugin(editor) {this.editor=editor;}MinHeightPlugin.prototype.init = function() {this.editor.ui.view.editable.extendTemplate({attributes: {style: {minHeight:'270px'}}});};ClassicEditor.builtinPlugins.push(MinHeightPlugin);ClassicEditor .create( document.querySelector( '#editor' ), { toolbar:['heading','|','fontFamily','fontSize','fontColor','fontBackgroundColor','highlight','|','bold','italic','underline','specialCharacters','removeFormat','|','link','|','horizontalLine','|','alignment','blockQuote','code','insertTable','mediaEmbed','undo','redo'],}).then( editor => {window.editor = editor;const wordCountPlugin = editor.plugins.get( 'WordCount' );const wordCountWrapper = document.getElementById( 'word-count' );wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );} ).catch( err => {console.error( err.stack );} );</script>";
+			echo "<script>function MinHeightPlugin(editor) {this.editor=editor;}MinHeightPlugin.prototype.init = function() {this.editor.ui.view.editable.extendTemplate({attributes: {style: {minHeight:'270px'}}});};ClassicEditor.builtinPlugins.push(MinHeightPlugin);ClassicEditor .create( document.querySelector( '#editor' ), {toolbar:['heading','|','fontFamily','fontSize','fontColor','fontBackgroundColor','highlight','|','bold','italic','underline','specialCharacters','removeFormat','|','link','|','horizontalLine','|','alignment','blockQuote','code','insertTable','undo','redo'],mediaEmbed: {
+            removeProviders: [ 'instagram', 'twitter', 'googleMaps', 'flickr', 'facebook', 'youtube' ]}}).then( editor => {window.editor = editor;const wordCountPlugin = editor.plugins.get( 'WordCount' );const wordCountWrapper = document.getElementById( 'word-count' );wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );} ).catch( err => {console.error( err.stack );} );</script>";
 
 		exit;
 }
 
 ?>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>GALAXY</title>
-
 		<style>
 
 
@@ -981,12 +978,12 @@ $txidget=$_REQ["txid"];
 
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>RAVENCOIN ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3><a href=https://ravencoin.network/address/".$snewkey." target=_blank>".$snewkey."</a></font></li>";
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>KEVACOIN TXID</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$txidget."</font></li>";
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>KEVACOIN TXID</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$txidget."</font></li>";
 											
 											}
 
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\"><p align=left>".turnUrlIntoHyperlink($sinfo)."</p></li>";
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\"><p align=left>".$sinfo."</p></li>";
 
 												if(strlen($snewkey)<>64 or $block==$txcount){
 
@@ -1000,7 +997,7 @@ $txidget=$_REQ["txid"];
 					else{
 echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>RAVENCOIN ADDRESS</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3><a href=https://ravencoin.network/address/".$snewkey." target=_blank>".$key."</a></font></li>";
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>KEVACOIN TXID</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$txidget."</font></li>";}
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>KEVACOIN TXID</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$txidget."</font></li>";}
 
 							
 								//value
@@ -1013,9 +1010,11 @@ echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\">
 										
 
 										$valuex=str_replace("\n","<br>",$value);
+										
+
 
 						
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\">".$valuex."</li>";
 												
 
 
@@ -1051,7 +1050,7 @@ echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\">
 										$valuex=str_replace("\n","<br>",$value);
 
 
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".$valuex."</p></li>";
 													}
 
 												}
@@ -1312,7 +1311,7 @@ if(strcmp($destination,$commentadd)==0)
 
 						if($commone['ipfs']<>"b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e2723ba00d"){
 
-						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;margin-top:15px;\"><p  align=left><br>".turnUrlIntoHyperlink($conk)."<br><br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";}
+						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;margin-top:15px;\"><p  align=left><br>".$conk."<br><br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";}
 
 				
 						} 
@@ -1371,7 +1370,7 @@ if(strcmp($destination,$commentadd)==0)
 
 //galaxylink
 
-			echo "<a href=http://galaxyos.io/force.php?lang=".$_REQUEST["lang"]."&txid=".$txidget."&pending=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/force.php?lang=".$_REQUEST["lang"]."&txid=".$txidget."&pending=2</font></a></li>";
+			echo "<a href=http://galaxyos.io/force.php?lang=".$_REQUEST["lang"]."&txid=".$txidget."&pending=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1></font></a></li>";
 
 			//galaxylink
 
