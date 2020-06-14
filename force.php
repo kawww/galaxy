@@ -1114,8 +1114,6 @@ $txidget=$_REQ["txid"];
 
 		
 
-		
-
 		$transaction= $kpc->getrawtransaction($txidget,1);
 
 			$blockhash=$kpc->getblock($transaction["blockhash"]);
@@ -1152,7 +1150,7 @@ $txidget=$_REQ["txid"];
 
 				
 							
-								
+							
 
 								
 								$key=str_replace("%20"," ",$key);
@@ -1190,7 +1188,7 @@ $txidget=$_REQ["txid"];
 							
 								//title
 
-								$gettxid=trim(strip_tags($key));
+								$gettxid=trim(strip_tags($txidget));
 
 								
 
@@ -1199,7 +1197,7 @@ $txidget=$_REQ["txid"];
 			
 
 
-								if(strlen($gettxid)==64){
+								if(strlen($gettxid)=="64"){
 
 
 									$txcount=1;
@@ -1210,6 +1208,8 @@ $txidget=$_REQ["txid"];
 									while($txcount<=$kevaadd)
 										
 										{
+
+
 									
 											$txcount++;
 
@@ -1219,40 +1219,40 @@ $txidget=$_REQ["txid"];
 
 									
 
-									foreach($transaction['vout'] as $vout)
+											foreach($transaction['vout'] as $vout)
 	   
 												  {
 
-										$op_return = $vout["scriptPubKey"]["asm"]; 
+													$op_return = $vout["scriptPubKey"]["asm"]; 
 
 				
-										$arr = explode(' ', $op_return); 
+													$arr = explode(' ', $op_return); 
 
-										if($arr[0] == 'OP_KEVA_PUT') 
+													if($arr[0] == 'OP_KEVA_PUT') 
 													{
-											 $cona=$arr[1];
-											 $cons=$arr[2];
-											 $conk=$arr[3];
+														 $cona=$arr[1];
+														 $cons=$arr[2];
+														 $conk=$arr[3];
 
-											$kadd=$vout["scriptPubKey"]["addresses"][0];
+														$kadd=$vout["scriptPubKey"]["addresses"][0];
 
-											$arrx["block"]=$txcount;
-											$arrx["sadd"]=$kadd;
-											$arrx["snewkey"]=hex2bin($cons);
-											$arrx["sinfo"]=str_replace("\n","<br>",hex2bin($conk));
-											$arrx["txa"]=$txloop;
+														$arrx["block"]=$txcount;
+														$arrx["sadd"]=$kadd;
+														$arrx["snewkey"]=hex2bin($cons);
+														$arrx["sinfo"]=str_replace("\n","<br>",hex2bin($conk));
+														$arrx["txa"]=$txloop;
 
-											
+														
 
-											$arrx["size"]=$transaction['size'];
+														$arrx["size"]=$transaction['size'];
 
-											$txloop=$arrx["snewkey"];
+														$txloop=$arrx["snewkey"];
 						
-											array_push($totalassx,$arrx);
+														array_push($totalassx,$arrx);
 
-											
+														
 
-											if(strlen($txloop)<>64){break;}
+														if(strlen($txloop)<>64){break;}
 													
 								
 													}
@@ -1261,7 +1261,7 @@ $txidget=$_REQ["txid"];
 											}
 
 											arsort($totalassx);
-										
+									
 											
 
 										foreach ($totalassx as $txk=>$txv) 
