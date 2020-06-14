@@ -1609,6 +1609,8 @@ if(strcmp($destination,$commentadd)==0)
 			
 	echo "</ul><ul><a href=\"system.php\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ SYSTEM ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>EXPLORER DATA ON KEVACOIN BLOCKCHAIN</font></li>";
 
+	echo "<a href=\"keva.php?lang=&asset=NdwmTDJw1GRnLzz3CARsp3tX878pogZqLS&title=5349474e4154555245&key=5349474e4154555245\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ CHANGE ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>CHANGE RAVENCOIN ADDRESS & GET NAMESPACE KEY CONTENT</font></li>";
+
 		echo "<a href=\"keva.php?lang=&asset=NdwmTDJw1GRnLzz3CARsp3tX878pogZqLS&title=5349474e4154555245&key=5349474e4154555245\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_sign." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$keva_signtalk."</font></li>";
 			
 			

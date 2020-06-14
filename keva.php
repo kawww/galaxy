@@ -1273,6 +1273,8 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 									{
 
+										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\">".turnUrlIntoHyperlink($value)."</li>";
+
 										$arr1=explode("\n",$value);
 
 
