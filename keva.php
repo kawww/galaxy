@@ -764,14 +764,14 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 			{
 
 			$auto= $kpc->keva_put($_REQ["asset"],"LANGUAGE","en");
-			$auto= $kpc->keva_put($_REQ["asset"],"WORD","1500");
+			$auto= $kpc->keva_put($_REQ["asset"],"WORD","3000");
 			$auto= $kpc->keva_put($_REQ["asset"],"HIDE","on");
 			$auto= $kpc->keva_put($_REQ["asset"],"LIST","on");
 			$auto= $kpc->keva_put($_REQ["asset"],"MESSAGE","50000");
 			$auto= $kpc->keva_put($_REQ["asset"],"SYSTEM","30");
 			$auto= $kpc->keva_put($_REQ["asset"],"FREE","http://galaxyos.io/");
 			$auto= $kpc->keva_put($_REQ["asset"],"CREDIT","0.1");
-			$auto= $kpc->keva_put($_REQ["asset"],"IPFS","https://gotoipfs.com/#path=");
+			$auto= $kpc->keva_put($_REQ["asset"],"IPFS","http://gotoipfs.com/#path=");
 
 			$url = "?lang=".$_REQUEST["lang"]."&asset=".$_REQ["asset"]; 
 
@@ -1753,7 +1753,7 @@ if($title=="IOT"){$hidemkey=1;$switch=9;}
 
 
 
-			$ipfscon=str_replace("https://gotoipfs.com/#path=",$ipfscon,$linkipfs['data']['hash_urls'][1]);
+			$ipfscon=str_replace("http://gotoipfs.com/#path=",$ipfscon,$linkipfs['data']['hash_urls'][1]);
 
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 		

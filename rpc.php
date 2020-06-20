@@ -54,7 +54,7 @@ $hidenkey=1;
 
 //ipfs
 
-$ipfscon="https://gotoipfs.com/#path=";
+$ipfscon="http://gotoipfs.com/#path=";
 
 
 if($webmode==1){
