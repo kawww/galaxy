@@ -928,6 +928,8 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 			if($keva_add=="on"){echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=4&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_newspace." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:14px\">".$keva_newspacememo."</p></a></li>";
 			
 			echo "<a href=".$freekeva."keva.php?lang=".$_REQUEST["lang"]."&address=".$shopaddress."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_free." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$credit."</p></a></li>";
+
+			
 			
 			
 			}
@@ -1240,9 +1242,12 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 										$valuex=str_replace("\n","<br>",$value);
 
-	
+										
+										$kevakeytest=$kpc->keva_filter($value);
 
-										if(strlen($value)==strlen($asset))
+										$kevaerr = $kpc->error;
+
+										if(!$kevaerr)
 							
 											{
 
@@ -1750,10 +1755,12 @@ if($title=="IOT"){$hidemkey=1;$switch=9;}
 
 			$ipfscon=str_replace("https://gotoipfs.com/#path=",$ipfscon,$linkipfs['data']['hash_urls'][1]);
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li></ul><ul>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 		
 
 			}
+
+			echo "<a href=http://galaxyos.io/keva.php?asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/keva.php?asset=".$asset."</font></a></li></ul><ul>";
 
 
 				$sname=$_REQ["sname"];
