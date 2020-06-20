@@ -734,14 +734,14 @@ if(isset($consolespace))
 	   $langcheck=$kpc->keva_get($consolespace,"LANGUAGE");
 
 
-	   if(strlen($langcheck['value'])==2){$lang=$langcheck['value'];}
+	   if(strlen(strip_tags($langcheck['value']))==2){$lang=strip_tags($langcheck['value']);}
 
 	   //system
 
 	   $systemcheck=$kpc->keva_get($consolespace,"SYSTEM");
 
 
-	   if($systemcheck['value']<>""){$syslocal=$systemcheck['value'];}
+	   if(isset($systemcheck['value'])){$syslocal=strip_tags($systemcheck['value']);}
 
 
 	   //message
@@ -749,50 +749,48 @@ if(isset($consolespace))
 	   $messagecheck=$kpc->keva_get($consolespace,"MESSAGE");
 
 
-	   if($messagecheck['value']<>""){$message_num=$messagecheck['value'];}
+	   if(isset($messagecheck['value'])){$message_num=strip_tags($messagecheck['value']);}
 
 	   //list
 
 		$listcheck=$kpc->keva_get($consolespace,"LIST");
 
 
-	   if($listcheck['value']=="on"){$indexm=1;}
-	   if($listcheck['value']=="off"){$indexm=0;}
+	   if(strip_tags($listcheck['value'])=="on"){$indexm=1;}
+	   if(strip_tags($listcheck['value'])=="off"){$indexm=0;}
 
 	    //hide 
 
 		$hidecheck=$kpc->keva_get($consolespace,"HIDE");
 
 
-	   if($hidecheck['value']=="on"){$hidenkey=1;}
-	   if($hidecheck['value']=="off"){$hidenkey=0;}
+	   if(strip_tags($hidecheck['value'])=="on"){$hidenkey=1;}
+	   if(strip_tags($hidecheck['value'])=="off"){$hidenkey=0;}
 
 	   	//word
 
 		$wordcheck=$kpc->keva_get($consolespace,"WORD");
 
 
-		if($wordcheck['value']<>""){$word_num=$wordcheck['value'];}
+		if(isset($wordcheck['value'])){$word_num=strip_tags($wordcheck['value']);}
 
 		//freekeva
 
 		$freecheck=$kpc->keva_get($consolespace,"FREE");
 
-		if($freecheck['value']<>""){$freekeva=$freecheck['value'];}
+		if(isset($freecheck['value']) & $freecheck['value']<>""){$freekeva=strip_tags($freecheck['value']);}	
 
 		//ipfs
 
 		$ipfscheck=$kpc->keva_get($consolespace,"IPFS");
 
-		if($ipfscheck['value']<>""){$ipfscon=$ipfscheck['value'];}	
+		if(isset($ipfscheck['value'])){$ipfscon=strip_tags($ipfscheck['value']);}	
 
 		//credit
 
 		$creditcheck=$kpc->keva_get($consolespace,"CREDIT");
 
-		if($creditcheck['value']<>""){$credit=$creditcheck['value'];}	
-
-
+		if(isset($creditcheck['value'])){$credit=strip_tags($creditcheck['value']);}	
 
 		}
 

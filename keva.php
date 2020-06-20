@@ -689,7 +689,8 @@ if(isset($_REQ["mode"])){
 
 			list($returnCode, $returnContent) = http_post_json($url, $jsonStr);
 
-
+				
+				
 				}
 		
 //subscribe
@@ -1649,6 +1650,8 @@ if(strcmp($destination,$commentadd)==0)
 			
 			$ipfscon=$ipfscon."".$linkipfs['data']['hash_urls'][0];
 
+			$ipfscon=strip_tags($ipfscon);
+
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=\"".$ipfscon."\"  target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 
 //broadcast 
@@ -1751,9 +1754,17 @@ if($title=="IOT"){$hidemkey=1;$switch=9;}
 
 		
 
+			$ipfscon=trim(strip_tags($ipfscon));
 
+
+			
 
 			$ipfscon=str_replace("http://gotoipfs.com/#path=",$ipfscon,$linkipfs['data']['hash_urls'][1]);
+
+			
+
+
+
 
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 		
