@@ -3,7 +3,7 @@ error_reporting(0);
 
 $localip='127.0.0.1';
 
-$ipfscon="https://gotoipfs.com/#path=";
+$ipfscon="http://gotoipfs.com/#path=";
 
 $ismine="1";
 $keva_add="on";
@@ -1276,9 +1276,11 @@ $txidget=$_REQ["txid"];
 											
 											//$combine=$combine.$asset." ".$txa."\r\n";
 
+											$newrvncheck=trim(strip_tags($sinfo));
+
 											if(strlen($snewkey)<>64){
 
-											$newrvncheck=trim(strip_tags($sinfo));
+											
 
 											if(strlen($newrvncheck)=="34"){$commentadd=$newrvncheck;}
 
@@ -1288,6 +1290,13 @@ $txidget=$_REQ["txid"];
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>KEVACOIN TXID</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$txidget."</font></li>";
 											
 											}
+
+											if(strlen($newrvncheck)=="46" & stristr($newrvncheck,"Qm") == true){
+											
+											$sinfo="<a href=".$ipfscon."".$newrvncheck." target=_blank>".$newrvncheck."</a>";
+											}
+
+
 
 
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\"><p align=left>".$sinfo."</p></li>";
@@ -1319,7 +1328,13 @@ $txidget=$_REQ["txid"];
 										
 
 										$valuex=str_replace("\n","<br>",$value);
+
+										$newrvncheck=trim(strip_tags($valuex));
 										
+										if(strlen($newrvncheck)=="46" & stristr($newrvncheck,"Qm") == true){
+											
+											$valuex="<a href=".$ipfscon."".$newrvncheck." target=_blank>".$newrvncheck."</a>";
+											}
 
 
 						

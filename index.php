@@ -378,8 +378,36 @@ if($webmode==0){
 					exit;
 				}
 
-			foreach($age as $x_value=>$x)
 
+
+		$sortarr=array();
+$sortto=array();
+
+foreach($age as $y_value=>$y)
+
+			{
+
+			extract($y);
+
+			$sort = $kpc->keva_get($namespaceId,sort);
+	
+			$sort=trim(strip_tags($sort['value']));
+
+		
+
+			$sortarr['sort']=$sort;
+			$sortarr['displayName']=$displayName;
+			$sortarr['namespaceId']=$namespaceId;
+
+			array_push($sortto,$sortarr);
+			}
+
+
+arsort($sortto);
+
+
+
+			foreach($sortto as $x_value=>$x)
 			{
 
 			extract($x);

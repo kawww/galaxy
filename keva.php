@@ -935,10 +935,34 @@ if(!isset($_REQ["asset"]) & !isset($_REQ["txid"]))
 			
 			}
 
+$sortarr=array();
+$sortto=array();
+
+foreach($age as $y_value=>$y)
+
+			{
+
+			extract($y);
+
+			$sort = $kpc->keva_get($namespaceId,sort);
+	
+			$sort=trim(strip_tags($sort['value']));
+
+		
+
+			$sortarr['sort']=$sort;
+			$sortarr['displayName']=$displayName;
+			$sortarr['namespaceId']=$namespaceId;
+
+			array_push($sortto,$sortarr);
+			}
+
+
+arsort($sortto);
 
 
 
-			foreach($age as $x_value=>$x)
+			foreach($sortto as $x_value=>$x)
 
 			{
 
@@ -1219,8 +1243,17 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 											if(strlen($snewkey)<>64){
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><h4>".$snewkey."</h4></li>";}
 
+											
+											$newrvncheck=trim(strip_tags($sinfo));
+										
+										if(strlen($newrvncheck)=="46" & stristr($newrvncheck,"Qm") == true){
+											$ipfscon=trim(strip_tags($ipfscon));
+											$sinfo="<a href=".$ipfscon."".$newrvncheck." target=_blank>".$newrvncheck."</a>";
+											}
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($sinfo)."</p></li>";
+
+
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\">".turnUrlIntoHyperlink($sinfo)."</li>";
 
 												if(strlen($snewkey)<>64 or $block==$txcount){
 
@@ -1267,6 +1300,17 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 													else
 											{
+
+
+										$newrvncheck=trim(strip_tags($valuex));
+										
+										if(strlen($newrvncheck)=="46" & stristr($newrvncheck,"Qm") == true){
+											
+											$ipfscon=trim(strip_tags($ipfscon));
+
+											$valuex="<a href=".$ipfscon."".$newrvncheck." target=_blank>".$newrvncheck."</a>";
+											}
+
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";}
 												
 
