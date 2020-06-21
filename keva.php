@@ -1774,7 +1774,7 @@ if($title=="IOT"){$hidemkey=1;$switch=9;}
 
 		}
 
-
+		echo "<a href=stone.php?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=11&stone=1 target=_blank><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ MILESTONE ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
 
 		$vadd= $kpc->validateaddress($address);
 
@@ -1926,6 +1926,8 @@ if($title=="IOT"){$iotcopy="<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."
 			else
 
 			{
+
+//showall
 
 			if(stristr($value,"decodeURIComponent") == true){$value=$txx;}
 
