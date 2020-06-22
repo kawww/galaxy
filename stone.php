@@ -28,7 +28,7 @@ $_REQ = array_merge($_GET, $_POST);//iotstat
     <head>
     <meta charset="utf-8">
     <title>MILESTONE</title>
-
+<meta name="apple-mobile-web-app-capable" content="yes">
 <style>
 
 html, body {
