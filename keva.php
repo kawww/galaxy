@@ -1058,7 +1058,7 @@ $fer=0;
 
 
 
-	 if(!$_REQ["skey"]){
+
 		 
 		if($gstat=="no"){
 
@@ -1068,24 +1068,20 @@ $fer=0;
 
 		 $info= $kpc->keva_group_filter($asset,"all","",360000);}
 
-		 else{
+		 elseif($gstat=="foller"){
 
 		 $info= $kpc->keva_group_filter($asset,"other","",360000);}
+
+		 else{ $info= $kpc->keva_group_filter($asset,"all","",360000);}
+
 		 
 		 //pending
 
 		 if($_REQ["pending"]==1){$info= $kpc->keva_pending($asset);}
 		 
-		 }
-	 
-	 else {
-		 
-	 
 
-		 $info= $kpc->keva_filter($asset,$_REQ["skey"],360000);
-		 
-		 }
-		
+	 
+	 
 
 		
 			
@@ -1114,7 +1110,7 @@ $fer=0;
 			
 			extract($x);
 
-			If($key=="_KEVA_NS_"){continue;$title=$value;}
+			If($key=="_KEVA_NS_"){$title=$value;continue;}
 
 			$arr["heightx"]=$height;
 			$arr["key"]=$key;
@@ -1123,23 +1119,26 @@ $fer=0;
 			$arr["txx"]=$txid;
 			$arr["gnamespace"]=$namespace;
 			
-			
-			
+			$gtime= $kpc->getrawtransaction($txid,1);
+
+			$arr["gtime"]=$gtime["time"];
+
 			foreach($gshow as $s_value=>$s)
 				{
 
-				if($namespace==$s["namespaceId"]){$arr["follow"]=$s["initiator"];break;}
-
+				if($namespace==$s["namespaceId"]){$arr["follow"]=$s["initiator"];$arr["gname"]=$s["display_name"];break;}
 
 
 				}
 
+			If($key=="ID"){$title=$value;}
 
+			if($namespace==$asset){$arr["gname"]=$title;}
 
 			
 			array_push($totalass,$arr);
 
-			If($key=="ID"){$title=$value;}
+			
 
 			
 			
@@ -1150,6 +1149,7 @@ $fer=0;
 			arsort($totalass);
 
 			$listasset=$totalass;
+
 
 
 
@@ -1168,6 +1168,8 @@ $fer=0;
 								extract($v);
 
 								
+
+								
 								$key=str_replace("%20"," ",$key);
 								
 								$key1=bin2hex(trim($key));
@@ -1176,6 +1178,8 @@ $fer=0;
 
 		
 								if($key1==$key2){
+
+								
 
 								$fkey=$key;
 
@@ -1726,17 +1730,16 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		$vadd= $kpc->validateaddress($address);
 
-
-
-
 		extract($vadd);}
+
+		$gnamekey=hex2bin($_REQ["gname"]);
 
 
 		//workarea
 
 		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_edit." ]</a> ".$keva_kcode." [ <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
 		
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$title."</font> ".$addend."</li>";
+		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$gnamekey."</font> ".$addend."</li>";
 
 			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1></font>".hex2bin($_REQ["key"])."  ".$addend."</li>";
 
@@ -1779,7 +1782,7 @@ if($webmode==0){
 
 			//galaxylink
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ BACK TO SPACE ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$asset."</a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ BACK TO ".$gnamekey." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$asset."</a></li>";
 
 
 
@@ -1916,8 +1919,6 @@ foreach ($listasset as $k=>$v)
 		if($gstat=="follower"){if($gnamespace==$asset){continue;}}
 		if($gstat=="build"){if($follow=='1'){continue;}}
 
-	
-
 		$key2=strip_tags($key,"");
 
 		if(stristr($key2,"_g") == true){continue;}
@@ -1987,6 +1988,9 @@ foreach ($listasset as $k=>$v)
 			$key=trim($key);
 			$keylink=bin2hex($key);
 
+	if($gstat=="no"){$nmspace=$asset;$gnamespace=$asset;$gname=$title;}else{$nmspace=$gnamespace;$ismine=0;}
+
+if($gnamespace==$asset){$gname=$title;};
 
 if(strlen($_REQ["showall"])<2)
 	
@@ -1996,7 +2000,7 @@ $value=strip_tags($value,"");
 
 	$valuex=$value;
 
-	if($gstat=="no"){$nmspace=$asset;}else{$nmspace=$gnamespace;}
+
 
 			
 
@@ -2066,7 +2070,7 @@ if($title=="IOT"){$iotcopy="<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace
 
 			if($_REQUEST["st"]=="1" & trim($valuex)=="on"){$stati="";}
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."&ismine=".$ismine."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."&ismine=".$ismine."&group=".$gchange."&gname=".bin2hex($gname)."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";
 							}
 
 			}
@@ -2080,14 +2084,14 @@ if($title=="IOT"){$iotcopy="<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace
 			if(stristr($value,"decodeURIComponent") == true){$value=$txx;}
 
 
-			
+			$clink="[ <a href=?lang=".$_REQUEST["lang"]."&asset=".$gnamespace.">".$gname."</a> ] [ ".$gnamespace." ] [ ".date('Y-m-d H:i', $gtime)." ] ";
 
-			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".bin2hex($key)."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."><h4>".$key."</h4></a></li>";
+			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".bin2hex($key)."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&ismine=".$ismine."&group=".$gchange."&gname=".bin2hex($gname)."><h4>".$key."</h4></a></li>";
 
 			$valuex=str_replace("\n","<br>",$value);
 
 
-			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
+			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;text-align:left;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p><br><br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";
 
 				
 

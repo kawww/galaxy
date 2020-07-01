@@ -320,7 +320,7 @@ if(isset($_REQ["asset"])){
 
 
 
-if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><h3>".$sname."</h3></div><div class=\"body\"><p>".$asset."</p></div></div>";
+if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><h3>".$sname."</h3></div><div class=\"body\"><p>".$asset."</p><ul>".$_REQ["group"]."</ul></div></div>";
 
 
 
@@ -491,23 +491,6 @@ $value=strip_tags($value,"");
 					}
 
 			}
-
-
-	
-
-
-
-			
-
-	
-
-	
-
-
-
-
-
-
 
 
 
