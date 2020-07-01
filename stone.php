@@ -68,7 +68,7 @@ a:hover { color:yellow; }
   width: 100%;
   max-width: 800px;
 
-  padding: 100px 20px;
+  padding: 50px 20px;
   position: relative;
   box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2);
 }
@@ -167,7 +167,7 @@ a:hover { color:yellow; }
 
 
 
-//echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, helvetica, sans-serif;\"><ul style=\"\"><li style=\"text-align:center;list-style:none;color: #28f428;font-size: 30px;letter-spacing:4px;margin-top:5px;padding-top:5px;padding-right:25px;height:45px;background-color:#0b0c0d;}\"><a href=keva.php style=\"color: #28f428;text-decoration: none;\">GALAXY</a></li></ul></div>";
+
 
 
 		
@@ -184,23 +184,37 @@ if(isset($_REQ["asset"])){
 
 		$asset=trim($asset);
 
+		$gstat=$_REQ["group"];
 
-		 
-		 $info= $kpc->keva_filter($asset,"",360000);
-		 
-		 //pending
+		if(!$gstat){$gstat="no";};
 
-		 if($_REQ["pending"]==1){$info= $kpc->keva_pending($asset);}
+		if($gstat=="no"){$gchange="all";}
+		if($gstat=="all"){$gchange="following";}
+		if($gstat=="following"){$gchange="follower";}
+		if($gstat=="follower"){$gchange="build";}
+		if($gstat=="build"){$gchange="no";}
+
+		$gshow=$kpc->keva_group_show($asset);
+		 
+		 if($gstat=="no"){
+
+		 $info= $kpc->keva_filter($asset,"",360000);}
+
+		 elseif($gstat=="all" or $gstat=="following" or $gstat=="build"){
+
+		 $info= $kpc->keva_group_filter($asset,"all","",360000);}
+
+		 else{
+
+		 $info= $kpc->keva_group_filter($asset,"other","",360000);}
+		 
+	
+		 
+		
 		 
 		 }
 	 
-	 else {
-		 
-	 
-
-		 $info= $kpc->keva_filter($asset,$_REQ["skey"],360000);
-		 
-		 }
+	
 		
 
 		
@@ -242,7 +256,19 @@ if(isset($_REQ["asset"])){
 
 			$arr["ctime"]=$gettime['time'];
 
+			$arr["gnamespace"]=$namespace;
 			
+			
+			
+			foreach($gshow as $s_value=>$s)
+				{
+
+				if($namespace==$s["namespaceId"]){$arr["follow"]=$s["initiator"];break;}
+
+
+
+				}
+
 			array_push($totalass,$arr);
 
 			If($key=="ID"){$title=$value;}
@@ -294,7 +320,12 @@ if(isset($_REQ["asset"])){
 
 
 
-if($_REQ["stone"]=="1"){echo "<div class=\"timeline\">";}
+if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><h3>".$sname."</h3></div><div class=\"body\"><p>".$asset."</p></div></div>";
+
+
+
+
+}
 
 
 
@@ -304,7 +335,76 @@ foreach ($listasset as $k=>$v)
 			
 			extract($v);
 
+if($gstat=="following"){ if($follow=='1' or $gnamespace==$asset){continue;}}
+		if($gstat=="follower"){if($gnamespace==$asset){continue;}}
+		if($gstat=="build"){if($follow=='1'){continue;}}
+
+	
+
 		$key2=strip_tags($key,"");
+
+		if(stristr($key2,"_g") == true){continue;}
+
+		//check re
+
+		if(strlen($key2) == "64"){
+		
+		
+		
+									$txcount=1;
+									$txloop=$key2;
+
+									
+								
+
+									while($txcount<50) {
+									
+									$txcount++;
+
+									
+
+									$transaction= $kpc->getrawtransaction($txloop,1);
+								
+
+									
+									
+
+									foreach($transaction['vout'] as $vout)
+	   
+									  {
+
+										$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+										$arr = explode(' ', $op_return); 
+
+										
+
+										if($arr[0] == 'OP_KEVA_PUT') 
+										{
+											 $cona=$arr[1];
+											 $cons=$arr[2];
+											 $conk=$arr[3];
+
+						
+
+											$txloop=hex2bin($cons);
+
+										
+						
+		
+											if(strlen($txloop)<>64){$key="RE:".$txloop;break;}
+													
+								
+													}
+												
+												}
+											}
+
+										
+		
+		
+		}
 
 			$x_value="<h4>[ ".$key2." ]</h4>";
 
@@ -323,30 +423,8 @@ $value=strip_tags($value,"");
 
 			
 
-			if(stristr($value,"decodeURIComponent") == true){
-				
-				if($hidemkey==0){
 
-				
-
-				$valuex="<font size=1>".$txx." <a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_edit." ]</a> <a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_delete." ]</a> <a href=channel.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_broadcast." ]</a> <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_message." ]</a> <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightx.">[ ".$heightx." ]</a></font>";
-				
-				
-				}
-
-				else {
-				
-				$arrhiden=explode("\r\n",$value);
-
-				$valuex=$arrhiden[0];
-
-				}
-				
-				}
-
-			if(strlen($value)==34){
-
-				$valuex="<font size=1>".$txx." [ ".$heightx." ] <a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_edit." ]</a> <a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_delete." ]</a> <a href=channel.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_broadcast." ]</a> <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_message." ]</a></font>";}
+			
 				
 
 
@@ -377,20 +455,7 @@ $value=strip_tags($value,"");
 			
 			}
 
-//iot
 
-if($title=="IOT"){$iotcopy="<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$keylink."&key=".bin2hex($key)."&mode=10 target=_blank><font size=3>( LINK )</font></a>";}
-
-			if(!isset($_REQ["title"])){
-
-			$stati=$_REQUEST["stat"];
-
-			if($_REQUEST["st"]=="0" & trim($valuex)=="off"){$stati="";}
-
-			if($_REQUEST["st"]=="1" & trim($valuex)=="on"){$stati="";}
-
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";
-							}
 
 			}
 
