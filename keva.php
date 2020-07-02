@@ -971,13 +971,23 @@ arsort($sortto);
 
 			$hide = $kpc->keva_get($namespaceId,hide);
 
+			if(isset($_REQ["addtx"])){
+
+				$txx=$_REQ["addtx"];
+			
+			$addtx="&mode=1&title=".$txx."&nameid=".$_REQ["nameid"];
+
+
+			}
+
+
 			if(!$hide['value'] ){
 
 
 			$x_value=$displayName;
 
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
 
 			}
 			else
@@ -988,7 +998,7 @@ arsort($sortto);
 			$x_value=$displayName;
 
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
 
 			}}
 
@@ -1468,7 +1478,10 @@ $combine=$combine.$asset." ".$txa."\r\n";
 
 			else
 			{
-			echo "</ul><ul><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($txx)."&nameid=".bin2hex($key)."&cadd=".$commentadd."&spid=".$asset."\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ + ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>ADD NEW</font></li><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=&nameid=".bin2hex($key)."&cadd=".$commentadd."&combine=".bin2hex($combine)."\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ COMBINE ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>ALL THE WORDS</font></li>";}}
+
+			echo "</ul><ul><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($txx)."&nameid=".bin2hex($key)."&cadd=".$commentadd."&spid=".$asset."\"><h4>[ + ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=\"?lang=".$_REQUEST["lang"]."&addtx=".bin2hex($txx)."&nameid=".bin2hex($key)."\"><font size=3>ADD MORE</font></a></li>";
+			
+			echo "<a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=&nameid=".bin2hex($key)."&cadd=".$commentadd."&combine=".bin2hex($combine)."\"><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ COMBINE ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>ALL THE WORDS</font></li>";}}
 
 		//tips
 
@@ -1737,7 +1750,9 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		//workarea
 
-		if($ismine=="1" & $keva_add=="on"){echo "</ul><ul><a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_edit." ]</a> ".$keva_kcode." [ <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
+		if($ismine=="1" & $keva_add=="on"){
+			
+		echo "</ul><ul><a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_edit." ]</a> ".$keva_kcode." [ <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
 		
 		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$gnamekey."</font> ".$addend."</li>";
 
@@ -1842,9 +1857,9 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		if(strlen($_REQ["showall"])>1){
 			
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=1&ismine=".$ismine."&group=".$gstat."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_showlist." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=1&ismine=".$ismine."&group=".$gstat."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_showlist." ]</h4></a></li>";
 		
-		//echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";
+		
 		
 		}
 		else 
@@ -1863,14 +1878,14 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 
 
-		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ GROUP:".$gstat." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>[ ".$fing." Following ] [ ".$fer." Follower ]</font></a></li>";
+		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ GROUP:".$gstat." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange.">Following</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange.">Followers</a></font></li>";
 
 
 		if($ismine=="1"  & $keva_add=="on"){echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=1&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_addnew." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$keva_addnewmemo."</font></a></li>";
 
 	
 
-		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";
+		//echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">".$title."</font> ".$addend."</p></li>";
 		
 		if($title=="CONSOLE"){
 		
