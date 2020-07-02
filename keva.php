@@ -61,10 +61,25 @@ $comment ="::RAVENCOIN_COMMENT_ADDRESS:".$newaddress;
 
 }
 
+//unfollow
+
+if(isset($_REQ["unfollow"]) & $keva_add=="on") {
+
+$nsa=$_REQ["asset"];
+$nsu=$_REQ["unfollow"];
+
+$age= $kpc->keva_group_leave($nsa,$nsu);
+
+$url="keva.php?lang=&asset=".$nsa."&ismine=1&manageg=following"; 
+
+echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
+
+
+}
 
 //creat new to blockchain
 
-if(isset($_REQ["newasset"])) {
+if(isset($_REQ["newasset"]) & $keva_add=="on") {
 
 $forsub=$_REQ["newasset"]."\r\n\r\n".$comment;
 $nameid=$_REQ["spti"];
@@ -1333,11 +1348,19 @@ $fer=0;
 
 								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><h4>".$key."</h4></li>";}
 
-									if(stristr($value,$asset) == false)
+									if(stristr($value,$asset) == false or stristr($key,"_g") == true)
 										
 									{
 
 										$valuex=str_replace("\n","<br>",$value);
+
+										if(stristr($key,"_g") == true)
+											
+										{
+
+										$value=str_replace("_g:","",$key);
+										
+										}
 
 										
 										$kevakeytest=$kpc->keva_filter($value);
@@ -1878,7 +1901,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 
 
-		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ GROUP:".$gstat." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange.">Following</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange.">Followers</a></font></li>";
+		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ GROUP:".$gstat." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&manageg=following>Following</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine.">Followers</a></font></li>";
 
 
 		if($ismine=="1"  & $keva_add=="on"){echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=1&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_addnew." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$keva_addnewmemo."</font></a></li>";
@@ -1936,7 +1959,40 @@ foreach ($listasset as $k=>$v)
 
 		$key2=strip_tags($key,"");
 
-		if(stristr($key2,"_g") == true){continue;}
+		if($_REQ["manageg"]=="following")
+			
+		{
+
+			if(stristr($key2,"_g") == false){continue;}else{if($follow=='1'){continue;}}
+
+			
+
+			$gnp=str_replace("_g:","",$key2);
+
+			$value=$gnp;
+
+			foreach($gshow as $s_value=>$s)
+				{
+
+				if($gnp==$s["namespaceId"]){$key2=$s["display_name"];break;}
+
+				}
+
+				
+				if(stristr($key2,"_g") == true){continue;}
+			
+		
+		}
+
+		elseif($_REQ["manageg"]=="follower")
+			
+		{
+			if(stristr($key2,"_g") == false){continue;}else{if($follow=='1'){continue;}}
+		}
+		
+		else{
+
+		if(stristr($key2,"_g") == true){continue;}}
 
 		//check re
 
@@ -2040,7 +2096,7 @@ $value=strip_tags($value,"");
 				
 				}
 
-			if(strlen($value)==34  & $keva_add=="on"){
+			if(strlen($value)==34  & $keva_add=="on" & !$_REQ["manageg"]){
 
 				$valuex="<font size=1>".$txx." [ ".$heightx." ] <a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$nmspace."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_edit." ]</a> <a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$nmspace."&title=".bin2hex($key)."&nameid=".bin2hex($title).">[ ".$keva_delete." ]</a> <a href=channel.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_broadcast." ]</a> <a href=message.php?lang=".$_REQUEST["lang"]."&txid=".$txx.">[ ".$keva_message." ]</a></font>";}
 				
@@ -2084,6 +2140,12 @@ if($title=="IOT"){$iotcopy="<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace
 			if($_REQUEST["st"]=="0" & trim($valuex)=="off"){$stati="";}
 
 			if($_REQUEST["st"]=="1" & trim($valuex)=="on"){$stati="";}
+
+//follow
+
+if($_REQ["manageg"]=="following")
+	
+{$valuex="<font size=3><a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&unfollow=".$value.">Unfllow</a></font>";}
 
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."&ismine=".$ismine."&group=".$gchange."&gname=".bin2hex($gname)."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";
 							}
