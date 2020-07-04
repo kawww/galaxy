@@ -1449,10 +1449,12 @@ $fer=0;
 									{
 										$value=str_replace("<p>","",$value);
 										$value=str_replace("</p>","",$value);
+										$value=str_replace("\r\n\r\n","<br>",$value);
+										$value=str_replace("\r\n","<br>",$value);
 
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\">".turnUrlIntoHyperlink($value)."</li>";
 
-										$arr1=explode("/r/n",$value);
+										$arr1=explode("\r\n",$value);
 
 										$arr1=explode("<br>",$value);
 
