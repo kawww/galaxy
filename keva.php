@@ -105,7 +105,7 @@ $url ="keva.php?lang=&mode=1&asset=".$_REQ["asset"]."&nameid=".$nameid."&title="
 	
 {
 
-$url ="keva.php?lang=&txid=".$age['txid']."&title=".bin2hex($fortit)."&key=".bin2hex($fortit)."&pending=1";
+$url ="keva.php?lang=&txid=".$age['txid']."&title=".bin2hex($fortit)."&key=".bin2hex($fortit)."&pending=1&ismine=1";
 
 
 }
@@ -184,8 +184,8 @@ echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, he
 			echo "<input type=\"hidden\" name=\"spti\" value=\"".$_REQUEST["nameid"]."\">";
 
 			echo "<br><center><input type=\"submit\" value=\"".$keva_submit."\" style=\"border: 1px solid #59fbea;webkit-appearance: none;-webkit-border-radius: 0;height:42px;background-color: rgb(0, 79, 74);color: #59fbea;padding: 5px 22px;margin-left:3px;height:45px;width:200px;font-size: 20px;\"></center></form>";
-			
-			echo "<script src='ckeditor.js'></script>";
+			if(!$_REQ["combine"]){
+			echo "<script src='ckeditor.js'></script>";}
 
 			echo "<script>ClassicEditor.create( document.querySelector( '#edit' ), {}).then( editor => {window.editor = editor;} ).catch( err => {console.error( err.stack );});document.querySelector('#submit').addEventListener('click', () => {const editorData =editor.getData();} );</script>";
 
@@ -1086,9 +1086,10 @@ if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace(
 
 		if(!$gstat){$gstat="no";};
 
-		if($gstat=="no"){$gchange="all";}
-		if($gstat=="all"){$gchange="following";}
-		if($gstat=="following"){$gchange="follower";}
+		if($gstat=="no"){$gchange="following";}
+		if($gstat=="following"){$gchange="all";}
+		if($gstat=="all"){$gchange="follower";}
+		
 		if($gstat=="follower"){$gchange="build";}
 		if($gstat=="build"){$gchange="no";}
 
@@ -1338,7 +1339,7 @@ $fer=0;
 											
 											
 
-											$combine=$combine.$asset." ".$snewkey."\r\n";
+											$combine=$combine.$asset." ".$snewkey."<br>";
 											
 											//$combine=$combine.$asset." ".$txa."\r\n";
 
@@ -1446,10 +1447,14 @@ $fer=0;
 								else
 
 									{
+										$value=str_replace("<p>","",$value);
+										$value=str_replace("</p>","",$value);
 
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;text-align:left;\">".turnUrlIntoHyperlink($value)."</li>";
 
-										$arr1=explode("\n",$value);
+										$arr1=explode("/r/n",$value);
+
+										$arr1=explode("<br>",$value);
 
 
 										foreach ($arr1 as $m=>$n) {
@@ -1505,7 +1510,18 @@ $fer=0;
 
 
 	
-$combine=$combine.$asset." ".$txa."\r\n";
+$combine=$combine.$asset." ".$txa."<br>";
+
+	//ismine
+
+
+if($_REQ["ismine"]=="1"){$ismine=1;}else{
+
+		$vadd= $kpc->validateaddress($address);
+
+		extract($vadd);}
+
+		$gnamekey=hex2bin($_REQ["gname"]);
 
 
 		//comment
@@ -1529,7 +1545,10 @@ $combine=$combine.$asset." ".$txa."\r\n";
 			if($nspace['displayName']=="COMMENT"){$cspace=$nspace['namespaceId'];}
 				}
 
-				if($ismine=="1"){$cspace=$asset;}
+			
+			
+			
+			if($ismine=="1"){$cspace=$asset;}
 
 			if($webmode==0)
 			
@@ -1539,6 +1558,7 @@ $combine=$combine.$asset." ".$txa."\r\n";
 
 			else
 			{
+			
 
 			echo "</ul><ul><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><a href=\"?lang=".$_REQUEST["lang"]."&mode=1&asset=".$cspace."&title=".bin2hex($txx)."&nameid=".bin2hex($key)."&cadd=".$commentadd."&spid=".$asset."\"><h4>[ + ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=\"?lang=".$_REQUEST["lang"]."&addtx=".bin2hex($txx)."&nameid=".bin2hex($key)."\"><font size=3>ADD MORE</font></a></li>";
 			
@@ -1797,16 +1817,7 @@ if(strcmp($destination,$commentadd)==0)
 		
 		}
         
-	//ismine
 
-
-if($_REQ["ismine"]=="1"){$ismine=1;}else{
-
-		$vadd= $kpc->validateaddress($address);
-
-		extract($vadd);}
-
-		$gnamekey=hex2bin($_REQ["gname"]);
 
 
 		//workarea
@@ -1817,7 +1828,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 		
 		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$gnamekey."</font> ".$addend."</li>";
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1></font>".hex2bin($_REQ["key"])."  ".$addend."</li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&mode=5&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".$title."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_delete." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".hex2bin($_REQ["key"])."  ".$addend."</font></li>";
 
 
 										}
@@ -1841,7 +1852,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 			$ipfscon=strip_tags($ipfscon);
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=\"".$ipfscon."\"  target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</a> <a href=qr.php?np=".$asset."&key=".bin2hex($fkey)." target=_blank>[ QR CODE ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=\"".$ipfscon."\"  target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 
 //broadcast 
 if($webmode==0){

@@ -459,6 +459,10 @@ if(strlen($snewkey) == "64"){
 
 
 			//namespace channel
+
+
+
+
 											if(strlen($value)==34)
 
 
@@ -1035,28 +1039,26 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 										}
 
-//tx title
+//for tx title
 
-if(strlen($snewkey) == "64"){
+$stxkey=$snewkey;
+										
+								if(strlen($stxkey)==64){
 
-	$key2=$snewkey;
-		
-		
-		
+
 									$txcount=1;
-									$txloop=$key2;
-								
+									$txloop=$stxkey;
+									$totalassx=array();
+									$arrx=array();
 
-									while($txcount<50) {
+									while($txcount<=$kevaadd) {
 									
 									$txcount++;
 
 									
 
 									$transaction= $kpc->getrawtransaction($txloop,1);
-								
 
-									
 									
 
 									foreach($transaction['vout'] as $vout)
@@ -1068,22 +1070,31 @@ if(strlen($snewkey) == "64"){
 				
 										$arr = explode(' ', $op_return); 
 
-										
-
 										if($arr[0] == 'OP_KEVA_PUT') 
 										{
 											 $cona=$arr[1];
 											 $cons=$arr[2];
 											 $conk=$arr[3];
 
-						
+											$kadd=$vout["scriptPubKey"]["addresses"][0];
 
-											$txloop=hex2bin($cons);
+											$arrx["block"]=$txcount;
+											$arrx["sadd"]=$kadd;
+											$arrx["stxkey"]=hex2bin($cons);
+											$arrx["sinfo"]=str_replace("\n","<br>",hex2bin($conk));
+											$arrx["txa"]=$txloop;
 
-										
+											
+
+											$arrx["size"]=$transaction['size'];
+
+											$txloop=$arrx["stxkey"];
 						
-		
-											if(strlen($txloop)<>64){$key2="RE:".$txloop;break;}
+											array_push($totalassx,$arrx);
+
+											
+
+											if(strlen($txloop)<>64){break;}
 													
 								
 													}
@@ -1091,10 +1102,68 @@ if(strlen($snewkey) == "64"){
 												}
 											}
 
+											arsort($totalassx);
+
+											
+
+										foreach ($totalassx as $txk=>$txv) 
+
+												{
+							
+											extract($txv);
+											
+											
+
+											$combine=$combine.$asset." ".$stxkey."\r\n";
+											
 										
-			$snewkey=$key2;
-		
-		}
+
+											if(strlen($stxkey)<>64){
+
+											
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:80px;width:90%;\"><h1>".$stxkey."</h1></li>";}
+
+											
+											$newrvncheck=trim(strip_tags($sinfo));
+										
+										if(strlen($newrvncheck)=="46" & stristr($newrvncheck,"Qm") == true){
+											$ipfscon=trim(strip_tags($ipfscon));
+											$sinfo="<a href=".$ipfscon."".$newrvncheck." target=_blank>".$newrvncheck."</a>";
+											}
+
+
+
+											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".turnUrlIntoHyperlink($sinfo)."</li>";
+
+									if(strlen($stxkey)<>64 or $block==$txcount){
+
+											
+											$checkcnp=$kpc->keva_group_filter($_REQ["checknp"]);
+
+											$assetm="";
+
+											foreach($checkcnp as $da=>$db) {
+
+												if($db["txid"]==$txa){ $assetm=$db["namespace"];}
+
+
+
+											}
+											
+											if(!$assetm){$assetm=$asset;}
+													
+
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ]</p></li>";
+											
+											$snewkey="<h2>Re:".$stxkey."</h2>";
+											
+											}	}	
+											
+											
+											
+											
+											}
+
 
 							
 								

@@ -232,7 +232,7 @@ if(isset($_REQ["asset"])){
 
 		
 
-
+$gshow=$kpc->keva_group_show($asset);
 
 		$arr=array();
 		$totalass=array();
@@ -257,6 +257,18 @@ if(isset($_REQ["asset"])){
 			$arr["ctime"]=$gettime['time'];
 
 			$arr["gnamespace"]=$namespace;
+
+						foreach($gshow as $s_value=>$s)
+				{
+
+				if($namespace==$s["namespaceId"]){$arr["follow"]=$s["initiator"];$arr["gname"]=$s["display_name"];break;}
+
+
+				}
+
+			If($key=="ID"){$title=$value;}
+
+			if($namespace==$asset){$arr["gname"]=$title;}
 			
 			
 			
@@ -320,7 +332,7 @@ if(isset($_REQ["asset"])){
 
 
 
-if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><h3>".$sname."</h3></div><div class=\"body\"><p>".$asset."</p><ul>".$_REQ["group"]." group</ul></div></div>";
+if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><font size=5><b>".$sname."</b></font></div><div class=\"body\"><p>".$asset."</p><ul>".$_REQ["group"]." group</ul></div></div>";
 
 
 
@@ -471,10 +483,10 @@ $value=strip_tags($value,"");
 
 			if($_REQ["stone"]=="1"){
 
-					
+		if(!$gname){$gnamer="";}else{$gnamer=$gname."<br>";}
 			
 		
-        echo "<div class=\"entry\"><div class=\"title\"><h3>".date('Y-m-d H:i',$ctime)."</h3><p>BLOCK ".$heightx."</p></div><div class=\"body\"><p>".$key."</p><ul>".$valuex."</ul></div></div>";
+        echo "<div class=\"entry\"><div class=\"title\"><h3>".date('Y-m-d H:i',$ctime)."</h3><p>".$gnamer."BLOCK ".$heightx."</p></div><div class=\"body\"><p>".$key."</p><ul>".$valuex."</ul></div></div>";
 			
 		
 			
