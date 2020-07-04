@@ -70,7 +70,7 @@ $nsu=$_REQ["unfollow"];
 
 $age= $kpc->keva_group_leave($nsa,$nsu);
 
-$url="keva.php?lang=&asset=".$nsa."&ismine=1&manageg=following"; 
+$url="keva.php?lang=&asset=".$nsa."&ismine=1&group=all&manageg=following"; 
 
 echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
 
@@ -432,13 +432,35 @@ tr td{color:#999;border: 1px solid #ccc;}
 
 //creat new namespace
 
-if(isset($_REQ["namep"])) {
+if(isset($_REQ["namep"]) & $keva_add=="on") {
 
 $forname=$_REQ["namep"];
+
+$joingroup=$_REQ["joingroup"];
+
+if(strlen($joingroup)=="34" & strlen($joingroup)=="34"){
+
+if($_REQ["follow"]=="1"){
+
+$age= $kpc->keva_group_join($forname,$joingroup);}else
+
+	{
+
+$age= $kpc->keva_group_join($joingroup,$forname);}
+
+$url="keva.php?lang=&asset=".$joingroup."&ismine=1&manageg=following"; 
+
+echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
+
+}
+
+else{
 
 $age= $kpc->keva_namespace($forname);
 
 echo "<script>window.location.href=decodeURIComponent('keva.php')</script>";
+
+}
 
 
 }
@@ -749,6 +771,8 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 			echo "<ul><li style=\"height:270px;\"><br><input type=\"text\" name=\"namep\" class=\"textarea-inherit\"  style=\"width:90%;\" value=\"".$_REQUEST["createname"]."\">";
 		
 			echo "<input type=\"hidden\" name=\"mode\" value=\"bulk\" />";
+
+				echo "<input type=\"hidden\" name=\"joingroup\" value=\"".$_REQUEST["asset"]."\" />";
 
 			echo "<br><br><br><br><input type=\"submit\" value=\"".$keva_submit."\"> </li></ul></div></form></div>";
 
@@ -1335,9 +1359,23 @@ $fer=0;
 
 												if(strlen($snewkey)<>64 or $block==$txcount){
 
+											
+											$checkcnp=$kpc->keva_group_filter($_REQ["checknp"]);
+
+											$assetm="";
+
+											foreach($checkcnp as $da=>$db) {
+
+												if($db["txid"]==$txa){ $assetm=$db["namespace"];}
+
+
+
+											}
+											
+											if(!$assetm){$assetm=$asset;}
 													
 
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($snewkey).">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ]</p></li>";}	}	
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=?lang=".$_REQUEST["lang"]."&asset=".$assetm."&key=".bin2hex($snewkey).">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ]</p></li>";}	}	
 											
 
 												}
@@ -1775,7 +1813,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		if($ismine=="1" & $keva_add=="on"){
 			
-		echo "</ul><ul><a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_edit." ]</a> ".$keva_kcode." [ <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=1>".$txx."</font></li>";
+		echo "</ul><ul><a href=?lang=".$_REQUEST["lang"]."&mode=1&asset=".$asset."&title=".bin2hex($fkey)."&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_edit." ]</a> ".$keva_kcode." [ <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightm."&np=".$asset."&npn=".bin2hex($gnamekey).">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."&np=".$asset."&npn=".bin2hex($gnamekey)."><font size=1>".$txx."</font></a></li>";
 		
 		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&key=".bin2hex($fkey)."&title=".$title."&sname=".$sname."&mode=3><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_subscribe." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$gnamekey."</font> ".$addend."</li>";
 
@@ -1789,7 +1827,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 										{
 				
-			echo "</ul><ul><p><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TXID</a> [ <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightm.">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".$txx."</font></li>";
+			echo "</ul><ul><p><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."&np=".$asset."&npn=".bin2hex($gnamekey)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>TXID</a> [ <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$heightm."&np=".$asset."&npn=".bin2hex($gnamekey).">".$heightm."</a> ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>".$txx."</font></li>";
 			
 										}
 
@@ -1816,11 +1854,15 @@ if($webmode==0){
 
 //galaxylink
 
-			echo "<a href=http://galaxyos.io/subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."</font></a></li>";
+			//echo "<a href=http://galaxyos.io/subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txx."</font></a></li>";
+
+//join group
+
+echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=4&follow=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ FOLLOW ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>follow ".$gnamekey."</font></a></li>";
 
 			//galaxylink
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ BACK TO ".$gnamekey." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\">".$asset."</a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ BACK TO ".$gnamekey." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$asset."</font></a></li>";
 
 
 
@@ -1878,30 +1920,55 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		echo"<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;color:#bbb;display:block;\"><form action=\"keva.php\" method=\"post\" ><h4><input type=\"text\" name=\"title\" maxlength=\"64\" placeholder=\"TITLE\" style=\"width:200px;\"><input type=\"hidden\" name=\"fromasset\" value=\"".$shopaddress."\"> <input type=\"submit\" value=\"".$keva_kaw."\"></h4><input type=\"hidden\" name=\"asset\" value=".$_REQ["asset"]." /></form></li>";	
 
-		if(strlen($_REQ["showall"])>1){
+			//group
+
+
+
+		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ GROUP:".$gstat." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=following>Following</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=follower>Followers</a></font></li>";
+
+		//milestone
+
+			echo "<a href=stone.php?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=11&stone=1&group=".$gstat." target=_blank><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ MILESTONE ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+
+		if($_REQ["showall"]=="11"){
 			
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=1&ismine=".$ismine."&group=".$gstat."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_showlist." ]</h4></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=1&ismine=".$ismine."&group=".$gstat."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_showlist." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";
+
+$linkipfs = json_decode($returnContent, true);
+
+			$ipfscon=trim(strip_tags($ipfscon));
+
+
+			$ipfscon=str_replace("http://gotoipfs.com/#path=",$ipfscon,$linkipfs['data']['hash_urls'][1]);
+
+			
+
+
+//ipfs
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
+			
+			}
+		
+
+			
 		
 		
 		
-		}
+		
 		else 
 			
 		{echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=11&ismine=".$ismine."&group=".$gstat."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_showall." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
 
 		}
 
-		echo "<a href=stone.php?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=11&stone=1&group=".$gstat." target=_blank><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ MILESTONE ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+	
 
 
 
-		$linkipfs = json_decode($returnContent, true);
+		
 
-			//group
-
-
-
-		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ GROUP:".$gstat." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&manageg=following>Following</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine.">Followers</a></font></li>";
+		
 
 
 		if($ismine=="1"  & $keva_add=="on"){echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=1&nameid=".bin2hex($title)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_addnew." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=2>".$keva_addnewmemo."</font></a></li>";
@@ -1917,34 +1984,105 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		
 
-			$ipfscon=trim(strip_tags($ipfscon));
-
-
-			
-
-			$ipfscon=str_replace("http://gotoipfs.com/#path=",$ipfscon,$linkipfs['data']['hash_urls'][1]);
-
-			
 
 
 
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
-		
-
-			}
-
-			echo "<a href=http://galaxyos.io/keva.php?asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/keva.php?asset=".$asset."</font></a></li></ul><ul>";
+			//echo "<a href=http://galaxyos.io/keva.php?asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_galaxylink." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=1>galaxyos.io/keva.php?asset=".$asset."</font></a></li>";
 
 
 				$sname=$_REQ["sname"];
 				if(!$_REQ["sname"]){$sname=strtoupper($title);}
 
+	
+
+//add group
+
+if($_REQ["manageg"]=="following" or $_REQ["manageg"]=="follower"){
+
+	if($keva_add=="on"){
+
+echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=4><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ JOIN GROUP ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"font-size:18px\">follow namespace</p></li>";}}
+
+
+
+		}
+
+echo "</ul><ul>";
+
+
+
+//manage follow
 
 
 
 
+		if($_REQ["manageg"]=="following")
+			
+		{
 
+			foreach($gshow as $s_value=>$s)
+
+			{
+
+			if($s["initiator"]=='1'){continue;}
+
+	
+			$key2=$s["display_name"];
+			$value=$s["namespaceId"];
+
+
+			//follow
+
+			
+	
+			$valuex="<font size=3><a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&unfollow=".$value.">Unfollow</a></font>";
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$value."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\"><h4>".$key2."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";}
+
+
+			echo "</ul></div></div></ul></div></div>";
+
+			exit;
+			
+		
+		}
+
+
+		if($_REQ["manageg"]=="follower")
+			
+		{
+
+			foreach($gshow as $s_value=>$s)
+
+			{
+
+			if($s["initiator"]=='0'){continue;}
+
+	
+			$key2=$s["display_name"];
+			$value=$s["namespaceId"];
+
+
+			//follow
+
+		
+	
+			$valuex="<font size=3><a href=?lang=".$_REQUEST["lang"]."&joingroup=".$asset."&namep=".$value.">follow</a></font>";
+
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$value."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\"><h4>".$key2."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";}
+
+
+			echo "</ul></div></div></ul></div></div>";
+
+			exit;
+			
+		
+		}
+
+
+
+//list
 
 foreach ($listasset as $k=>$v) 
 
@@ -1959,40 +2097,11 @@ foreach ($listasset as $k=>$v)
 
 		$key2=strip_tags($key,"");
 
-		if($_REQ["manageg"]=="following")
-			
-		{
 
-			if(stristr($key2,"_g") == false){continue;}else{if($follow=='1'){continue;}}
-
-			
-
-			$gnp=str_replace("_g:","",$key2);
-
-			$value=$gnp;
-
-			foreach($gshow as $s_value=>$s)
-				{
-
-				if($gnp==$s["namespaceId"]){$key2=$s["display_name"];break;}
-
-				}
-
-				
-				if(stristr($key2,"_g") == true){continue;}
-			
 		
-		}
+	
 
-		elseif($_REQ["manageg"]=="follower")
-			
-		{
-			if(stristr($key2,"_g") == false){continue;}else{if($follow=='1'){continue;}}
-		}
-		
-		else{
-
-		if(stristr($key2,"_g") == true){continue;}}
+		if(stristr($key2,"_g") == true){continue;}
 
 		//check re
 
@@ -2141,13 +2250,9 @@ if($title=="IOT"){$iotcopy="<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace
 
 			if($_REQUEST["st"]=="1" & trim($valuex)=="on"){$stati="";}
 
-//follow
 
-if($_REQ["manageg"]=="following")
-	
-{$valuex="<font size=3><a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&unfollow=".$value.">Unfllow</a></font>";}
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."&ismine=".$ismine."&group=".$gchange."&gname=".bin2hex($gname)."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".$keylink."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&mode=".$switch."&type=".$_REQ["type"]."&ismine=".$ismine."&group=".$gchange."&gname=".bin2hex($gname)."&checknp=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:600px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$valuex." ".$stati." ".$iotcopy."</p></li>";
 							}
 
 			}
@@ -2163,7 +2268,7 @@ if($_REQ["manageg"]=="following")
 
 			$clink="[ <a href=?lang=".$_REQUEST["lang"]."&asset=".$gnamespace.">".$gname."</a> ] [ ".$gnamespace." ] [ ".date('Y-m-d H:i', $gtime)." ] ";
 
-			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".bin2hex($key)."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&ismine=".$ismine."&group=".$gchange."&gname=".bin2hex($gname)."><h4>".$key."</h4></a></li>";
+			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><a href=?lang=".$_REQUEST["lang"]."&asset=".$nmspace."&title=".bin2hex($key)."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."&ismine=".$ismine."&group=".$gchange."&gname=".bin2hex($gname)."&checknp=".$asset."><h4>".$x_value."</h4></a></li>";
 
 			$valuex=str_replace("\n","<br>",$value);
 

@@ -348,8 +348,76 @@ if(isset($block) & is_numeric($block)==true)
 								$value=$sinfo;
 								
 								$asset=$sinfo;
+
+								//tx title
+
+if(strlen($snewkey) == "64"){
+
+	$key2=$snewkey;
+		
+		
+		
+									$txcount=1;
+									$txloop=$key2;
 								
+
+									while($txcount<50) {
+									
+									$txcount++;
+
+									
+
+									$transaction= $kpc->getrawtransaction($txloop,1);
 								
+
+									
+									
+
+									foreach($transaction['vout'] as $vout)
+	   
+									  {
+
+										$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+										$arr = explode(' ', $op_return); 
+
+										
+
+										if($arr[0] == 'OP_KEVA_PUT') 
+										{
+											 $cona=$arr[1];
+											 $cons=$arr[2];
+											 $conk=$arr[3];
+
+						
+
+											$txloop=hex2bin($cons);
+
+										
+						
+		
+											if(strlen($txloop)<>64){$key2="RE:".$txloop;break;}
+													
+								
+													}
+												
+												}
+											}
+
+										
+			$snewkey=$key2;
+		
+		}
+
+							
+							//block title	
+							
+								
+									if(!$rname){$rname="<font size=1><a href=keva.php?lang=&asset=".$_REQ["np"].">".hex2bin($_REQ["npn"])."</a></font>";}
+
+							
+
 									
 										//comment
 
@@ -487,7 +555,7 @@ if(isset($block) & is_numeric($block)==true)
 											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;text-align:left;\">".turnUrlIntoHyperlink($valuex)."</li>";}
 
 													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right>[ ".$rname." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";		
 
 												}
 
@@ -550,7 +618,7 @@ if(isset($block) & is_numeric($block)==true)
 														}
 
 															
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";	
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break:break-all;word-wrap:break-word;\"><p align=right>[ ".$rname." ] <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ <a href=https://explorer.kevacoin.org/address/".$kadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$transaction['size'].">".$transaction['size']."</a> > </p></li>";	
 											
 
 											
@@ -847,6 +915,7 @@ if($commone['ipfs']<>"b5923a655df278da1b82faab6391b7571ff18fb83ec2125763c5a7e272
 
 
 
+
 //txid
 
 
@@ -966,9 +1035,75 @@ if(!$_REQ["blocknum"]){$bnum=$blockhash["height"]; }else{$bnum=$_REQ["blocknum"]
 
 										}
 
+//tx title
 
+if(strlen($snewkey) == "64"){
+
+	$key2=$snewkey;
+		
+		
+		
+									$txcount=1;
+									$txloop=$key2;
 								
-								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:120px;width:90%;\"><h1>".$snewkey."</h1><br><a href=?lang=".$_REQUEST["lang"]."&name=".$aname."&uname=".$rname."><font size=4><b>".$rname."</b></font></a></li></ul><ul>";
+
+									while($txcount<50) {
+									
+									$txcount++;
+
+									
+
+									$transaction= $kpc->getrawtransaction($txloop,1);
+								
+
+									
+									
+
+									foreach($transaction['vout'] as $vout)
+	   
+									  {
+
+										$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+										$arr = explode(' ', $op_return); 
+
+										
+
+										if($arr[0] == 'OP_KEVA_PUT') 
+										{
+											 $cona=$arr[1];
+											 $cons=$arr[2];
+											 $conk=$arr[3];
+
+						
+
+											$txloop=hex2bin($cons);
+
+										
+						
+		
+											if(strlen($txloop)<>64){$key2="RE:".$txloop;break;}
+													
+								
+													}
+												
+												}
+											}
+
+										
+			$snewkey=$key2;
+		
+		}
+
+							
+								
+								//echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:120px;width:90%;\"><h1>".$snewkey."</h1><br><a href=?lang=".$_REQUEST["lang"]."&name=".$aname."&uname=".$rname."><font size=4><b>".$rname."</b></font></a></li></ul><ul>";
+
+								if(!$rname){$rname="<a href=keva.php?lang=&asset=".$_REQ["np"].">".hex2bin($_REQ["npn"])."</a>";}
+
+								echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:120px;width:90%;\"><h1>".$snewkey."</h1><br><font size=4><b>".$rname."</b></font></li></ul><ul>";
+
 
 								
 
