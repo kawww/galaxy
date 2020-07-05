@@ -212,7 +212,7 @@ define('MARKDOWN_PARSER', $site->markdownParser());
 
 $checktheme=$_REQUEST["theme"];
 
-if(!$checktheme){$checktheme="alternative";}
+if(!$checktheme){$checktheme="social-network";}
 
 // --- PHP paths with dependency ---
 // This paths are absolutes for the OS
