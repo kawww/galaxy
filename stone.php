@@ -484,7 +484,7 @@ $value=strip_tags($value,"");
 			if($_REQ["stone"]=="1"){
 
 		if(!$gname){$gnamer="";}else{$gnamer=$gname."<br>";}
-			
+			if($gnamespace==$asset){$gnamer=$title."<br>";}
 		
         echo "<div class=\"entry\"><div class=\"title\"><h3>".date('Y-m-d H:i',$ctime)."</h3><p>".$gnamer."BLOCK ".$heightx."</p></div><div class=\"body\"><p>".$key."</p><ul>".$valuex."</ul></div></div>";
 			

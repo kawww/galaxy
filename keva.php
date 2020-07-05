@@ -1019,6 +1019,7 @@ arsort($sortto);
 
 			}
 
+if(isset($_REQ["bludit"])){$bludit="/bludit/";}
 
 			if(!$hide['value'] ){
 
@@ -1026,7 +1027,7 @@ arsort($sortto);
 			$x_value=$displayName;
 
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=".$bludit."?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."&gname=".bin2hex($x_value)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
 
 			}
 			else
@@ -1037,7 +1038,7 @@ arsort($sortto);
 			$x_value=$displayName;
 
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=".$bludit."?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."&gname=".bin2hex($x_value)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
 
 			}}
 
@@ -1960,6 +1961,12 @@ $linkipfs = json_decode($returnContent, true);
 //ipfs
 
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
+
+//bludit
+
+if($gstat=="no"){$gnameto="&gname=".bin2hex($title);}
+
+			echo "<a href=bludit/?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=11&bludit=1&group=".$gstat."".$gnameto." target=_blank><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ BLUDIT ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
 			
 			}
 		
