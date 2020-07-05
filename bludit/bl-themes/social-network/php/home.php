@@ -194,6 +194,10 @@ document.getElementById("jspostButton").onclick = function(event) {
 
 <?php
 
+
+
+
+
 foreach ($listasset as $k=>$v) 
 
 			{
@@ -298,7 +302,7 @@ foreach ($listasset as $k=>$v)
 
 		<div class="card-body">
 			<!-- Profile picture -->
-			<img class="float-left rounded-circle" style="width: 48px" src="<?php echo $page->user('profilePicture') ?>" />
+			<img class="float-left rounded-circle" style="width: 48px" src="<?php echo letter_avatar($gnamer); ?>" />
 
 			<div style="padding-left: 56px">
 				<!-- Post's author and date -->
