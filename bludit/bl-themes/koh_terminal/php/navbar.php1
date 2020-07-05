@@ -1,0 +1,24 @@
+<div class="container mt-4">
+        <div  class="container">
+            <div class="col-md-6">
+                <h2 id="logo"  style="width:auto;">
+					<font color=#28f428><?php echo $site->title() ?></font>	
+				</h2>
+            </div>
+            <div class="col-md-6">
+			
+                <div class="list-group list-group-horizontal float-right">
+			
+					<?php foreach ($staticContent as $staticPage): ?>
+						<ul>
+							<a href="<?php echo $staticPage->permalink() ?>">
+								<?php echo $staticPage->title() ?>
+							</a>
+						</ul>
+					<?php endforeach ?>
+
+                </div>
+            </div>
+        </div>
+	<hr>	<font size=3><?php include("theme.php"); ?></font>
+</div>
