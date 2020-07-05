@@ -1,0 +1,2 @@
+<article><pre><code><?php Theme::plugins('pageBegin'); ?><a href="<?php echo $page->permalink(); ?>"><h2><?php echo $page->title(); ?></h2></a><?php if (!$page->isStatic() && !$url->notFound()):  ?><small><?php echo $page->date(); ?></small><?php if ($page->category()):?> | <a href="<?php echo DOMAIN_CATEGORIES.$page->categoryKey() ?>"><?php echo $page->category() ?></a><?php endif?><?php endif ?><?php echo str_replace(">\n<","><",$page->content()); ?></code></pre>
+<?php Theme::plugins('pageEnd'); ?></article><hr />
