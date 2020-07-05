@@ -191,7 +191,7 @@ document.getElementById("jspostButton").onclick = function(event) {
 <?php endif; ?>
 
 <div id="jslistOfPosts">
-
+<br>
 <?php
 
 
