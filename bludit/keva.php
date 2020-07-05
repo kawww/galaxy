@@ -166,6 +166,73 @@ $fer=0;
 
 
 
+function hsv2rgb($H, $S, $V)
+{
+    // hack to get rid of unreadable pale yellow on white
+    if ($H > 0.1 && $H < 0.7) {
+        $V -= 0.15;
+    }
+    if ($S == 0) {
+        $R = $G = $B = $V * 255;
+    } else {
+        $var_H = $H * 6;
+        $var_i = floor($var_H);
+        $var_1 = $V * (1 - $S);
+        $var_2 = $V * (1 - $S * ($var_H - $var_i));
+        $var_3 = $V * (1 - $S * (1 - ($var_H - $var_i)));
+        if ($var_i == 0) {
+            $var_R = $V;
+            $var_G = $var_3;
+            $var_B = $var_1;
+        } else {
+            if ($var_i == 1) {
+                $var_R = $var_2;
+                $var_G = $V;
+                $var_B = $var_1;
+            } else {
+                if ($var_i == 2) {
+                    $var_R = $var_1;
+                    $var_G = $V;
+                    $var_B = $var_3;
+                } else {
+                    if ($var_i == 3) {
+                        $var_R = $var_1;
+                        $var_G = $var_2;
+                        $var_B = $V;
+                    } else {
+                        if ($var_i == 4) {
+                            $var_R = $var_3;
+                            $var_G = $var_1;
+                            $var_B = $V;
+                        } else {
+                            $var_R = $V;
+                            $var_G = $var_1;
+                            $var_B = $var_2;
+                        }
+                    }
+                }
+            }
+        }
+        $R = $var_R * 255;
+        $G = $var_G * 255;
+        $B = $var_B * 255;
+    }
+    return array($R, $G, $B);
+}
+function letter_avatar($text)
+    {
+        $total = unpack('L', hash('adler32', $text, true))[1];
+        $hue = $total % 360;
+        list($r, $g, $b) = hsv2rgb($hue / 360, 0.3, 0.9);
+
+        $bg = "rgb({$r},{$g},{$b})";
+        $color = "#ffffff";
+        $first = mb_strtoupper(mb_substr($text, 0, 1));
+        $src = base64_encode('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="100" width="100"><rect fill="' . $bg . '" x="0" y="0" width="100" height="100"></rect><text x="50" y="50" font-size="50" text-copy="fast" fill="' . $color . '" text-anchor="middle" text-rights="admin" alignment-baseline="central">' . $first . '</text></svg>');
+        $value = 'data:image/svg+xml;base64,' . $src;
+        return $value;
+    }
+
 
 
 
