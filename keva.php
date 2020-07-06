@@ -79,6 +79,40 @@ echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
 
 //creat new to blockchain
 
+function my_substr($str, $start, $length = "", $bite = 3) {
+
+$pos = 0; 
+for ($i = 0; $i < $start; $i++) {
+    if (ord(substr($str, $i, 1)) > 0xa0) {
+        $pos += $bite; 
+    } else {
+        $pos += 1;
+    }
+}
+
+//开始截取
+if ($length == "") {
+    return substr($str, $pos);
+} else {
+    if ($length < 0) {
+        $length = 0;
+    }
+    $string = "";
+    for ($i = 0; $i < $length; $i++) {
+        if (ord(substr($str, $pos, 1)) > 0xa0) { 
+            $string .= substr($str, $pos, $bite); 
+            $pos += $bite;
+        } else {
+            $string .= substr($str, $pos, 1);
+            $pos += 1;
+        }
+    }
+    return $string;
+}
+}
+
+
+
 if(isset($_REQ["newasset"]) & $keva_add=="on") {
 
 $forsub=$_REQ["newasset"]."\r\n\r\n".$comment;
@@ -86,18 +120,89 @@ $nameid=$_REQ["spti"];
 $fortit=strip_tags($_REQ["title"]);
 
 
+
 $age= $kpc->keva_put($_REQ["asset"],$fortit,$forsub);
 
 $error = $kpc->error;
+
 
 if($error != "") 
 	
 	{
 
+	$greaterr=$error;
+
+	$gnum=1;
+
+	$gtotal=(strlen($forsub) + mb_strlen($forsub,'UTF8')) / 2; 
+
+
+
+		while($greaterr != ""){
+
+				$gnum=$gnum+1;
+
+				
+
+				$gtest=intval($gtotal/$gnum);
+
+				
+
+				
+
+				$gsub=my_substr($forsub,0,$gtest);
+
+						
+
+$age= $kpc->keva_put($_REQ["asset"],$fortit,$gsub);
+
+$greaterr = $kpc->error;
+
+
+}
+
+$gtotal=$gtotal-$gtest;
+
+
+
+$gleft=str_replace($gsub,"",$forsub);
+
+
+
+
+while($gtotal>0){
+
+
+
+$gsub=my_substr($gleft,0,$gtest);
+
+
+
+$age= $kpc->keva_put($_REQ["asset"],$age['txid'],$gsub);
+
+$gleft=str_replace($gsub,"",$gleft);
+
+$gtotal=$gtotal-$gtest;
+
+
+
+$greaterr = $kpc->error;
+
+if($greaterr != "") 
+	
+	{
+
 echo"<script>alert('Too many words');</script>";
 
-$url ="keva.php?lang=&mode=1&asset=".$_REQ["asset"]."&nameid=".$nameid."&title=".bin2hex($fortit)."&hvalue=".bin2hex($_REQ["newasset"]);
-	  
+$url ="keva.php?lang=&mode=1&asset=".$_REQ["asset"]."&nameid=".$nameid."&title=".bin2hex($fortit)."&hvalue=".bin2hex($_REQ["newasset"]);}
+
+
+		}
+
+
+$url ="keva.php?lang=&txid=".$age['txid']."&title=".bin2hex($fortit)."&key=".bin2hex($fortit)."&pending=1&ismine=1";
+
+
 
 	}
 
