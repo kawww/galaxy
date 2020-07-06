@@ -1119,7 +1119,7 @@ $fer=0;
 
 		 $info= $kpc->keva_group_filter($asset,"all","",360000);}
 
-		 elseif($gstat=="foller"){
+		 elseif($gstat=="follower"){
 
 		 $info= $kpc->keva_group_filter($asset,"other","",360000);}
 
