@@ -142,14 +142,9 @@ if($error != "")
 
 				$gnum=$gnum+1;
 
-				
-
 				$gtest=intval($gtotal/$gnum);
 
-				
-
-				
-
+			
 				$gsub=my_substr($forsub,0,$gtest);
 
 						
@@ -157,6 +152,7 @@ if($error != "")
 $age= $kpc->keva_put($_REQ["asset"],$fortit,$gsub);
 
 $greaterr = $kpc->error;
+
 
 
 }
@@ -177,6 +173,7 @@ while($gtotal>0){
 $gsub=my_substr($gleft,0,$gtest);
 
 
+sleep(1);
 
 $age= $kpc->keva_put($_REQ["asset"],$age['txid'],$gsub);
 
@@ -185,24 +182,12 @@ $gleft=str_replace($gsub,"",$gleft);
 $gtotal=$gtotal-$gtest;
 
 
-
-$greaterr = $kpc->error;
-
-if($greaterr != "") 
-	
-	{
-
-echo"<script>alert('Too many words');</script>";
-
-$url ="keva.php?lang=&mode=1&asset=".$_REQ["asset"]."&nameid=".$nameid."&title=".bin2hex($fortit)."&hvalue=".bin2hex($_REQ["newasset"]);}
-
-
-		}
-
-
 $url ="keva.php?lang=&txid=".$age['txid']."&title=".bin2hex($fortit)."&key=".bin2hex($fortit)."&pending=1&ismine=1";
 
+$gleftn=strlen($gleft); 
 
+if($gleftn=="0"){break;}
+			}
 
 	}
 
