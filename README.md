@@ -16,7 +16,7 @@ You need to get raven-qt.exe from ravencoin (https://github.com/RavenProject/Rav
 
 2.Run Start_Galaxy_Keva_Raven.bat.
 
-3.Run Start_Galaxy_Local_Server.bat and you could open Galaxy with ip on your phone or other devices.
+3.Run Start_Galaxy_Local_Server.bat and you could open Galaxy with ip on your phone or other devices. You may need Microsoft Visual C++ Redistributable for Visual Studio 2019 to run php or there will be a vcruntime140.dll error https://visualstudio.microsoft.com/zh-hans/downloads/
 
 If you download Galaxy php code (https://github.com/kawww/galaxy/archive/master.zip) 
 
