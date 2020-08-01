@@ -980,7 +980,7 @@ echo "<div style=\"border: 0px solid #59fbea;display:block;width:100%;\"><ul sty
 		if($hidemkey==0){
 
 
-			echo "<li style=\"width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:120px;display:block;\"><h3>[ ".$title." ]</h3><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:12px\">".$asset."</li>";
+			echo "<li style=\"width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:120px;display:block;\"><h2>[ ".$title." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"padding-top:5px;\"><font size=3>".$asset."</font></li>";
 
 
 
@@ -990,7 +990,7 @@ echo "<div style=\"border: 0px solid #59fbea;display:block;width:100%;\"><ul sty
 
 
 
-		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:130px;display:block;\"><h2>[ ".$acshow." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"padding-top:7px;\"><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=following>COLLECT</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=follower>SHARE</a></font></p></li>";
+		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:120px;display:block;\"><h2>[ ".$acshow." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"padding-top:5px;\"><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=following>COLLECT</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=follower>SHARE</a></font></p></li>";
 
 
 
@@ -1039,7 +1039,7 @@ echo "</ul><ul style=\"display:flex;flex-direction: row;flex-wrap: wrap;padding-
 	
 			$valuex="<font size=3><a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&unfollow=".$value.">Unfollow</a></font>";
 
-			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."><li style=\"padding-right:5px;width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$key2." NAMESPACE</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$value."</p></li>";}
+			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."><li style=\"padding-right:5px;width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:120px;display:block;\"><h4>".$key2." NAMESPACE</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$value."</p></li>";}
 
 
 			echo "</ul></div></div>";
@@ -1073,7 +1073,7 @@ echo "</ul><ul style=\"display:flex;flex-direction: row;flex-wrap: wrap;padding-
 	
 			$valuex="<font size=3><a href=?lang=".$_REQUEST["lang"]."&joingroup=".$asset."&namep=".$value.">follow</a></font>";
 
-			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."><li style=\"padding-right:5px;width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>".$key2."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$value."</p></li>";}
+			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."><li style=\"padding-right:5px;width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:120px;display:block;\"><h4>".$key2."</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p>".$value."</p></li>";}
 
 
 			echo "</ul></div></div></ul></div></div>";
@@ -1191,6 +1191,8 @@ $stime=date('Ymd',$gtime);
 			if($xtime==$stime){$stime="";}
 
 		$xtime=$stime;
+
+		if($gname=="Animal Crossing Dream"){$gname="Dream Code";}
 
 		if(!$gname){$gnamer="";}else{$gnamer=$gname."<br>";}
 			if($gnamespace==$asset){$gnamer=$title."<br>";$gnamer="SHARE";}
