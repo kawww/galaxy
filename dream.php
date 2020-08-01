@@ -812,9 +812,9 @@ echo "<div style=\"padding: 5px;margin-bottom: 10px;box-shadow: 2px 2px 2px hsla
 \" value=\"".$_REQUEST["hvalue"]."\" maxlength=14></center></li></ul>";
 
 
-echo "<li style=\"list-style:none;color: #28f428;font-size:30px;letter-spacing:3px;display:inline;height:45px;background-color:#0b0c0d;\">";
+echo "<li style=\"list-style:none;color: #28f428;font-size:30px;letter-spacing:3px;display:inline;height:45px;background-color:#0b0c0d;-webkit-appearance:none ;-webkit-border-radius: 0;border-radius:0;\">";
 
-echo "<center><input type=\"submit\" value=\"SHARE (".$credit.")\" style=\"border: 1px solid #59fbea;webkit-appearance: none;-webkit-border-radius: 0;height:36px;background-color: rgb(0, 79, 74);color: #59fbea;margin-left:60px;width:150px;font-size: 20px;padding-top:0px;\"></center></li></ul></div>";
+echo "<center><input type=\"submit\" value=\"SHARE (".$credit.")\" style=\"border: 1px solid #59fbea;-webkit-appearance:none ;-webkit-border-radius: 0;border-radius:0;height:36px;background-color: rgb(0, 79, 74);color: #59fbea;margin-left:60px;width:180px;font-size: 20px;padding-top:0px;\"></center></li></ul></div>";
 
 			
 
@@ -857,12 +857,12 @@ echo "<center><input type=\"submit\" value=\"SHARE (".$credit.")\" style=\"borde
 		
 		$gstat=$_REQ["group"];
 
-		if(!$gstat){$gstat="all";};
+		if(!$gstat){$gstat="following";};
 
-		if($gstat=="following"){$gchange="all";}
-		if($gstat=="all"){$gchange="follower";}
+		if($gstat=="following"){$gchange="all";$acshow="COLLECT";}
+		if($gstat=="all"){$gchange="follower";$acshow="ALL";}
 		
-		if($gstat=="follower"){$gchange="following";}
+		if($gstat=="follower"){$gchange="following";$acshow="SHARE";}
 		
 
 $gshow=$kpc->keva_group_show($asset);
@@ -990,7 +990,7 @@ echo "<div style=\"border: 0px solid #59fbea;display:block;width:100%;\"><ul sty
 
 
 
-		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:130px;display:block;\"><h2>[ ".$gstat." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"padding-top:7px;\"><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=following>Following</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=follower>Followers</a></font></p></li>";
+		echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=".$gchange."><li style=\"width:550px;border: 1px solid #59fbea;word-break: break-all;background-color: rgb(0, 79, 74);text-align: center;margin-top: 10px;margin-bottom: 7px;margin-right: 5px;margin-left: 1px;padding-top:10px;padding-left:2px;padding-right:2px;flex:auto; background-color: rgb(0, 79, 74);height:130px;display:block;\"><h2>[ ".$acshow." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a><p style=\"padding-top:7px;\"><font size=3 color=ffffff> ".$fing." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=following>COLLECT</a> &nbsp; ".$fer." <a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=".$ismine."&group=all&manageg=follower>SHARE</a></font></p></li>";
 
 
 
@@ -1193,7 +1193,9 @@ $stime=date('Ymd',$gtime);
 		$xtime=$stime;
 
 		if(!$gname){$gnamer="";}else{$gnamer=$gname."<br>";}
-			if($gnamespace==$asset){$gnamer=$title."<br>";}
+			if($gnamespace==$asset){$gnamer=$title."<br>";$gnamer="SHARE";}
+
+
 		
         echo "<div class=\"entry\"><div class=\"title\"><h3>".$gnamer."</h3></div><div class=\"body\"><p><font size=4><b><a href=\"dream.php?lang=&txid=".$txx."&title=".bin2hex($x_value)."&key=".bin2hex($x_value)."&pending=2\">".$x_value."</a></b></font></p></div></div>";
 			
