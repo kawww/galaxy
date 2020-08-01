@@ -548,7 +548,9 @@ else{
 
 $age= $kpc->keva_namespace($forname);
 
-echo "<script>window.location.href=decodeURIComponent('keva.php')</script>";
+$url="keva.php?lang=&newnp=".bin2hex($forname)."&newnptx=".$age['txid']; 
+
+echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
 
 }
 
@@ -772,7 +774,6 @@ if(isset($_REQ["asset"]) & strlen($_REQ["asset"])==64)
 
 if(isset($_REQ["mode"])){
 
-		
 
 //ipfs
 
@@ -967,6 +968,23 @@ if($_REQ["mode"]==4  & $keva_add=="on"){
 		
 			}
 
+//delete np tx
+
+if($_REQ["mode"]==11 & $keva_add=="on")
+
+			{
+$del=$_REQ["deltx"];
+
+
+
+$deltx=$kpc->removeprunedfunds($del);
+
+	$url="keva.php?lang="; 
+
+	echo "<script>window.location.href=decodeURIComponent('".$url."')</script>";
+
+			}
+
 
 
 //list keva namespace
@@ -1089,7 +1107,11 @@ foreach($age as $y_value=>$y)
 
 arsort($sortto);
 
+if($_REQ["newnp"]<>""){
 
+echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".hex2bin($_REQ["newnp"])." ] </h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">(pending)</p></li>";
+
+}
 
 			foreach($sortto as $x_value=>$x)
 
@@ -2050,7 +2072,7 @@ $linkipfs = json_decode($returnContent, true);
 
 //ipfs
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=2&showall=11><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$keva_linkipfs." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><a href=".$ipfscon." target=_blank><font size=1>".$linkipfs['data']['hash_urls'][0]."</font></a></li>";
 
 //bludit
 
