@@ -430,7 +430,7 @@ arsort($sortto);
 		
 
 
-			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&type=".$x_value."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&type=".bin2hex($x_value)."&ismine=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
 			
 			
 

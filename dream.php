@@ -3,7 +3,7 @@ error_reporting(0);
 
 $localip='127.0.0.1';
 
-$ipfscon="http://gotoipfs.com/#path=";
+$ipfscon="https://ipfs.globalupload.io/";
 
 $ismine="1";
 $keva_add="on";
@@ -808,14 +808,15 @@ echo "<div style=\"padding: 5px;margin-bottom: 10px;box-shadow: 2px 2px 2px hsla
 			
 			echo "<div style=\"display:block;width:100%;font-family: coda_regular, arial, helvetica, sans-serif;\"><ul style=\"padding-left:30px;border: 0px solid #59fbea;height:50px;margin-top:5px;padding-top:10px;\"><li style=\"list-style:none;color: #28f428;font-size:30px;letter-spacing:3px;display:inline;height:45px;background-color:#0b0c0d;\"><center>";
 
-			echo "DA-<input type=\"text\" name=\"newasset\" id=\"editor\" class=\"textarea-inherit\"  style=\"width:260px;border: 1px solid #666;font-family: coda_regular, arial, helvetica, sans-serif;-webkit-appearance: none;-webkit-border-radius:0;height:36px;font-size: 30px; background-color: rgb(11, 12, 13);color: #ddd;padding-left:10px;
-\" value=\"".$_REQUEST["hvalue"]."\" maxlength=14></center></li></ul>";
+			echo "DA-<input type=\"text\" name=\"newasset\" id=\"editor\" class=\"textarea-inherit\"  style=\"width:260px;border: 1px solid #59fbea;font-family: coda_regular, arial, helvetica, sans-serif;-webkit-appearance: none;-webkit-border-radius:0;height:36px;font-size: 30px; background-color: rgb(11, 12, 13);color: #ddd;padding-left:10px;
+\" value=\"".$_REQUEST["hvalue"]."\" maxlength=14 placeholder=\"0000 0000 0000\"></center></li></ul>";
 
 
 echo "<li style=\"list-style:none;color: #28f428;font-size:30px;letter-spacing:3px;display:inline;height:45px;background-color:#0b0c0d;-webkit-appearance:none ;-webkit-border-radius: 0;border-radius:0;\">";
 
 echo "<center><input type=\"submit\" value=\"SHARE (".$credit.")\" style=\"border: 1px solid #59fbea;-webkit-appearance:none ;-webkit-border-radius: 0;border-radius:0;height:36px;background-color: rgb(0, 79, 74);color: #59fbea;margin-left:60px;width:180px;font-size: 20px;padding-top:0px;\"></center></li></ul></div>";
 
+echo "<script>document.getElementById(\"editor\").addEventListener(\"input\", function(){var op=\"\";var tmp = document.getElementById(\"editor\").value.replace(/\-/g, \"\");for (var i=0;i<tmp.length;i++){if (i%4===0 && i>0){op = op + \"-\" + tmp.charAt(i);} else {op = op + tmp.charAt(i);} }document.getElementById(\"editor\").value = op;});</script>";
 			
 
 			$credit=$credit-10;
@@ -1566,6 +1567,8 @@ $txidget=$_REQ["txid"];
 										
 										if(strlen($valuex)<>34){$valuex="";}
 
+										$commentadd=$valuex;
+
 										if($_REQ["block"]<>""){$blocknum="/BLOCK ".$_REQ["block"];}
 						
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;\"><h4>Dream Code</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"padding-top:20px;\"><font size=10>".$key."</font></p></li>";
@@ -1625,7 +1628,7 @@ $combine=$combine.$asset." ".$txa."\r\n";
 			//button
 
 		
-			echo "</ul><ul><a href=\"?lang=".$_REQUEST["lang"]."\"><li style=\"background-color: rgb(0, 79, 74);height:100px;display:block;\"><h4>[ HOME ]</h4></a></li>";
+			echo "</ul><ul><a href=\"?lang=".$_REQUEST["lang"]."\"><li style=\"background-color: rgb(0, 79, 74);height:100px;display:block;\"><h4>[ HOME ]</h4></a></li></ul><ul>";
 
 		//tips
 
@@ -1733,7 +1736,7 @@ $combine=$combine.$asset." ".$txa."\r\n";
 				
 			}
 		
-			echo "<a href=\"https://ravenx.net\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;RAVENX.NET&nbsp;&nbsp;</a>&nbsp;&nbsp;</p></li></ul><ul>";
+			echo "</p></li></ul><ul>";
 			}
 		
 				$blocknum=$rpc->getblockcount();
@@ -1799,9 +1802,20 @@ if(strcmp($destination,$commentadd)==0)
 
 		arsort($totalassx);
 
-	
+
 
 		foreach($totalassx as $commone){
+
+		
+		if(strlen($commone['ipfs'])=="46"){
+
+			$clink="[ Tx:".$x_value." ] <a href=".$ipfscon."".$commone['ipfs'].">[ IPFS ] </a> [ ".date('Y-m-d H:i', $commone['time'])." ] ";
+
+						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;margin-top:15px;\"><p  align=left><br><img src=\"".$ipfscon."".$commone['ipfs']."\" width=\"800\"><br><br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";
+
+				
+						} 
+
 		
 		$transaction= $kpc->getrawtransaction($commone['ipfs'],1);
 
@@ -1810,6 +1824,8 @@ if(strcmp($destination,$commentadd)==0)
 			foreach($transaction['vout'] as $vout)
 	   
 				  {
+
+				
 
 					$op_return = $vout["scriptPubKey"]["asm"]; 
 
