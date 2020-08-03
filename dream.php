@@ -601,10 +601,14 @@ $ageu= $kpc->keva_list_namespaces();
 			foreach($ageu as $nspace)
 
 				{
+			$acdreamid=$nspace['namespaceId'];
+			$hide = $kpc->keva_get($acdreamid,hide);
+
+			if(!$hide['value'] ){
 			
 			if($nspace['displayName']=="Animal Crossing Dream"){$force_namespace=$nspace['namespaceId'];}
 				
-				}
+				}}
 
 
 
@@ -1809,7 +1813,7 @@ if(strcmp($destination,$commentadd)==0)
 		
 		if(strlen($commone['ipfs'])=="46"){
 
-			$clink="[ Tx:".$x_value." ] <a href=".$ipfscon."".$commone['ipfs'].">[ IPFS ] </a> [ ".date('Y-m-d H:i', $commone['time'])." ] ";
+			$clink="[ Tx:".$commone['name']." ] <a href=".$ipfscon."".$commone['ipfs'].">[ IPFS ] </a> [ ".date('Y-m-d H:i', $commone['time'])." ] ";
 
 						echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;margin-top:15px;\"><p  align=left><br><img src=\"".$ipfscon."".$commone['ipfs']."\" width=\"800\"><br><br><p align=right style=\"font-size:16px;\">".$clink."&nbsp;</p></li>";
 
