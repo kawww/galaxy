@@ -311,6 +311,8 @@ if(!isset($_REQUEST["asset"]))
 		
 		echo"<a href=force.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ FORCE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
 		
+		echo"<a href=shell.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SHELL ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		
 
 		echo"<a href=subscription.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_subscription."
  ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
