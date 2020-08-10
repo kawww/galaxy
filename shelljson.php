@@ -65,15 +65,15 @@ if($getdata["has_ipfs"]=="0"){$one="<font color=white>".$one."</font>";$two="<fo
 else
 		{
 
-	if(strlen($getdata["ipfs_hash"])=="46")
+	if(isset($getdata["ipfs_hash"]))
 
 			{
 				
 				$one="<a href=\"".$ipfscon."".$getdata["ipfs_hash"]."\">".$one."</a>";
 			}
-	if(strlen($getdata["ipfs_hash"])=="64")
+	if(isset($getdata["txid"]))
 			{
-			$one="<a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$getdata["ipfs_hash"].">".$one."</a>";
+			$one="<a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$getdata["txid"].">".$one."</a>";
 			}
 		
 		$two="<font color=\"#FFDD55 \">".$two."<font>";
