@@ -44,6 +44,7 @@ a:hover { text-decoration: underline }
  border:0px solid black;
  width:300px;
  margin-bottom:10px;
+
 }
 
 
@@ -213,7 +214,10 @@ function createNewPost(postId) {
  postDiv.appendChild(postTitleDiv);      
  postDiv.appendChild(postContentDiv);      
 
- document.getElementById("thread").appendChild(postDiv);  
+document.getElementById("thread").appendChild(postDiv);
+
+
+
 }
 
 
@@ -261,13 +265,15 @@ Welcome to Universal Blockchain Operating System <br><br>
 
 </div>
 
+
 <div>
 <input type="hidden" name="threadid" id="threadid" value="1">
 
-RAVENCOIN:> <input type="text" name="username" id="username" onkeydown='if(event.keyCode==13){submitPost();}' style= "width:200px;background-color:transparent;outline:medium;border:0;border-bottom:1px solid #0F0">
+RAVENCOIN:> <input type="text" name="username" id="username" onkeydown='if(event.keyCode==13){submitPost();}' style= "width:200px;background-color:transparent;outline:medium;border:0;border-bottom:1px solid #0F0;margin-bottom:20px;">
 </div>
-</div>
-   
-        </div>
+</div></div>
+
+
+
 </body>
 </html> 
