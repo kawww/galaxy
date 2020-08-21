@@ -23,6 +23,7 @@ echo "</select>";
 echo "<input type=\"hidden\" name=\"asset\" value=\"".$_REQUEST["asset"]."\">";
 echo "<input type=\"hidden\" name=\"group\" value=\"".$_REQUEST["group"]."\">";
 echo "<input type=\"hidden\" name=\"gname\" value=\"".$_REQUEST["gname"]."\">";
+echo "<input type=\"hidden\" name=\"txid\" value=\"".$_REQUEST["txid"]."\">";
 
 echo "</form>";
 

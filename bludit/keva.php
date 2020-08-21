@@ -18,16 +18,59 @@ $_REQ = array_merge($_GET, $_POST);
 
 //rpc
 
+		$arr=array();
+		$totalass=array();
+			$combine="";
 
 
 if(isset($_REQ["asset"])){$asset=$_REQ["asset"];}
 
 if(!$_REQ["asset"]){$asset="NdwmTDJw1GRnLzz3CARsp3tX878pogZqLS";}
 
-if(isset($_REQ["txid"])){$asset=$agetx['details'][0]['keva'];$asset=str_replace("update:","",$asset);$asset=str_replace("new:","",$asset);$asset=trim($asset);}
 
+$txid=$_REQ["txid"];
+
+if(isset($txid) & strlen($txid)=="64"){
+
+			$transaction= $kpc->getrawtransaction($txid,1);
+
+			$blockhash=$kpc->getblock($transaction["blockhash"]);
+
+			foreach($transaction['vout'] as $vout)
+	   
+				  {
+
+					$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+					$arrx = explode(' ', $op_return); 
+
+					if($arrx[0] == 'OP_KEVA_PUT') 
+						{
+
+					
+					 $arr["key"]=hex2bin($arrx[2]);
+		
+					$arr["value"]=$arrx[3];
+
+					$arr["gtime"]=$blockhash["time"];
+					$arr["heightx"]=$$blockhash["height"];
+
+					 //$kadd=$vout["scriptPubKey"]["addresses"][0];
+
+					 array_push($totalass,$arr);
+				
+						} 
+
+				 }
+
+			}
 	
 
+	
+if(!$txid)
+
+{
 		$asset=trim($asset);
 		
 		$gstat=$_REQ["group"];
@@ -98,9 +141,6 @@ $fer=0;
 
 		
 
-		$arr=array();
-		$totalass=array();
-			$combine="";
 
 		foreach($info as $x_value=>$x)
 
@@ -113,7 +153,7 @@ $fer=0;
 			$arr["heightx"]=$height;
 			$arr["key"]=$key;
 			$arr["adds"]=$address;
-			$arr["value"]=$value;
+			$arr["value"]=bin2hex($value);
 			$arr["txx"]=$txid;
 			$arr["gnamespace"]=$namespace;
 			
@@ -146,11 +186,17 @@ $fer=0;
 
 			arsort($totalass);
 
-			$listasset=$totalass;
+			
 
 
 
-			//menu
+			
+
+}
+
+$listasset=$totalass;
+
+//menu
 
 
 			$namespace= $kpc->keva_get($asset,"_KEVA_NS_");
