@@ -53,7 +53,7 @@ foreach ($listasset as $k=>$v)
 			
 			extract($v);
 
-
+$value=hex2bin($value);
 
 		$key2=strip_tags($key,"");
 
@@ -152,7 +152,7 @@ foreach ($listasset as $k=>$v)
 
 				<!-- Page description -->
 				
-				<p class="page-description"><?php echo turnUrlIntoHyperlink($valuex); ?></p>
+				<p class="page-description"><?php echo $valuex; ?></p>
 			
 
 				<!-- Page content until the pagebreak -->

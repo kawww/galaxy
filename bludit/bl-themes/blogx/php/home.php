@@ -17,7 +17,7 @@ foreach ($listasset as $k=>$v)
 			
 			extract($v);
 
-
+$value=hex2bin($value);
 
 		$key2=strip_tags($key,"");
 

@@ -2,6 +2,7 @@
 <html lang="<?php echo Theme::lang() ?>">
 <head>
 <?php include(THEME_DIR_PHP.'head.php'); ?>
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
 
