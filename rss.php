@@ -291,7 +291,7 @@ $current_encode = mb_detect_encoding($value['value'], array("ASCII","GB2312","GB
     $item = [
         'title' => $value['key'],
         'description' => $encoded_str,
-        'link' => 'http://galaxyos.io/bludit/?theme=koh_terminal&amp;asset='.$asset.'&amp;group=no&amp;gname='.bin2hex($value['key']),
+        'link' => 'http://galaxyos.io/bludit/?theme=alternative&amp;txid='.$value['txx'],
         'pubDate' => date("D, d M Y H:i:s ", $value['ctime']) . "GMT",
         'guid' => $value['heightx'],
     ];
