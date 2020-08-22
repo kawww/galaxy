@@ -90,7 +90,7 @@ for ($i = 0; $i < $start; $i++) {
     }
 }
 
-//开始截取
+
 if ($length == "") {
     return substr($str, $pos);
 } else {
@@ -147,6 +147,8 @@ if($error != "")
 			
 				$gsub=my_substr($forsub,0,$gtest);
 
+			
+
 						
 
 $age= $kpc->keva_put($_REQ["asset"],$fortit,$gsub);
@@ -172,6 +174,7 @@ while($gtotal>0){
 
 $gsub=my_substr($gleft,0,$gtest);
 
+$gsub=$gsub.">>>";
 
 sleep(1);
 
