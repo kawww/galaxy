@@ -1372,6 +1372,10 @@ $fer=0;
 												 {
 											      $commentadd=trim(strip_tags(str_replace("RAVENCOIN_COMMENT_ADDRESS:","",$tool)));
 													}
+											if(stristr($tool,"rvnkaw") == true)
+												 {
+											      $commentadd=trim(strip_tags(str_replace("rvnkaw:","",$tool)));
+													}
 											
 											
 											}
@@ -1812,7 +1816,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 				
 			}
 			
-			echo "<a href=\"https://ravenx.net\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;RAVENX.NET&nbsp;&nbsp;</a>&nbsp;&nbsp;</p></li></ul><ul>";
+			echo "&nbsp;&nbsp;</p></li></ul><ul>";
 		
 		
 				$blocknum=$rpc->getblockcount();
@@ -2058,6 +2062,10 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 		//milestone
 
 			echo "<a href=stone.php?lang=".$_REQUEST["lang"]."&asset=".$asset."&showall=11&stone=1&group=".$gstat." target=_blank><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ MILESTONE ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">-</a></li>";
+
+		//rss
+
+			echo "<a href=rss.php?&asset=".$asset." target=_blank><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ RSS ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">Feed</a></li>";
 
 		if($_REQ["showall"]=="11"){
 			
