@@ -61,6 +61,8 @@ $value=hex2bin($value);
 
 		//check re
 
+
+
 		if(strlen($key2) == "64"){
 		
 		
@@ -126,10 +128,39 @@ $value=hex2bin($value);
 			$key=trim($key);
 			$keylink=bin2hex($key);
 
-		
+		//comment
+
+								
+			
+								 if(stristr($value,"::") == true)
+									{
+									
+										$commtool=explode('::', $value);
+
+										$value=$commtool[0];
+
+									    foreach ($commtool as $tool) 
+
+											{
+
+											 if(stristr($tool,"RAVENCOIN_COMMENT_ADDRESS") == true)
+												 {
+											      $commentadd=trim(strip_tags(str_replace("RAVENCOIN_COMMENT_ADDRESS:","",$tool)));
+													}
+											if(stristr($tool,"rvnkaw") == true)
+												 {
+											      $commentadd=trim(strip_tags(str_replace("rvnkaw:","",$tool)));
+													}
+											
+											
+											}
+
+									}
 
 
 //showall
+
+
 
 			if(stristr($value,"decodeURIComponent") == true){$value=$txx;}
 
@@ -152,7 +183,113 @@ $value=hex2bin($value);
 
 				<!-- Page description -->
 				
-				<p class="page-description"><?php echo $valuex; ?></p>
+				<p class="page-description"><?php echo $valuex; ?><br>
+				
+				<?php
+
+				if($commentadd<>""){
+
+
+				echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listtagsforaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+				//$assetinfo = $rpc->getassetdata($gift);
+
+				$gift=str_replace("#","",$giftn);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				$giftn=$gift_value;
+				
+				$giftn=str_replace("_"," ",$giftn);
+
+/*
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				*/
+
+				$giftlink="asset.php?lang=&unicode=0&sort=1&asset=".$gift_value;
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#888;color:#eee;height:30px\">&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "</p></li>";
+			
+						echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listassetbalancesbyaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+				$assetinfo = $rpc->getassetdata($gift);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				$gift_value=str_replace("_"," ",$gift_value);
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#16f516;\" target=_blank>&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#16f516;\" target=_blank>&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#16f516;color:#eee;\">&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "&nbsp;&nbsp;</p></li>";
+				
+				echo "<hr><font size=1>The content support blockchain signature/assets powered by ravencoin. The address is </font>".$commentadd."<br>";
+				
+				
+				
+				
+				
+				
+				
+				}
+				
+				?>
+				</p>
 			
 
 				<!-- Page content until the pagebreak -->
