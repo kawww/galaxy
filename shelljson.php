@@ -20,8 +20,49 @@ $rpc->port=$rrpcport;
 $_REQ = array_merge($_GET, $_POST);//iotstat
 
 
-$comm= $_REQ["username"]; 
+$comm=trim($_REQ["username"]); 
 
+
+//coin
+
+if($comm=="KEVACOIN" or $comm=="kevacoin"){
+
+	header("location:/shell?coin=KEVACOIN");
+
+}
+
+if($comm=="RAVENCOIN" or $comm=="ravencoin"){
+
+	header("location:/shell?coin=RAVENCOIN");
+
+}
+
+
+//cls
+
+
+if($comm=="cls" or $comm=="clear"){
+
+header("location:/shell");
+
+}
+
+//os
+
+
+if($comm=="os"){
+
+header("location:/os");
+
+}
+
+$coin=$_REQ["coin"];
+
+//ravencoin
+
+
+
+if($coin=="RAVENCOIN"){
 
 //buy
 
@@ -95,14 +136,7 @@ if($arr[0]=="buy"){
 
 
 
-//cls
 
-
-if($comm=="cls" or $comm=="clear"){
-
-header("location:/shell");
-
-}
 
 
 //getinfo
@@ -363,6 +397,69 @@ if($arr[0]=="sell"){
 	echo "<br><br>(This is demo for fun)";
 
 	}
+}
 
+//ravencoin 
+
+//kevacoin
+
+if($coin=="KEVACOIN"){
+
+//getinfo
+
+
+if($comm=="getinfo"){
+
+$run= $kpc->get_info();
+
+foreach($run as $one=>$two)
+	{
+	if($one=="deprecation-warning"){continue;}
+		echo $one.":".$two."<br>";
+
+	}
+}
+
+//open
+
+//buy
+
+$arr=array();
+
+$arr=explode(" ",$comm);
+
+if($arr[0]=="open"){
+
+			if(strlen($arr[1])=="34")
+				
+						{
+
+						$asset=$arr[1];
+
+						$namespace= $kpc->keva_get($asset,"_KEVA_NS_");
+
+						$title=bin2hex($namespace['value']);
+
+						header("location:/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no");
+						}
+
+			
+			
+
+		
+
+
+	
+
+	}
+
+
+
+
+
+
+
+
+}
 
 ?>

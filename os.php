@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>SYSTEM</title>
+        <title>OS</title>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<style>
 
@@ -112,7 +112,7 @@ vertical-align:middle;
   -webkit-border-radius: 0;
   font-size:24px;
 
-width:100%;
+
 
  
   
@@ -190,8 +190,7 @@ width:100%;
             li
             {
                 border: 1px solid #59fbea;
-                width: 430px;
-				height:100px;
+        
 				word-break: break-all;
 				background-color: rgb(0, 79, 74);
                 text-align: center;
@@ -222,7 +221,9 @@ color:#ccc;
 margin-top:2px;
 
 }
+
 .one {display:inline-block;font-size:8px;width:12px;transform:rotate(90deg);-webkit-transform: rotate(90deg);}
+
 
 </style>
 
@@ -256,11 +257,9 @@ if(!$blocknext){
 $blocknow=$kpc-> getblockcount();$blocknow=intval($blocknow)+1;}else{$blocknow=intval($blocknext)+1;}
 
 
-if($webmode==1){
 
-$blockread=$blocknow-$sysweb;}else{
 
-$blockread=$blocknow-$syslocal;}
+$blockread=$blocknow-50;
 
 $blockleft=$blocknow-$blockread;
 
@@ -289,23 +288,23 @@ $(function(){
 	    var pageH = $(document.body).height();
 		var scrollT = $(window).scrollTop();
 		var aa = (pageH-winH-scrollT)/winH;
-		if(aa<0.02){
+		if(aa<0.92){
 			
 		$.ajax({
           url: "systemjson.php",
            async: false,
 			  data:{page:x},
+			
             success: function (obj) {
               if (obj) {
                   var datalist = JSON.parse(obj);
                   
                   var str = "";
+				
+				  
+
                   for (var i = 0; i < datalist.length; i++) {
-
-
-					  if(datalist[i].tx==1){
-
-						  var cb='['+datalist[i].block+']';
+var cb='['+datalist[i].block+']';
 var key, count = 0;
 for(key in cb) {
   if(cb.hasOwnProperty(key)) {
@@ -324,17 +323,17 @@ for(key in cb) {
 					ftwo+='<span class=\"one\">[</span>';
 
 				}
+
+
+
+															
+					  
 						  
 						  str += '<li style=\"background-color: rgb(0, 79, 74);display:block;height:125px;width:125px;line-height:10px;font-size:24px;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\"><p style=\"font-size:12px;center;\">'+fone+'<br><span style=\"letter-spacing:5.2px;padding-left:4px;\">' + datalist[i].block + '</span><br>'+ftwo+'</p><br><p><span style=\"border:1px solid #fff;padding:5px 5px 5px 5px;\">&#x5f85;&#x6a5f;</span></p></li>';
 
-
-                       }else{
+                       
 						   
-						   str += '<ul><li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>' + datalist[i].content + '</p></li>';
-						   
-						   str += '<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=<?php echo $_REQUEST["lang"]; ?>&txid=' + datalist[i].tx + '>' + datalist[i].tx + '</a> [ <a href=https://explorer.kevacoin.org/address/' + datalist[i].add + ' target=_blank>address</a> ]  [ ' + datalist[i].block + ' ]</p></li></ul>';
-						   
-						   }
+						  
                  }
 				 
                   $("#add").append(str);
@@ -359,7 +358,7 @@ for(key in cb) {
 
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;width:99%;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></div></form></div>";
+
 	
 
 
@@ -398,6 +397,8 @@ while($blocknow>$blockread)
 			
 		$transaction= $kpc->getrawtransaction($txa,1);
 
+		$countb=0;
+
 					foreach($transaction['vout'] as $vout)
 	   
 						  {
@@ -407,8 +408,8 @@ while($blocknow>$blockread)
 				
 					$arr = explode(' ', $op_return); 
 
-					if($arr[0] == 'OP_KEVA_PUT') 
-								{
+					
+
 								$cona=$arr[1];
 								 $cons=$arr[2];
 								 $conk=$arr[3];
@@ -423,12 +424,16 @@ while($blocknow>$blockread)
 
 								$arrx["size"]=$transaction['size'];
 
+								$arrx["count"]=$countb;
+
+								$countb=$countb+1;
+
 								array_push($totalass,$arrx);
 
 							
 
 
-								}
+								
 						  }
 
 		}
@@ -447,13 +452,13 @@ echo "<div id=\"universe\" class=\"crt\"><div id=\"nav\"><ul id=\"add\">";
 if(count($totalass)==0){
 	
 	
-	echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$system_noblock." [ ".$blockshow." ]  - [ ".$blockread." ]</p></li>";
+	//echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$system_noblock." [ ".$blockshow." ]  - [ ".$blockread." ]</p></li>";
 
 	
 
 if($webmode==1){$nextblocks=$sysweb;}else{$nextblocks=$syslocal;}
 
-echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:99%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$nextblocks."  BLOCK</h3></a></li></ul></div></div>";
+//echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:99%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$nextblocks."  BLOCK</h3></a></li></ul></div></div>";
 exit;
 
 }
@@ -466,7 +471,7 @@ foreach ($totalass as $k=>$v)
 								extract($v);
 
 
-$asset = $rpc->getassetdata($snewkey);
+//$asset = $rpc->getassetdata($snewkey);
 
 if(isset($asset) & $asset['has_ipfs']==1){$snewkey="<a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$asset['txid'].">".$snewkey."</a>";}
 
@@ -487,160 +492,42 @@ $x_value=$snewkey;
 
 
 			//namespace channel
-											if(strlen($value)==34)
 
+			if($count<>0){$count="X".$count;
+			}else{$count="";}
 
-							
-											{
+$frame=strlen($block)+strlen($count);
 
-										
-									
-											if(!isset($_REQ["sub"])){
+$fone="<span class=\"one\">[</span>";
+$ftwo="<span class=\"one\">]</span>";
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
+while($frame<>1){
 
+	$fone=$fone."<span class=\"one\">[</span>";
+	$ftwo=$ftwo."<span class=\"one\">]</span>";
 
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
+	$frame=$frame-1;
+}
 
-												
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
-											
-										
-													}
+if($sinfo<>""){
 
+	echo "<li style=\"background-color:  rgb(255,255,0,0.4);display:block;height:125px;width:125px;line-height:10px;font-size:24px;border-color:#ffff00;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\">";
 
+}
 
-											}
-											
-											if(strlen($value)<>34)
-											
-											{
+else
 
-										
+								{
 
-											$valuem=substr($value,0,34);
-
-											
-
-											$vmkpc=$kpc->keva_filter($valuem);
-
+			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:125px;width:125px;line-height:10px;font-size:24px;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\">";
 			
-									
-
-											if(!$vmkpc) 
-		
-											   {
-	
-											
-														
-											
-
-											if(isset($_REQ["sub"]) & $_REQ["sub"]==$size)
-														
-													
-													{
-
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
-
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
-
-													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
-
-									
-												}
-
-												//no sub tx
-
-										if(!isset($_REQ["sub"])){
-
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
-
-												  if(stristr($valuex,"src") == true)
-											{
-												
-												echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".$valuex."</p></li>";}	  
-											
-
-													else
-
-
-											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
-
-													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
-
-												}
-
-											}
-
-											
-										
-
-											else
-
-											{
-
-										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:90%;margin-top:50px;padding-bottom:0px;\"><h3>".$snewkey."</h3></li>";
-
-
-												
-										$arr1=explode("\n",$value);
-											
-										
-									
-										foreach ($arr1 as $m=>$n) {
-
-											if(strlen($n)>34){
-
-
-											list($names,$keys)=explode(" ",$n);
-												
-												
-											$listasset= $kpc->keva_get($names,trim($keys));
-													
-											
-
-											foreach ($listasset as $v) 
-
-													{
 			
-											extract($v);	
-											
-											
-		
-											$valuex=str_replace("\n","<br>",$v);
-
-											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
-
-
-
-											
-													}
-
-
-
-
-			
-													}
-
-
-			
-	
-														}
-
-															
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";	
-											}
-
-
-
-											}
-
+								}
 																	
 											
 
-							
+							echo "<p style=\"font-size:12px;center;\">".$fone."<br><span style=\"letter-spacing:5.2px;padding-left:4px;\">".$block."".$count."</span><br>".$ftwo."</p><br><p><span style=\"border:1px solid #fff;padding:5px 5px 5px 5px;\">&#x5f85;&#x6a5f;</span></p></li>";
+											
 					
 									
 				
@@ -659,7 +546,7 @@ $x_value=$snewkey;
 
 if($webmode==1){$nextblocks=$sysweb;}else{$nextblocks=$syslocal;}
 
-echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:99%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$nextblocks."  BLOCK</h3></a></li>";
+//echo "<a href=?lang=".$_REQUEST["lang"]."&blocknext=".$blocknow."><li style=\"background-color: rgb(0, 79, 74);display:block;height:60px;width:99%;margin-top:50px;padding-bottom:0px;\"><h3>NEXT  ".$nextblocks."  BLOCK</h3></a></li>";
 
 
 
