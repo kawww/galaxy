@@ -139,6 +139,16 @@ $value=hex2bin($value);
 
 										$value=$commtool[0];
 
+										if(strlen(trim(strip_tags($commtool[1]))) == 34)
+												 {
+											      $commentadd=trim(strip_tags($commtool[1]));
+
+												 
+													}
+
+
+							
+
 									    foreach ($commtool as $tool) 
 
 											{
@@ -151,6 +161,9 @@ $value=hex2bin($value);
 												 {
 											      $commentadd=trim(strip_tags(str_replace("rvnkaw:","",$tool)));
 													}
+
+													
+											
 											
 											
 											}
