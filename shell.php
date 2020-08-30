@@ -155,11 +155,21 @@ textarea {
 
 </style>
 
+<?php 
+
+$coin=$_REQ["coin"];
+
+if(!$coin){$coin="RAVENCOIN";}
+
+
+?>
+
+
 <script>
 	
 var xmlHttp;      
 var username;    
-
+var coin;   
 var threadid;    
 
 
@@ -177,13 +187,14 @@ function submitPost() {
 
  username = document.getElementById("username").value;
  threadid = document.getElementById("threadid").value;
+ coin = document.getElementById("coin").value;
  if (checkForm()) {
   createXmlHttp();
   xmlHttp.onreadystatechange = submitPostCallBack; 
   xmlHttp.open("POST", "/shelljson.php", true);   
 
   xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-  xmlHttp.send("username=" + encodeURI(username) + "&threadid=" + threadid);   
+  xmlHttp.send("username=" + encodeURI(username) + "&threadid=" + threadid+ "&coin=" + coin);   
  }
 }
 
@@ -209,12 +220,13 @@ function createNewPost(postId) {
  var postDiv = createDiv("post", ""); 
  postDiv.id = "post" + postId;   
 
- var postTitleDiv = createDiv("post_title", "RAVENCOIN:> " + username + ""); 
+ var postTitleDiv = createDiv("post_title", "<?php echo $coin; ?>:> " + username + ""); 
  var postContentDiv = createDiv("post_content", "" + xmlHttp.responseText + ""); 
  postDiv.appendChild(postTitleDiv);      
  postDiv.appendChild(postContentDiv);      
 
 document.getElementById("thread").appendChild(postDiv);
+
 
 
 
@@ -256,6 +268,10 @@ Welcome to Universal Blockchain Operating System <br><br>
  * Documentation:  kevacoin.org<br>
  * Documentation:  ipfs.io<br><br>
 
+ * Ravencoin Shell:  rvn.galaxyos.io<br>
+ * Kevacoin &nbsp;Shell:  keva.galaxyos.io<br>
+ <br>
+
   System information as of <?php echo date("Y-m-d h:i:s"); ?> <br><br>
 
   Ravencoin Blocks:  <?php  $rnum= $rpc->getblockcount();echo $rnum; ?> <br>           
@@ -267,9 +283,12 @@ Welcome to Universal Blockchain Operating System <br><br>
 
 
 <div>
-<input type="hidden" name="threadid" id="threadid" value="1">
 
-RAVENCOIN:> <input type="text" name="username" id="username" onkeydown='if(event.keyCode==13){submitPost();}' style= "width:200px;background-color:transparent;outline:medium;border:0;border-bottom:1px solid #0F0;margin-bottom:20px;">
+
+<input type="hidden" name="threadid" id="threadid" value="1">
+<input type="hidden" name="coin" id="coin" value="<?php echo $coin; ?>">
+
+<?php echo $coin; ?>:> <input type="text" name="username" id="username" onkeydown='if(event.keyCode==13){submitPost();}' style= "width:200px;background-color:transparent;outline:medium;border:0;border-bottom:1px solid #0F0;margin-bottom:20px;">
 </div>
 </div></div>
 

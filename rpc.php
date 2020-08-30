@@ -796,7 +796,203 @@ if(isset($consolespace))
 
 
 
+//check58
 
+class Hash
+{
+    public static function SHA256(string $data, $raw = true): string
+    {
+        return hash('sha256', $data, $raw);
+    }
+
+    public static function sha256d(string $data): string
+    {
+        return hash('sha256', hash('sha256', $data, true), true);
+    }
+
+    public static function RIPEMD160(string $data, $raw = true): string
+    {
+        return hash('ripemd160', $data, $raw);
+    }
+}
+
+class Base58
+{
+    const AVAILABLE_CHARS = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+
+    public static function encode($num, $length = 58): string
+    {
+        return Crypto::dec2base($num, $length, self::AVAILABLE_CHARS);
+    }
+
+    public static function decode(string $addr, int $length = 58): string
+    {
+        return Crypto::base2dec($addr, $length, self::AVAILABLE_CHARS);
+    }
+}
+
+/**
+ * @codeCoverageIgnore
+ */
+class Base58Check
+{
+    /**
+     * Encode Base58Check
+     *
+     * @param string $string
+     * @param int $prefix
+     * @param bool $compressed
+     * @return string
+     */
+    public static function encode(string $string, int $prefix = 128, bool $compressed = true)
+    {
+        $string = hex2bin($string);
+
+        if ($prefix) {
+            $string = chr($prefix) . $string;
+        }
+
+        if ($compressed) {
+            $string .= chr(0x01);
+        }
+
+        $string = $string . substr(Hash::SHA256(Hash::SHA256($string)), 0, 4);
+
+        $base58 = Base58::encode(Crypto::bin2bc($string));
+        for ($i = 0; $i < strlen($string); $i++) {
+            if ($string[$i] != "\x00") {
+                break;
+            }
+
+            $base58 = '1' . $base58;
+        }
+        return $base58;
+    }
+
+    /**
+     * Decoding from Base58Check
+     *
+     * @param string $string
+     * @param int $removeLeadingBytes
+     * @param int $removeTrailingBytes
+     * @param bool $removeCompression
+     * @return bool|string
+     */
+    public static function decode(string $string, int $removeLeadingBytes = 1, int $removeTrailingBytes = 4, bool $removeCompression = true)
+    {
+        $string = bin2hex(Crypto::bc2bin(Base58::decode($string)));
+
+        //If end bytes: Network type
+        if ($removeLeadingBytes) {
+            $string = substr($string, $removeLeadingBytes * 2);
+        }
+
+        //If the final bytes: Checksum
+        if ($removeTrailingBytes) {
+            $string = substr($string, 0, -($removeTrailingBytes * 2));
+        }
+
+        //If end bytes: compressed byte
+        if ($removeCompression) {
+            $string = substr($string, 0, -2);
+        }
+
+        return $string;
+    }
+}
+
+
+/**
+ * @codeCoverageIgnore
+ */
+class Crypto
+{
+    public static function bc2bin($num)
+    {
+        return self::dec2base($num, 256);
+    }
+
+    public static function dec2base($dec, $base, $digits = false)
+    {
+        if ($base < 2 || $base > 256) {
+            die("Invalid Base: " . $base);
+        }
+
+        bcscale(0);
+        $value = "";
+
+        if (!$digits) {
+            $digits = self::digits($base);
+        }
+
+        while ($dec > $base - 1) {
+            $rest = bcmod($dec, $base);
+            $dec = bcdiv($dec, $base);
+            $value = $digits[$rest] . $value;
+        }
+        $value = $digits[intval($dec)] . $value;
+
+        return (string)$value;
+    }
+
+    public static function base2dec($value, $base, $digits = false)
+    {
+        if ($base < 2 || $base > 256) {
+            die("Invalid Base: " . $base);
+        }
+
+        bcscale(0);
+
+        if ($base < 37) {
+            $value = strtolower($value);
+        }
+        if (!$digits) {
+            $digits = self::digits($base);
+        }
+
+        $size = strlen($value);
+        $dec = "0";
+
+        for ($loop = 0; $loop < $size; $loop++) {
+            $element = strpos($digits, $value[$loop]);
+            $power = bcpow($base, $size - $loop - 1);
+            $dec = bcadd($dec, bcmul($element, $power));
+        }
+
+        return (string)$dec;
+    }
+
+    public static function digits($base)
+    {
+        if ($base > 64) {
+            $digits = "";
+            for ($loop = 0; $loop < 256; $loop++) {
+                $digits .= chr($loop);
+            }
+        } else {
+            $digits = "0123456789abcdefghijklmnopqrstuvwxyz";
+            $digits .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ-_";
+        }
+        $digits = substr($digits, 0, $base);
+
+        return (string)$digits;
+    }
+
+    public static function bin2bc($num)
+    {
+        return self::base2dec($num, 256);
+    }
+}
+
+ function getBase58CheckAddress($addressBin){
+            $hash0 = Hash::SHA256($addressBin);
+            $hash1 = Hash::SHA256($hash0);
+            $checksum = substr($hash1, 0, 4);
+            $checksum = $addressBin . $checksum;
+            $result = Base58::encode(Crypto::bin2bc($checksum));
+
+            return $result;
+        }
 
 
 //language

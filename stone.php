@@ -29,139 +29,77 @@ $_REQ = array_merge($_GET, $_POST);//iotstat
     <meta charset="utf-8">
     <title>MILESTONE</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
+
 <style>
 
-html, body {
-  background-color: #0b0c0d;
-  color: #fff;
-  font-size: 15px;
+<?php
 
-  display: flex;
+if(!$_REQ["shell"]){ 
 
-  min-height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 2vh 0px;
-  font-family: 'Source Sans Pro', arial, sans-serif;
-  font-weight: 300;
+echo ".timeline {width: 100%;max-width: 800px;padding: 50px 20px;position: relative;box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2);}";
 
-  box-sizing: border-box;
-  * {
-    box-sizing: border-box;
-  }
+echo ".timeline:before {content: '';position: absolute;top: 0px;left: calc(33% + 15px);bottom: 0px;width: 4px;background: #ddd;}";
 
-}
+echo ".timeline:after {content: \"\";display: table;clear: both;}";
+echo ".entry {clear: both;text-align: left;position: relative;}";
 
+echo ".entry .title {margin-bottom: .5em;font-size:16px;float: left;width: 30%;padding-right: 34px;text-align: right;position: relative;}";
 
-a:link,
-a:visited,
-a:active{
- transition:0.5s;
-color: #28f428;	
-  text-decoration: none;
+echo ".entry .title:before {content: '';position: absolute;width: 8px;height: 8px;border: 4px solid salmon;background-color: #fff;border-radius: 100%;top: 5%;right: -8px;z-index: 99;}";
+
+echo ".entry .title h3 {margin: 0;font-size: 120%;}";
+
+echo ".entry .title p {margin: 0;line-height:50px;font-size: 100%;}";
+
+echo ".entry .body {margin: 0 0 3em;float: right;font-size:16px;width: 62%;padding-left: 30px;}";
+
+echo ".entry .body p {line-height: 1.4em;}";
+echo ".entry .body p:first-child {margin-top: 0;font-weight: 400;}";
+echo ".entry .body ul {color: #ddd;padding-left: 0;list-style-type: none;}";
+echo ".entry .body ul li:before {content: \"¨C\";margin-right: .5em;}";
+
 }
 
-a:hover { color:yellow; }
+else
+
+{
 
 
-.timeline {
-  width: 100%;
-  max-width: 800px;
 
-  padding: 50px 20px;
-  position: relative;
-  box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2);
-}
-.timeline:before {
-  content: '';
-  position: absolute;
-  top: 0px;
-  left: calc(33% + 15px);
-  bottom: 0px;
-  width: 4px;
-  background: #ddd;
-}
-.timeline:after {
-  content: "";
-  display: table;
-  clear: both;
+echo ".entry .body ul {color: #fff;padding-left: 0;font-size: 18px;vlist-style-type: none;}";
+
+
+
 }
 
-.entry {
-  clear: both;
-  text-align: left;
-  position: relative;
-  
-}
-.entry .title {
-  margin-bottom: .5em;
-  font-size:16px;
-  
-  float: left;
-  width: 30%;
-  padding-right: 34px;
-
-  text-align: right;
-  position: relative;
-}
-.entry .title:before {
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 4px solid salmon;
-  background-color: #fff;
-  border-radius: 100%;
-  top: 5%;
-  right: -8px;
-  z-index: 99;
-}
-.entry .title h3 {
-  margin: 0;
-  font-size: 120%;
-}
-.entry .title p {
-  margin: 0;
-  line-height:50px;
-  font-size: 100%;
-}
-.entry .body {
-  margin: 0 0 3em;
-  float: right;
-  font-size:16px;
-  width: 62%;
-  padding-left: 30px;
-}
-.entry .body p {
-  line-height: 1.4em;
-}
-.entry .body p:first-child {
-  margin-top: 0;
-  font-weight: 400;
-}
-.entry .body ul {
-  color: #ddd;
-  padding-left: 0;
-  list-style-type: none;
-}
-.entry .body ul li:before {
-  content: "¨C";
-  margin-right: .5em;
-}
+?>
 
 
 
 </style>
+<?php
+if(!$_REQ["shell"]){ 
+
+echo "<body style=\"background-color: #0b0c0d;color: #fff;font-size: 15px;display: flex;min-height: 100vh;width: 100vw;margin: 0;padding: 2vh 0px;font-family: 'Source Sans Pro', arial, sans-serif;font-weight: 300;box-sizing: border-box;* {box-sizing: border-box;}a:link,a:visited,a:active{transition:0.5s;color: #28f428;text-decoration: none;}a:hover { color:yellow; }\">";
 
 
 
-<body>
+
+}
+else
+{
+
+echo "<body style=\"background-color: #0b0c0d;color: #fff;font-size: 18px;display: flex;min-height: 100vh;width: 100vw;margin: 0;padding: 2vh 0px;font-family: 'Source Sans Pro', arial, sans-serif;font-weight: 300;box-sizing: border-box;* {box-sizing: border-box;}a:link,a:visited,a:active{transition:0.5s;color: #28f428;text-decoration: none;}a:hover { color:yellow; }\">";
+
+
+}
+
 
 		
 
 
 
-<?php
+
 
 
 
@@ -244,13 +182,64 @@ $gshow=$kpc->keva_group_show($asset);
 			
 			extract($x);
 
-			If($key=="_KEVA_NS_"){continue;$title=$value;}
+			If($key=="_KEVA_NS_"){
+				
+				$snl=strlen($height);
+				$snm=$height;
+
+				
+
+				$getblockh=$kpc->getblockheaderbyheight($height);
+			
+				$getblockh=$getblockh['block_header']['hash'];
+				$getblocktx=$kpc->getblock($getblockh);
+
+			
+				$sncount=0;
+		
+					foreach($getblocktx['tx'] as $txa){
+
+				
+						$transaction= $kpc->getrawtransaction($txa,1);
+
+							foreach($transaction['vout'] as $vout)
+	   
+							  {
+
+								$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+									$arrb = explode(' ', $op_return); 
+
+									if($arrb[0] == 'OP_KEVA_NAMESPACE') 
+										{
+
+								 $cona=$arrb[0];
+								 $cons=$arrb[1];
+								 $conk=$arrb[2];
+
+								 $assetn=Base58Check::encode($cons, false , 0 , false);
+
+								 if($asset==$assetn){ $sn=$snl."".$snm."".$sncount;}
+
+										}
+								 }
+				
+							
+
+						$sncount=$sncount+1;
+
+						}
+				
+
+				continue;$title=$value;}
 
 			$arr["heightx"]=$height;
 			$arr["key"]=$key;
 			$arr["adds"]=$address;
 			$arr["value"]=$value;
 			$arr["txx"]=$txid;
+			
 
 			$gettime= $kpc->getrawtransaction($txid,1);
 
@@ -332,7 +321,7 @@ $gshow=$kpc->keva_group_show($asset);
 
 
 
-if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><font size=5><b>".$sname."</b></font></div><div class=\"body\"><p>".$asset."</p><ul>".$_REQ["group"]." group</ul></div></div>";
+if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><font size=5><b>".$sname."</b></font></div><div class=\"body\"><p>".$sn." ".$asset."</p><ul>".$_REQ["group"]." group</ul></div></div>";
 
 
 
@@ -496,7 +485,16 @@ $value=strip_tags($value,"");
 
 			echo "<li style=\"background-color: rgb(0, 79,74);display:block;height:auto;width:900px;\"><a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&title=".bin2hex($key)."&key=".bin2hex($key)."&sname=".$_REQ["sname"]."><h4>".$key."</h4></a></li>";
 
+			if(!$_REQ["shell"]){ 
+
 			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
+			else
+				{
+			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><font color=white><p align=left>".turnUrlIntoHyperlink($valuex)."</p></font></li>";
+			}
+			
+			
+			}
 
 				
 
