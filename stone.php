@@ -217,6 +217,7 @@ $gshow=$kpc->keva_group_show($asset);
 								 $cona=$arrb[0];
 								 $cons=$arrb[1];
 								 $conk=$arrb[2];
+								  $cond=$vout["scriptPubKey"]["addresses"][0];
 
 								 $assetn=Base58Check::encode($cons, false , 0 , false);
 
@@ -321,7 +322,7 @@ $gshow=$kpc->keva_group_show($asset);
 
 
 
-if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><font size=5><b>".$sname."</b></font></div><div class=\"body\"><p>".$sn." ".$asset."</p><ul>".$_REQ["group"]." group</ul></div></div>";
+if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><font size=5><b>".$sname."</b></font></div><div class=\"body\"><p>".$sn." ".$asset."</p><ul>".$_REQ["group"]." group</ul><br>".$cond."</div></div>";
 
 
 

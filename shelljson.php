@@ -65,6 +65,10 @@ header("location:/os");
 
 }
 
+
+
+
+
 $coin=$_REQ["coin"];
 
 //ravencoin
@@ -414,6 +418,88 @@ if($arr[0]=="sell"){
 
 if($coin=="KEVACOIN"){
 
+$arr=array();
+
+$arr=explode(" ",$comm);
+
+
+//blocknum
+
+
+if($comm=="block"){
+
+$run= $kpc->getblockcount();
+
+
+		echo $run;
+
+
+}
+
+if($arr[0]=="block"){
+
+	$run= $kpc->getblockcount();
+	
+	if($arr[1]>$run){
+	
+	$time=($arr[1]-$run)*2/60;
+	$day=$time/24;
+
+	echo "BLOCK ".$run;
+	echo "<br>BLOCK ".$arr[1];
+	echo "<br><br><font color=white>".intval($day)." Days (".intval($time)." hours)</font>";
+	
+	}else{
+	
+	$blockhash= $kpc-> getblockhash(intval($arr[1]));
+
+	
+
+		$blockdata= $kpc->getblock($blockhash);
+
+		foreach($blockdata['tx'] as $txa)
+		{
+			
+		$transaction= $kpc->getrawtransaction($txa,1);
+
+					foreach($transaction['vout'] as $vout)
+	   
+						  {
+
+					$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+					$arrb = explode(' ', $op_return); 
+
+					if($arrb[0] == 'OP_KEVA_PUT') 
+								{
+
+								 $cona=$arrb[1];
+								 $cons=$arrb[2];
+								 $conk=$arrb[3];
+								 $sadd=$cona;
+								 $snewkey=hex2bin($cons);
+								 $sinfo=hex2bin($conk);
+
+								  $kadd=$vout["scriptPubKey"]["addresses"][0];
+								  $asset=Base58Check::encode( $cona, false , 0 , false);
+
+								  $namespace= $kpc->keva_get($asset,"_KEVA_NS_");
+
+									$title=bin2hex($namespace['value']);
+
+								  echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$snewkey."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($sinfo)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$arr[1]."</p></li>";
+
+						
+								}}}
+	
+	}
+
+
+
+}
+
+
 //getinfo
 
 
@@ -433,9 +519,7 @@ foreach($run as $one=>$two)
 
 //open
 
-$arr=array();
 
-$arr=explode(" ",$comm);
 
 if($arr[0]=="open"){
 
@@ -544,6 +628,7 @@ $txa=$blockdata['tx'][$btx];
 								 $cona=$arr[0];
 								 $cons=$arr[1];
 								 $conk=$arr[2];
+								
 
 								}
 						  }
@@ -553,6 +638,8 @@ $txa=$blockdata['tx'][$btx];
 				$namespace= $kpc->keva_get($asset,"_KEVA_NS_");
 
 						$title=bin2hex($namespace['value']);
+
+						
 
 						header("location:/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no&shell=1");
 			}
@@ -605,7 +692,11 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 
 						$title=bin2hex($namespace['value']);
 
-				$kvalue= $kpc->keva_get($asset,$arr[1]);
+						$keyck=strip_tags(substr(str_replace($arr[0],"",$comm),1));
+
+						
+
+				$kvalue= $kpc->keva_get($asset,$keyck);
 
 				echo $asset;
 
