@@ -682,6 +682,7 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 								 $cona=$arrb[0];
 								 $cons=$arrb[1];
 								 $conk=$arrb[2];
+								 $cond=$vout["scriptPubKey"]["addresses"][0];
 
 								}
 						  }
@@ -700,12 +701,14 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 
 				echo $asset;
 
+				echo "<br>".$cond;
+
 				if($kvalue['value']<>""){
 				
 				
 				$transaction= $kpc->getrawtransaction($kvalue['txid'],1);
 
-				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$kvalue['key']."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($kvalue['value'])."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$kvalue['height']."</p></li>";
+				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$kvalue['key']."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($kvalue['value'])."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$kvalue['height']." <a href=/subscription.php?lang=&txid=".$kvalue['txid']."  target=_blank>TxID</a></p></li>";
 			
 				}else{
 				
@@ -721,9 +724,9 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 							
 							$transaction= $kpc->getrawtransaction($txid,1);
 							
-							echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$key."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($value)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$height."</p></li>";
+							echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$key."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($value)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$height."  <a href=/subscription.php?lang=&txid=".$txid." target=_blank>TxID</a></p></li>";
 							
-							break;
+							
 							
 							
 							}
@@ -799,7 +802,7 @@ if(strlen($comm)=="64" & !ctype_space($comm))
 						$title=bin2hex($namespace['value']);
 
 
-				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$conk."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($conv)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$ctime)." BLOCK ".$block['block_header']['height']."</p></li>";
+				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$conk."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($conv)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$ctime)." BLOCK ".$block['block_header']['height']."  <a href=/subscription.php?lang=&txid=".$txa." target=_blank>TxID</a></p></li>";
 
 						}
 				

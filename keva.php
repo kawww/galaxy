@@ -166,7 +166,7 @@ $gtotal=$gtotal-$gtest;
 $gleft=str_replace($gsub,"",$forsub);
 
 
-
+$gcalc=2;
 
 while($gtotal>0){
 
@@ -174,16 +174,17 @@ while($gtotal>0){
 
 $gsub=my_substr($gleft,0,$gtest);
 
-$gsub=$gsub.">>>";
+$gsubt=$gsub."<br>-".$gcalc."-";
 
 sleep(1);
 
-$age= $kpc->keva_put($_REQ["asset"],$age['txid'],$gsub);
+$age= $kpc->keva_put($_REQ["asset"],$age['txid'],$gsubt);
 
 $gleft=str_replace($gsub,"",$gleft);
 
 $gtotal=$gtotal-$gtest;
 
+$gcalc=$gcalc+1;
 
 $url ="keva.php?lang=&txid=".$age['txid']."&title=".bin2hex($fortit)."&key=".bin2hex($fortit)."&pending=1&ismine=1";
 
@@ -1994,10 +1995,13 @@ if($webmode==0){
 echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=4&follow=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ FOLLOW ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>follow ".$gnamekey."</font></a></li>";
 
 			//galaxylink
+if($ismine=="1" & $keva_add=="on"){
+			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&ismine=1><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ BACK TO ".$gnamekey." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$asset."</font></a></li>";
 
+}else{
 			echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ BACK TO ".$gnamekey." ]</h4></a><hr style=\"background-color:#59fbea;height:1px;border:none;\"><font size=3>".$asset."</font></a></li>";
 
-
+}
 
 									}
 								}
@@ -2028,6 +2032,58 @@ echo "<a href=?lang=".$_REQUEST["lang"]."&asset=".$asset."&mode=4&follow=1><li s
 
 			$title=$namespace['value'];
 
+			$snl=strlen($namespace['height']);
+				$snm=$namespace['height'];
+
+				
+
+				$getblockh=$kpc->getblockheaderbyheight($snm);
+			
+				$getblockh=$getblockh['block_header']['hash'];
+				$getblocktx=$kpc->getblock($getblockh);
+
+			
+				$sncount=0;
+		
+					foreach($getblocktx['tx'] as $txa){
+
+				
+						$transaction= $kpc->getrawtransaction($txa,1);
+
+							foreach($transaction['vout'] as $vout)
+	   
+							  {
+
+								$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+									$arrb = explode(' ', $op_return); 
+
+									if($arrb[0] == 'OP_KEVA_NAMESPACE') 
+										{
+
+								 $cona=$arrb[0];
+								 $cons=$arrb[1];
+								 $conk=$arrb[2];
+								  $cond=$vout["scriptPubKey"]["addresses"][0];
+
+								 $assetn=Base58Check::encode($cons, false , 0 , false);
+
+								 if($asset==$assetn){ $sn=$snl."".$snm."".$sncount;}
+
+										}
+								 }
+				
+							
+
+						$sncount=$sncount+1;
+
+						}
+				
+
+				
+
+
 			
 //iot
 
@@ -2049,7 +2105,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		if($hidemkey==0){
 
-		echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$title." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$asset."</p></li>";
+		echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$title." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\"> [ ".$sn." ] ".$asset."</p></li>";
 
 		echo"<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;color:#bbb;display:block;\"><form action=\"keva.php\" method=\"post\" ><h4><input type=\"text\" name=\"title\" maxlength=\"64\" placeholder=\"TITLE\" style=\"width:200px;\"><input type=\"hidden\" name=\"fromasset\" value=\"".$shopaddress."\"> <input type=\"submit\" value=\"".$keva_kaw."\"></h4><input type=\"hidden\" name=\"asset\" value=".$_REQ["asset"]." /></form></li>";	
 
@@ -2065,7 +2121,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		//rss
 
-			echo "<a href=rss.php?&asset=".$asset." target=_blank><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ RSS ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\">Feed</a></li>";
+			echo "<a href=rss.php?&asset=".$asset." target=_blank><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ RSS ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"></a>Feed</li>";
 
 		if($_REQ["showall"]=="11"){
 			
