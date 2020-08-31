@@ -699,6 +699,10 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 
 				$kvalue= $kpc->keva_get($asset,$keyck);
 
+			
+
+
+
 				echo $asset;
 
 				echo "<br>".$cond;
@@ -706,9 +710,151 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 				if($kvalue['value']<>""){
 				
 				
+							//comment
+		
+								 if(stristr($kvalue['value'],"::") == true)
+									{
+									
+										$commtool=explode('::', $kvalue['value']);
+
+										$value=$commtool[0];
+
+										if(strlen(trim(strip_tags($commtool[1]))) == 34)
+												 {
+											      $commentadd=trim(strip_tags($commtool[1]));
+
+												 
+													}
+
+
+							
+
+									    foreach ($commtool as $tool) 
+
+											{
+
+											 if(stristr($tool,"RAVENCOIN_COMMENT_ADDRESS") == true)
+												 {
+											      $commentadd=trim(strip_tags(str_replace("RAVENCOIN_COMMENT_ADDRESS:","",$tool)));
+													}
+											if(stristr($tool,"rvnkaw") == true)
+												 {
+											      $commentadd=trim(strip_tags(str_replace("rvnkaw:","",$tool)));
+													}
+
+													
+											
+											
+											
+											}
+
+									}
+
+
+
 				$transaction= $kpc->getrawtransaction($kvalue['txid'],1);
 
-				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$kvalue['key']."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($kvalue['value'])."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$kvalue['height']." <a href=/subscription.php?lang=&txid=".$kvalue['txid']."  target=_blank>TxID</a></p></li>";
+				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$kvalue['key']."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($kvalue['value'])."</p></font></li>";
+
+				if($commentadd<>""){
+
+
+				echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listtagsforaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+				//$assetinfo = $rpc->getassetdata($gift);
+
+				$gift=str_replace("#","",$giftn);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				$giftn=$gift_value;
+				
+				$giftn=str_replace("_"," ",$giftn);
+
+/*
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				*/
+
+				$giftlink="asset.php?lang=&unicode=0&sort=1&asset=".$gift_value;
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#888;color:#eee;height:30px\">&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "</p></li>";
+			
+						echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listassetbalancesbyaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+				$assetinfo = $rpc->getassetdata($gift);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				$gift_value=str_replace("_"," ",$gift_value);
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#16f516;\" target=_blank>&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#00b271;\" target=_blank>&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#ffffff;color:#eee;\">&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "&nbsp;&nbsp;</p><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$kvalue['height']." <a href=/subscription.php?lang=&txid=".$kvalue['txid']."  target=_blank>TxID</a></p></li>";
+				
+				echo "<hr><font size=1>The content support blockchain signature/assets powered by ravencoin. The address is </font>".$commentadd."<br>";
+				
+				
+				
+				
+				
+				
+				}
 			
 				}else{
 				
@@ -721,12 +867,152 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 						extract($x);
 
 						If($height==$arr[1]){
+
+							//comment
+		
+								 if(stristr($value,"::") == true)
+									{
+									
+										$commtool=explode('::', $value);
+
+										$value=$commtool[0];
+
+										if(strlen(trim(strip_tags($commtool[1]))) == 34)
+												 {
+											      $commentadd=trim(strip_tags($commtool[1]));
+
+												 
+													}
+
+
+							
+
+									    foreach ($commtool as $tool) 
+
+											{
+
+											 if(stristr($tool,"RAVENCOIN_COMMENT_ADDRESS") == true)
+												 {
+											      $commentadd=trim(strip_tags(str_replace("RAVENCOIN_COMMENT_ADDRESS:","",$tool)));
+													}
+											if(stristr($tool,"rvnkaw") == true)
+												 {
+											      $commentadd=trim(strip_tags(str_replace("rvnkaw:","",$tool)));
+													}
+
+													
+											
+											
+											
+											}
+
+									}
+
+
 							
 							$transaction= $kpc->getrawtransaction($txid,1);
 							
-							echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$key."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($value)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$height."  <a href=/subscription.php?lang=&txid=".$txid." target=_blank>TxID</a></p></li>";
+							echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$key."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($value)."</p></font></li>";
 							
-							
+							if($commentadd<>""){
+
+
+				echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listtagsforaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+				//$assetinfo = $rpc->getassetdata($gift);
+
+				$gift=str_replace("#","",$giftn);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				$giftn=$gift_value;
+				
+				$giftn=str_replace("_"," ",$giftn);
+
+/*
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#888;\" target=_blank>&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				*/
+
+				$giftlink="asset.php?lang=&unicode=0&sort=1&asset=".$gift_value;
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#888;color:#eee;height:30px\">&nbsp;&nbsp;<font color=\"#ffcc00\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "</p></li>";
+			
+						echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+			
+			$giftasset=$rpc->listassetbalancesbyaddress($commentadd);
+
+			foreach($giftasset as $gift=>$giftn)
+
+			{
+
+				$assetinfo = $rpc->getassetdata($gift);
+
+				$gift_value=$gift;
+
+				$assetlink=$gift_value;
+				$assettwo=$gift_value;
+
+
+		
+				$gift_value=uniworld($gift_value,$assetlink,$assettwo);
+			
+
+				$gift_value=str_replace("U+","",$gift_value);
+
+				$gift_value=str_replace("_"," ",$gift_value);
+
+				if(strlen($assetinfo["txid"])==64){$giftlink="subscription.php?lang=".$_REQUEST["lang"]."&txid=".$assetinfo["txid"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#16f516;\" target=_blank>&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if(strlen($assetinfo["ipfs_hash"])==46){$giftlink=$ipfscon."".$assetinfo["ipfs_hash"];
+				
+				echo "<a href=\"".$giftlink."\" style=\"background-color:#00b271;\" target=_blank>&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				if($assetinfo["has_ipfs"]==0){echo "<a href=\"".$giftlink."\" style=\"background-color:#ffffff;color:#eee;\">&nbsp;&nbsp;".$gift_value."&nbsp;<font color=\"#ccc\">".$giftn."</font>&nbsp;&nbsp;</a>&nbsp;&nbsp;";}
+
+				
+			}
+			
+			echo "&nbsp;&nbsp;</p><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$height."  <a href=/subscription.php?lang=&txid=".$txid." target=_blank>TxID</a></p></li>";
+				
+				echo "<hr><font size=1>The content support blockchain signature/assets powered by ravencoin. The address is </font>".$commentadd."<br>";
+				
+				
+				
+				
+				
+				
+				}
 							
 							
 							}
