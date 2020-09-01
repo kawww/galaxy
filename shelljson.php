@@ -754,12 +754,12 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 
 				$transaction= $kpc->getrawtransaction($kvalue['txid'],1);
 
-				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$kvalue['key']."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($kvalue['value'])."</p></font></li>";
+				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$kvalue['key']."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($kvalue['value'])."</p></font>";
 
 				if($commentadd<>""){
 
 
-				echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+				echo "</li><li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
 			
 			$giftasset=$rpc->listtagsforaddress($commentadd);
 
@@ -855,6 +855,8 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 				
 				
 				}
+
+				else { echo "<p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$kvalue['height']." <a href=/subscription.php?lang=&txid=".$kvalue['txid']."  target=_blank>TxID</a></p></li>";}
 			
 				}else{
 				
@@ -912,12 +914,12 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 							
 							$transaction= $kpc->getrawtransaction($txid,1);
 							
-							echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$key."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($value)."</p></font></li>";
+							echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$key."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($value)."</p></font>";
 							
 							if($commentadd<>""){
 
 
-				echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+				echo "</li><li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
 			
 			$giftasset=$rpc->listtagsforaddress($commentadd);
 
@@ -1012,7 +1014,9 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 				
 				
 				
-				}
+				}else {
+
+				echo "<p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$height."  <a href=/subscription.php?lang=&txid=".$txid." target=_blank>TxID</a></p></li>";}
 							
 							
 							}
