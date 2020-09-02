@@ -321,7 +321,7 @@ for(key in cb) {
 				for (var f = 0; f < count; f++) {
 
 					fone+='<span class=\"one\">[</span>';
-					ftwo+='<span class=\"one\">[</span>';
+					ftwo+='<span class=\"one\">]</span>';
 
 				}
 						  
@@ -332,7 +332,7 @@ for(key in cb) {
 						   
 						   str += '<ul><li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>' + datalist[i].content + '</p></li>';
 						   
-						   str += '<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=<?php echo $_REQUEST["lang"]; ?>&txid=' + datalist[i].tx + '>' + datalist[i].tx + '</a> [ <a href=https://explorer.kevacoin.org/address/' + datalist[i].add + ' target=_blank>address</a> ]  [ ' + datalist[i].block + ' ]</p></li></ul>';
+						   str += '<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=keva.php?lang=<?php echo $_REQUEST["lang"]; ?>&asset=' + datalist[i].np  +'>'+datalist[i].np+'</a> <a href=subscription.php?lang=<?php echo $_REQUEST["lang"]; ?>&txid=' + datalist[i].tx + '>' + datalist[i].tx + '</a> [ <a href=https://explorer.kevacoin.org/address/' + datalist[i].add + ' target=_blank>address</a> ]  [ ' + datalist[i].block + ' ]</p></li></ul>';
 						   
 						   }
                  }
@@ -422,6 +422,7 @@ while($blocknow>$blockread)
 								$arrx["txa"]=$txa;
 
 								$arrx["size"]=$transaction['size'];
+								$arrx["np"]=Base58Check::encode($cona, false , 0 , false);
 
 								array_push($totalass,$arrx);
 
@@ -503,7 +504,7 @@ $x_value=$snewkey;
 											echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$value."&showall=11>".turnUrlIntoHyperlink($valuex)."</a></p></li>";
 
 												
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$np.">".$np."</a> <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] [ <a href=https://explorer.kevacoin.org/address/".$sadd." target=_blank>address</a> ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
 											
 										
 													}
@@ -545,7 +546,7 @@ $x_value=$snewkey;
 										echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";
 
 													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$np.">".$np."</a> <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
 
 									
 												}
@@ -568,7 +569,7 @@ $x_value=$snewkey;
 											{echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:90%;line-height:40px;font-size:24px;padding-top:30px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
 
 													
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$np.">".$np."</a> <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a>  [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";		
 
 												}
 
@@ -630,7 +631,7 @@ $x_value=$snewkey;
 														}
 
 															
-											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";	
+											echo "<li style=\"background-color: rgb(0, 0, 0);border: 0px solid #000;display:block;height:auto;width:90%;font-size:10px;padding-left:20px;letter-spacing:1px;word-break: normal;\"><p align=right><a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$np.">".$np."</a> <a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$txa.">".$txa."</a> [ ".$block." ] < <a href=subscription.php?lang=".$_REQUEST["lang"]."&block=".$block."&sub=".$size.">".$size."</a> > </p></li>";	
 											}
 
 

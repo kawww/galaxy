@@ -33,10 +33,16 @@ $blocknow=intval($blocknow);
 if($webmode==1){
 
 $blockread=$blocknow-$sysweb*$page;
-$blockstart=$sysweb;}else{
+$blockstart=$sysweb;}
+
+else
+
+{
 
 $blockread=$blocknow-$syslocal*$page;
-$blockstart=$syslocal;}
+$blockstart=$syslocal;
+
+}
 
 $blockleft=$blockread-$blockstart;
 
@@ -110,6 +116,7 @@ while($blockread>$blockleft){
 								$arrx["txa"]=$txa;
 
 								$arrx["size"]=$transaction['size'];
+								$arrx["np"]=Base58Check::encode($cona, false , 0 , false);
 
 								array_push($totalass,$arrx);
 								
@@ -205,6 +212,7 @@ $x_value=$snewkey;
 															'block'=>$block,
 															'tx'=>$sstx,
 															'add'=>$sadd,
+																'np'=>$np,
 											);
 					
 									
