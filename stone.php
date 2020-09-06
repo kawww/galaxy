@@ -80,7 +80,7 @@ echo ".entry .body ul {color: #fff;padding-left: 0;font-size: 18px;vlist-style-t
 <?php
 if(!$_REQ["shell"]){ 
 
-echo "<body style=\"background-color: #0b0c0d;color: #fff;font-size: 15px;display: flex;min-height: 100vh;width: 100vw;margin: 0;padding: 2vh 0px;font-family: 'Source Sans Pro', arial, sans-serif;font-weight: 300;box-sizing: border-box;* {box-sizing: border-box;}a:link,a:visited,a:active{transition:0.5s;color: #28f428;text-decoration: none;}a:hover { color:yellow; }\">";
+echo "<body style=\"background-color: #0b0c0d;color: #fff;font-size: 15px;display: flex;min-height: 100vh;width: 100vw;margin: 0;padding: 2vh 0px;font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Heiti SC', 'DengXian', 'Microsoft YaHei', Helvetica, Segoe UI, Arial, sans-serif;font-weight: 300;box-sizing: border-box;* {box-sizing: border-box;}a:link,a:visited,a:active{transition:0.5s;color: #28f428;text-decoration: none;}a:hover { color:yellow; }\">";
 
 
 
@@ -89,7 +89,7 @@ echo "<body style=\"background-color: #0b0c0d;color: #fff;font-size: 15px;displa
 else
 {
 
-echo "<body style=\"background-color: #0b0c0d;color: #fff;font-size: 18px;display: flex;min-height: 100vh;width: 100vw;margin: 0;padding: 2vh 0px;font-family: 'Source Sans Pro', arial, sans-serif;font-weight: 300;box-sizing: border-box;* {box-sizing: border-box;}a:link,a:visited,a:active{transition:0.5s;color: #28f428;text-decoration: none;}a:hover { color:yellow; }\">";
+echo "<body style=\"background-color: #0b0c0d;color: #fff;font-size: 18px;display: flex;min-height: 100vh;width: 100vw;margin: 0;padding: 2vh 0px;font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Heiti SC', 'DengXian', 'Microsoft YaHei', Helvetica, Segoe UI, Arial, sans-serif;font-weight: 300;box-sizing: border-box;* {box-sizing: border-box;}a:link,a:visited,a:active{transition:0.5s;color: #28f428;text-decoration: none;}a:hover { color:yellow; }\">";
 
 
 }
@@ -173,6 +173,7 @@ if(isset($_REQ["asset"])){
 $gshow=$kpc->keva_group_show($asset);
 
 		$arr=array();
+		$arrb=array();
 		$totalass=array();
 			$combine="";
 
@@ -186,7 +187,6 @@ $gshow=$kpc->keva_group_show($asset);
 				
 				$snl=strlen($height);
 				$snm=$height;
-
 				
 
 				$getblockh=$kpc->getblockheaderbyheight($height);
@@ -217,9 +217,11 @@ $gshow=$kpc->keva_group_show($asset);
 								 $cona=$arrb[0];
 								 $cons=$arrb[1];
 								 $conk=$arrb[2];
-								  $cond=$vout["scriptPubKey"]["addresses"][0];
+								 $cond=$vout["scriptPubKey"]["addresses"][0];
 
 								 $assetn=Base58Check::encode($cons, false , 0 , false);
+
+							
 
 								 if($asset==$assetn){ $sn=$snl."".$snm."".$sncount;}
 
@@ -305,27 +307,12 @@ $gshow=$kpc->keva_group_show($asset);
 
 
 
-		
-
-
-
-	
-
-
-	
-
-		
-
-
 				$sname=$_REQ["sname"];
 				if(!$_REQ["sname"]){$sname=strtoupper($title);}
 
 
 
 if($_REQ["stone"]=="1"){echo "<div class=\"timeline\"><div class=\"entry\"><div class=\"title\"><font size=5><b>".$sname."</b></font></div><div class=\"body\"><p>".$sn." ".$asset."</p><ul>".$_REQ["group"]." group</ul><br>".$cond."</div></div>";
-
-
-
 
 }
 
@@ -491,7 +478,8 @@ $value=strip_tags($value,"");
 			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><p align=left>".turnUrlIntoHyperlink($valuex)."</p></li>";}
 			else
 				{
-			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><font color=white><p align=left>".turnUrlIntoHyperlink($valuex)."</p></font></li>";
+			echo "<li style=\"background-color: rgb(0, 79, 74);display:block;height:auto;width:900px;\"><font color=white><p align=left <p style=\"font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Heiti SC', 'DengXian', 'Microsoft YaHei', Helvetica, Segoe UI, Arial, sans-serif;
+ \">".turnUrlIntoHyperlink($valuex)."</p></font></li>";
 			}
 			
 			

@@ -488,7 +488,7 @@ if($arr[0]=="block"){
 
 									$title=bin2hex($namespace['value']);
 
-								  echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$snewkey."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($sinfo)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$arr[1]."</p></li>";
+								  echo "<li style=\"display:block;height:auto;width:350px;\"><h2>".$snewkey."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($sinfo)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$transaction['time'])." BLOCK ".$arr[1]."</p></li>";
 
 						
 								}}}
@@ -754,12 +754,12 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 
 				$transaction= $kpc->getrawtransaction($kvalue['txid'],1);
 
-				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$kvalue['key']."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($kvalue['value'])."</p></font>";
+				echo "<li style=\"display:block;height:auto;width:350px;\"><h2>".$kvalue['key']."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($kvalue['value'])."</p></font>";
 
 				if($commentadd<>""){
 
 
-				echo "</li><li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+				echo "</li><li style=\"display:block;height:auto;width:350px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
 			
 			$giftasset=$rpc->listtagsforaddress($commentadd);
 
@@ -808,7 +808,7 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 			
 			echo "</p></li>";
 			
-						echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+						echo "<li style=\"display:block;height:auto;width:350px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
 			
 			$giftasset=$rpc->listassetbalancesbyaddress($commentadd);
 
@@ -914,12 +914,12 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 							
 							$transaction= $kpc->getrawtransaction($txid,1);
 							
-							echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$key."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($value)."</p></font>";
+							echo "<li style=\"display:block;height:auto;width:350px;\"><h2>".$key."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($value)."</p></font>";
 							
 							if($commentadd<>""){
 
 
-				echo "</li><li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+				echo "</li><li style=\"display:block;height:auto;width:350px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
 			
 			$giftasset=$rpc->listtagsforaddress($commentadd);
 
@@ -968,7 +968,7 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 			
 			echo "</p></li>";
 			
-						echo "<li style=\"display:block;height:auto;width:900px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
+						echo "<li style=\"display:block;height:auto;width:350px;padding-top:20px;line-height:40px;font-size:18px;\"><p align=left>";
 			
 			$giftasset=$rpc->listassetbalancesbyaddress($commentadd);
 
@@ -1092,7 +1092,7 @@ if(strlen($comm)=="64" & !ctype_space($comm))
 						$title=bin2hex($namespace['value']);
 
 
-				echo "<li style=\"display:block;height:auto;width:900px;\"><h2>".$conk."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($conv)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$ctime)." BLOCK ".$block['block_header']['height']."  <a href=/subscription.php?lang=&txid=".$txa." target=_blank>TxID</a></p></li>";
+				echo "<li style=\"display:block;height:auto;width:350px;\"><h2>".$conk."</h2><font color=white><p align=left>".turnUrlIntoHyperlink($conv)."</p></font><p><a href=\"/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no\" target=_blank>".$namespace['value']."</a>  ".date('Y-m-d H:i',$ctime)." BLOCK ".$block['block_header']['height']."  <a href=/subscription.php?lang=&txid=".$txa." target=_blank>TxID</a></p></li>";
 
 						}
 				

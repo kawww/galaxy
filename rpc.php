@@ -372,6 +372,11 @@ if(strpos($text,"<img")==false){
 $text= preg_replace($url_pattern, '<a href="$0">$0</a>', $text);}
 
 */
+
+//$text=str_replace(array("\r", "\n", "\r\n"), '<br>', $text);
+
+$text="<p style=\"font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Heiti SC', 'DengXian', 'Microsoft YaHei', Helvetica, Segoe UI, Arial, sans-serif;
+ \">".nl2br($text)."</p>";
           
 return $text;
 }

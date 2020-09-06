@@ -320,7 +320,7 @@ for(key in cb) {
 				for (var f = 0; f < count; f++) {
 
 					fone+='<span class=\"one\">[</span>';
-					ftwo+='<span class=\"one\">[</span>';
+					ftwo+='<span class=\"one\">]</span>';
 
 				}
 

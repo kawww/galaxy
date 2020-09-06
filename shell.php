@@ -32,7 +32,7 @@ $_REQ = array_merge($_GET, $_POST);//iotstat
 <style>
 
 html,body, input, textarea {
-background: black; color: #0F0; font-family: "Courier New", Courier, monospace; font-size: 18px; text-wrap: normal;margin: 0 auto -100px;padding: 0;
+background: black; color: #0F0; font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Heiti SC', 'DengXian', 'Microsoft YaHei', Helvetica, Segoe UI, Arial, sans-serif; font-size: 18px; text-wrap: normal;margin: 3px auto -100px;padding: 0;padding-left: 5px;
 }
 
 
@@ -42,8 +42,9 @@ a:hover { text-decoration: underline }
 
 #thread {
  border:0px solid black;
- width:300px;
+ width:350px;
  margin-bottom:10px;
+
 
 }
 
@@ -268,14 +269,14 @@ Welcome to Universal Blockchain Operating System <br><br>
  * Documentation:  kevacoin.org<br>
  * Documentation:  ipfs.io<br><br>
 
- * Ravencoin Shell:  rvn.galaxyos.io<br>
- * Kevacoin &nbsp;Shell:  keva.galaxyos.io<br>
+ * Ravencoin Shell:&nbsp;rvn.galaxyos.io<br>
+ * Kevacoin&nbsp;&nbsp;&nbsp;Shell:&nbsp;keva.galaxyos.io<br>
  <br>
 
   System information as of <?php echo date("Y-m-d h:i:s"); ?> <br><br>
 
-  Ravencoin Blocks:  <?php  $rnum= $rpc->getblockcount();echo $rnum; ?> <br>           
-  Kevacoin&nbsp;&nbsp;Blocks:  <?php  $knum= $kpc->getblockcount();echo $knum; ?> <br><br>  
+  Ravencoin Blocks:&nbsp;<?php  $rnum= $rpc->getblockcount();echo $rnum; ?> <br>           
+  Kevacoin&nbsp;&nbsp;&nbsp;Blocks:&nbsp;<?php  $knum= $kpc->getblockcount();echo $knum; ?> <br><br>  
   
 <div id="thread">
 
