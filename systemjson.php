@@ -28,6 +28,8 @@ $page=intval($_REQ["page"]);
 
 $blocknow=$kpc->getblockcount();
 
+while(!$blocknow){sleep(1);$blocknow=$kpc->getblockcount();}
+
 $blocknow=intval($blocknow);
 
 if($webmode==1){
@@ -60,14 +62,15 @@ $blockleft=$blockread-$blockstart;
 
 $arr=array();
 $arrx=array();
+$arry=array();
 $totalass=array();
+$blockn=0;
 
 
+while($syslocal<>$blockn){
 
-while($blockread>$blockleft){
 
-
-		$block=$blockread;
+		$block=$blockread-$blockn;
 
 
 		
@@ -82,72 +85,126 @@ while($blockread>$blockleft){
 			
 	
 
+		$kcheck=0;
+		$countb=0;
+
 		foreach($blockdata['tx'] as $txa)
 
-		{
-			
+					{
+
+						
+		 
 		$transaction= $kpc->getrawtransaction($txa,1);
 
+		
 
-
-					foreach($transaction['vout'] as $vout)
+	
+		
+						foreach($transaction['vout'] as $vout)
 	   
 						  {
+			
+							$op_return = $vout["scriptPubKey"]["asm"]; 
+							$arr = explode(' ', $op_return); 
 
-					$op_return = $vout["scriptPubKey"]["asm"]; 
 
-				
-					$arr = explode(' ', $op_return); 
+							
+							
+							if($arr[0] == 'OP_KEVA_NAMESPACE' or $arr[0] == "OP_KEVA_PUT")
 
-					
-
-					if($arr[0] == 'OP_KEVA_PUT') 
 								{
+
+									
+
+							     $kcheck=1;
+
 								 $cona=$arr[1];
 								 $cons=$arr[2];
 								 $conk=$arr[3];
+					
+									
 
-								 $kadd=$vout["scriptPubKey"]["addresses"][0];
+								$asset=Base58Check::encode( $cona, false , 0 , false);
 
-								$arrx["block"]=$block;
+								$arrx["block"]=$block;	
+
+								
+								
+					
+							
+								$kadd=$vout["scriptPubKey"]["addresses"][0];
+
+								
 								$arrx["sadd"]=$kadd;
 								$arrx["snewkey"]=hex2bin($cons);
 								$arrx["sinfo"]=hex2bin($conk);
 								$arrx["txa"]=$txa;
+								$arrx["np"]=$asset;
+
+								
 
 								$arrx["size"]=$transaction['size'];
-								$arrx["np"]=Base58Check::encode($cona, false , 0 , false);
+
+								$arrx["count"]=$countb;
+
+					
+										$arrx["npn"]="";
+					
+										
+
+										$namespace= $kpc->keva_get($asset,"_KEVA_NS_");
+
+										$title=$namespace['value'];
+
+					
+										$arrx["npn"]=$title;
+
+										if($arr[0] == 'OP_KEVA_NAMESPACE'){
+										
+										$arrx["nptrue"]=1;
+
+										}
+
+										$arrx["npy"]=1;
+
+
+												
 
 								array_push($totalass,$arrx);
+
 								
-								}
+								  }
 
-								else
-
-							  {
-
-								 
-							    
-							
-								$arrx["block"]=$block;
-								$noblock="NO CONTENTS FOUND IN BLOCK [ ".$block." ]";
-								$arrx["sinfo"]=$noblock;
-								
-								$arrx["sadd"]="";
-								$arrx["snewkey"]="";
-							
-								$arrx["txa"]="1";
-
-								array_push($totalass,$arrx);
+				
 
 							
-							  
-							  }
 						  }
 
-		}
+		
+						 
 
-	$blockread=$blockread-1;
+		$countb=$countb+1;
+		$txa="";
+
+					}
+
+								if($kcheck=="0")
+						
+								   {
+							  
+								$arry["block"]=$block;
+								$arry["txa"]="";
+								$arry["np"]="";
+								$arry["npn"]="";
+								$arry["npy"]=0;
+								array_push($totalass,$arry);
+	
+								 }
+
+		
+
+	$blockn=$blockn+1;
+
 	}
 								
 			
@@ -166,7 +223,7 @@ foreach ($totalass as $k=>$v)
 								extract($v);
 
 
-$asset = $rpc->getassetdata($snewkey);
+//$asset = $rpc->getassetdata($snewkey);
 
 if(isset($asset) & $asset['has_ipfs']==1){$snewkey="<a href=subscription.php?lang=".$_REQUEST["lang"]."&txid=".$asset['txid'].">".$snewkey."</a>";}
 
@@ -183,7 +240,7 @@ $x_value=$snewkey;
 
 											
 									
-										$valuex=str_replace("\n","<br>",$value);
+										$valuex=$value;
 
 
 										
@@ -195,14 +252,17 @@ $x_value=$snewkey;
 											$sstitle=$snewkey;
 
 
-											$sscontent=turnUrlIntoHyperlink($valuex);
+											$sscontent=$valuex;
 
 												
 											$sstx=$txa;		
 											
 										
 
-																	
+									$npn=htmlspecialchars($npn);
+									$sstitle=htmlspecialchars($sstitle);
+									$sscontent=htmlspecialchars($sscontent);
+									
 											
 
 							$arrj[] = array(
@@ -212,7 +272,11 @@ $x_value=$snewkey;
 															'block'=>$block,
 															'tx'=>$sstx,
 															'add'=>$sadd,
-																'np'=>$np,
+															'np'=>$np,
+															'npn'=>$npn,
+															'npy'=>$npy,
+															'nptrue'=>$nptrue,
+															'ncount'=>$count,
 											);
 					
 									
