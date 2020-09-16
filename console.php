@@ -178,6 +178,7 @@ width:98%;
             li
             {
                 border: 1px solid #59fbea;
+				animation: textShadow 1.00s infinite;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;
                 width: 270px;
 				height:60px;
 				word-break: break-all;
@@ -230,7 +231,7 @@ if(isset($_REQUEST["asset"]))
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" value=\"".$ec."\" placeholder=\"support 4 commands\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;animation: textShadow 1.00s infinite;box-shadow:0px 0px 0px 0px #59fbea,0px 0px 0px 0px #59fbea inset;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" value=\"".$ec."\" placeholder=\"support 4 commands\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";
@@ -243,7 +244,7 @@ if(isset($_REQUEST["asset"]))
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"support 4 commands\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;animation: textShadow 1.00s infinite;box-shadow:0px 0px 0px 0px #59fbea,0px 0px 0px 0px #59fbea inset;\"><input type=\"text\" name=\"asset\" maxlength=\"46\" placeholder=\"support 4 commands\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";

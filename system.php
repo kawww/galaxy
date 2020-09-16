@@ -383,7 +383,7 @@ for(key in cb) {
 
 
 
-echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;background-color: #222222;font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;width:99%;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></div></form></div>";
+//echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;background-color: #222222;font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:8px;width:99%;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php?lang=".$_REQUEST["lang"]."><b>GALAXY</b></a></li></div></form></div>";
 	
 
 
@@ -621,7 +621,7 @@ if(!$np){
 	else{
 
 		if(!$nptrue){
-		$stat="<span style=\"border:0px solid #28f428;padding:5px 5px 5px 5px;line-height:100px;\"><a href=\"/subscription.php?lang=&txid=".$txa."\" target=_blank>".$npn.":".$x_value."</a><font align=left>".$valuex."</left></span>";}
+		$stat="<span style=\"border:0px solid #28f428;padding:5px 5px 5px 5px;line-height:100px;\"><a href=\"/subscription.php?lang=&txid=".$txa."\" target=_blank>".$npn.":".$x_value."</a><font align=left>".$valuex."</font></span>";}
 		
 		else
 		{$stat="<span style=\"border:0px solid #28f428;padding:5px 5px 5px 5px;line-height:20px;\"><a href=\"/stone.php?lang=&asset=".$np."&showall=11&stone=1&group=no\">".$npn."</a></span>";}

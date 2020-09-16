@@ -191,6 +191,7 @@ width:98%;
             li
             {
                 border: 1px solid #59fbea;
+				animation: textShadow 1.00s infinite;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;
                 width: 430px;
 				height:100px;
 				word-break: break-all;
@@ -200,7 +201,7 @@ width:98%;
                 margin-bottom: 7px;
 				margin-right: 5px;
 				margin-left: 5px;
-				padding-top:10px;
+				padding-top:20px;
 				padding-left:2px;
 				padding-right:2px;
                 flex:auto;  
@@ -298,35 +299,35 @@ if(!isset($_REQUEST["asset"]))
 		
 		echo"<a href=?lang=".$langs."><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;height:100px;border: 1px solid #59fbea;background-color:#0b0c0d;display:block;line-height:30px;\"><br><b>GALAXY</b></a></li>";	
 
-		echo"<li style=\"height:75px;background-color:#0b0c0d;color:#bbb;display:block;padding-top:35px;\"><form action=\"keva.php\" method=\"post\" ><input type=\"text\" name=\"asset\" maxlength=\"64\" placeholder=\"KEVA BLOCK NUMBER\" style=\"width:200px;\"><input type=\"hidden\" name=\"fromasset\" value=\"".$shopaddress."\"> <input type=\"submit\" value=\"".$keva_kaw."\"></form></li>";	
+		echo"<li style=\"height:85px;background-color:#0b0c0d;color:#bbb;display:block;padding-top:35px;\"><form action=\"keva.php\" method=\"post\" ><input type=\"text\" name=\"asset\" maxlength=\"64\" placeholder=\"KEVA BLOCK NUMBER\" style=\"width:200px;\"><input type=\"hidden\" name=\"fromasset\" value=\"".$shopaddress."\"> <input type=\"submit\" value=\"".$keva_kaw."\"></form></li>";	
 
-		echo"<a href=console.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_console." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		echo"<a href=console.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_console." ]</h2></a></li>";	
 
-		echo"<a href=system.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_system." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
+		echo"<a href=system.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_system." ]</h2></a></li>";
 		
 
-		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_word." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
+		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_word." ]</h2></a></li>";
 
-		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."&bludit=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ BLUDIT ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
+		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."&bludit=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ BLUDIT ]</h2></a></li>";
 		
-		echo"<a href=force.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ FORCE ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		echo"<a href=force.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ FORCE ]</h2></a></li>";	
 		
-		echo"<a href=shell.php?lang=".$_REQUEST["lang"]."&coin=KEVACOIN><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SHELL ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		echo"<a href=shell.php?lang=".$_REQUEST["lang"]."&coin=KEVACOIN><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ SHELL ]</h2></a></li>";	
 		
 
 		echo"<a href=subscription.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_subscription."
- ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+ ]</h2></a></li>";	
 
- 		echo"<a href=channel.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_channel." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+ 		echo"<a href=channel.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_channel." ]</h2></a></li>";	
 
 		
-		echo"<a href=message.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_message." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		echo"<a href=message.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_message." ]</h2></a></li>";	
 
 if($webmode==0){
 
-		echo"<a href=asset.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_asset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	}
+		echo"<a href=asset.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_asset." ]</h2></a></li>";	}
 
-		echo"<a href=tag.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_tag." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		echo"<a href=tag.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_tag." ]</h2></a></li>";	
 
 
 	
@@ -336,11 +337,11 @@ if($webmode==0){
 
 	
 
-		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_assetexplorer." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
+		echo"<a href=?lang=".$_REQUEST["lang"]."&asset=RUpxsSGEM4QyqaiSbSAyB64Ru2wR8qtEHf><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_assetexplorer." ]</h2></a></li>";
 
-		echo"<a href=explorer.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsexplorer." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";
+		echo"<a href=explorer.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_ipfsexplorer." ]</h2></a></li>";
 
-		echo"<a href=check.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_checkasset." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_local."</p></a></li>";	
+		echo"<a href=check.php?lang=".$_REQUEST["lang"]."><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$index_checkasset." ]</h2></a></li>";	
 
 
 
@@ -349,18 +350,18 @@ if($webmode==0){
 
 		echo "<div id=\"nav\"><ul>";
 
-		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=Nj4fh1WpzokbPn5AMqmEHpP1TQ8KF4SszF&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_link."</p></a></li>";
+		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=Nj4fh1WpzokbPn5AMqmEHpP1TQ8KF4SszF&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ IPFS ]</h2><p>".$index_link."</p></a></li>";
 
-		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=NSX7KFbznVTxHyccskujeL93z4rdh5TnhL&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RAVENCOIN ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_link."</p></a></li>";	
-
-		
-
-
-		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=NTrywXTgJ2hu417GVjPYSHnz3LvRtjVywJ&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GALAXY ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$index_link."</p></a></li>";	
-
+		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=NSX7KFbznVTxHyccskujeL93z4rdh5TnhL&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ RAVENCOIN ]</h2><p>".$index_link."</p></a></li>";	
 
 		
-		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"></li>";
+
+
+		echo"<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=NTrywXTgJ2hu417GVjPYSHnz3LvRtjVywJ&hidemkey=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ GALAXY ]</h2><p>".$index_link."</p></a></li>";	
+
+
+		
+		echo"<li style=\"height:100px;color:#bbb;display:block;\"><h2>[ - ]</h2></li>";
 
 
 		echo "</ul></div>";
@@ -432,7 +433,7 @@ arsort($sortto);
 		
 
 
-			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&type=".bin2hex($x_value)."&ismine=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=keva.php?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&type=".bin2hex($x_value)."&ismine=1><li style=\"height:100px;color:#bbb;display:block;\"><h2>[ ".$x_value." ]</h2></a></li>";
 			
 			
 
@@ -473,7 +474,7 @@ if(isset($_REQUEST["asset"])) {
 
 		echo "<div id=\"door\"  class=\"crt\"><form action=\"\" method=\"post\" ><div id=\"tech\"  class=\"crt\"><ul><li style=\"font-size: 30px;animation: textShadow 1.00s infinite;letter-spacing:4px;width:1%;margin-top:20px;padding-top:5px;height:40px;border: 1px solid #59fbea;background-color:#0b0c0d;\"><a href=index.php><b>GALAXY</b></a></li>";	
 
-		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
+		echo "<li  style=\"border:0px;width:50%;text-align:left;background-color:#0b0c0d;animation: textShadow 1.00s infinite;box-shadow:0px 0px 0px 0px #59fbea,0px 0px 0px 0px #59fbea inset;padding-top:11px;\"><input type=\"text\" name=\"asset\" maxlength=\"34\" value=\"".$ec."\" placeholder=\"ASSET OR ADDRESS\">";
 
 		echo "<input type=\"hidden\" name=\"one\" value=\"rvn\" />";
 		echo "<input type=\"submit\" value=\"KAW\"></div></form></div>";

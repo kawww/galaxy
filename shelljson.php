@@ -1038,7 +1038,15 @@ if(is_numeric($arr[0]) & $arr[1]<>""){
 if(strlen($comm)=="34" & !ctype_space($comm))
 				
 						{
+if(substr($comm,0,1)=="V"){
 
+	$url="location:".$freekeva."keva.php?lang=".$_REQUEST["lang"]."&address=".$comm;
+
+
+
+	header($url);
+
+	}else{
 						$asset=$comm;
 
 						$namespace= $kpc->keva_get($asset,"_KEVA_NS_");
@@ -1048,6 +1056,8 @@ if(strlen($comm)=="34" & !ctype_space($comm))
 						header("location:/stone.php?lang=&asset=".$asset."&showall=11&stone=1&group=no&shell=1");
 
 						}
+					}
+
 
 
 //txid
