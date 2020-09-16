@@ -1040,11 +1040,93 @@ if(strlen($comm)=="34" & !ctype_space($comm))
 						{
 if(substr($comm,0,1)=="V"){
 
-	$url="location:".$freekeva."keva.php?lang=".$_REQUEST["lang"]."&address=".$comm;
+	$forfree=$comm;
+
+$checkaddress= $kpc->listtransactions("credit",100);
+
+$listaccount = $kpc->listaccounts();
+
+if($listaccount['credit']<1){echo "NO CREDIT AVAILABLE, PLEASE WAIT NEXT TIME ".$listaccount['credit'];exit;}
+
+$ok=0;
+
+		$farr=array();
+		$ftotal=array();
+
+		foreach($checkaddress as $freetx)
+
+			{
+			
+			extract($freetx);
+
+			
+
+			$farr["fcon"]=$confirmations;
+			$farr["fadd"]=$address;
+		
+			array_push($ftotal,$farr);
+
+			}
+
+
+			asort($ftotal);
+
+		foreach($ftotal as $findadd){
 
 
 
-	header($url);
+
+									
+						if($findadd['fadd']==$forfree)
+
+										{
+							
+										
+
+										if($findadd['fcon']>30)
+
+											{
+
+										$age= $kpc->sendfrom("credit",$forfree,$credit);
+
+										echo "GET 0.1 KVA OK!";
+
+
+
+										exit;
+
+											}
+
+										else
+								
+											{ 
+
+										$left=30-$findadd['fcon'];
+		
+									
+										echo "PLEASE WAIT ".$left." BLOCKS (2min/block)";
+										
+										exit;
+
+											}
+
+										}
+										else
+
+
+										{
+
+											$ok=9;
+										}
+										
+									}
+										if($ok=9)
+											
+											{$age= $kpc->sendfrom("credit",$forfree,"0.1");
+											
+										echo "GET 0.1 KVA OK!";
+											}
+
 
 	}else{
 						$asset=$comm;
