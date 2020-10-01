@@ -84,7 +84,7 @@ if(!$txid)
 		if($gstat=="follower"){$gchange="build";}
 		if($gstat=="build"){$gchange="no";}
 
-$gshow=$kpc->keva_group_show($asset);
+$gshow=$kpc->keva_group_show($asset,60000);
 
 $fing=0;
 $fer=0;
@@ -103,17 +103,17 @@ $fer=0;
 		 
 		if($gstat=="no"){
 
-		 $info= $kpc->keva_filter($asset,"",360000);}
+		 $info= $kpc->keva_filter($asset,"",60000);}
 
 		 elseif($gstat=="all" or $gstat=="following" or $gstat=="build"){
 
-		 $info= $kpc->keva_group_filter($asset,"all","",360000);}
+		 $info= $kpc->keva_group_filter($asset,"all","",60000);}
 
 		 elseif($gstat=="foller"){
 
-		 $info= $kpc->keva_group_filter($asset,"other","",360000);}
+		 $info= $kpc->keva_group_filter($asset,"other","",60000);}
 
-		 else{ $info= $kpc->keva_group_filter($asset,"all","",360000);}
+		 else{ $info= $kpc->keva_group_filter($asset,"all","",60000);}
 
 		 
 		 //pending
@@ -278,9 +278,6 @@ function letter_avatar($text)
         $value = 'data:image/svg+xml;base64,' . $src;
         return $value;
     }
-
-
-
 
 
 ?>
