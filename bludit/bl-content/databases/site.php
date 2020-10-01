@@ -1,9 +1,9 @@
 <?php defined('BLUDIT') or die('Bludit CMS.'); ?>
 {
     "title": "GALAXY",
-    "slogan": "GALAXY",
+    "slogan": "KEVA.APP",
     "description": "",
-    "footer": "",
+    "footer": "Load 60,000 Blocks (100 Days) <a href=https:\/\/github.com\/kevacoin-project\/keva_wallet\/releases target=_blank><font color=#28f428>Get Kevacoin wallet to view all.<\/font><\/a>",
     "itemsPerPage": 6,
     "language": "en",
     "locale": "en, en_US, en_AU, en_CA, en_GB, en_IE, en_NZ",
