@@ -16,7 +16,7 @@ body,
 
 
 html, body {
-  background-color: #0b0c0d;
+  background-color: #212121;
   color: #fff;
   font-size: 15px;
   margin: 0 auto -100px;
@@ -575,12 +575,12 @@ if($np<>""){
 
 if($nptrue<>""){
 
-	echo "<li style=\"animation: textShadow 1.00s infinite;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;background-color:  rgb(255,255,0,0.4);display:block;height:125px;width:125px;line-height:10px;font-size:24px;border-color:#ffff00;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\">";
+	echo "<li style=\"animation: textShadow 1.00s infinite;border-radius: 5px;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;background-color:  rgb(255,255,0,0.4);display:block;height:125px;width:125px;line-height:10px;font-size:24px;border-color:#ffff00;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\">";
 
 			} else
 			{
 
-	echo "<li style=\"animation: textShadow 1.00s infinite;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;background-color: rgb(0, 79, 74); display:block;height:125px;width:125px;line-height:10px;font-size:24px;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\">";
+	echo "<li style=\"animation: textShadow 1.00s infinite;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;background-color: rgb(0, 79, 74); border-radius: 5px;display:block;height:125px;width:125px;line-height:10px;font-size:24px;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\">";
 
 			} 
 
@@ -592,7 +592,7 @@ else
 
 								{
 
-			echo "<li style=\"animation: textShadow 1.00s infinite;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;background-color: #222222; display:block;height:125px;width:125px;line-height:10px;font-size:24px;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\">";
+			echo "<li style=\"animation: textShadow 1.00s infinite;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;background-color: #222222;border-radius: 5px; display:block;height:125px;width:125px;line-height:10px;font-size:24px;padding-top:10px;padding-left:10px;padding-right:10px;letter-spacing:1px;word-break: normal;\">";
 			
 			
 								}

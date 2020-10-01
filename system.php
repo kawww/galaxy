@@ -16,7 +16,7 @@ body,
 
 
 html, body {
-  background-color: #0b0c0d;
+  background-color: #212121;
   color: #fff;
   font-size: 15px;
   margin: 0 auto -100px;
@@ -192,6 +192,7 @@ width:100%;
                 border: 1px solid #59fbea;
                 width: 430px;
 				height:100px;
+				border-radius: 5px;
 				word-break: break-all;
 				background-color: rgb(0, 79, 74);
                 text-align: center;

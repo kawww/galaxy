@@ -16,7 +16,7 @@ body,
 
 
 html, body {
-  background-color: #0b0c0d;
+  background-color: #212121;
   color: #fff;
   font-size: 15px;
   margin: 0 auto -100px;
@@ -191,6 +191,7 @@ width:98%;
             li
             {
                 border: 1px solid #59fbea;
+				border-radius: 5px;
 				animation: textShadow 1.00s infinite;box-shadow:0px 0px 20px 1px #59fbea,0px 0px 10px 1px #59fbea inset;
                 width: 430px;
 				height:100px;
