@@ -19,7 +19,7 @@ $rpc->port=$rrpcport;
 $_REQ = array_merge($_GET, $_POST);//iotstat
 
 
-
+$blocknum=$kpc->getblockcount();
 
 if(is_numeric($_REQ["num"]) & strlen($_REQ["num"])>4) 
 	
@@ -102,7 +102,7 @@ echo "</head>";
 echo "<body style=\"background-color: #212121;\">";
 
 
-echo "<div style=\"padding: 5px;margin-bottom: 5px;box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);background: var(--ck-color-toolbar-background);text-align:right;font-size:10px;\"><p style=\"padding-right:7px;\">[ <a href=https://github.com/kevacoin-project/keva_wallet/releases target=_blank><font color=grey>WALLET</font></a> ] [ <a href=\"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="."https://keva.app\" target=_blank><font color=grey>QR</font></a> ]</p></div>";
+echo "<div style=\"padding: 5px;margin-bottom: 5px;box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);background: var(--ck-color-toolbar-background);text-align:right;font-size:10px;\"><p style=\"padding-right:7px;\">[ <a href=https://github.com/kevacoin-project/keva_wallet/releases target=_blank><font color=grey>WALLET</font></a> ] [ <a href=\"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="."https://keva.app\" target=_blank><font color=grey>".$blocknum."</font></a> ]</p></div>";
 		
 
 			echo "<form action=\"\" method=\"post\" >";	
