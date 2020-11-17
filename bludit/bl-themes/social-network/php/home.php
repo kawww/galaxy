@@ -192,7 +192,37 @@ document.getElementById("jspostButton").onclick = function(event) {
 
 <div id="jslistOfPosts">
 <br>
-<?php
+
+	<!-- Post -->
+	<div class="card my-2 p-2">
+
+
+<?php 
+
+	if(!$gname){if(isset($_REQ["gname"])){$gnamer=hex2bin($_REQ["gname"]);}else{$gnamer="";}}else{$gnamer=$gname;}
+
+	if($gnamespace==$asset){$gnamer=$title;}
+
+if($pin<>""){
+
+
+
+echo "<div class=\"card-body\">";
+	
+echo "<img class=\"float-left rounded-circle\" style=\"width: 48px\" src=".letter_avatar($gnamer).">";
+
+echo "<div style=\"padding-left: 56px\"><div id=\"post-content\">";
+
+
+
+echo str_replace("\n","<br>",$pin);
+
+echo "</div></div></div>";
+
+
+
+}
+
 
 
 
@@ -288,14 +318,11 @@ $value=hex2bin($value);
 
 
 
-	if(!$gname){if(isset($_REQ["gname"])){$gnamer=hex2bin($_REQ["gname"]);}else{$gnamer="";}}else{$gnamer=$gname;}
 
-	if($gnamespace==$asset){$gnamer=$title;}
 ?>
 
 
-	<!-- Post -->
-	<div class="card my-2 p-2">
+
 
 		<!-- Load Bludit Plugins: Page Begin -->
 		<?php Theme::plugins('pageBegin') ?>
@@ -312,21 +339,11 @@ $value=hex2bin($value);
 				</p>
 
 				<!-- Post's content -->
-				<div id="post-content">
+				<div id="post-content" style="font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Heiti SC', 'DengXian', 'Microsoft YaHei', Helvetica, Segoe UI, Arial, sans-serif; ">
 				<?php echo $valuex; ?>
 				</div>
 
-				<!-- <div class="share text-right">
-					<a target="_blank" class="twitter" href="https://twitter.com/share?text=<?php echo urlencode($page->title()) ?>&amp;url=<?php echo urlencode ($page->permalink()) ?>">
-						<i class="fa fa-twitter"></i>
-					</a>
-					<a target="_blank" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode ($page->permalink()) ?>">
-						<i class="fa fa-facebook"></i>
-					</a>
-					<a target="_blank" class="reddit" href="https://www.reddit.com/submit?url=<?php echo urlencode ($page->permalink()) ?>&amp;title=<?php echo urlencode($page->title()) ?>">
-						<i class="fa fa-reddit"></i>
-					</a>
-				</div> -->
+			
 			</div>
 		</div>
 
