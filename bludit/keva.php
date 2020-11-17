@@ -139,7 +139,7 @@ $fer=0;
 
 		
 
-		
+		$pin="";
 
 
 		foreach($info as $x_value=>$x)
@@ -170,6 +170,12 @@ $fer=0;
 				}
 
 			If($key=="ID"){$title=$value;}
+
+			//pin
+
+			
+
+			If($key=="PIN"){$pin=$value;}
 
 			if($namespace==$asset){$arr["gname"]=$title;}
 
