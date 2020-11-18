@@ -1,5 +1,9 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php 
+error_reporting(0);
+include("../rpc.php");
+include("keva.php");
 
+defined('BLUDIT') or die('Bludit CMS.');
 // Bludit version
 define('BLUDIT_VERSION',	'3.12.0');
 define('BLUDIT_CODENAME',	'Hand washing');
@@ -155,7 +159,8 @@ if (strpos($_SERVER['REQUEST_URI'], $base)!==0) {
 
 $checktheme=$_REQUEST["theme"];
 
-if(!$checktheme){$checktheme="alternative";}
+if(!$checktheme){if($theme<>""){$checktheme=$theme;}
+else{$checktheme="social";}}
 
 define('HTML_PATH_ROOT', 		$base);
 define('HTML_PATH_THEMES',		HTML_PATH_ROOT.'bl-themes/');
@@ -210,9 +215,14 @@ define('IMAGE_RELATIVE_TO_ABSOLUTE', $site->imageRelativeToAbsolute());
 // TRUE if the markdown parser is enabled
 define('MARKDOWN_PARSER', $site->markdownParser());
 
+
+
 $checktheme=$_REQUEST["theme"];
 
-if(!$checktheme){$checktheme="social";}
+
+if(!$checktheme){if($theme<>""){$checktheme=$theme;}
+else{$checktheme="social";}}
+
 
 // --- PHP paths with dependency ---
 // This paths are absolutes for the OS
