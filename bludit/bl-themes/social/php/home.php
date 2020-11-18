@@ -1,7 +1,6 @@
 <?php
 error_reporting(0);
-include("../rpc.php");
-include("keva.php");
+
 ?>
 <?php if (empty($content)): ?>
 	<div class="mt-4">
@@ -211,13 +210,13 @@ echo "<div class=\"card-body\">";
 	
 echo "<img class=\"float-left rounded-circle\" style=\"width: 48px\" src=".letter_avatar($gnamer).">";
 
-echo "<div style=\"padding-left: 56px\"><div id=\"post-content\">";
+echo "<div style=\"padding-left: 56px\">&#x1F4D1;<div id=\"post-content\">";
 
 
 
 echo str_replace("\n","<br>",$pin);
 
-echo "</div></div></div>";
+echo "</div></div></div></div>";
 
 
 
