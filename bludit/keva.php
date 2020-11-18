@@ -141,6 +141,7 @@ $fer=0;
 
 		$pin="";
 
+$theme="";
 
 		foreach($info as $x_value=>$x)
 
@@ -176,6 +177,7 @@ $fer=0;
 			
 
 			If($key=="PIN"){$pin=$value;}
+			If($key=="THEME"){$theme=$value;}
 
 			if($namespace==$asset){$arr["gname"]=$title;}
 

@@ -4,7 +4,10 @@ $themes = buildThemes();
 
 $checktheme=$_REQUEST["theme"];
 
-if(!$checktheme){$checktheme="social-network";}
+//
+
+if(!$checktheme){if($theme<>""){$checktheme=$theme;}
+else{$checktheme="social";}}
 
 echo "<script>function submitForm(){var form = document.getElementById(\"myform\");form.submit();}</script>";
 
