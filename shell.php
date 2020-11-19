@@ -276,8 +276,14 @@ Welcome to Universal Blockchain Operating System <br><br>
   System information as of <?php echo date("Y-m-d h:i:s"); ?> <br><br>
 
   Ravencoin Blocks:&nbsp;<?php  $rnum= $rpc->getblockcount();echo $rnum; ?> <br>           
-  Kevacoin&nbsp;&nbsp;&nbsp;Blocks:&nbsp;<?php  $knum= $kpc->getblockcount();echo $knum; ?> <br><br>  
+  Kevacoin&nbsp;&nbsp;&nbsp;Blocks:&nbsp;<?php  $knum= $kpc->getblockcount();echo $knum; ?> <br><br>
   
+<?php 
+
+if($_REQ["coin"]=="KEVACOIN"){echo "Type 62046461 for an overview of available commands.<br><br>";} 
+
+?>
+
 <div id="thread">
 
 </div>

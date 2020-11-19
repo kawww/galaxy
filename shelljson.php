@@ -33,7 +33,7 @@ if($comm=="KEVACOIN" or $comm=="kevacoin"){
 
 if($comm=="RAVENCOIN" or $comm=="ravencoin"){
 
-	header("location:/shell/index.php5570511?coin=RAVENCOIN");
+	header("location:/shell/index.php?coin=RAVENCOIN");
 
 }
 
