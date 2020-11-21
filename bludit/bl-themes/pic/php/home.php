@@ -199,7 +199,7 @@ $value=hex2bin($value);
 			if(stristr($value,"decodeURIComponent") == true){$value=$txx;}
 
 			$valuex=str_replace("\n","<br>",$value);
-
+preg_match('/<img[^>]*?src="([^"]*?)"[^>]*?>/i',$valuex,$match);if(!$match[0]){continue;}
 
 ?>
 
@@ -216,7 +216,7 @@ $value=hex2bin($value);
 
 				<!-- Page description -->
 				
-				<p class="page-description"><?php preg_match('/<img[^>]*?src="([^"]*?)"[^>]*?>/i',$valuex,$match);echo $match[0]; ?><br>
+				<p class="page-description"><?php echo $match[0];?><br>
 				
 				<?php
 
