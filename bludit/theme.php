@@ -11,7 +11,7 @@ else{$checktheme="social";}}
 
 echo "<script>function submitForm(){var form = document.getElementById(\"myform\");form.submit();}</script>";
 
-echo "<font color=grey>[".$_REQUEST["scode"]."]</font>&nbsp;<form action=\"\" method=\"get\" id=\"myform\"><select name=\"theme\" onchange=\"submitForm();\">";
+echo "<font color=grey size=2.5>".$_REQUEST["scode"]."&nbsp;<form action=\"\" method=\"get\" id=\"myform\"><select name=\"theme\" onchange=\"submitForm();\">";
 
 foreach($themes as $t){
 
@@ -21,7 +21,7 @@ echo "<option value=\"".$t["dirname"]."\"".$val.">".$t["dirname"]."</option>";
 
 }
 
-echo "</select>";
+echo "</select></font>";
 
 echo "<input type=\"hidden\" name=\"asset\" value=\"".$_REQUEST["asset"]."\">";
 echo "<input type=\"hidden\" name=\"group\" value=\"".$_REQUEST["group"]."\">";
