@@ -181,6 +181,38 @@ $theme="";
 
 			if($namespace==$asset){$arr["gname"]=$title;}
 
+			//ipfs
+
+			preg_match('/(?:\{)(.*)(?:\})/i',$value,$match);
+			
+			if($match[0]<>"")
+				
+			{
+
+				if(stristr($match[0],"image") == true)
+
+					{$ipfsarr=explode("|",$match[0]);
+
+					$filetype=explode("/",$ipfsarr[1]);
+
+					$typ=str_replace("}","",$filetype[1]);
+
+					$ipfsadd=str_replace("{","",$ipfsarr[0]);
+
+					$urla="https://ipfs.jbb.one/ipfs/".trim(substr($ipfsarr[0],2,46));
+					$urlb=trim($ipfscon)."".trim(substr($ipfsarr[0],2,46));
+
+					$ipfslk="<img src=\"".$urla."\"><br><br>"."<a href=".$urlb." target=blank>".$ipfsadd."</a>";
+					
+
+					$value=str_replace($match[0],$ipfslk,$value);
+
+				
+
+					$arr["value"]=bin2hex($value);
+					
+					}}
+
 			
 			array_push($totalass,$arr);
 
