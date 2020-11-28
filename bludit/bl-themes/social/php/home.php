@@ -198,9 +198,9 @@ document.getElementById("jspostButton").onclick = function(event) {
 
 <?php 
 
-	if(!$gname){if(isset($_REQ["gname"])){$gnamer=hex2bin($_REQ["gname"]);}else{$gnamer="";}}else{$gnamer=$gname;}
+	//if(!$gname){if(isset($_REQ["gname"])){$gnamer=hex2bin($_REQ["gname"]);}else{$gnamer="";}}else{$gnamer=$gname;}
 
-	if($gnamespace==$asset){$gnamer=$title;}
+	//if($gnamespace==$asset){$gnamer=$title;}
 
 if($pin<>""){
 
@@ -311,7 +311,7 @@ $value=hex2bin($value);
 
 //showall
 
-			if(stristr($value,"decodeURIComponent") == true){$value=$txx;}
+			//if(stristr($value,"decodeURIComponent") == true){$value=$txx;}
 
 			$valuex=str_replace("\n","<br>",$value);
 
@@ -328,12 +328,12 @@ $value=hex2bin($value);
 
 		<div class="card-body">
 			<!-- Profile picture -->
-			<img class="float-left rounded-circle" style="width: 48px" src="<?php echo letter_avatar($gnamer); ?>" />
+			<img class="float-left rounded-circle" style="width: 48px" src="<?php echo letter_avatar($gnamex); ?>" />
 
 			<div style="padding-left: 56px">
 				<!-- Post's author and date -->
 				<p class="mb-2 text-muted">
-					<?php echo "<a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamer).">".$gnamer."</a>"; ?> -
+					<?php echo "<a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&scode=".$mysp."&gname=".bin2hex($gnamex).">".$gnamex."</a>"; ?> -
 					<?php echo date('Y-m-d H:i',$gtime); ?>
 				</p>
 
