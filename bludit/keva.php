@@ -229,7 +229,7 @@ $fer=0;
 
 				$mytime=count($myarr);
 
-				while($mytime>0)
+				while($mytime>-1)
 					
 				{
 				
@@ -280,7 +280,7 @@ $fer=0;
 					$asset=Base58Check::encode( $cons, false , 0 , false);}
 
 					
-				$mytime=$mytime-1;
+					$mytime=$mytime-1;
 
 					$info= $kpc->keva_filter($asset,"",60000);
 
