@@ -1,7 +1,5 @@
 <?php
 error_reporting(0);
-include("../rpc.php");
-include("keva.php");
 ?>
 <?php if (empty($content)): ?>
 	<div class="mt-4">
@@ -10,6 +8,27 @@ include("keva.php");
 <?php endif ?>
 
 <?php
+
+if($pin<>""){
+
+
+
+echo "<div class=\"card-body\">";
+	
+
+
+echo "<div>&#x1F4D1;<div id=\"post-content\">";
+
+
+
+echo str_replace("\n","<br>",$pin);
+
+echo "</div></div></div></div><hr>";
+
+
+
+}
+
 
 foreach ($listasset as $k=>$v) 
 
@@ -115,14 +134,14 @@ $value=hex2bin($value);
 	<img class="card-img-top mb-3 rounded-0" alt="Cover Image" src="<?php echo $page->coverImage(); ?>"/>
 	<?php endif ?>
 
-	<div class="card-body p-0">
+	<div class="card-body">
 		<!-- Title -->
 		<a class="text-dark" href="<?php echo $page->permalink(); ?>">
 			<h2 class="title"><?php echo $key; ?></h2>
 		</a>
 
 		<!-- Creation date -->
-		<h6 class="card-subtitle mb-3 text-muted"><?php echo date('Y-m-d H:i',$gtime); ?> - <?php echo "<a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamer).">".$gnamer."</a>"; ?></h6>
+		<h6 class="card-subtitle mb-3 text-muted"><?php echo date('Y-m-d H:i',$gtime); ?> - <?php echo "<a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamex).">".$gnamex."</a>"; ?></h6>
 
 		<!-- Breaked content -->
 		<?php echo turnUrlIntoHyperlink($valuex); ?>
