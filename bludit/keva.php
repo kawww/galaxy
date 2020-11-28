@@ -171,7 +171,7 @@ $fer=0;
 			
 			
 
-			If($key=="MYSPACE"){$myspace=$value;break;}
+			If($key=="MYSPACE"){$myspace=$value;}
 
 			//pin
 
@@ -222,7 +222,7 @@ $fer=0;
 				
 			{
 				$arr=array();
-				$totalass=array();
+				
 				
 		
 				$myarr=explode("\n",$value);
