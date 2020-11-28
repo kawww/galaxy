@@ -171,7 +171,7 @@ $fer=0;
 			
 			
 
-			If($key=="MYSPACE"){$myspace=$value;}
+			If($key=="MYSPACE"){$myspace=$value;break;}
 
 			//pin
 
@@ -222,7 +222,7 @@ $fer=0;
 				
 			{
 				$arr=array();
-				
+				$totalass=array();
 				
 		
 				$myarr=explode("\n",$value);
@@ -233,9 +233,10 @@ $fer=0;
 					
 				{
 				
-				$mytime=$mytime-1;
+				
 
-				$mysp=$myarr[$mytime];
+				if($mytime<>count($myarr)){$mysp=$myarr[$mytime];}
+
 
 
 //short code to namespace
@@ -275,8 +276,11 @@ $fer=0;
 
 								}
 						  }
-				
-					$asset=Base58Check::encode( $cons, false , 0 , false);
+					if($mytime<>count($myarr)){
+					$asset=Base58Check::encode( $cons, false , 0 , false);}
+
+					
+				$mytime=$mytime-1;
 
 					$info= $kpc->keva_filter($asset,"",60000);
 
