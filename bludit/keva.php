@@ -70,7 +70,8 @@ if(isset($txid) & strlen($txid)=="64"){
 	
 if(!$txid)
 
-{
+		{
+
 		$asset=trim($asset);
 		
 		$gstat=$_REQ["group"];
@@ -95,7 +96,7 @@ $fer=0;
 				if($s["initiator"]==0){$fing=$fing+1;}
 				if($s["initiator"]==1){$fer=$fer+1;}
 			
-			}
+				}
 
 
 
@@ -122,6 +123,9 @@ $fer=0;
 		 
 
 	 
+					$namespace=$kpc->keva_get($asset,"_KEVA_NS_");
+
+					$title=$namespace['value'];
 	 
 
 		
@@ -131,17 +135,17 @@ $fer=0;
 
 			if($error != "") 
 		
-				{
+					{
 	
 					echo "<p>&nbsp;&nbsp;Error list</p>";
 					exit;
-				}
+					}
 
 		
 
 		$pin="";
 
-$theme="";
+		$theme="";
 
 		foreach($info as $x_value=>$x)
 
@@ -150,36 +154,31 @@ $theme="";
 			extract($x);
 
 			If($key=="_KEVA_NS_"){$title=$value;continue;}
+			If($key=="ID"){$title=$value;}
 
 			$arr["heightx"]=$height;
 			$arr["key"]=$key;
 			$arr["adds"]=$address;
 			$arr["value"]=bin2hex($value);
 			$arr["txx"]=$txid;
-			$arr["gnamespace"]=$namespace;
+			$arr["gnamespace"]=$asset;
+			$arr["gnamex"]=$title;
 			
 			$gtime= $kpc->getrawtransaction($txid,1);
 
 			$arr["gtime"]=$gtime["time"];
 
-			foreach($gshow as $s_value=>$s)
-				{
-				$arr["gname"]=="";
-				if($namespace==$s["namespaceId"]){$arr["follow"]=$s["initiator"];$arr["gname"]=$s["display_name"];break;}
+			
+			
 
-
-				}
-
-			If($key=="ID"){$title=$value;}
+			If($key=="MYSPACE"){$myspace=$value;break;}
 
 			//pin
-
-			
 
 			If($key=="PIN"){$pin=$value;}
 			If($key=="THEME"){$theme=$value;}
 
-			if($namespace==$asset){$arr["gname"]=$title;}
+			//if($namespace==$asset){$arr["gname"]=$title;}
 
 			//ipfs
 
@@ -187,11 +186,11 @@ $theme="";
 			
 			if($match[0]<>"")
 				
-			{
+					{
 
 				if(stristr($match[0],"image") == true)
 
-					{$ipfsarr=explode("|",$match[0]);
+						{$ipfsarr=explode("|",$match[0]);
 
 					$filetype=explode("/",$ipfsarr[1]);
 
@@ -202,7 +201,7 @@ $theme="";
 					$urla="https://ipfs.jbb.one/ipfs/".trim(substr($ipfsarr[0],2,46));
 					$urlb=trim($ipfscon)."".trim(substr($ipfsarr[0],2,46));
 
-					$ipfslk="<img src=\"".$urla."\"><br><br>"."<a href=".$urlb." target=blank>".$ipfsadd."</a>";
+					$ipfslk="<img src=\"".$urla."\"><br>(<font size=2>The IPFS Gateway is <a href=https://www.jbb.one target=blank>jbb.one</a></font>)<br>"."<a href=".$urlb." target=blank>".$ipfsadd."</a>";
 					
 
 					$value=str_replace($match[0],$ipfslk,$value);
@@ -211,44 +210,170 @@ $theme="";
 
 					$arr["value"]=bin2hex($value);
 					
-					}}
+						}
+					}
 
 			
 			array_push($totalass,$arr);
-
-			
-
-			
-			
 	
 			}
 
+			if($myspace!="")
+				
+			{
+				$arr=array();
+				$totalass=array();
+				
+		
+				$myarr=explode("\n",$value);
 
+				$mytime=count($myarr);
+
+				while($mytime>0)
+					
+				{
+				
+				$mytime=$mytime-1;
+
+				$mysp=$myarr[$mytime];
+
+
+//short code to namespace
+					
+				$comm=$mysp;
+					
+				$blength=substr($comm , 0 , 1);
+				$block=substr($comm , 1 , $blength);
+				$btxn=$blength+1;
+				$btx=substr($comm , $btxn);
+
+
+				$blockhash= $kpc->getblockhash(intval($block));
+
+				$blockdata= $kpc->getblock($blockhash);
+
+				$txa=$blockdata['tx'][$btx];
+
+				$transaction= $kpc->getrawtransaction($txa,1);
+
+					foreach($transaction['vout'] as $vout)
+	   
+						  {
+
+							$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+							$arrs = explode(' ', $op_return); 
+
+							if($arrs[0] == 'OP_KEVA_NAMESPACE') 
+								{
+
+								 $cona=$arrs[0];
+								 $cons=$arrs[1];
+								 $conk=$arrs[2];
+								
+
+								}
+						  }
+				
+					$asset=Base58Check::encode( $cons, false , 0 , false);
+
+					$info= $kpc->keva_filter($asset,"",60000);
+
+					$namespace=$kpc->keva_get($asset,"_KEVA_NS_");
+
+					$title=$namespace['value'];
+
+
+//array
+					
+					foreach($info as $x_value=>$x)
+
+						{
+			
+						extract($x);
+
+						If($key=="_KEVA_NS_"){continue;}
+
+						
+
+					
+
+						$arr["heightx"]=$height;
+						$arr["key"]=$key;
+						$arr["adds"]=$address;
+						$arr["value"]=bin2hex($value);
+						$arr["txx"]=$txid;
+						$arr["gnamespace"]=$asset;
+						$arr["gnamex"]=$title;
+						$arr["mysp"]=$comm;
+			
+						$gtime= $kpc->getrawtransaction($txid,1);
+
+						$arr["gtime"]=$gtime["time"];
+
+
+						If($key=="THEME"){$theme=$value;}
+
+						
+						//ipfs
+
+						preg_match('/(?:\{)(.*)(?:\})/i',$value,$match);
+			
+						if($match[0]<>"")
+				
+							{
+
+							if(stristr($match[0],"image") == true)
+
+								{
+								$ipfsarr=explode("|",$match[0]);
+
+							$filetype=explode("/",$ipfsarr[1]);
+
+							$typ=str_replace("}","",$filetype[1]);
+
+							$ipfsadd=str_replace("{","",$ipfsarr[0]);
+
+							$urla="https://ipfs.jbb.one/ipfs/".trim(substr($ipfsarr[0],2,46));
+							$urlb=trim($ipfscon)."".trim(substr($ipfsarr[0],2,46));
+
+							$ipfslk="<img src=\"".$urla."\"><br>(<font size=2>The IPFS Gateway is <a href=https://www.jbb.one target=blank>jbb.one</a></font>)<br>"."<a href=".$urlb." target=blank>".$ipfsadd."</a>";
+					
+
+							$value=str_replace($match[0],$ipfslk,$value);
+
+				
+
+							$arr["value"]=bin2hex($value);
+					
+							
+								}
+
+							}
+
+						array_push($totalass,$arr);
+
+				
+				
+						}	
+
+					//array over
+
+
+
+					}
+
+			}
 			arsort($totalass);
 
 			
 
-
-
-			
-
-}
+		}
 
 $listasset=$totalass;
 
-//menu
 
-
-			$namespace= $kpc->keva_get($asset,"_KEVA_NS_");
-
-		
-		
-
-			$title=$namespace['value'];
-
-			$sname=$_REQ["sname"];
-			
-			if(!$_REQ["sname"]){$sname=strtoupper($title);}
 
 
 
