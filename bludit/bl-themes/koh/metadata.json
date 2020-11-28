@@ -1,0 +1,10 @@
+{
+	"author": "koh fuchs",
+	"email": "fuchs@koh.cloud",
+	"website": "https://koh.cloud",
+	"version": "0.0.1",
+	"releaseDate": "2020-01-01",
+	"license": "MIT",
+	"compatible": "3.12.0",
+	"notes": "terminal, dark, mono"
+}
