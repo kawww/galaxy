@@ -23,7 +23,7 @@ if($pin<>""){
 
 
 
-echo "<h2><a>&#x1F4D1;</a></h2><small><a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamer).">".$gnamer."</a>";  
+echo "<h2><a>&#x1F4D1;</a></h2><small><a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamex).">".$gnamex."</a>";  
 
 echo "<br></small>";
 
@@ -133,7 +133,7 @@ $value=hex2bin($value);
 
 	if($gnamespace==$asset){$gnamer=$title;}
 ?><article><?php Theme::plugins('pageBegin'); // Load Bludit Plugins: Page Begin ?>
-<h2><a href="<?php echo "?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamer); ?>"><?php echo $key; ?></a></h2><small><?php echo "<a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamer).">".$gnamer."</a>";  
+<h2><a href="<?php echo "?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamex); ?>"><?php echo $key; ?></a></h2><small><?php echo "<a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamex).">".$gnamex."</a>";  
 					 echo "<font color=dddddd> - ".date('Y-m-d H:i',$gtime)."</font><br>"; ?></small> | <?php if ($page->category()):?><a href="<?php echo DOMAIN_CATEGORIES.$page->categoryKey() ?>" rel="tag"><?php echo $page->category() ?></a>
 <?php endif?>
 <?php
