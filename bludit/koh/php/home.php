@@ -149,7 +149,7 @@ $value=hex2bin($value);
 					<div class="card-title">
 						<h3 class="text-primary"><?php echo $key; ?></h3>
 					</div>
-					<p class="text-info card-subtitle mb-3"><?php echo "<a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamer).">".$gnamer."</a>"; ?> -
+					<p class="text-info card-subtitle mb-3"><?php echo "<a href=?theme=".$_REQUEST["theme"]."&asset=".$gnamespace."&gname=".bin2hex($gnamex).">".$gnamex."</a>"; ?> -
 					<?php echo date('Y-m-d H:i',$gtime); ?></p>
 					<div class="card-text" style="font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Heiti SC', 'DengXian', 'Microsoft YaHei', Helvetica, Segoe UI, Arial, sans-serif; ">
 						<?php echo $valuex; ?>
