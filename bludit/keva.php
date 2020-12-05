@@ -177,6 +177,7 @@ $fer=0;
 
 			If($key=="PIN"){$pin=$value;}
 			If($key=="THEME"){$theme=$value;}
+				If($key=="MP3"){$mp3=$value;}
 
 			//if($namespace==$asset){$arr["gname"]=$title;}
 
@@ -201,7 +202,7 @@ $fer=0;
 					$urla="https://ipfs.jbb.one/ipfs/".trim(substr($ipfsarr[0],2,46));
 					$urlb=trim($ipfscon)."".trim(substr($ipfsarr[0],2,46));
 
-					$ipfslk="<img src=\"".$urla."\"><br>(<font size=2>The IPFS Gateway is <a href=https://www.jbb.one target=blank>jbb.one</a></font>)<br>"."<a href=".$urlb." target=blank>".$ipfsadd."</a>";
+					$ipfslk="<img src=\"".$urla."\" onerror=\"this.src='/bludit/loading.png'\"><br>(<font size=2>The IPFS Gateway is <a href=https://www.jbb.one target=blank>jbb.one</a></font>)<br>"."<a href=".$urlb." target=blank>".$ipfsadd."</a>";
 					
 
 					$value=str_replace($match[0],$ipfslk,$value);
@@ -318,6 +319,8 @@ $fer=0;
 
 
 						If($key=="THEME"){$theme=$value;}
+
+						If($key=="MP3"){$mp3=$value;}
 
 						
 						//ipfs
