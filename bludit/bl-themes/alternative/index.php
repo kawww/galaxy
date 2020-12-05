@@ -46,11 +46,6 @@
 	<!-- Footer -->
 	<?php include(THEME_DIR_PHP.'footer.php'); ?>
 
-	<!-- Include Jquery file from Bludit Core -->
-	<?php echo Theme::jquery(); ?>
-
-	<!-- Include javascript Bootstrap file from Bludit Core -->
-	<?php echo Theme::jsBootstrap(); ?>
 
 	<!-- Load Bludit Plugins: Site Body End -->
 	<?php Theme::plugins('siteBodyEnd'); ?>
