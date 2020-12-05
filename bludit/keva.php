@@ -177,7 +177,8 @@ $fer=0;
 
 			If($key=="PIN"){$pin=$value;}
 			If($key=="THEME"){$theme=$value;}
-				If($key=="MP3"){$mp3=$value;}
+			If($key=="MP3"){$mp3=$value;}
+			If($key=="RANDOM"){$rand=$value;}
 
 			//if($namespace==$asset){$arr["gname"]=$title;}
 
@@ -342,6 +343,20 @@ $fer=0;
 						//ipfs
 
 						preg_match('/(?:\{)(.*)(?:\})/i',$value,$match);
+
+									//rand
+
+			$linkrand=rand(1,4);
+
+			if($linkrand==1){$ipfsr="https://ipfs.jbb.one/ipfs/";$ipfsn="jbb.one";}
+			if($linkrand==2){$ipfsr="https://ipfs.k1ic.com/ipfs/";$ipfsn="k1ic.com";}
+			if($linkrand==3){$ipfsr="https://cloudflare-ipfs.com/ipfs/";$ipfsn="cloudflare-ipfs.com";}
+			if($linkrand==4){$ipfsr="https://gateway.ravenland.org/ipfs/";$ipfsn="ravenland.org";}
+			//if($linkrand==5){$ipfsr="https://ipfs.eternum.io/";$ipfsn="eternum.io";}
+			//if($linkrand==6){$ipfsr="https://ipfs.globalupload.io/";$ipfsn="globalupload.io";}
+			//if($linkrand==7){$ipfsr="https://ipfs.jbb.one/ipfs/";$ipfsn="jbb.one";}
+			//if($linkrand==8){$ipfsr="https://ipfs.jbb.one/ipfs/";$ipfsn="jbb.one";}
+			//if($linkrand==9){$ipfsr="https://ipfs.jbb.one/ipfs/";$ipfsn="jbb.one";}
 			
 						if($match[0]<>"")
 				
@@ -398,6 +413,23 @@ $listasset=$totalass;
 
 
 
+if($rand!=""){
+	
+
+$listasset=array();
+
+$randn="";
+
+$rand=$rand+1;
+
+for($rn=0;$rn<$rand;$rn=$rn+1){
+
+$randn=rand(0,count($totalass));
+
+array_push($listasset,$totalass[$randn]);
+
+}
+}
 
 
 function hsv2rgb($H, $S, $V)
