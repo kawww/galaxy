@@ -139,7 +139,12 @@ $coun=$coun+1;
  	} 
 
 
+if($rand!=""){echo "<section class=\"m-page hide\" ><div class=\"m-img\" ><a href=\"javascript:location.reload();\"><img src=/bludit/refresh.png></a></div>";
+echo "</section>";}
+
 ?>
+
+
 
     
 <section class='u-arrow'><img src="/bludit/bl-themes/album/img/btn01_arrow.png" /></section>
