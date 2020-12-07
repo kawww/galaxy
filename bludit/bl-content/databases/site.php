@@ -8,7 +8,7 @@
     "language": "en",
     "locale": "en, en_US, en_AU, en_CA, en_GB, en_IE, en_NZ",
     "timezone": "Asia\/Shanghai",
-    "theme": "alternative",
+    "theme": "alter",
     "adminTheme": "booty",
     "homepage": "",
     "pageNotFound": "",
