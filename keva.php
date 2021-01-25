@@ -311,7 +311,7 @@ body,
 
 
 html, body {
-  background-color: #0b0c0d;
+  background-color: #212121;
   color: #fff;
   font-size: 15px;
   margin: 0 auto -100px;
@@ -464,6 +464,8 @@ width:98%;
                 border: 1px solid #59fbea;
                 width: 440px;
 				height:100px;
+								border-radius: 5px;
+
 				word-break: break-all;
 			background-color: rgb(0, 79, 74);
                 text-align: center;
@@ -587,7 +589,7 @@ $checkaddress= $kpc->listtransactions("credit",100);
 
 $listaccount = $kpc->listaccounts();
 
-if($listaccount['credit']<1){echo "<script>alert('NO CREDIT AVAILABLE, PLEASE WAIT NEXT TIME (".$listaccount['credit'].")');history.go(-1);</script>";exit;}
+if($listaccount['credit']<1){echo "<script>alert('NO CREDIT AVAILABLE, PLEASE WAIT NEXT TIME. OR ASK SOMEONE TO SEND SOME TO 5982501 WITH APP (".$listaccount['credit'].")');history.go(-1);</script>";exit;}
 
 $ok=0;
 
@@ -1105,6 +1107,8 @@ foreach($age as $y_value=>$y)
 			$sortarr['displayName']=$displayName;
 			$sortarr['namespaceId']=$namespaceId;
 
+			
+
 			array_push($sortto,$sortarr);
 			}
 
@@ -1122,7 +1126,73 @@ echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"
 			{
 
 			extract($x);
+			
+			//shortcode
 
+			$namespace=$kpc->keva_get($namespaceId,"_KEVA_NS_");
+
+		
+		
+
+			$title=$namespace['value'];
+
+			$snl=strlen($namespace['height']);
+			
+			$snm=$namespace['height'];
+
+				
+
+				$getblockh=$kpc->getblockheaderbyheight($snm);
+			
+				$getblockh=$getblockh['block_header']['hash'];
+				$getblocktx=$kpc->getblock($getblockh);
+
+			
+				$sncount=0;
+		
+					foreach($getblocktx['tx'] as $txa){
+
+				
+						$transaction= $kpc->getrawtransaction($txa,1);
+
+							foreach($transaction['vout'] as $vout)
+	   
+							  {
+
+								$op_return = $vout["scriptPubKey"]["asm"]; 
+
+				
+									$arrb = explode(' ', $op_return); 
+
+									if($arrb[0] == 'OP_KEVA_NAMESPACE') 
+										{
+
+								 $cona=$arrb[0];
+								 $cons=$arrb[1];
+								 $conk=$arrb[2];
+
+								  $cond=$vout["scriptPubKey"]["addresses"][0];
+
+								 $assetn=Base58Check::encode($cons, false , 0 , false);
+
+								 if($namespaceId==$assetn){ $shortc=$snl."".$snm."".$sncount;}
+
+
+
+										}
+								 }
+				
+							
+
+						$sncount=$sncount+1;
+
+						}
+				
+			
+
+
+
+			//go
 
 			$hide = $kpc->keva_get($namespaceId,hide);
 
@@ -1135,7 +1205,7 @@ echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"
 
 			}
 
-if(isset($_REQ["bludit"])){$bludit="/bludit/";}
+			if(isset($_REQ["bludit"])){$bludit="/bludit/";}
 
 			if(!$hide['value'] ){
 
@@ -1143,7 +1213,7 @@ if(isset($_REQ["bludit"])){$bludit="/bludit/";}
 			$x_value=$displayName;
 
 
-			echo "<a href=".$bludit."?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."&gname=".bin2hex($x_value)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=".$bludit."?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."&gname=".bin2hex($x_value)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId." [".$shortc."]</p></a></li>";
 
 			}
 			else
@@ -1154,7 +1224,7 @@ if(isset($_REQ["bludit"])){$bludit="/bludit/";}
 			$x_value=$displayName;
 
 
-			echo "<a href=".$bludit."?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."&gname=".bin2hex($x_value)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."</p></a></li>";
+			echo "<a href=".$bludit."?lang=".$_REQUEST["lang"]."&asset=".$namespaceId."&ismine=1".$addtx."&gname=".bin2hex($x_value)."><li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$x_value." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\">".$namespaceId."  [".$shortc."]</p></a></li>";
 
 			}}
 
@@ -2105,7 +2175,7 @@ if($_REQ["ismine"]=="1"){$ismine=1;}else{
 
 		if($hidemkey==0){
 
-		echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$title." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:18px\"> [ ".$sn." ] ".$asset."</p></li>";
+		echo "<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;\"><h4>[ ".$title." ]</h4><hr style=\"background-color:#59fbea;height:1px;border:none;\"><p style=\"font-size:16px\"> [ ".$sn." ] ".$asset."</p></li>";
 
 		echo"<li style=\"background-color: rgb(0, 79, 74);height:130px;display:block;color:#bbb;display:block;\"><form action=\"keva.php\" method=\"post\" ><h4><input type=\"text\" name=\"title\" maxlength=\"64\" placeholder=\"TITLE\" style=\"width:200px;\"><input type=\"hidden\" name=\"fromasset\" value=\"".$shopaddress."\"> <input type=\"submit\" value=\"".$keva_kaw."\"></h4><input type=\"hidden\" name=\"asset\" value=".$_REQ["asset"]." /></form></li>";	
 
