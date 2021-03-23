@@ -976,6 +976,15 @@ $assetlink=$x_value;
 $assettwo=$x_value;
 
 
+			$info = $rpc->getassetdata($x_value);
+			
+			$ipfs_hash="";
+
+			extract($info);
+
+				if($ipfs_hash !=""){$ipimg="<br><img src=https://ravencoin.asset-explorer.net/ipfs/".$ipfs_hash." width=100>";}
+
+
 if($turn==1)
 
 {
@@ -990,7 +999,7 @@ $x_value=str_replace("U+","",$x_value);
 $x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:280px;width:431px;display:block;\">".$x_value."".$ipimg."<hr style=\"background-color:#59fbea;height:1px;border:none;\"><p>".$x."</p></a></li>";
 
 
 			}
@@ -1005,6 +1014,15 @@ $x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 $assetlink=$x_value;
 $assettwo=$x_value;
 
+$info = $rpc->getassetdata($x_value);
+			
+			$ipfs_hash="";
+
+			extract($info);
+
+			if($ipfs_hash !=""){$ipimg="<br><img src=https://ravencoin.asset-explorer.net/ipfs/".$ipfs_hash." width=100>";}
+
+
 
 if($turn==1)
 
@@ -1020,7 +1038,7 @@ $x_value=str_replace("U+","",$x_value);
 $x_value="<h4 style=\"font-size:21px;\">".$x_value."</h4>";
 
 
-			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:130px;width:431px;display:block;\">".$x_value."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
+			echo "<a href=?lang=".$_REQUEST["lang"]."&&unicode=".$turn."&asset=".$assetlink."><li style=\"background-color: rgb(0, 79, 74);height:280px;width:431px;display:block;\">".$x_value."".$ipimg."<hr style=\"background-color:#59fbea;height:1px;border:none;\"></a></li>";
 
 
 			}
